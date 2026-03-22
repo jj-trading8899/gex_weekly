@@ -1,6 +1,9 @@
 name: Archive Weekly Report
 on:
   workflow_dispatch: # This lets you run it manually with one click
+  schedule:
+    # This runs at 00:00 (Midnight) every Sunday UTC
+    - cron: '0 0 * * 0'
 
 jobs:
   archive:
