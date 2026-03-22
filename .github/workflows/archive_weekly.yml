@@ -23,8 +23,8 @@ jobs:
           # Copy current index to the archive folder
           cp index.html $FILENAME
           
-          # Optional: Clear index.html or replace with a "Coming Soon" template
-          echo "<h1>New Report Coming Soon</h1>" > index.html
+          ## Optional: Clear index.html or replace with a "Coming Soon" template
+          #echo "<h1>New Report Coming Soon</h1>" > index.html
 
       - name: Commit and Push
         run: |
