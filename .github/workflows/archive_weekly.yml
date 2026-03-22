@@ -1,0 +1,32 @@
+name: Archive Weekly Report
+on:
+  workflow_dispatch: # This lets you run it manually with one click
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Archive and Reset
+        run: |
+          # Create archive folder if it doesn't exist
+          mkdir -p archive
+          
+          # Get current date (Year-Month-Day)
+          FILENAME="archive/gex-$(date +'%Y-%m-%d').html"
+          
+          # Copy current index to the archive folder
+          cp index.html $FILENAME
+          
+          # Optional: Clear index.html or replace with a "Coming Soon" template
+          echo "<h1>New Report Coming Soon</h1>" > index.html
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add .
+          git commit -m "Automated archive for $(date +'%Y-%m-%d')"
+          git push
