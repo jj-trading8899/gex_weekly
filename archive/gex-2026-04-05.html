@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEX Week-End Review — Fri 2026-03-27</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+  :root {
+    --bg:#0a0e17;--surface:#111827;--surface2:#1a2235;--border:#1e2a3a;
+    --text:#e2e8f0;--text-dim:#64748b;--green:#22c55e;--green-dim:rgba(34,197,94,.15);
+    --red:#ef4444;--red-dim:rgba(239,68,68,.12);--yellow:#eab308;--yellow-dim:rgba(234,179,8,.12);
+    --blue:#3b82f6;--blue-dim:rgba(59,130,246,.12);--purple:#a78bfa;--purple-dim:rgba(167,139,250,.12);
+    --cyan:#06b6d4;--pin:#facc15;--orange:#f97316;--orange-dim:rgba(249,115,22,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:13px;line-height:1.5;padding:24px}
+  h1{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--pin);margin-bottom:4px;letter-spacing:-.5px}
+  .subtitle{color:var(--text-dim);font-size:12px;margin-bottom:28px;font-family:'JetBrains Mono',monospace}
+  .section-title{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:var(--cyan);margin:32px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:1px}
+
+  .alert-box{border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:12px;line-height:1.6}
+  .alert-red{background:var(--red-dim);border:1px solid rgba(239,68,68,.3)}
+  .alert-red strong{color:var(--red)}
+  .alert-orange{background:var(--orange-dim);border:1px solid rgba(249,115,22,.3)}
+  .alert-orange strong{color:var(--orange)}
+
+  .comp-table{width:100%;border-collapse:collapse;margin-bottom:32px;font-size:12px}
+  .comp-table th{background:var(--surface2);color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;padding:8px 10px;text-align:left;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:2}
+  .comp-table td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+  .comp-table tr:hover td{background:rgba(255,255,255,.02)}
+  .comp-table .section-row td{background:var(--surface);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:1px;padding:10px 10px 6px;border-bottom:1px solid var(--purple)}
+  .ticker-cell{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px}
+  .pin{color:var(--pin)}.bullish{color:var(--green)}.bearish{color:var(--red)}.neutral{color:var(--yellow)}.note{color:var(--text-dim);font-size:11px}
+
+  .delta{font-family:'JetBrains Mono',monospace;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px}
+  .delta-dn{background:var(--red-dim);color:var(--red)}
+  .delta-up{background:var(--green-dim);color:var(--green)}
+  .delta-reset{background:var(--purple-dim);color:var(--purple)}
+
+  .bias-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase}
+  .bias-bull{background:var(--green-dim);color:var(--green)}
+  .bias-bear{background:var(--red-dim);color:var(--red)}
+  .bias-neutral{background:var(--yellow-dim);color:var(--yellow)}
+  .bias-range{background:var(--blue-dim);color:var(--blue)}
+
+  .accum-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-bottom:32px}
+  .accum-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .accum-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--surface2);border-bottom:1px solid var(--border)}
+  .accum-ticker{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px}
+  .accum-spot{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim)}
+  .accum-note{padding:8px 14px;font-size:11px;color:var(--text-dim);border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;line-height:1.6}
+  .accum-table{width:100%;border-collapse:collapse;font-size:11px}
+  .accum-table th{background:var(--surface2);color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;padding:6px 8px;text-align:center;border-bottom:1px solid var(--border)}
+  .accum-table th:first-child{text-align:left}
+  .accum-table td{padding:6px 8px;text-align:center;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:11px}
+  .accum-table td:first-child{text-align:left;color:var(--text-dim);font-size:10px}
+  .buy-level{color:var(--green);font-weight:600}
+  .tp-level{color:var(--cyan);font-weight:600}
+  .stop-merged{background:var(--red-dim);color:var(--red);font-weight:700;text-align:center;font-size:12px}
+
+  .narrative{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;font-size:12px;line-height:1.7;color:var(--text)}
+  .narrative p{margin-top:10px}.narrative p:first-child{margin-top:0}
+
+  .scorecard{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .score-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center}
+  .score-ticker{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;margin-bottom:4px}
+  .score-week{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;margin-bottom:2px}
+  .score-label{font-size:10px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<h1>GEX WEEK-END REVIEW</h1>
+<div class="subtitle">Friday 2026-03-27 &nbsp;|&nbsp; Post 03/27 expiry &nbsp;|&nbsp; Full structural reset &nbsp;|&nbsp; NVDA · TSLA · AAPL · TSM</div>
+
+<a href="about.html" class="about-link">Summary Grid</a>
+  
+<!-- SCORECARD -->
+<div class="scorecard">
+  <div class="score-item">
+    <div class="score-ticker" style="color:var(--red)">NVDA</div>
+    <div class="score-week" style="color:var(--red)">-4.6%</div>
+    <div class="score-label">175.29 → 166.79</div>
+  </div>
+  <div class="score-item">
+    <div class="score-ticker" style="color:var(--red)">TSLA</div>
+    <div class="score-week" style="color:var(--red)">-6.0%</div>
+    <div class="score-label">383.25 → 360.20</div>
+  </div>
+  <div class="score-item">
+    <div class="score-ticker" style="color:var(--red)">AAPL</div>
+    <div class="score-week" style="color:var(--red)">-2.4%</div>
+    <div class="score-label">253.65 → 247.56</div>
+  </div>
+  <div class="score-item">
+    <div class="score-ticker" style="color:var(--red)">TSM</div>
+    <div class="score-week" style="color:var(--red)">-5.2%</div>
+    <div class="score-label">342.67 → 324.73</div>
+  </div>
+</div>
+
+<div class="alert-red">
+  <strong>POST-MORTEM:</strong> The 03/27 weekly expiry stripped away the massive positive gamma walls that were supposed to act as magnets (NVDA 180, TSLA 380, AAPL 252.5). Once that OI rolled off, spot was left exposed in negative gamma territory with no scaffolding underneath. The market sold through every support tier. All four tickers now have fully reset GEX structures centered on the 04/02 expiry.
+</div>
+
+<div class="alert-orange">
+  <strong>LESSON:</strong> GEX pins are strongest 1–2 days before expiry, not 5 days before. The Tuesday dip-buy thesis on NVDA at 175 was structurally correct for a Wednesday expiry trade — but as a weekly swing it was vulnerable to the exact scenario that played out: a broader market sell-off overwhelming the gamma pull before the pin could resolve. Size and time horizon must match the expiry date distance.
+</div>
+
+<!-- ═══════════════ COMPARISON TABLE ═══════════════ -->
+<div class="section-title">Post-Expiry Structure — New Landscape</div>
+
+<table class="comp-table">
+<thead>
+<tr>
+  <th style="width:100px">Metric</th>
+  <th>NVDA</th>
+  <th>TSLA</th>
+  <th>AAPL</th>
+  <th>TSM</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="section-row"><td colspan="5">New Structure (04/02 expiry dominant)</td></tr>
+<tr>
+  <td class="ticker-cell">New Pin</td>
+  <td class="pin">172.5 ($20.4M) <span class="delta delta-reset">RESET</span></td>
+  <td class="pin">360 ($4.8M) <span class="delta delta-reset">RESET</span></td>
+  <td class="pin">252.5 ($4.7M) <span class="delta delta-reset">RESET</span></td>
+  <td class="pin">360 ($4.2M on 04/17) <span class="delta delta-reset">SAME</span></td>
+</tr>
+<tr>
+  <td class="ticker-cell">Spot</td>
+  <td>166.79 <span class="delta delta-dn">-4.86% from Tue</span></td>
+  <td>360.20 <span class="delta delta-dn">-6.02% from Tue</span></td>
+  <td>247.56 <span class="delta delta-dn">-2.40% from Tue</span></td>
+  <td>324.73 <span class="delta delta-dn">-5.24% from Tue</span></td>
+</tr>
+<tr>
+  <td class="ticker-cell">Pin vs Spot</td>
+  <td class="bullish">Pin 3.4% above spot</td>
+  <td class="bullish">Spot AT pin</td>
+  <td class="bullish">Pin 2.0% above spot</td>
+  <td class="bullish">Pin 10.9% above (distant)</td>
+</tr>
+<tr>
+  <td class="ticker-cell">Spot Zone</td>
+  <td>167 = between support (167.5 $3.8M)<br/>and neg gamma (165 -$5.3M)</td>
+  <td>360 = on the pin ($4.8M)<br/>Positive gamma — stabilized</td>
+  <td>247.5 = pos gamma support ($2.2M)<br/>Near-dates neg gamma above</td>
+  <td>325 = in neg gamma field<br/>Amplification continues</td>
+</tr>
+
+<tr class="section-row"><td colspan="5">Key Level Map</td></tr>
+<tr>
+  <td class="ticker-cell">Resistance</td>
+  <td>170 ($9.0M) → 172.5 ($20.4M) → 175 ($6.4M)</td>
+  <td>362.5 ($467.9K 04/06) → 365 ($2.8M) → 375 ($2.4M)</td>
+  <td>250 ($1.6M 04/02) → 252.5 ($4.7M) → 255 ($1.1M 04/02)</td>
+  <td>340 ($3.0M 04/17) → 350 ($534K) → 360 ($4.2M)</td>
+</tr>
+<tr>
+  <td class="ticker-cell">Support</td>
+  <td>167.5 ($3.8M) → 162.5 ($5.2M)</td>
+  <td>355 ($1.5M 04/02) → 350 ($853K) → 345 ($396K)</td>
+  <td>245 ($2.4M 03/30) → 240 ($937K) → 235 ($738K)</td>
+  <td>320 ($685K) → 310 ($332K)</td>
+</tr>
+<tr>
+  <td class="ticker-cell">Breakdown</td>
+  <td class="bearish">160 (-$5.5M neg gamma on 04/02) then 155 (-$2.7M)</td>
+  <td class="bearish">335 (-$534K/-$488K dual neg gamma)</td>
+  <td class="bearish">240 (below = thin to 230)</td>
+  <td class="bearish">310 (-$723K) then 300 (thin)</td>
+</tr>
+<tr>
+  <td class="ticker-cell">Key change</td>
+  <td class="bearish">180 flipped to NEG gamma (-$5.9M on 04/02). Old magnet is now ceiling.</td>
+  <td>Spot landed on pin. 04/02 opens range to 355–385.</td>
+  <td>Near-term neg gamma at 250–255 caps. 04/02 flips positive.</td>
+  <td>340 support lost. Neg gamma amplifying downside below 330.</td>
+</tr>
+
+<tr class="section-row"><td colspan="5">Next Week Verdict</td></tr>
+<tr>
+  <td class="ticker-cell">Bias</td>
+  <td><span class="bias-tag bias-bull">Bullish pull to 172.5</span></td>
+  <td><span class="bias-tag bias-range">Pinned at 360</span></td>
+  <td><span class="bias-tag bias-bull">Grind toward 252.5</span></td>
+  <td><span class="bias-tag bias-bear">Bearish — neg gamma field</span></td>
+</tr>
+<tr>
+  <td class="ticker-cell">Conviction</td>
+  <td><span class="bias-tag bias-neutral">Medium — burned once</span></td>
+  <td><span class="bias-tag bias-bull">High — on the pin</span></td>
+  <td><span class="bias-tag bias-neutral">Medium — slow grind</span></td>
+  <td><span class="bias-tag bias-bear">Low — wait for stabilization</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ═══════════════ ACCUMULATION GRIDS ═══════════════ -->
+<div class="section-title">Reset Accumulation Grids — Next Week</div>
+
+<div class="accum-grid">
+
+<!-- NVDA -->
+<div class="accum-card">
+  <div class="accum-header">
+    <span class="accum-ticker" style="color:var(--yellow)">NVDA</span>
+    <span class="accum-spot">$166.79 → Target: 170–172.5</span>
+  </div>
+  <div class="accum-note">
+    New pin at 172.5 ($20.4M) with 177.5 ($20.0M) above. But 180 flipped to -$5.9M neg gamma — that's a HARD ceiling now. 165 has -$5.3M neg gamma below. Spot is in a corridor: 165 floor, 172.5 magnet, 180 ceiling. The 04/02 expiry is the resolution date. Size conservatively after this week's miss.
+  </div>
+  <table class="accum-table">
+    <tr><th>Tier</th><th>Buy Level</th><th>Size</th><th>Take Profit</th><th>Stop Loss</th></tr>
+    <tr><td>Tier 1</td><td class="buy-level">167</td><td>25%</td><td class="tp-level">172.5</td><td rowspan="4" class="stop-merged">159</td></tr>
+    <tr><td>Tier 2</td><td class="buy-level">165</td><td>25%</td><td class="tp-level">170</td></tr>
+    <tr><td>Tier 3</td><td class="buy-level">162.5</td><td>25%</td><td class="tp-level">170</td></tr>
+    <tr><td>Tier 4</td><td class="buy-level">160</td><td>25%</td><td class="tp-level">167.5</td></tr>
+  </table>
+</div>
+
+<!-- TSLA -->
+<div class="accum-card">
+  <div class="accum-header">
+    <span class="accum-ticker" style="color:var(--green)">TSLA</span>
+    <span class="accum-spot">$360.20 → Range: 355–375</span>
+  </div>
+  <div class="accum-note">
+    Spot landed directly on the $4.8M pin at 360. This is the cleanest setup of the four — positive gamma stabilization at the pin. 04/02 shows pos gamma at 355 ($1.5M) and 385 ($1.2M), so the range opens next week. Accumulate at 360 for a push toward 365–375. Stop below 350.
+  </div>
+  <table class="accum-table">
+    <tr><th>Tier</th><th>Buy Level</th><th>Size</th><th>Take Profit</th><th>Stop Loss</th></tr>
+    <tr><td>Tier 1</td><td class="buy-level">360</td><td>25%</td><td class="tp-level">370</td><td rowspan="4" class="stop-merged">348</td></tr>
+    <tr><td>Tier 2</td><td class="buy-level">357.5</td><td>25%</td><td class="tp-level">367.5</td></tr>
+    <tr><td>Tier 3</td><td class="buy-level">355</td><td>25%</td><td class="tp-level">365</td></tr>
+    <tr><td>Tier 4</td><td class="buy-level">350</td><td>25%</td><td class="tp-level">360</td></tr>
+  </table>
+</div>
+
+<!-- AAPL -->
+<div class="accum-card">
+  <div class="accum-header">
+    <span class="accum-ticker" style="color:var(--blue)">AAPL</span>
+    <span class="accum-spot">$247.56 → Target: 250–252.5</span>
+  </div>
+  <div class="accum-note">
+    Pin still at 252.5 ($4.7M on 04/02) — persistent. 247.5 support ($2.2M on 03/30). Near-term dates show neg gamma at 250–257.5, but 04/02 flips everything positive from 250 to 265. Play: accumulate at 247.5–245 for the 04/02 pin resolution at 252.5. This is a multi-day grind, not a snap.
+  </div>
+  <table class="accum-table">
+    <tr><th>Tier</th><th>Buy Level</th><th>Size</th><th>Take Profit</th><th>Stop Loss</th></tr>
+    <tr><td>Tier 1</td><td class="buy-level">247.5</td><td>25%</td><td class="tp-level">252.5</td><td rowspan="4" class="stop-merged">238</td></tr>
+    <tr><td>Tier 2</td><td class="buy-level">245</td><td>25%</td><td class="tp-level">252.5</td></tr>
+    <tr><td>Tier 3</td><td class="buy-level">242.5</td><td>25%</td><td class="tp-level">250</td></tr>
+    <tr><td>Tier 4</td><td class="buy-level">240</td><td>25%</td><td class="tp-level">250</td></tr>
+  </table>
+</div>
+
+<!-- TSM -->
+<div class="accum-card">
+  <div class="accum-header">
+    <span class="accum-ticker" style="color:var(--red)">TSM</span>
+    <span class="accum-spot">$324.73 → WAIT / REDUCED SIZE</span>
+  </div>
+  <div class="accum-note">
+    <span style="color:var(--red)">DOWNGRADED.</span> 340 support broke. Spot in neg gamma field — amplification continues to the downside. 360 pin is 11% away — too far for gamma pull to matter near-term. 320 ($685K) is the next support but thin. Wait for stabilization above 330 before re-entering. If forced to trade, half size max.
+  </div>
+  <table class="accum-table">
+    <tr><th>Tier</th><th>Buy Level</th><th>Size</th><th>Take Profit</th><th>Stop Loss</th></tr>
+    <tr><td>Tier 1</td><td class="buy-level">325</td><td>25%</td><td class="tp-level">340</td><td rowspan="4" class="stop-merged">305</td></tr>
+    <tr><td>Tier 2</td><td class="buy-level">320</td><td>25%</td><td class="tp-level">335</td></tr>
+    <tr><td>Tier 3</td><td class="buy-level">315</td><td>25%</td><td class="tp-level">330</td></tr>
+    <tr><td>Tier 4</td><td class="buy-level">310</td><td>25%</td><td class="tp-level">325</td></tr>
+  </table>
+</div>
+
+</div>
+
+<!-- ═══════════════ NARRATIVE ═══════════════ -->
+<div class="section-title">Week-End Notes</div>
+<div class="narrative">
+  <p><strong style="color:var(--red)">NVDA — The 180 thesis failed, but the framework held.</strong> The GEX pin at 180 was real — $36.7M of positive gamma. But the broader market selloff (tariff fears, macro risk-off) overwhelmed the dealer hedging mechanics. The gamma pull works in normal conditions; it doesn't survive a macro event that triggers correlated selling across the entire options chain. The new structure is lower: pin at 172.5 ($20.4M), with 170 ($9.0M) as the stepping stone. 180 has flipped to heavy negative gamma (-$5.9M on 04/02) — the old magnet is now a repellor. Next week's trade is 167 → 172.5, but size at 50% after the miss.</p>
+
+  <p><strong style="color:var(--green)">TSLA — Best positioned for next week.</strong> The -6% drop brought spot right to the 360 pin ($4.8M). Unlike NVDA where spot is below the pin, TSLA is sitting on it. Positive gamma at 360 means dealers are stabilizing — buying dips, selling rips. The 04/02 expiry opens a wider range (355–385 all showing positive gamma). This is now the highest conviction setup: accumulate at 360 for a move to 365–375 next week.</p>
+
+  <p><strong style="color:var(--blue)">AAPL — Slow grind setup.</strong> The pullback to 247.5 put spot on decent support ($2.2M). The 252.5 pin ($4.7M on 04/02) is 2% above — achievable but not overnight. Near-term dates still show negative gamma at 250–255, so Monday/Tuesday will be capped. The resolution comes Wednesday–Thursday as 04/02 approaches. Patient accumulation at 245–247.5.</p>
+
+  <p><strong style="color:var(--red)">TSM — Step aside.</strong> The neg gamma thesis played out to the downside. The 340 support we were accumulating around broke decisively. Spot is now in a negative gamma field between 315–335 where moves get amplified. The 360 pin is 11% away — irrelevant for near-term trading. Wait for spot to stabilize and new positive gamma to build around current levels before re-entering. This is the one to sit out next week.</p>
+</div>
+
+<div class="section-title">Conviction Ranking — Next Week</div>
+<div class="narrative">
+  <p>1. <strong style="color:var(--green)">TSLA</strong> — High. On the pin. Stabilized. Range opens via 04/02.</p>
+  <p>2. <strong style="color:var(--blue)">AAPL</strong> — Medium. Support holding. Slow grind to 252.5 pin.</p>
+  <p>3. <strong style="color:var(--yellow)">NVDA</strong> — Medium. New pin at 172.5, but burned once this week. Half size.</p>
+  <p>4. <strong style="color:var(--red)">TSM</strong> — Low. Broken support. Neg gamma field. Wait.</p>
+</div>
+
+</body>
+</html>
