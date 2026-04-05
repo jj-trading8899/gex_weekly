@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trade Setup — INTC &amp; RTX</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .header h1 {
+      font-size: 13px;
+      font-weight: 500;
+      color: #888780;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 0.5px solid rgba(0,0,0,0.12);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-header .ticker {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .card-header .company {
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .card-header .price-label {
+      font-size: 11px;
+      text-align: right;
+    }
+
+    .card-header .price-value {
+      font-size: 19px;
+      font-weight: 500;
+      text-align: right;
+      margin-top: 2px;
+    }
+
+    .card-body {
+      padding: 14px 16px;
+    }
+
+    .levels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .level-box {
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .level-box .label {
+      font-size: 10px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .level-box .value {
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      border-top: 0.5px solid rgba(0,0,0,0.08);
+      padding-top: 12px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat .stat-label {
+      font-size: 10px;
+      color: #888780;
+      margin-bottom: 3px;
+    }
+
+    .stat .stat-value {
+      font-size: 15px;
+      font-weight: 500;
+      color: #2c2c2a;
+    }
+
+    .stat:nth-child(2) {
+      border-left: 0.5px solid rgba(0,0,0,0.08);
+      border-right: 0.5px solid rgba(0,0,0,0.08);
+    }
+
+    /* INTC — blue */
+    .intc .card-header  { background: #0C447C; }
+    .intc .ticker       { color: #B5D4F4; }
+    .intc .company      { color: #85B7EB; }
+    .intc .price-label  { color: #85B7EB; }
+    .intc .price-value  { color: #B5D4F4; }
+    .intc .buy-box      { background: #E6F1FB; }
+    .intc .buy-box .label  { color: #185FA5; }
+    .intc .buy-box .value  { color: #042C53; }
+
+    /* RTX — purple */
+    .rtx .card-header   { background: #3C3489; }
+    .rtx .ticker        { color: #CECBF6; }
+    .rtx .company       { color: #AFA9EC; }
+    .rtx .price-label   { color: #AFA9EC; }
+    .rtx .price-value   { color: #CECBF6; }
+    .rtx .buy-box       { background: #EEEDFE; }
+    .rtx .buy-box .label   { color: #534AB7; }
+    .rtx .buy-box .value   { color: #26215C; }
+
+    /* Shared level colours */
+    .tp-box             { background: #FAEEDA; }
+    .tp-box .label      { color: #854F0B; }
+    .tp-box .value      { color: #412402; }
+
+    .sl-box             { background: #FCEBEB; }
+    .sl-box .label      { color: #A32D2D; }
+    .sl-box .value      { color: #501313; }
+
+    .disclaimer {
+      text-align: center;
+      font-size: 10px;
+      color: #888780;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h1>Trade setup · GEX analysis</h1>
+    </div>
+
+    <!-- INTC -->
+    <div class="card intc">
+      <div class="card-header">
+        <div>
+          <div class="ticker">INTC</div>
+          <div class="company">Intel · Dip buy setup</div>
+        </div>
+        <div>
+          <div class="price-label">Current price</div>
+          <div class="price-value">$50.25</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="levels">
+          <div class="level-box buy-box">
+            <div class="label">Buy zone</div>
+            <div class="value">$47–$48</div>
+          </div>
+          <div class="level-box tp-box">
+            <div class="label">Take profit</div>
+            <div class="value">$55–$56</div>
+          </div>
+          <div class="level-box sl-box">
+            <div class="label">Stop loss</div>
+            <div class="value">Below $44</div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-label">Upside potential</div>
+            <div class="stat-value">~17%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Downside risk</div>
+            <div class="stat-value">~6%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Risk / reward</div>
+            <div class="stat-value">1 : 2.8</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RTX -->
+    <div class="card rtx">
+      <div class="card-header">
+        <div>
+          <div class="ticker">RTX</div>
+          <div class="company">Raytheon · Dip buy setup</div>
+        </div>
+        <div>
+          <div class="price-label">Current price</div>
+          <div class="price-value">$196.21</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="levels">
+          <div class="level-box buy-box">
+            <div class="label">Buy zone</div>
+            <div class="value">$185–$190</div>
+          </div>
+          <div class="level-box tp-box">
+            <div class="label">Take profit</div>
+            <div class="value">$218–$220</div>
+          </div>
+          <div class="level-box sl-box">
+            <div class="label">Stop loss</div>
+            <div class="value">Below $178</div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-label">Upside potential</div>
+            <div class="stat-value">~17%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Downside risk</div>
+            <div class="stat-value">~4%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Risk / reward</div>
+            <div class="stat-value">1 : 4.3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="disclaimer">Not financial advice &nbsp;·&nbsp; Let price settle in buy zone before entering</p>
+
+  </div>
+</body>
+</html>
