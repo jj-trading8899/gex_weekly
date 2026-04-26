@@ -43,50 +43,7 @@ font-size: 13px;
 min-height: 100vh;
 padding: 20px;
 
-<style>
-  /* CONTRAST FIX — force explicit colours, no CSS vars */
-  body, .wrap { color: #dde3f0 !important; }
-  .ticker-box { color: #facc15 !important; }
-  .price-tag { color: #dde3f0 !important; }
-  .universe-tag { color: #8892aa !important; }
-  .target-label { color: #aab2cc !important; }
-  .target-value.t5 { color: #4ade80 !important; }
-  .target-value.t30 { color: #22d3ee !important; }
-  .target-value.stop { color: #f87171 !important; }
-  .gex-info { color: #bbc4d8 !important; background: rgba(255,255,255,0.07) !important; }
-  .gex-info strong { color: #4ade80 !important; }
-  .gex-info .neg { color: #f87171 !important; }
-  .progress-label { color: #aab2cc !important; }
-  .pin-detail { color: #bbc4d8 !important; }
-  .pin-gex { color: #4ade80 !important; }
-  .pin-ticker { color: #facc15 !important; }
-  .pin-distance.urgent { color: #f87171 !important; }
-  .pin-distance.near { color: #fb923c !important; }
-  .pin-distance.moderate { color: #22d3ee !important; }
-  .header-left h1 { color: #facc15 !important; }
-  .header-left .sub { color: #8892aa !important; }
-  .week-badge { color: #facc15 !important; }
-  .stat-9 { color: #f87171 !important; }
-  .stat-8 { color: #fb923c !important; }
-  .cat-pill.cat-earnings { color: #c4b5fd !important; }
-  .cat-pill.cat-fomc { color: #fb923c !important; }
-  .cat-pill.cat-gdp { color: #93c5fd !important; }
-  .cat-pill.cat-macro { color: #4ade80 !important; }
-  .pin-section h3 { color: #4ade80 !important; }
-  .section-label.sec9 { color: #f87171 !important; }
-  .section-label.sec8 { color: #fb923c !important; }
-  .score-badge.s9 { color: #f87171 !important; }
-  .score-badge.s8 { color: #fb923c !important; }
-  .cat-tag.earn { color: #c4b5fd !important; }
-  .cat-tag.fomc { color: #fb923c !important; }
-  .cat-tag.btc  { color: #facc15 !important; }
-  .cat-tag.gold { color: #4ade80 !important; }
-  .cat-tag.semi { color: #93c5fd !important; }
-  .cat-tag.pin  { color: #22d3ee !important; }
-  .cat-tag.meme { color: #f87171 !important; }
-  .foot-left { color: #7a85a8 !important; }
-  .legend { color: #7a85a8 !important; }
-</style>
+
 
 }
 
@@ -486,6 +443,36 @@ color: var(–muted);
 
 footer .legend span { display: flex; align-items: center; gap: 5px; }
 footer .legend .dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  /* CONTRAST OVERRIDES */
+  body { color: #dde3f0 !important; }
+  .ticker-box { color: #facc15 !important; }
+  .price-tag { color: #dde3f0 !important; }
+  .universe-tag { color: #8892aa !important; }
+  .target-label { color: #aab2cc !important; }
+  .t5 { color: #4ade80 !important; }
+  .t30 { color: #22d3ee !important; }
+  .stop { color: #f87171 !important; }
+  .gex-info { color: #bbc4d8 !important; }
+  .gex-info strong { color: #4ade80 !important; }
+  .gex-info .neg { color: #f87171 !important; }
+  .progress-label { color: #aab2cc !important; }
+  .pin-ticker { color: #facc15 !important; }
+  .pin-detail { color: #bbc4d8 !important; }
+  .pin-gex { color: #4ade80 !important; }
+  .urgent { color: #f87171 !important; }
+  .near { color: #fb923c !important; }
+  .moderate { color: #22d3ee !important; }
+  .score-badge.s9 { color: #f87171 !important; }
+  .score-badge.s8 { color: #fb923c !important; }
+  .cat-tag.earn { color: #c4b5fd !important; }
+  .cat-tag.fomc { color: #fb923c !important; }
+  .cat-tag.btc  { color: #facc15 !important; }
+  .cat-tag.gold { color: #4ade80 !important; }
+  .cat-tag.semi { color: #93c5fd !important; }
+  .cat-tag.pin  { color: #22d3ee !important; }
+  .cat-tag.meme { color: #f87171 !important; }
+
 </style>
 
 </head>
