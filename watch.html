@@ -1,433 +1,1108 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trade Setup — INTC &amp; RTX</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEX Watchlist · Week of Apr 28</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07070f;
+    --bg2: #0d0d1a;
+    --bg3: #12121f;
+    --card: #0f0f1e;
+    --border: #1a1a30;
+    --border2: #252540;
+    --text: #c8d0e0;
+    --muted: #4a5270;
+    --gold: #facc15;
+    --green: #4ade80;
+    --red: #f87171;
+    --orange: #fb923c;
+    --cyan: #22d3ee;
+    --purple: #a78bfa;
+    --blue: #60a5fa;
+    --score9: #f87171;
+    --score8: #fb923c;
+  }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #1f1f1f;
-      color: #e0e0e0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
-    }
+- { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .container {
-      width: 100%;
-      max-width: 520px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+body {
+background: var(–bg);
+color: var(–text);
+font-family: ‘IBM Plex Sans’, sans-serif;
+font-size: 13px;
+min-height: 100vh;
+padding: 20px;
+}
 
-    .header {
-      text-align: center;
-      margin-bottom: 4px;
-    }
+/* GRID BACKGROUND */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image:
+linear-gradient(rgba(250,204,21,0.02) 1px, transparent 1px),
+linear-gradient(90deg, rgba(250,204,21,0.02) 1px, transparent 1px);
+background-size: 40px 40px;
+pointer-events: none;
+z-index: 0;
+}
 
-    .header h1 {
-      font-size: 13px;
-      font-weight: 500;
-      color: #888780;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
+.wrap { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; }
 
-    .card {
-      background: #2a2a2a;
-      border: 0.5px solid rgba(0,0,0,0.12);
-      border-radius: 16px;
-      overflow: hidden;
-    }
+/* HEADER */
+header {
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+margin-bottom: 28px;
+padding-bottom: 18px;
+border-bottom: 1px solid var(–border);
+flex-wrap: wrap;
+gap: 12px;
+}
 
-    .card-header {
-      padding: 14px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.header-left h1 {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 20px;
+font-weight: 700;
+color: var(–gold);
+letter-spacing: 1px;
+line-height: 1.2;
+}
 
-    .card-header .ticker {
-      font-size: 22px;
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
+.header-left .sub {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 10px;
+color: var(–muted);
+margin-top: 5px;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+}
 
-    .card-header .company {
-      font-size: 11px;
-      margin-top: 2px;
-    }
+.header-right {
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+gap: 6px;
+}
 
-    .card-header .price-label {
-      font-size: 11px;
-      text-align: right;
-    }
+.week-badge {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 10px;
+background: rgba(250,204,21,0.1);
+border: 1px solid rgba(250,204,21,0.25);
+color: var(–gold);
+padding: 4px 10px;
+border-radius: 4px;
+letter-spacing: 1px;
+}
 
-    .card-header .price-value {
-      font-size: 19px;
-      font-weight: 500;
-      text-align: right;
-      margin-top: 2px;
-    }
+.stat-row { display: flex; gap: 10px; }
 
-    .card-body {
-      padding: 14px 16px;
-    }
+.stat {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px;
+padding: 3px 8px;
+border-radius: 3px;
+letter-spacing: 0.5px;
+}
 
-    .levels {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 12px;
-    }
+.stat-9 { background: rgba(248,113,113,0.12); color: var(–score9); border: 1px solid rgba(248,113,113,0.2); }
+.stat-8 { background: rgba(251,146,60,0.12); color: var(–score8); border: 1px solid rgba(251,146,60,0.2); }
 
-    .level-box {
-      border-radius: 10px;
-      padding: 12px;
-    }
+/* CATALYST STRIP */
+.catalyst-strip {
+display: flex;
+gap: 8px;
+margin-bottom: 22px;
+flex-wrap: wrap;
+}
 
-    .level-box .label {
-      font-size: 10px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
+.cat-pill {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px;
+padding: 5px 12px;
+border-radius: 20px;
+letter-spacing: 0.8px;
+white-space: nowrap;
+display: flex;
+align-items: center;
+gap: 6px;
+}
 
-    .level-box .value {
-      font-size: 17px;
-      font-weight: 500;
-    }
+.cat-pill .dot { width: 5px; height: 5px; border-radius: 50%; }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      border-top: 0.5px solid rgba(0,0,0,0.08);
-      padding-top: 12px;
-    }
+.cat-earnings { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); color: var(–purple); }
+.cat-earnings .dot { background: var(–purple); }
+.cat-fomc { background: rgba(251,146,60,0.1); border: 1px solid rgba(251,146,60,0.25); color: var(–orange); }
+.cat-fomc .dot { background: var(–orange); }
+.cat-gdp { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.25); color: var(–blue); }
+.cat-gdp .dot { background: var(–blue); }
+.cat-macro { background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.15); color: var(–green); }
+.cat-macro .dot { background: var(–green); }
 
-    .stat {
-      text-align: center;
-    }
+/* SECTION LABEL */
+.section-label {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px;
+letter-spacing: 2px;
+text-transform: uppercase;
+padding: 6px 12px;
+border-radius: 4px;
+margin-bottom: 10px;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+}
 
-    .stat .stat-label {
-      font-size: 10px;
-      color: #888780;
-      margin-bottom: 3px;
-    }
+.sec9 { background: rgba(248,113,113,0.08); color: var(–score9); border: 1px solid rgba(248,113,113,0.2); }
+.sec8 { background: rgba(251,146,60,0.08); color: var(–score8); border: 1px solid rgba(251,146,60,0.2); }
 
-    .stat .stat-value {
-      font-size: 15px;
-      font-weight: 500;
-      color: #f2f2f2;
-    }
+/* CARDS GRID */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; margin-bottom: 24px; }
 
-    .stat:nth-child(2) {
-      border-left: 0.5px solid rgba(0,0,0,0.08);
-      border-right: 0.5px solid rgba(0,0,0,0.08);
-    }
+.card {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 10px;
+padding: 16px;
+position: relative;
+overflow: hidden;
+transition: border-color 0.2s, transform 0.15s;
+cursor: default;
+}
 
-    /* INTC — blue */
-    .intc .card-header  { background: #0C447C; }
-    .intc .ticker       { color: #B5D4F4; }
-    .intc .company      { color: #85B7EB; }
-    .intc .price-label  { color: #85B7EB; }
-    .intc .price-value  { color: #B5D4F4; }
-    .intc .buy-box      { background: #E6F1FB; }
-    .intc .buy-box .label  { color: #185FA5; }
-    .intc .buy-box .value  { color: #042C53; }
+.card:hover {
+border-color: var(–border2);
+transform: translateY(-1px);
+}
 
-    /* RTX — purple */
-    .rtx .card-header   { background: #3C3489; }
-    .rtx .ticker        { color: #CECBF6; }
-    .rtx .company       { color: #AFA9EC; }
-    .rtx .price-label   { color: #AFA9EC; }
-    .rtx .price-value   { color: #CECBF6; }
-    .rtx .buy-box       { background: #EEEDFE; }
-    .rtx .buy-box .label   { color: #534AB7; }
-    .rtx .buy-box .value   { color: #26215C; }
+.card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 2px;
+}
 
-        /* MU — teal */
-    .mu .card-header      { background: #085041; }
-    .mu .ticker           { color: #9FE1CB; }
-    .mu .company          { color: #5DCAA5; }
-    .mu .price-label      { color: #5DCAA5; }
-    .mu .price-value      { color: #9FE1CB; }
-    .mu .buy-box          { background: #E1F5EE; }
-    .mu .buy-box .label   { color: #0F6E56; }
-    .mu .buy-box .value   { color: #085041; }
- 
-    /* IONQ — purple */
-    .ionq .card-header     { background: #26215C; }
-    .ionq .ticker          { color: #CECBF6; }
-    .ionq .company         { color: #AFA9EC; }
-    .ionq .price-label     { color: #AFA9EC; }
-    .ionq .price-value     { color: #CECBF6; }
-    .ionq .buy-box         { background: #EEEDFE; }
-    .ionq .buy-box .label  { color: #534AB7; }
-    .ionq .buy-box .value  { color: #26215C; }
- 
-    /* TEM — coral */
-    .tem .card-header      { background: #712B13; }
-    .tem .ticker           { color: #F5C4B3; }
-    .tem .company          { color: #F0997B; }
-    .tem .price-label      { color: #F0997B; }
-    .tem .price-value      { color: #F5C4B3; }
-    .tem .buy-box          { background: #FAECE7; }
-    .tem .buy-box .label   { color: #993C1D; }
-    .tem .buy-box .value   { color: #4A1B0C; }
+.card.score9::before { background: linear-gradient(90deg, var(–score9), transparent); }
+.card.score8::before { background: linear-gradient(90deg, var(–score8), transparent); }
 
-    /* Shared level colours */
-    .tp-box             { background: #FAEEDA; }
-    .tp-box .label      { color: #854F0B; }
-    .tp-box .value      { color: #412402; }
+/* SCORE GLOW */
+.card.score9 { box-shadow: inset 0 0 40px rgba(248,113,113,0.03); }
+.card.score8 { box-shadow: inset 0 0 40px rgba(251,146,60,0.03); }
 
-    .sl-box             { background: #FCEBEB; }
-    .sl-box .label      { color: #A32D2D; }
-    .sl-box .value      { color: #501313; }
+/* CARD HEADER */
+.card-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 12px;
+}
 
-    .disclaimer {
-      text-align: center;
-      font-size: 10px;
-      color: #888780;
-      margin-top: 4px;
-    }
-  </style>
+.card-left { display: flex; align-items: center; gap: 10px; }
+
+.ticker-box {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 18px;
+font-weight: 700;
+color: var(–gold);
+line-height: 1;
+}
+
+.meta { display: flex; flex-direction: column; gap: 2px; }
+
+.universe-tag {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8px;
+color: var(–muted);
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+
+.price-tag {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 12px;
+color: var(–text);
+font-weight: 500;
+}
+
+.score-badge {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 10px;
+font-weight: 700;
+padding: 3px 9px;
+border-radius: 4px;
+}
+
+.score-badge.s9 { background: rgba(248,113,113,0.15); color: var(–score9); border: 1px solid rgba(248,113,113,0.3); }
+.score-badge.s8 { background: rgba(251,146,60,0.15); color: var(–score8); border: 1px solid rgba(251,146,60,0.3); }
+
+/* TARGETS */
+.targets {
+display: flex;
+gap: 8px;
+margin-bottom: 10px;
+}
+
+.target-box {
+flex: 1;
+background: var(–bg3);
+border: 1px solid var(–border);
+border-radius: 6px;
+padding: 7px 10px;
+}
+
+.target-label {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8px;
+color: var(–muted);
+letter-spacing: 1px;
+text-transform: uppercase;
+margin-bottom: 3px;
+}
+
+.target-value {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 14px;
+font-weight: 600;
+}
+
+.t5 { color: var(–green); }
+.t30 { color: var(–cyan); }
+.stop { color: var(–red); }
+
+/* GEX BAR */
+.gex-info {
+font-size: 11px;
+color: var(–muted);
+line-height: 1.5;
+margin-bottom: 10px;
+padding: 7px 10px;
+background: rgba(255,255,255,0.02);
+border-radius: 5px;
+border-left: 2px solid var(–border2);
+}
+
+.gex-info strong { color: var(–green); }
+.gex-info .neg { color: var(–red); }
+
+/* PROGRESS BAR */
+.progress-section { margin-bottom: 10px; }
+
+.progress-label {
+display: flex;
+justify-content: space-between;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8px;
+color: var(–muted);
+margin-bottom: 4px;
+letter-spacing: 0.5px;
+}
+
+.progress-track {
+height: 3px;
+background: var(–border);
+border-radius: 2px;
+overflow: hidden;
+position: relative;
+}
+
+.progress-fill {
+height: 100%;
+border-radius: 2px;
+transition: width 0.3s ease;
+}
+
+.fill-green { background: linear-gradient(90deg, #22c55e, #4ade80); }
+.fill-orange { background: linear-gradient(90deg, #f97316, #fb923c); }
+.fill-red { background: linear-gradient(90deg, #dc2626, #f87171); }
+
+/* CATALYST TAGS */
+.card-footer {
+display: flex;
+flex-wrap: wrap;
+gap: 5px;
+margin-top: 8px;
+}
+
+.cat-tag {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8px;
+padding: 2px 7px;
+border-radius: 3px;
+letter-spacing: 0.5px;
+}
+
+.cat-tag.earn { background: rgba(167,139,250,0.12); color: var(–purple); border: 1px solid rgba(167,139,250,0.2); }
+.cat-tag.fomc { background: rgba(251,146,60,0.12); color: var(–orange); border: 1px solid rgba(251,146,60,0.2); }
+.cat-tag.btc  { background: rgba(250,204,21,0.1); color: var(–gold); border: 1px solid rgba(250,204,21,0.2); }
+.cat-tag.gold { background: rgba(74,222,128,0.1); color: var(–green); border: 1px solid rgba(74,222,128,0.2); }
+.cat-tag.semi { background: rgba(96,165,250,0.1); color: var(–blue); border: 1px solid rgba(96,165,250,0.2); }
+.cat-tag.pin  { background: rgba(34,211,238,0.1); color: var(–cyan); border: 1px solid rgba(34,211,238,0.2); }
+.cat-tag.meme { background: rgba(248,113,113,0.1); color: var(–red); border: 1px solid rgba(248,113,113,0.2); }
+
+/* PIN ALERT BOX */
+.pin-section {
+margin-bottom: 24px;
+background: linear-gradient(135deg, rgba(34,211,238,0.04), rgba(74,222,128,0.04));
+border: 1px solid rgba(74,222,128,0.15);
+border-radius: 10px;
+padding: 16px;
+}
+
+.pin-section h3 {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px;
+letter-spacing: 2px;
+color: var(–green);
+margin-bottom: 12px;
+text-transform: uppercase;
+}
+
+.pin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+
+.pin-card {
+background: rgba(0,0,0,0.3);
+border: 1px solid rgba(74,222,128,0.1);
+border-radius: 6px;
+padding: 10px 12px;
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+
+.pin-ticker {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 14px;
+font-weight: 700;
+color: var(–gold);
+}
+
+.pin-detail {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 10px;
+color: var(–muted);
+}
+
+.pin-distance {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 11px;
+font-weight: 600;
+}
+
+.pin-gex {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px;
+color: var(–green);
+}
+
+.urgent { color: var(–red); }
+.near { color: var(–orange); }
+.moderate { color: var(–cyan); }
+
+/* FOOTER */
+footer {
+border-top: 1px solid var(–border);
+padding-top: 16px;
+margin-top: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+footer .foot-left {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px;
+color: var(–muted);
+letter-spacing: 0.8px;
+line-height: 1.8;
+}
+
+footer .legend {
+display: flex;
+gap: 14px;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px;
+color: var(–muted);
+}
+
+footer .legend span { display: flex; align-items: center; gap: 5px; }
+footer .legend .dot { width: 6px; height: 6px; border-radius: 50%; }
+</style>
+
 </head>
 <body>
-  <div class="container">
+<div class="wrap">
 
-    <div class="header">
-      <h1>Trade setup · GEX analysis</h1>
+  <!-- HEADER -->
+
+  <header>
+    <div class="header-left">
+      <h1>🏆 SKYLIT GEX WATCHLIST</h1>
+      <div class="sub">Score 9 &amp; 8 · Full Universe · ~411 Tickers Scanned</div>
     </div>
-
-    <!-- INTC -->
-    <div class="card intc">
-      <div class="card-header">
-        <div>
-          <div class="ticker">INTC</div>
-          <div class="company">Intel · Dip buy setup</div>
-        </div>
-        <div>
-          <div class="price-label">Current price</div>
-          <div class="price-value">$50.25</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="levels">
-          <div class="level-box buy-box">
-            <div class="label">Buy zone</div>
-            <div class="value">$47–$48</div>
-          </div>
-          <div class="level-box tp-box">
-            <div class="label">Take profit</div>
-            <div class="value">$55–$56</div>
-          </div>
-          <div class="level-box sl-box">
-            <div class="label">Stop loss</div>
-            <div class="value">Below $44</div>
-          </div>
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-label">Upside potential</div>
-            <div class="stat-value">~17%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Downside risk</div>
-            <div class="stat-value">~6%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Risk / reward</div>
-            <div class="stat-value">1 : 2.8</div>
-          </div>
-        </div>
+    <div class="header-right">
+      <div class="week-badge">WEEK OF APR 28 – MAY 2, 2026</div>
+      <div class="stat-row">
+        <div class="stat stat-9">● 9/10 · 2 TICKERS</div>
+        <div class="stat stat-8">● 8/10 · 16 TICKERS</div>
       </div>
     </div>
+  </header>
 
-    <!-- RTX -->
-    <div class="card rtx">
-      <div class="card-header">
-        <div>
-          <div class="ticker">RTX</div>
-          <div class="company">Raytheon · Dip buy setup</div>
-        </div>
-        <div>
-          <div class="price-label">Current price</div>
-          <div class="price-value">$196.21</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="levels">
-          <div class="level-box buy-box">
-            <div class="label">Buy zone</div>
-            <div class="value">$185–$190</div>
-          </div>
-          <div class="level-box tp-box">
-            <div class="label">Take profit</div>
-            <div class="value">$218–$220</div>
-          </div>
-          <div class="level-box sl-box">
-            <div class="label">Stop loss</div>
-            <div class="value">Below $178</div>
-          </div>
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-label">Upside potential</div>
-            <div class="stat-value">~17%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Downside risk</div>
-            <div class="stat-value">~4%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Risk / reward</div>
-            <div class="stat-value">1 : 4.3</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- CATALYST STRIP -->
 
-        <!-- MU -->
-    <div class="card mu">
-      <div class="card-header">
-        <div>
-          <div class="ticker">MU</div>
-          <div class="company">Micron Technology · Dip buy setup</div>
-        </div>
-        <div>
-          <div class="price-label">Current price</div>
-          <div class="price-value">$366.24</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="levels">
-          <div class="level-box buy-box">
-            <div class="label">Buy zone</div>
-            <div class="value">$348–$360</div>
-          </div>
-          <div class="level-box tp-box">
-            <div class="label">Take profit</div>
-            <div class="value">$415–$420</div>
-          </div>
-          <div class="level-box sl-box">
-            <div class="label">Stop loss</div>
-            <div class="value">Below $335</div>
-          </div>
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-label">Upside potential</div>
-            <div class="stat-value">~18%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Downside risk</div>
-            <div class="stat-value">~4%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Risk / reward</div>
-            <div class="stat-value">1 : 4.5</div>
-          </div>
-        </div>
-      </div>
-    </div>
- 
-    <!-- IONQ -->
-    <div class="card ionq">
-      <div class="card-header">
-        <div>
-          <div class="ticker">IONQ</div>
-          <div class="company">IonQ · Dip buy setup</div>
-        </div>
-        <div>
-          <div class="price-label">Current price</div>
-          <div class="price-value">$29.30</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="levels">
-          <div class="level-box buy-box">
-            <div class="label">Buy zone</div>
-            <div class="value">$26–$27</div>
-          </div>
-          <div class="level-box tp-box">
-            <div class="label">Take profit</div>
-            <div class="value">$34–$35</div>
-          </div>
-          <div class="level-box sl-box">
-            <div class="label">Stop loss</div>
-            <div class="value">Below $24</div>
-          </div>
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-label">Upside potential</div>
-            <div class="stat-value">~30%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Downside risk</div>
-            <div class="stat-value">~8%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Risk / reward</div>
-            <div class="stat-value">1 : 3.8</div>
-          </div>
-        </div>
-      </div>
-    </div>
- 
-    <!-- TEM -->
-    <div class="card tem">
-      <div class="card-header">
-        <div>
-          <div class="ticker">TEM</div>
-          <div class="company">Tempus AI · Dip buy setup</div>
-        </div>
-        <div>
-          <div class="price-label">Current price</div>
-          <div class="price-value">$47.39</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="levels">
-          <div class="level-box buy-box">
-            <div class="label">Buy zone</div>
-            <div class="value">$44–$45</div>
-          </div>
-          <div class="level-box tp-box">
-            <div class="label">Take profit</div>
-            <div class="value">$54–$55</div>
-          </div>
-          <div class="level-box sl-box">
-            <div class="label">Stop loss</div>
-            <div class="value">Below $42</div>
-          </div>
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-label">Upside potential</div>
-            <div class="stat-value">~22%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Downside risk</div>
-            <div class="stat-value">~5%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Risk / reward</div>
-            <div class="stat-value">1 : 4.4</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="disclaimer">Not financial advice &nbsp;·&nbsp; Let price settle in buy zone before entering</p>
-
+  <div class="catalyst-strip">
+    <div class="cat-pill cat-earnings"><span class="dot"></span>HOOD EARNINGS · MON APR 28 AMC</div>
+    <div class="cat-pill cat-fomc"><span class="dot"></span>FOMC DECISION · WED APR 29 2PM ET</div>
+    <div class="cat-pill cat-earnings"><span class="dot"></span>GOOGL / MSFT / META EARNINGS · WED APR 29 AMC</div>
+    <div class="cat-pill cat-gdp"><span class="dot"></span>GDP ADVANCE Q1 · THU APR 30</div>
+    <div class="cat-pill cat-earnings"><span class="dot"></span>AAPL EARNINGS · THU APR 30 AMC</div>
+    <div class="cat-pill cat-earnings"><span class="dot"></span>CVX EARNINGS · FRI MAY 1 BMO</div>
+    <div class="cat-pill cat-macro"><span class="dot"></span>BTC 2026 CONF LAS VEGAS · APR 27–29</div>
   </div>
+
+  <!-- IMMEDIATE PIN ALERTS -->
+
+  <div class="pin-section">
+    <h3>⚡ Immediate Pin Alerts — Price Within $5 of Massive GEX</h3>
+    <div class="pin-grid">
+      <div class="pin-card">
+        <div class="pin-ticker">WMT</div>
+        <div class="pin-detail">$129.89 → $130 pin</div>
+        <div class="pin-distance urgent">$0.11 AWAY 🔥</div>
+        <div class="pin-gex">+$7,058K ← LARGEST IN SCAN</div>
+      </div>
+      <div class="pin-card">
+        <div class="pin-ticker">WMB</div>
+        <div class="pin-detail">$71.22 → $72 pin</div>
+        <div class="pin-distance urgent">$0.78 AWAY</div>
+        <div class="pin-gex">+$356K</div>
+      </div>
+      <div class="pin-card">
+        <div class="pin-ticker">XYZ</div>
+        <div class="pin-detail">$71.63 → $74 pin</div>
+        <div class="pin-distance near">$2.37 AWAY</div>
+        <div class="pin-gex">+$592K</div>
+      </div>
+      <div class="pin-card">
+        <div class="pin-ticker">STLD</div>
+        <div class="pin-detail">$226.76 → $230 pin</div>
+        <div class="pin-distance near">$3.24 AWAY</div>
+        <div class="pin-gex">+$446K</div>
+      </div>
+      <div class="pin-card">
+        <div class="pin-ticker">WFC</div>
+        <div class="pin-detail">$79.40 → $83 pin</div>
+        <div class="pin-distance moderate">$3.60 AWAY</div>
+        <div class="pin-gex">+$1,650K · EARNINGS FRI MAY 1</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCORE 9 -->
+
+  <div class="section-label sec9">● SCORE 9/10 — HIGHEST CONVICTION</div>
+  <div class="cards">
+
+```
+<!-- GOOGL -->
+<div class="card score9">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">GOOGL</div>
+      <div class="meta">
+        <div class="universe-tag">F–L UNIVERSE</div>
+        <div class="price-tag">$343.50</div>
+      </div>
+    </div>
+    <div class="score-badge s9">9/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$350</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day Target</div>
+      <div class="target-value t30">$360</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">GEX Floor</div>
+      <div class="target-value stop">$335</div>
+    </div>
+  </div>
+  <div class="progress-section">
+    <div class="progress-label"><span>Entry</span><span>$350 target</span><span>$360 magnet</span></div>
+    <div class="progress-track"><div class="progress-fill fill-orange" style="width:15%"></div></div>
+  </div>
+  <div class="gex-info">
+    <strong>$360 magnet +$33.7M</strong> · $335 titanic floor <span class="neg">−$18.2M</span> · Perfect positive staircase
+  </div>
+  <div class="card-footer">
+    <span class="cat-tag earn">EARNINGS WED APR 29 AMC</span>
+    <span class="cat-tag semi">CLOUD 50%+ GROWTH EXP</span>
+    <span class="cat-tag fomc">FOMC SAME DAY</span>
+  </div>
+</div>
+
+<!-- CVX -->
+<div class="card score9">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">CVX</div>
+      <div class="meta">
+        <div class="universe-tag">A–E UNIVERSE · APR 24</div>
+        <div class="price-tag">$187.58</div>
+      </div>
+    </div>
+    <div class="score-badge s9">9/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$190</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day Target</div>
+      <div class="target-value t30">$192.50</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">GEX Floor</div>
+      <div class="target-value stop">$185</div>
+    </div>
+  </div>
+  <div class="progress-section">
+    <div class="progress-label"><span>Entry</span><span>$190 pin</span><span>$192.5</span></div>
+    <div class="progress-track"><div class="progress-fill fill-orange" style="width:20%"></div></div>
+  </div>
+  <div class="gex-info">
+    <strong>$190 pin +$24.9M</strong> / $192.5 +$23.1M · <span class="neg">$185 iron floor −$31.8M</span> · Clean vacuum to pin
+  </div>
+  <div class="card-footer">
+    <span class="cat-tag earn">EARNINGS FRI MAY 1 BMO</span>
+    <span class="cat-tag gold">ENERGY SECTOR</span>
+    <span class="cat-tag fomc">OIL/FOMC SENSITIVE</span>
+  </div>
+</div>
+```
+
+  </div><!-- end score9 cards -->
+
+  <!-- SCORE 8 -->
+
+  <div class="section-label sec8">● SCORE 8/10 — STRONG SQUEEZE</div>
+  <div class="cards">
+
+```
+<!-- MSFT -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">MSFT</div>
+      <div class="meta">
+        <div class="universe-tag">M–R UNIVERSE</div>
+        <div class="price-tag">$423.81</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$437.5–445</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day</div>
+      <div class="target-value t30">—</div>
+    </div>
+  </div>
+  <div class="gex-info">Dense positive GEX cluster above · AI capex narrative key</div>
+  <div class="card-footer">
+    <span class="cat-tag earn">EARNINGS WED APR 29 AMC</span>
+    <span class="cat-tag semi">AI / AZURE</span>
+  </div>
+</div>
+
+<!-- META -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">META</div>
+      <div class="meta">
+        <div class="universe-tag">M–R UNIVERSE</div>
+        <div class="price-tag">$675.09</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$685–690</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day</div>
+      <div class="target-value t30">—</div>
+    </div>
+  </div>
+  <div class="gex-info">Positive GEX cluster near-term · Strong ad revenue expected</div>
+  <div class="card-footer">
+    <span class="cat-tag earn">EARNINGS WED APR 29 AMC</span>
+    <span class="cat-tag semi">AI INFRA</span>
+  </div>
+</div>
+
+<!-- NVDA -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">NVDA</div>
+      <div class="meta">
+        <div class="universe-tag">M–R UNIVERSE</div>
+        <div class="price-tag">$208.10</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$212.5–220</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">GEX Floor</div>
+      <div class="target-value stop">—</div>
+    </div>
+  </div>
+  <div class="gex-info">Multi-strike positive stack · Semiconductor sector leader</div>
+  <div class="card-footer">
+    <span class="cat-tag semi">SEMIS MACRO</span>
+    <span class="cat-tag fomc">FOMC RISK-ON BETA</span>
+  </div>
+</div>
+
+<!-- QCOM -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">QCOM</div>
+      <div class="meta">
+        <div class="universe-tag">M–R UNIVERSE</div>
+        <div class="price-tag">$149.85 <span style="color:var(--green);font-size:10px;">+11.18%</span></div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target ★</div>
+      <div class="target-value t5">$160</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">Gap to Pin</div>
+      <div class="target-value" style="color:var(--cyan);">$10.15</div>
+    </div>
+  </div>
+  <div class="progress-section">
+    <div class="progress-label"><span>$149.85</span><span style="color:var(--gold);">PERFECT $10 GAP</span><span>$160</span></div>
+    <div class="progress-track"><div class="progress-fill fill-green" style="width:5%"></div></div>
+  </div>
+  <div class="gex-info"><strong>$160 Call Wall · PERFECT $10 expansion</strong> · Earnings beat confirmed +11.18%</div>
+  <div class="card-footer">
+    <span class="cat-tag earn">EARNINGS BEAT ✓</span>
+    <span class="cat-tag pin">PERFECT $10 GAP</span>
+    <span class="cat-tag semi">SEMIS</span>
+  </div>
+</div>
+
+<!-- PLTR -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">PLTR</div>
+      <div class="meta">
+        <div class="universe-tag">M–R UNIVERSE</div>
+        <div class="price-tag">$142.34</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$150</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day</div>
+      <div class="target-value t30">—</div>
+    </div>
+  </div>
+  <div class="gex-info"><strong>$150 magnet</strong> · Positive GEX dominant · AI/defence narrative</div>
+  <div class="card-footer">
+    <span class="cat-tag semi">AI / DEFENCE</span>
+    <span class="cat-tag fomc">RISK-ON BETA</span>
+  </div>
+</div>
+
+<!-- NKE -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">NKE</div>
+      <div class="meta">
+        <div class="universe-tag">M–R UNIVERSE</div>
+        <div class="price-tag">$44.80</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$50–55</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day</div>
+      <div class="target-value t30">—</div>
+    </div>
+  </div>
+  <div class="gex-info">Positive GEX staircase above · Strong $10+ expansion setup</div>
+  <div class="card-footer">
+    <span class="cat-tag fomc">CONSUMER SENTIMENT</span>
+  </div>
+</div>
+
+<!-- PDD -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">PDD</div>
+      <div class="meta">
+        <div class="universe-tag">M–R UNIVERSE</div>
+        <div class="price-tag">$98.03</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$105</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day</div>
+      <div class="target-value t30">—</div>
+    </div>
+  </div>
+  <div class="gex-info">Positive cluster above · Near $100 psychological level</div>
+  <div class="card-footer">
+    <span class="cat-tag fomc">MACRO RISK-ON</span>
+  </div>
+</div>
+
+<!-- TSLA -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">TSLA</div>
+      <div class="meta">
+        <div class="universe-tag">S–Z UNIVERSE</div>
+        <div class="price-tag">$375.18</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$385</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day Target</div>
+      <div class="target-value t30">$400</div>
+    </div>
+  </div>
+  <div class="gex-info"><strong>Multiple $2M+ GEX strikes above</strong> · $400 major 30-day magnet</div>
+  <div class="card-footer">
+    <span class="cat-tag fomc">RISK-ON HIGH BETA</span>
+    <span class="cat-tag btc">EV / MACRO</span>
+  </div>
+</div>
+
+<!-- TSM -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">TSM</div>
+      <div class="meta">
+        <div class="universe-tag">S–Z UNIVERSE</div>
+        <div class="price-tag">$403.43</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$415</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day Target</div>
+      <div class="target-value t30">$430</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">Gap to Pin</div>
+      <div class="target-value" style="color:var(--cyan);">$11.57</div>
+    </div>
+  </div>
+  <div class="gex-info"><strong>$415 pin +$801.5K</strong> · Semiconductor macro tailwind · $11.57 clean gap</div>
+  <div class="card-footer">
+    <span class="cat-tag semi">SEMIS / MACRO</span>
+    <span class="cat-tag fomc">RISK-ON</span>
+  </div>
+</div>
+
+<!-- WFC -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">WFC</div>
+      <div class="meta">
+        <div class="universe-tag">S–Z UNIVERSE</div>
+        <div class="price-tag">$79.40 <span style="color:var(--red);font-size:10px;">−1.38%</span></div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$83</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day Target</div>
+      <div class="target-value t30">$89</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">Gap to Pin</div>
+      <div class="target-value" style="color:var(--cyan);">$3.60</div>
+    </div>
+  </div>
+  <div class="progress-section">
+    <div class="progress-label"><span>$79.40</span><span>$83 pin</span><span>$89</span></div>
+    <div class="progress-track"><div class="progress-fill fill-green" style="width:8%"></div></div>
+  </div>
+  <div class="gex-info"><strong>$83 pin +$1.65M</strong> · $80 +$784.5K · Pullback −1.38% = entry opportunity</div>
+  <div class="card-footer">
+    <span class="cat-tag earn">EARNINGS FRI MAY 1 BMO</span>
+    <span class="cat-tag pin">$3.60 TO PIN</span>
+  </div>
+</div>
+
+<!-- TEM -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">TEM</div>
+      <div class="meta">
+        <div class="universe-tag">S–Z UNIVERSE</div>
+        <div class="price-tag">$52.05</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$58</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day Target</div>
+      <div class="target-value t30">$62</div>
+    </div>
+  </div>
+  <div class="gex-info"><strong>$58 pin +$246.1K</strong> · AI/genomics sector · Clean positive structure</div>
+  <div class="card-footer">
+    <span class="cat-tag semi">AI / GENOMICS</span>
+    <span class="cat-tag fomc">RISK-ON</span>
+  </div>
+</div>
+
+<!-- GLD -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">GLD</div>
+      <div class="meta">
+        <div class="universe-tag">F–L UNIVERSE</div>
+        <div class="price-tag">$432.65</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$436</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day Target</div>
+      <div class="target-value t30">$442</div>
+    </div>
+  </div>
+  <div class="gex-info">Full bull GEX regime · Gold spot $4,707/oz · FOMC tone = key trigger</div>
+  <div class="card-footer">
+    <span class="cat-tag gold">GOLD BULL REGIME</span>
+    <span class="cat-tag fomc">FOMC APR 29 CATALYST</span>
+  </div>
+</div>
+
+<!-- GDX -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">GDX</div>
+      <div class="meta">
+        <div class="universe-tag">F–L UNIVERSE</div>
+        <div class="price-tag">$94.20</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$98–102</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day</div>
+      <div class="target-value t30">—</div>
+    </div>
+  </div>
+  <div class="gex-info"><strong>$98 +$4.65M</strong> / <strong>$102 +$14.4M</strong> · Dual magnets · Gold miner ETF</div>
+  <div class="card-footer">
+    <span class="cat-tag gold">GOLD MINERS</span>
+    <span class="cat-tag fomc">FOMC SENSITIVE</span>
+  </div>
+</div>
+
+<!-- HOOD -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">HOOD</div>
+      <div class="meta">
+        <div class="universe-tag">F–L UNIVERSE</div>
+        <div class="price-tag">$84.78</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$94–95</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">GEX Floor</div>
+      <div class="target-value stop">$55</div>
+    </div>
+  </div>
+  <div class="gex-info"><strong>$94 +$3.17M / $95 +$3.08M</strong> dual magnets · $55 iron floor · Binary earnings setup</div>
+  <div class="card-footer">
+    <span class="cat-tag earn">EARNINGS MON APR 28 AMC ⚡</span>
+    <span class="cat-tag btc">CRYPTO PLATFORM</span>
+  </div>
+</div>
+
+<!-- GME -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">GME</div>
+      <div class="meta">
+        <div class="universe-tag">F–L UNIVERSE</div>
+        <div class="price-tag">$25.01</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$30</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">GEX Floor</div>
+      <div class="target-value stop">$23</div>
+    </div>
+  </div>
+  <div class="gex-info">Classic positive staircase <strong>$26→$28→$30</strong> · $23 iron floor · No earnings next week</div>
+  <div class="card-footer">
+    <span class="cat-tag meme">MEME / RETAIL FLOW</span>
+    <span class="cat-tag fomc">MACRO RISK-ON ONLY</span>
+  </div>
+</div>
+
+<!-- DIS -->
+<div class="card score8">
+  <div class="card-header">
+    <div class="card-left">
+      <div class="ticker-box">DIS</div>
+      <div class="meta">
+        <div class="universe-tag">A–E UNIVERSE · APR 24</div>
+        <div class="price-tag">$103.66</div>
+      </div>
+    </div>
+    <div class="score-badge s8">8/10</div>
+  </div>
+  <div class="targets">
+    <div class="target-box">
+      <div class="target-label">5-Day Target</div>
+      <div class="target-value t5">$106</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">30-Day Target</div>
+      <div class="target-value t30">$110</div>
+    </div>
+    <div class="target-box">
+      <div class="target-label">GEX Floor</div>
+      <div class="target-value stop">$101</div>
+    </div>
+  </div>
+  <div class="gex-info"><strong>$106 pin +$4.7M</strong> · $101–102 hard floor <span class="neg">−$2.9M</span> · Only $2.34 above entry</div>
+  <div class="card-footer">
+    <span class="cat-tag pin">$2.34 TO PIN</span>
+    <span class="cat-tag fomc">CONSUMER MACRO</span>
+  </div>
+</div>
+```
+
+  </div><!-- end score8 cards -->
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="foot-left">
+      Skylit GEX Full Universe Scan · ~411 Tickers · A–E (Apr 24) · F–L, M–R, S–Z (Apr 25, 2026)<br>
+      GEX values in $thousands per strike · 4-Criteria GEX SOP · Score = positive magnet + gamma gap + floor + ratio
+    </div>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--green)"></span>5-Day Target</span>
+      <span><span class="dot" style="background:var(--cyan)"></span>30-Day Target</span>
+      <span><span class="dot" style="background:var(--red)"></span>GEX Floor</span>
+      <span><span class="dot" style="background:var(--purple)"></span>Earnings</span>
+      <span><span class="dot" style="background:var(--orange)"></span>FOMC</span>
+    </div>
+  </footer>
+
+</div>
 </body>
 </html>
