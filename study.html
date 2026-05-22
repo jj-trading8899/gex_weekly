@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment Study Guide</title>
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #f0ede8;
+    --text2: #9a9490;
+    --text3: #5a5652;
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.12);
+    --red: #e05555;
+    --red-dim: rgba(224,85,85,0.12);
+    --green: #4caf7d;
+    --green-dim: rgba(76,175,125,0.12);
+    --amber: #d4922a;
+    --amber-dim: rgba(212,146,42,0.12);
+    --blue: #4a90d4;
+    --blue-dim: rgba(74,144,212,0.12);
+    --teal: #3ab8a0;
+    --teal-dim: rgba(58,184,160,0.12);
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
+  /* HEADER */
+  .header {
+    border-bottom: 0.5px solid var(--border);
+    padding: 1.5rem 2rem 1.25rem;
+    position: sticky;
+    top: 0;
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .logo {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--text3);
+    text-transform: uppercase;
+  }
+  .logo span { color: var(--gold); }
+  .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .filter-row { display: flex; gap: 5px; }
+  .fbtn {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    text-transform: uppercase;
+  }
+  .fbtn:hover:not(.active) { border-color: var(--text3); color: var(--text); }
+  .fbtn.active { background: var(--text); color: var(--bg); border-color: transparent; }
+  .divider-v { width: 0.5px; height: 18px; background: var(--border2); }
+  .mode-toggle { display: flex; border: 0.5px solid var(--border2); border-radius: 20px; overflow: hidden; }
+  .mbtn {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 5px 14px;
+    border: none;
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    text-transform: uppercase;
+  }
+  .mbtn.active { background: var(--gold); color: #0d0d0d; font-weight: 500; }
+  .mbtn:hover:not(.active) { color: var(--text); }
+
+  /* MAIN */
+  .main { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+
+  /* SECTION */
+  .section-block { margin-bottom: 0.5rem; }
+  .section-block.hidden { display: none; }
+  .section-header {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text3);
+    padding: 1.75rem 0 0.6rem 2px;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-header::after {
+    content: '';
+    flex: 1;
+  }
+
+  /* CARDS */
+  .cards-grid { display: flex; flex-direction: column; gap: 4px; }
+
+  /* SHORT */
+  .kcard-short {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 9px 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    transition: border-color 0.12s;
+  }
+  .kcard-short:hover { border-color: var(--border2); }
+  .kword-s {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    min-width: 170px;
+    flex-shrink: 0;
+  }
+  .sep { width: 0.5px; min-height: 13px; background: var(--border2); flex-shrink: 0; align-self: center; }
+  .kdesc-s { font-size: 11.5px; color: var(--text2); line-height: 1.55; }
+
+  /* LONG */
+  .kcard-long {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    transition: border-color 0.12s;
+  }
+  .kcard-long:hover { border-color: var(--border2); }
+  .kcard-long-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .kword-l { font-size: 12px; font-weight: 500; color: var(--text); }
+  .kdesc-l { font-size: 11.5px; color: var(--text2); line-height: 1.65; }
+  .kextra {
+    font-size: 11px;
+    color: var(--text3);
+    line-height: 1.65;
+    padding-top: 7px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .t-red    { background: var(--red-dim);   color: var(--red);   border: 0.5px solid rgba(224,85,85,0.2); }
+  .t-green  { background: var(--green-dim); color: var(--green); border: 0.5px solid rgba(76,175,125,0.2); }
+  .t-amber  { background: var(--amber-dim); color: var(--amber); border: 0.5px solid rgba(212,146,42,0.2); }
+  .t-blue   { background: var(--blue-dim);  color: var(--blue);  border: 0.5px solid rgba(74,144,212,0.2); }
+  .t-teal   { background: var(--teal-dim);  color: var(--teal);  border: 0.5px solid rgba(58,184,160,0.2); }
+  .t-gold   { background: var(--gold-dim);  color: var(--gold);  border: 0.5px solid rgba(201,168,76,0.2); }
+
+  /* MODE VISIBILITY */
+  .mode-s .long-only  { display: none; }
+  .mode-l .short-only { display: none; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--text3);
+    text-transform: uppercase;
+    border-top: 0.5px solid var(--border);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .footer span { color: var(--gold); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo"><span>GEX</span> · Investment Study Guide</div>
+    <div class="controls">
+      <div class="filter-row">
+        <button class="fbtn active" onclick="filter('all',this)">All</button>
+        <button class="fbtn" onclick="filter('stagflation',this)">Stagflation</button>
+        <button class="fbtn" onclick="filter('wrapper',this)">ETF vs Note</button>
+        <button class="fbtn" onclick="filter('selection',this)">ETF Selection</button>
+      </div>
+      <div class="divider-v"></div>
+      <div class="mode-toggle">
+        <button class="mbtn active" onclick="setMode('s',this)">Short</button>
+        <button class="mbtn" onclick="setMode('l',this)">Long</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main" id="mainWrap">
+
+  <!-- ===== STAGFLATION ===== -->
+  <div class="section-block" data-section="stagflation">
+
+    <div class="section-header">Stagflation — Macro &amp; Environment</div>
+    <div class="cards-grid">
+
+      <div class="kcard-short short-only"><span class="kword-s">Stagflation</span><span class="sep"></span><span class="kdesc-s">High inflation + stagnant growth + high unemployment — simultaneously</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Stagflation</span></div><div class="kdesc-l">The simultaneous occurrence of high inflation, stagnant or negative economic growth, and elevated unemployment. First widely observed during the 1970s oil shocks.</div><div class="kextra">Most macro models assume inflation and weak growth don't coexist — stagflation breaks the normal policy toolkit. Rate hikes fight inflation but deepen the downturn; stimulus boosts growth but worsens prices.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Supply-side shock</span><span class="sep"></span><span class="kdesc-s">Cost-push inflation from oil, food or supply chain — not excess demand</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Supply-side shock</span></div><div class="kdesc-l">Stagflation is typically cost-push, not demand-pull. A supply disruption (oil embargo, war, supply chain fracture) raises input costs across the economy, pushing prices up even as output falls.</div><div class="kextra">This matters for portfolio positioning: the inflation isn't generated by excess consumer spending, so reducing demand (via rate hikes) is a blunt and painful tool.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Real rate</span><span class="sep"></span><span class="kdesc-s">Nominal rate minus inflation — often deeply negative in stagflation</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Real rate</span></div><div class="kdesc-l">Nominal interest rate adjusted for inflation. In stagflation, even when central banks hike rates, inflation can outpace, keeping real rates negative — eroding the real return on cash and fixed income.</div><div class="kextra">Negative real rates historically support gold and real assets. When real rates are rising (CB overtightening), gold suffers even if inflation remains elevated.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Policy conflict</span><span class="sep"></span><span class="kdesc-s">Rate hikes fight inflation but hurt growth — no clean policy solution</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Policy conflict</span></div><div class="kdesc-l">Central banks face a direct trade-off: tighten to curb inflation and risk recession, or ease to support growth and allow inflation to run. Neither is clean. Fiscal policy adds complexity — government spending may stay elevated for political reasons, sustaining inflation.</div><div class="kextra">For investors, this uncertainty argues for portfolio flexibility — avoid heavy directional bets on rate outcomes and maintain real asset diversification.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Commodity exporters</span><span class="sep"></span><span class="kdesc-s">CAD, NOK, AUD outperform — direct beneficiaries of commodity inflation</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Commodity exporter currencies</span></div><div class="kdesc-l">Countries with large commodity export bases (Canada → oil, Norway → oil/gas, Australia → metals/agriculture) see terms-of-trade improvement during commodity-driven stagflation. Their currencies tend to outperform importers like JPY, EUR.</div><div class="kextra">Currency overlay or EM commodity exporter equity allocations can express this view. Conversely, energy-import-dependent economies face twin deficits and weaker FX.</div></div>
+    </div>
+
+    <div class="section-header">Stagflation — Duration</div>
+    <div class="cards-grid">
+
+      <div class="kcard-short short-only"><span class="kword-s">Shorten duration</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-red">avoid</span> Rising rates = falling bond prices; duration is the primary risk vector</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Shorten duration</span><span class="tag t-red">avoid long bonds</span></div><div class="kdesc-l">Duration measures sensitivity to interest rate changes. In stagflation, rising inflation expectations push yields higher, causing bond prices to fall. A 10yr bond with duration of ~9 loses ~9% for every 1% rise in yields.</div><div class="kextra">Move meaningfully down the curve — from 10–30yr paper to 1–3yr or floating. This reduces mark-to-market volatility while preserving optionality as the inflation cycle turns.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">TIPS / Linkers</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-green">prefer</span> Principal adjusts with CPI — protects real return</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">TIPS / Inflation-linked bonds</span><span class="tag t-green">prefer</span></div><div class="kdesc-l">Treasury Inflation-Protected Securities (US) / Linkers (UK gilts) have principal that adjusts with CPI. Coupon is paid on the adjusted principal, so both income and capital keep pace with inflation.</div><div class="kextra">Watch the breakeven rate — if market-implied inflation is already high, TIPS may be priced in. Real yield (TIPS yield) is the key metric. Negative real yields = expensive. Still preferable to nominal in an inflationary regime.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Floating rate notes</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-green">prefer</span> Coupon resets with rates — zero duration risk</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Floating rate notes (FRNs)</span><span class="tag t-green">prefer</span></div><div class="kdesc-l">FRNs pay a coupon linked to a reference rate (SOFR, EURIBOR) plus a spread. As rates rise, the coupon resets upward — no interest rate duration risk. The bondholder benefits directly from hikes.</div><div class="kextra">Used in leveraged loans, bank loans, and short-duration credit strategies. Credit risk remains — focus on investment grade FRNs or senior secured loans to manage default risk while eliminating rate sensitivity.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Long nominal bonds</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-red">avoid</span> Double hit: rising yields + real value eroded by inflation</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Long nominal bonds</span><span class="tag t-red">avoid</span></div><div class="kdesc-l">30yr Treasuries or Gilts suffer a compounding problem in stagflation: yields rise (price falls via duration), and simultaneously the fixed coupon is worth less in real terms as inflation erodes purchasing power. Both capital and income are impaired.</div><div class="kextra">1970s bond investors saw deeply negative real returns for a decade. In a 5% inflation environment, a 3.5% long bond yields −1.5% real — a guaranteed slow loss.</div></div>
+    </div>
+
+    <div class="section-header">Stagflation — Factors &amp; Style</div>
+    <div class="cards-grid">
+
+      <div class="kcard-short short-only"><span class="kword-s">Value factor</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-green">prefer</span> Low P/B, P/E — tangible assets, not discounted future cash flows</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Value factor</span><span class="tag t-green">prefer</span></div><div class="kdesc-l">Value stocks trade at low multiples relative to book value, earnings, or cash flow. In stagflation they outperform because: (1) lower duration means less sensitivity to rising discount rates, and (2) they're often in sectors (energy, materials, financials) with natural inflation pass-through.</div><div class="kextra">Fama-French data shows Value outperformed significantly in the 1970s. The gap vs Growth widens when the yield curve steepens — a common stagflation feature.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Quality factor</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-green">prefer</span> High ROE, low debt, pricing power — can pass costs to customers</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Quality factor</span><span class="tag t-green">prefer</span></div><div class="kdesc-l">Quality screens for high and stable return on equity, low financial leverage, and consistent earnings. These companies can raise prices without losing volume (pricing power) and don't need cheap credit to operate — both critical when rates are elevated and margins are squeezed.</div><div class="kextra">Quality and Value are not mutually exclusive — the overlap (reasonably priced, high-quality businesses) is the sweet spot. Examples: consumer staples with strong brands, energy majors with low breakeven costs.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Pricing power</span><span class="sep"></span><span class="kdesc-s">Can raise prices without losing volume — critical quality screen in inflation</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Pricing power</span></div><div class="kdesc-l">A company's ability to increase prices without material volume loss, typically due to brand strength, switching costs, or market dominance. In inflation, input costs rise for everyone — only companies with pricing power can protect margins.</div><div class="kextra">Buffett: "The best business during inflation is one that takes no capital but has enormous pricing power." Luxury goods, pharmaceuticals, software subscriptions, and dominant consumer brands score highest.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Growth factor</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-red">avoid</span> Long-duration equity — high multiples crushed by rising discount rates</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Growth factor</span><span class="tag t-red">avoid</span></div><div class="kdesc-l">Growth stocks are valued on distant future cash flows — making them high-duration assets. When risk-free rates rise, the discount rate rises, and present value of those far-out earnings collapses. A stock at 40× earnings with most value 10+ years out can fall 40–60% on a 200bps rate move.</div><div class="kextra">2022 was a stagflation-adjacent example. ARKK fell ~75% peak-to-trough as rates rose from 0% to 5%. Not just sentiment — a mechanical de-rating driven by rising discount rates.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Real assets</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-green">prefer</span> Commodities, infrastructure, real estate — tangible, inflation-linked revenues</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Real assets</span><span class="tag t-green">prefer</span></div><div class="kdesc-l">Physical or tangible assets whose value correlates with general price levels. Includes commodities (energy, metals, agriculture), infrastructure (toll roads, pipelines, utilities with inflation-escalators), and real estate with inflation-linked leases.</div><div class="kextra">Infrastructure is particularly appealing — revenues often contractually linked to CPI, long asset lives, and natural monopoly characteristics mean stable real cash flows. Listed infrastructure ETFs offer liquid access.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">CTAs / Managed futures</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-green">prefer</span> Trend-following alts — strong in sustained macro dislocation</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">CTAs / Managed futures</span><span class="tag t-green">prefer</span></div><div class="kdesc-l">Commodity Trading Advisors run systematic trend-following strategies across futures markets (equities, bonds, commodities, FX). They go long rising trends and short falling ones — capturing extended directional moves that characterise stagflationary macro regimes.</div><div class="kextra">The SG CTA Index returned ~40% in 2022 while most asset classes fell. They don't predict the macro — they follow it. Low correlation to traditional assets makes them useful portfolio diversifiers.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Gold</span><span class="sep"></span><span class="kdesc-s">Monetary hedge — works best when real rates are falling or negative</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Gold</span></div><div class="kdesc-l">Gold functions as a monetary hedge and store of value, particularly when confidence in fiat currency is eroded. Its price is most strongly inversely correlated with real interest rates (US 10yr TIPS yield) — when real rates fall or turn negative, gold rallies.</div><div class="kextra">In stagflation: gold works well early (real rates fall as inflation outpaces nominal hikes) but can underperform if CBs aggressively overtighten. Allocate tactically based on real rate trajectory, not just headline inflation.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Energy sector</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-green">prefer</span> Direct commodity beneficiary — historically strongest in stagflation</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Energy sector</span><span class="tag t-green">prefer</span></div><div class="kdesc-l">Oil and gas companies are direct beneficiaries of the commodity price inflation that typically drives stagflation. Revenue and earnings rise with energy prices, acting as a natural portfolio hedge.</div><div class="kextra">Integrated majors (BP, Shell, Exxon) offer diversified energy exposure with dividends. E&amp;P pure-plays offer higher beta to oil prices. In stagflation, energy is often the single best-performing GICS sector.</div></div>
+    </div>
+  </div>
+
+  <!-- ===== ETF VS NOTE ===== -->
+  <div class="section-block" data-section="wrapper">
+
+    <div class="section-header">ETF Wrapper — Structure</div>
+    <div class="cards-grid">
+
+      <div class="kcard-short short-only"><span class="kword-s">ETF</span><span class="sep"></span><span class="kdesc-s">Regulated fund (UCITS / 1940 Act) listed on exchange, trades intraday at NAV-proximate price</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">ETF (Exchange-Traded Fund)</span></div><div class="kdesc-l">A regulated collective investment vehicle — UCITS in Europe, 1940 Investment Company Act in the US — listed and traded on a stock exchange. Investors buy/sell shares intraday like equities, but the underlying is a diversified basket.</div><div class="kextra">The ETF structure provides: (1) regulatory investor protections, (2) transparent daily disclosure of holdings, (3) intraday price discovery, and (4) tax efficiency in many markets. It is a wrapper, not a strategy.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Authorised Participant (AP)</span><span class="sep"></span><span class="kdesc-s">Creates/redeems large blocks — arbitrage keeps ETF price ≈ NAV</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Authorised Participant (AP)</span></div><div class="kdesc-l">Institutional market makers (typically large banks/brokers) with the right to create or redeem ETF shares directly with the fund in large "creation unit" blocks. When ETF trades at a premium to NAV, APs buy the basket and deliver it for new shares to sell. At a discount, they buy ETF shares and redeem for the basket.</div><div class="kextra">This arbitrage is why ETFs track NAV tightly for liquid underlyings. For illiquid underlyings (frontier EM bonds, small-cap thematic), creation/redemption is costly — causing persistent premium/discount.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Physical replication</span><span class="sep"></span><span class="kdesc-s">Holds actual securities — assets ring-fenced from issuer balance sheet</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Physical replication</span></div><div class="kdesc-l">The ETF directly holds the securities in the index. Full replication holds every constituent; optimised sampling holds a representative subset (used for large indices like MSCI World).</div><div class="kextra">Key benefit: assets are legally segregated in the fund — if the ETF provider goes bankrupt, investors' assets are protected. Fundamentally different from structured notes where the investor is an unsecured creditor.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Synthetic replication</span><span class="sep"></span><span class="kdesc-s">Uses total return swap — tighter tracking, adds counterparty risk</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Synthetic replication (swap-based)</span></div><div class="kdesc-l">Instead of buying securities, the ETF enters a total return swap with a bank counterparty — the bank pays the index return, the ETF pays a fee. UCITS rules cap single counterparty exposure at 10% of NAV and require daily collateral reset.</div><div class="kextra">Advantages: tighter tracking (especially for indices with tax drag), ability to access commodity futures, and sometimes better securities-lending economics. Widely used for S&amp;P 500 by European managers due to US dividend withholding tax advantages.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Securities lending</span><span class="sep"></span><span class="kdesc-s">ETF lends holdings for fee income — introduces counterparty risk. Check collateral</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Securities lending</span></div><div class="kdesc-l">Physical ETFs lend out portfolio securities to short sellers in exchange for a fee, which partially offsets the TER. BlackRock returns 70% of lending revenue to the fund. Collateral (typically ≥102–105% overcollateralised) is held against the loan.</div><div class="kextra">Risk: if the borrower defaults and collateral falls simultaneously (correlated stress), the ETF could suffer a shortfall. Check provider's indemnification policy, collateral quality, and haircut levels. Most large providers fully indemnify the fund.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Premium / Discount</span><span class="sep"></span><span class="kdesc-s">ETF market price vs NAV — widens when underlying is illiquid</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Premium / Discount to NAV</span><span class="tag t-amber">watch</span></div><div class="kdesc-l">The percentage difference between the ETF's exchange price and its net asset value. For liquid underlyings, APs arbitrage this to near zero. For illiquid themes (frontier markets, alternatives), the premium/discount can persist and widen significantly in stress.</div><div class="kextra">Monitor the historical premium/discount chart for any ETF with illiquid underlying before investing. Buying at a 3% premium means paying 3% more than NAV — a cost that may take years to recover if the discount narrows.</div></div>
+    </div>
+
+    <div class="section-header">Delta One Structured Note</div>
+    <div class="cards-grid">
+
+      <div class="kcard-short short-only"><span class="kword-s">Delta one</span><span class="sep"></span><span class="kdesc-s">1:1 directional exposure to underlying — no embedded optionality</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Delta one</span></div><div class="kdesc-l">A product with a delta of 1 moves exactly in line with the underlying — a 1% move in the index produces a 1% move in the product. No leverage, no optionality, no path dependency. Pure linear exposure.</div><div class="kextra">Compare with delta &lt;1 (options, which gain/lose less than the underlying for small moves) or delta &gt;1 (leveraged products). Delta one is the simplest form of derivative exposure — economically equivalent to owning the underlying but via a different legal structure.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Structured note</span><span class="sep"></span><span class="kdesc-s">Bank-issued debt — returns linked to index/strategy. Investor = unsecured creditor</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Structured note</span></div><div class="kdesc-l">A debt instrument issued by a bank where the return is contractually linked to the performance of an underlying — an index, basket, commodity, or proprietary strategy. The bank borrows money from the investor and promises to repay based on the underlying's performance.</div><div class="kextra">Legal reality: by buying the note, the investor is lending to the bank. If the bank becomes insolvent, the note is a general unsecured claim — no asset segregation, no ring-fencing. Counterparty due diligence is non-negotiable.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Unsecured creditor</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-red">key risk</span> Ranks alongside bondholders in default — potential zero recovery</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Unsecured creditor risk</span><span class="tag t-red">key risk</span></div><div class="kdesc-l">In insolvency, structured note holders rank pari passu with other unsecured creditors — sharing whatever remains after secured creditors and senior obligations are satisfied. Recovery rates for unsecured bank creditors can be 0–40% in severe failures.</div><div class="kextra">Lehman Brothers 2008: Lehman-issued structured notes and ETNs became worthless overnight. Physical ETF investors were unaffected — their assets were legally separate from the manager. This asymmetry of outcomes is the single most important distinction between the two wrappers.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Collateralisation</span><span class="sep"></span><span class="kdesc-s">Mitigates issuer credit risk — check collateral quality and haircut levels</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Collateralisation</span></div><div class="kdesc-l">Some structured notes are backed by collateral posted by the issuer — typically government bonds held in a segregated account. If the issuer defaults, the collateral is liquidated to repay noteholders.</div><div class="kextra">Key diligence: (1) Is collateral in a bankruptcy-remote SPV? (2) What quality — sovereign bonds are safer than equities. (3) Is it overcollateralised at 105%+? (4) Is valuation independent? Collateralised notes significantly reduce but do not eliminate counterparty risk.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">ETN / Tracker cert</span><span class="sep"></span><span class="kdesc-s">Exchange-listed forms of structured notes — still carry full issuer credit risk</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">ETN / Tracker certificate</span></div><div class="kdesc-l">Exchange-Traded Notes (ETNs) and tracker certificates are structured notes that are listed on exchanges, giving them ETF-like tradability. Despite the listing, they are unsecured debt obligations of the issuer — not funds with segregated assets.</div><div class="kextra">The exchange listing is a distribution and liquidity mechanism, not a regulatory protection. Investors confuse the ETF-like appearance with ETF-like safety. Always check the legal structure: "fund" with segregated assets vs "note" which is issuer debt.</div></div>
+    </div>
+
+    <div class="section-header">ETF vs Note — Comparison</div>
+    <div class="cards-grid">
+
+      <div class="kcard-short short-only"><span class="kword-s">ETF pros</span><span class="sep"></span><span class="kdesc-s">No issuer risk (physical), regulated, transparent, broad distribution, tax-efficient</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">ETF pros</span><span class="tag t-green">ETF advantage</span></div><div class="kdesc-l">Asset segregation (physical), daily holdings transparency, UCITS/1940 Act regulatory framework, access to broad retail and institutional distribution channels, tax efficiency in most jurisdictions, tight spreads on liquid indices, established secondary market liquidity.</div><div class="kextra">For mainstream index exposure (S&amp;P 500, MSCI World, Bloomberg Agg), ETFs are almost always the superior wrapper — lower cost, better regulated, more liquid, and no counterparty risk.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">ETF cons</span><span class="sep"></span><span class="kdesc-s">UCITS constraints, limited customisation, AP dependency, synthetic adds counterparty risk</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">ETF cons</span><span class="tag t-amber">ETF limitation</span></div><div class="kdesc-l">UCITS diversification rules constrain highly concentrated or bespoke strategies. Requires authorised participant infrastructure — illiquid underlyings create premium/discount risk. Fund registration takes time and cost. Synthetic ETFs re-introduce counterparty risk. Difficult to access private market or highly exotic underlyings.</div><div class="kextra">For a niche, proprietary, or short-lived strategy, the cost and time of setting up a UCITS ETF may not make sense. Structured notes are far faster to market and cheaper to structure for bespoke access.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Note pros</span><span class="sep"></span><span class="kdesc-s">Fully custom, fast to market, any underlying, no fund registration needed</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Structured note pros</span><span class="tag t-green">Note advantage</span></div><div class="kdesc-l">Complete flexibility in underlying (any index, basket, proprietary factor model, private market-linked), leverage, currency, tenor, and payout. No need for fund registration or regulatory approval. Can be structured in days. Enables access to strategies that cannot be packaged as a UCITS fund.</div><div class="kextra">For institutional investors with credit risk appetite and specific access needs (e.g. a bank's proprietary volatility strategy, a bespoke EM currency basket), structured notes are the standard tool.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Note cons</span><span class="sep"></span><span class="kdesc-s">Issuer credit risk, opaque pricing, wider spreads, limited secondary liquidity</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Structured note cons</span><span class="tag t-red">Note limitation</span></div><div class="kdesc-l">Issuer default risk — investor is unsecured creditor. Mark-to-market valuation relies on the issuer (conflict of interest). Typically wider bid/offer spreads than comparable ETFs. Secondary market liquidity is thin and dependent on the issuer making a market.</div><div class="kextra">For a long-term strategic allocation to a standard index, these costs compound unfavourably. For tactical, short-horizon, or bespoke exposures where issuer credit quality is well-understood, the trade-off can be acceptable.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Choose ETF when</span><span class="sep"></span><span class="kdesc-s">Mainstream index, retail distribution, UCITS required, transparency priority</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Choose ETF when</span><span class="tag t-teal">decision guide</span></div><div class="kdesc-l">Accessing mainstream index exposure; requiring regulatory compliance (UCITS, ERISA); targeting retail or broad institutional distribution; prioritising transparency, daily liquidity, and no counterparty risk; long-horizon buy-and-hold allocation.</div><div class="kextra">Default choice for any widely-tracked index. Lower cost, better protected, and more transparent than the note equivalent in almost every case where both are available.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Choose note when</span><span class="sep"></span><span class="kdesc-s">Bespoke strategy, quick execution, exotic underlying, credit risk managed</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Choose structured note when</span><span class="tag t-teal">decision guide</span></div><div class="kdesc-l">Accessing niche or bespoke strategy (proprietary factor model, private market-linked); short duration need with quick execution; no fund distribution infrastructure required; underlying cannot be held in a UCITS fund; counterparty credit risk is acceptable and managed (collateralised).</div><div class="kextra">When the underlying exposure simply cannot be packaged as a UCITS ETF, or when speed to market and customisation outweigh the counterparty risk trade-off, the structured note is the right tool.</div></div>
+    </div>
+  </div>
+
+  <!-- ===== ETF SELECTION ===== -->
+  <div class="section-block" data-section="selection">
+
+    <div class="section-header">ETF Selection — Index &amp; Methodology</div>
+    <div class="cards-grid">
+
+      <div class="kcard-short short-only"><span class="kword-s">Index methodology</span><span class="sep"></span><span class="kdesc-s">Most important check — same name ≠ same portfolio. Read the rulebook</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Index methodology</span></div><div class="kdesc-l">The rulebook that defines which securities are included, how they're weighted, and when they're rebalanced. For thematic ETFs, methodology is everything — two "clean energy" ETFs can have completely different portfolios depending on how the theme is defined.</div><div class="kextra">Always read the index methodology document, not just the ETF name or marketing. Check: minimum revenue threshold, eligible geographies, weighting scheme, rebalance frequency, and minimum float/liquidity requirements.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Revenue threshold</span><span class="sep"></span><span class="kdesc-s">≥50% from theme = pure-play. Lower = diluted proxy with large-cap beta</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Revenue threshold</span></div><div class="kdesc-l">A minimum proportion of company revenue derived from the investment theme required for index inclusion. A 50% threshold creates a pure-play index; a 10% threshold includes large diversified conglomerates with minor theme exposure.</div><div class="kextra">A "cybersecurity" ETF with 50% threshold holds dedicated security firms. One with 10% may include Microsoft or IBM — giving large-cap tech beta, not pure cyber exposure. The threshold is the single variable most determining how differentiated the ETF is from a broad benchmark.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Pure-play vs diversified</span><span class="sep"></span><span class="kdesc-s">Pure = concentrated, higher vol. Diversified = smoother ride, less precise</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Pure-play vs diversified exposure</span></div><div class="kdesc-l">Pure-play indices hold only companies with primary business in the theme — maximum thematic beta, higher concentration, higher volatility. Diversified indices include companies with partial theme exposure — smoother ride but muted theme returns and higher correlation to broad market.</div><div class="kextra">High-conviction thematic bet → pure-play. Satellite allocation to add theme tilt while maintaining stability → diversified. Neither is wrong — understand what you're buying and why.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Weighting scheme</span><span class="sep"></span><span class="kdesc-s">Mkt cap vs equal weight vs revenue — affects concentration and factor tilts</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Weighting scheme</span></div><div class="kdesc-l">How securities are sized within the index. Market-cap weighting concentrates in the largest companies (often widely held already). Equal weighting gives smaller companies the same position size — more small/mid cap exposure, higher rebalance costs. Revenue weighting sizes by theme revenue — most aligned with pure-play intent.</div><div class="kextra">Equal-weighted thematic ETFs often have higher turnover and transaction costs as they rebalance back to equal weights quarterly. Factor implications: equal weight has a persistent size tilt; market cap has a momentum tilt (winners grow in weight).</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Top-10 holdings check</span><span class="sep"></span><span class="kdesc-s">Compare across two candidates — methodology differences visible immediately</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Top-10 holdings comparison</span></div><div class="kdesc-l">The fastest way to sense-check methodology differences between two candidate ETFs. Pull the top-10 holdings for both — if they're materially different despite similar names, the methodology diverges significantly and the factor/risk profiles will be different.</div><div class="kextra">Also check: overlap with funds you already hold (to avoid unintended concentration), and whether top-10 positions represent a sensible proportion of total portfolio (very high concentration in top names = limited diversification within the theme).</div></div>
+    </div>
+
+    <div class="section-header">ETF Selection — Size, Liquidity &amp; Cost</div>
+    <div class="cards-grid">
+
+      <div class="kcard-short short-only"><span class="kword-s">AUM threshold</span><span class="sep"></span><span class="kdesc-s">&lt;$100–200m = closure risk — provider may liquidate at an inopportune time</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">AUM threshold &amp; closure risk</span><span class="tag t-amber">watch</span></div><div class="kdesc-l">ETF providers typically need $100–200m+ AUM to break even on operating costs. Sub-scale funds face closure — the provider liquidates the fund, returning proceeds to investors. This typically happens at an inopportune time for holders with a long-term view.</div><div class="kextra">For thematic ETFs, this is a real risk — many launch during hype cycles with small AUM that never grows. Check: current AUM, AUM trend (growing or shrinking), and whether the provider has a track record of shutting small funds. BlackRock and Vanguard rarely close funds; smaller boutique issuers more likely to.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Tracking difference</span><span class="sep"></span><span class="kdesc-s">Actual return vs index — better real-world cost measure than TER alone</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Tracking difference</span></div><div class="kdesc-l">The annualised gap between the ETF's total return and its benchmark index's total return. Unlike TER, tracking difference captures all real costs: management fee, transaction costs, withholding taxes, rebalancing slippage, and securities lending income (which reduces the gap).</div><div class="kextra">A fund with 0.20% TER but −0.05% tracking difference (outperforms the index net of fees) is cheaper in practice than a 0.10% TER fund with +0.15% tracking difference. Always compare tracking difference over 1yr and 3yr periods across candidate ETFs.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Total cost of ownership</span><span class="sep"></span><span class="kdesc-s">TER + spread × turnover − securities lending income ± rebalance impact</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Total cost of ownership (TCO)</span></div><div class="kdesc-l">The true all-in cost of holding an ETF. TCO = TER + (bid/offer spread × expected trades per year) − securities lending income + market impact on large trades + rebalance transaction costs.</div><div class="kextra">For buy-and-hold (one trade): TCO ≈ tracking difference + one-way spread. For a trader entering/exiting monthly: spread dominates. For a large institution trading £50m+: TCO is dominated by market impact — primary market creation/redemption may be more efficient than buying on exchange.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Bid/offer spread</span><span class="sep"></span><span class="kdesc-s">On-screen cost to trade — driven by underlying liquidity, not ETF volume</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Bid/offer spread</span></div><div class="kdesc-l">The difference between the price to buy and sell the ETF on exchange, quoted in basis points. Market makers set spreads based on the cost and risk of hedging — which is driven by the liquidity of the underlying securities, not the ETF's own trading volume.</div><div class="kextra">Common misconception: "low ETF volume = avoid." Volume doesn't determine spread — underlying liquidity does. A low-volume ETF on liquid large-cap equities will have tight spreads. A high-volume ETF on illiquid frontier bonds can have wide spreads despite high turnover.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">TER / OCF</span><span class="sep"></span><span class="kdesc-s">Visible annual fee — starting point for cost comparison, not the whole picture</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">TER / OCF (Ongoing Charges Figure)</span></div><div class="kdesc-l">The Total Expense Ratio (US) or Ongoing Charges Figure (Europe/UK) is the annual management fee plus fund operating costs, expressed as a percentage of NAV. It's the most visible cost metric — but an incomplete picture of total cost.</div><div class="kextra">TER is a useful starting filter when comparing similar ETFs (e.g. two MSCI World trackers where tracking methodology is comparable). But for thematic or less-liquid ETFs, tracking difference and spread are more meaningful than a few basis points difference in TER.</div></div>
+    </div>
+
+    <div class="section-header">ETF Selection — Structure &amp; Regulation</div>
+    <div class="cards-grid">
+
+      <div class="kcard-short short-only"><span class="kword-s">Domicile (Ireland)</span><span class="sep"></span><span class="kdesc-s">Irish UCITS — 15% US dividend withholding vs 30% — tax-efficient for US equities</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">ETF domicile</span></div><div class="kdesc-l">Where an ETF is legally registered determines which tax treaties apply. Irish-domiciled UCITS ETFs benefit from the US-Ireland double tax treaty — reducing US dividend withholding tax from 30% to 15%. For a US equity ETF yielding 1.5%, this saves ~22.5bps per year in tax drag.</div><div class="kextra">Luxembourg-domiciled ETFs have similar but slightly less favourable US withholding treatment in some structures. For non-US equity themes, domicile tax impact varies by the underlying country. Always check dividend tax treatment for the specific underlying geography.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">Acc vs Dist share class</span><span class="sep"></span><span class="kdesc-s">Acc reinvests dividends — compounds tax-efficiently. Dist pays income out</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">Accumulating vs Distributing share class</span></div><div class="kdesc-l">Accumulating (Acc): dividends are reinvested automatically into the fund — the NAV compounds without triggering a taxable income event. Distributing (Dist): dividends are paid out to the investor, creating a taxable income event each distribution date.</div><div class="kextra">For UK investors: check whether the ETF has "UK reporting fund" status. Without it, gains are taxed as income rather than capital gains — a significant drag. Most major UCITS ETFs have reporting status. For ISA wrappers the distinction is irrelevant; for SIPP or offshore investors, Acc typically more efficient.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">UCITS 5/10/40 rule</span><span class="sep"></span><span class="kdesc-s">Max 10% in one issuer — affects concentrated thematic indices</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">UCITS diversification rules (5/10/40)</span></div><div class="kdesc-l">UCITS funds must keep: each individual holding ≤10% of NAV; total of all positions between 5–10% ≤40% of NAV. This limits concentration in any single issuer. For thematic ETFs focused on small universes, UCITS constraints can force sub-optimal replication.</div><div class="kextra">A highly concentrated thematic index may need to be modified for UCITS compliance — introducing tracking error vs the pure index. Some issuers use a "UCITS-eligible" version of the index with forced diversification. Check whether the ETF tracks the actual theme index or a UCITS-adjusted version.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">UK Reporting Fund Status</span><span class="sep"></span><span class="kdesc-s"><span class="tag t-blue">UK specific</span> Without it — ALL gains taxed as income, not CGT</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">UK Reporting Fund Status</span><span class="tag t-blue">UK specific</span></div><div class="kdesc-l">HMRC designation for offshore funds (including Irish UCITS ETFs) that report their income annually to UK investors. With reporting status: gains on disposal are taxed as capital gains (CGT rates). Without: ALL gains (including capital appreciation) are taxed as income at the investor's marginal rate.</div><div class="kextra">For a higher-rate UK taxpayer, income tax (40–45%) vs CGT (20%) = a 20–25% difference in the tax on gains. Most large UCITS ETFs from iShares, Vanguard, Xtrackers have reporting status — but always verify on the HMRC reporting fund list, especially for newer or niche ETFs.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">ESG / screen overlay</span><span class="sep"></span><span class="kdesc-s">ESG exclusions may remove core holdings — check deviation from pure theme index</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">ESG overlay &amp; exclusions</span></div><div class="kdesc-l">Many ETFs apply ESG screens on top of the theme index — excluding weapons, tobacco, thermal coal, or companies with poor ESG ratings. For some themes (clean energy), ESG screens align naturally. For others (EM infrastructure), they may exclude large, relevant companies.</div><div class="kextra">Key diligence: which specific exclusions apply, and do they materially change composition vs the non-ESG version? Also check Article 8 vs Article 9 SFDR classification for European investors — Article 9 (dark green) has stricter constraints that may limit theme exposure.</div></div>
+
+      <div class="kcard-short short-only"><span class="kword-s">SFDR Article 8 vs 9</span><span class="sep"></span><span class="kdesc-s">Article 9 = strict ESG mandate. May limit theme coverage vs Article 8</span></div>
+      <div class="kcard-long long-only"><div class="kcard-long-header"><span class="kword-l">SFDR Article 8 vs Article 9</span><span class="tag t-blue">EU specific</span></div><div class="kdesc-l">EU Sustainable Finance Disclosure Regulation classification. Article 8 ("light green"): fund promotes environmental/social characteristics alongside financial returns — broad category. Article 9 ("dark green"): fund has sustainable investment as its core objective, with strict do-no-significant-harm requirements.</div><div class="kextra">Article 9 funds face stricter constraints and may be forced to exclude companies that are transitioning toward sustainability but don't yet qualify. For thematic ETFs, Article 9 can reduce the investable universe and increase tracking error vs the broader theme index. Check your mandate requirements vs the constraints each classification imposes.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>SKYLIT</span> · Investment Study Guide · All content for educational reference only
+</div>
+
+<script>
+var mode = 's';
+document.getElementById('mainWrap').className = 'mode-s';
+
+function setMode(m, btn) {
+  mode = m;
+  document.querySelectorAll('.mbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('mainWrap').className = 'mode-' + m;
+}
+
+function filter(type, btn) {
+  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.section-block').forEach(b => {
+    b.style.display = (type === 'all' || b.dataset.section === type) ? '' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
