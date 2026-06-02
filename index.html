@@ -1,267 +1,224 @@
-<!DOCTYPE html>
-
+<!DOCTYPE html><script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Watchlist 2026 05 28",
+  "schemaVersion": 1,
+  "description": "Combined next-session watchlist for Wed 2026-06-03, built from Tue 2026-06-02 TradeEcho + Skylit captures. Top-10 ranked panel + grouped tables. Flags the missing TradeEcho Set 1 export (GLD/SLV/IBIT unreadable). Information only, not investment advice."
+}
+</script>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GEX Update — Fri 2026-04-11</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Watchlist — Wed 2026-06-03</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
-  :root{--bg:#0a0e17;--surface:#111827;--surface2:#1a2235;--border:#1e2a3a;--text:#e2e8f0;--text-dim:#64748b;--green:#22c55e;--green-dim:rgba(34,197,94,.15);--red:#ef4444;--red-dim:rgba(239,68,68,.12);--yellow:#eab308;--yellow-dim:rgba(234,179,8,.12);--blue:#3b82f6;--blue-dim:rgba(59,130,246,.12);--purple:#a78bfa;--cyan:#06b6d4;--pin:#facc15;--orange:#f97316;--orange-dim:rgba(249,115,22,.12)}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:13px;line-height:1.5;padding:24px}
-  h1{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--pin);margin-bottom:4px}
-  .subtitle{color:var(--text-dim);font-size:11px;margin-bottom:16px;font-family:'JetBrains Mono',monospace}
-
-.scorecard{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.score-item{background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:10px;text-align:center}
-.score-ticker{font-family:‘JetBrains Mono’,monospace;font-weight:700;font-size:14px;margin-bottom:2px}
-.score-price{font-family:‘JetBrains Mono’,monospace;font-size:11px;color:var(–text-dim)}
-.score-change{font-family:‘JetBrains Mono’,monospace;font-size:13px;font-weight:700;margin:2px 0}
-.score-week{font-size:9px;color:var(–text-dim);font-family:‘JetBrains Mono’,monospace}
-
-.section-title{font-family:‘JetBrains Mono’,monospace;font-size:13px;font-weight:600;color:var(–cyan);margin:24px 0 10px;padding-bottom:5px;border-bottom:1px solid var(–border);text-transform:uppercase;letter-spacing:1px}
-
-.ranking{background:var(–surface);border:1px solid var(–border);border-radius:8px;overflow:hidden;margin-bottom:16px}
-.rank-row{display:flex;align-items:center;padding:10px 16px;border-bottom:1px solid var(–border);gap:12px}
-.rank-row:last-child{border-bottom:none}
-.rank-num{font-family:‘JetBrains Mono’,monospace;font-size:20px;font-weight:700;min-width:30px}
-.rank-ticker{font-family:‘JetBrains Mono’,monospace;font-size:14px;font-weight:700;min-width:60px}
-.rank-detail{flex:1;font-size:11px;color:var(–text-dim);font-family:‘JetBrains Mono’,monospace}
-.rank-score{font-family:‘JetBrains Mono’,monospace;font-size:13px;font-weight:700;min-width:50px;text-align:right}
-.rank-delta{font-family:‘JetBrains Mono’,monospace;font-size:10px;min-width:40px;text-align:right}
-
-.alert-box{border-radius:8px;padding:12px 16px;margin-bottom:12px;font-size:12px;line-height:1.6}
-.alert-green{background:var(–green-dim);border:1px solid rgba(34,197,94,.3)}
-.alert-green strong{color:var(–green)}
-.alert-orange{background:var(–orange-dim);border:1px solid rgba(249,115,22,.3)}
-.alert-orange strong{color:var(–orange)}
-.alert-blue{background:var(–blue-dim);border:1px solid rgba(59,130,246,.3)}
-.alert-blue strong{color:var(–blue)}
-
-.accum-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:24px}
-.accum-card{background:var(–surface);border:1px solid var(–border);border-radius:8px;overflow:hidden}
-.accum-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(–surface2);border-bottom:1px solid var(–border)}
-.accum-ticker{font-family:‘JetBrains Mono’,monospace;font-weight:700;font-size:16px}
-.accum-meta{font-family:‘JetBrains Mono’,monospace;font-size:11px;color:var(–text-dim);text-align:right}
-.accum-note{padding:8px 14px;font-size:11px;color:var(–text-dim);border-bottom:1px solid var(–border);font-family:‘JetBrains Mono’,monospace;line-height:1.6}
-
-.gamma-profile{display:flex;gap:0;padding:0 12px;border-bottom:1px solid var(–border);background:rgba(0,0,0,.2)}
-.gamma-bar{flex:1;text-align:center;padding:8px 1px;font-family:‘JetBrains Mono’,monospace;font-size:9px}
-.gamma-bar .strike-label{color:var(–text-dim);margin-bottom:2px;font-size:8px}
-.gamma-bar .gex-val{font-weight:600;font-size:9px}
-.gamma-bar .gex-bar{height:4px;border-radius:2px;margin-top:3px;min-width:3px}
-.gex-pos{color:var(–green)}.gex-neg{color:var(–red)}.gex-pin{color:var(–pin);font-weight:700}
-.gex-spot{border-top:2px solid var(–orange);padding-top:6px}
-
-.accum-table{width:100%;border-collapse:collapse;font-size:12px}
-.accum-table th{background:var(–surface2);color:var(–text-dim);font-family:‘JetBrains Mono’,monospace;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;padding:8px 10px;text-align:center;border-bottom:1px solid var(–border)}
-.accum-table th:first-child{text-align:left}
-.accum-table td{padding:8px 10px;text-align:center;border-bottom:1px solid var(–border);font-family:‘JetBrains Mono’,monospace;font-size:12px}
-.accum-table td:first-child{text-align:left;color:var(–text-dim);font-size:11px}
-.buy-level{color:var(–green);font-weight:600}.tp-level{color:var(–cyan);font-weight:600}
-.stop-merged{background:var(–red-dim);color:var(–red);font-weight:700;text-align:center;font-size:13px}
-.prob-bar-bg{width:100%;height:20px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden}
-.prob-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:‘JetBrains Mono’,monospace;color:#fff;min-width:30px}
-.prob-high{background:linear-gradient(90deg,#166534,#22c55e)}.prob-med{background:linear-gradient(90deg,#854d0e,#eab308)}.prob-low{background:linear-gradient(90deg,#7f1d1d,#ef4444)}
-.summary-row td{background:var(–surface2);font-weight:600}
-
-.note-box{background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:14px 16px;font-size:11px;line-height:1.7;color:var(–text-dim);font-family:‘JetBrains Mono’,monospace;margin-top:20px}
-.note-box strong{color:var(–text)}
+:root{color-scheme:dark;--bg:#0b0f17;--panel:#121826;--panel2:#161b22;--line:#1f2937;--txt:#e5e7eb;--muted:#9aa4b2;--green:#22c55e;--red:#ef4444;--blue:#38bdf8;--amber:#f59e0b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:13px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;padding:16px;border-radius:12px}
+h1{font-size:21px;margin:0 0 3px;color:#f0f6fc}
+h2{font-size:15px;margin:26px 0 4px;color:#c9d1d9}
+.sub{color:var(--muted);font-size:12px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:12px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.kpi .v{font-size:17px;font-weight:700;margin-top:2px;color:#f0f6fc}
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:8px;padding:11px 14px;margin:8px 0 4px;color:#cbd5e1}
+.note b{color:#79c0ff}
+.rotnote{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;padding:11px 14px;margin:8px 0 4px;color:#cbd5e1}
+.rotnote b{color:#f59e0b}
+.warnnote{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:8px;padding:11px 14px;margin:8px 0 4px;color:#cbd5e1}
+.warnnote b{color:#ff7b72}
+.topbox{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0 4px}
+.topbox h3{margin:0 0 8px;font-size:14px;color:#f0f6fc;font-weight:600}
+.topgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 14px}
+.toprow{display:flex;align-items:baseline;gap:8px;font-size:12.5px;line-height:1.5;color:#cbd5e1}
+.toprank{display:inline-block;min-width:22px;text-align:center;background:#1f2937;color:#f0f6fc;border-radius:5px;padding:1px 5px;font-weight:700;font-size:11px}
+.toprow.tier-top .toprank{background:#1d4ed8;color:#fff}
+.toprow.tier-next .toprank{background:#374151;color:#e5e7eb}
+.toprow .ttk{font-weight:700;color:#e5e7eb}
+.toprow .ttype{color:var(--muted);font-size:11.5px}
+.toprow .tlvl{color:#cbd5e1;font-size:11.5px;margin-left:auto;white-space:nowrap}
+.tdir-bull{color:#56d364}.tdir-bear{color:#ff7b72}.tdir-rng{color:#9aa4b2}
+.thesis{color:var(--muted);font-size:12.5px;margin:2px 0 8px}
+table{width:100%;border-collapse:collapse;background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:4px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;background:#1c2128;white-space:nowrap}
+td.r,th.r{text-align:right;white-space:nowrap}
+tr:hover td{background:#1c2128}
+.tk{font-weight:700;font-size:14px}
+.rank{display:inline-block;background:#1f2937;color:#f0f6fc;border-radius:5px;padding:1px 5px;font-weight:700;font-size:10px;margin-right:4px;vertical-align:middle}
+.rank.top{background:#1d4ed8;color:#fff}
+.pos{color:var(--green)}.neg{color:var(--red)}.mut{color:var(--muted)}
+.res{color:#fca5a5}.sup{color:#86efac}.brk{color:#fca5a5}
+.gx{color:var(--muted);font-size:10px;margin-left:2px}.d{color:var(--muted);font-size:10px}
+.pill{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap}
+.bias-sb{background:#22c55e22;color:#56d364;border:1px solid #22c55e55}
+.bias-b{background:#22c55e14;color:#46c455;border:1px solid #22c55e33}
+.bias-n{background:#9aa4b220;color:#b1bac4;border:1px solid #9aa4b240}
+.bias-br{background:#f59e0b1f;color:#e3b341;border:1px solid #f59e0b44}
+.bias-sbr{background:#ef444422;color:#ff7b72;border:1px solid #ef444455}
+.g-pos{background:#22c55e1a;color:#22c55e;border:1px solid #22c55e55}
+.g-neg{background:#ef44441a;color:#ef4444;border:1px solid #ef444455}
+.g-mix{background:#f59e0b1a;color:#f59e0b;border:1px solid #f59e0b55}
+.conv{font-weight:700;font-size:10px;padding:2px 6px;border-radius:4px}
+.c-high{background:#22c55e22;color:#56d364}.c-med{background:#f59e0b1f;color:#e3b341}.c-low{background:#9aa4b220;color:#b1bac4}
+.plan{color:#cbd5e1;font-size:12px;max-width:430px;white-space:normal;line-height:1.45}
+.grp{border-radius:10px;padding:1px 0 4px;margin-top:18px}
+.disc{color:var(--muted);font-size:11px;margin-top:20px;border-top:1px solid var(--line);padding-top:10px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:11px;margin:4px 0 0}
 </style>
-
 </head>
 <body>
+<h1>Next Session Watchlist — Wed 2026-06-03</h1>
+<div class="sub">Flow &times; Gamma overlay built from Tue 2026-06-02 closes · merges <b style="color:#c9d1d9">TradeEcho</b> options-flow + whale tickets with <b style="color:#c9d1d9">Skylit</b> GEX/VEX positioning · 12 overlap tickers this run</div>
 
-<h1>POST-EXPIRY RESET — 04/17 WEEK</h1>
-<div class="subtitle">Friday 2026-04-11 &nbsp;|&nbsp; 04/17 monthly OpEx in focus &nbsp;|&nbsp; Corridor lift confirmed on NVDA</div>
+<div class="warnnote"><b>⚠ Data gap.</b> Today's TradeEcho only contains 17 tickers vs the usual 24 &mdash; the <b>Set 1 export</b> (GLD, SLV, IBIT, HYG, XLF, XLU, ETHA) didn't make it into the run, so <b>GLD, SLV and IBIT have no flow read today</b>. Friday's top setups in those names are unreadable for tomorrow. Skylit weekly data still exists for them &mdash; useful as level-watch only.</div>
 
-<div class="scorecard">
-  <div class="score-item"><div class="score-ticker" style="color:var(--green)">NVDA</div><div class="score-change" style="color:var(--green)">$188.39</div><div class="score-price">+2.84%</div><div class="score-week">3wk: +7.8% from $174.14</div></div>
-  <div class="score-item"><div class="score-ticker" style="color:var(--green)">TSLA</div><div class="score-change" style="color:var(--green)">$351.26</div><div class="score-price">+0.99%</div><div class="score-week">3wk: -5.9% from $373.32</div></div>
-  <div class="score-item"><div class="score-ticker" style="color:var(--green)">AAPL</div><div class="score-change" style="color:var(--green)">$260.49</div><div class="score-price">+0.63%</div><div class="score-week">3wk: +2.6% from $253.88</div></div>
-  <div class="score-item"><div class="score-ticker" style="color:var(--green)">TSM</div><div class="score-change" style="color:var(--green)">$370.80</div><div class="score-price">-0.74%</div><div class="score-week">3wk: +9.4% from $338.91</div></div>
+<div class="note"><b>Market backdrop.</b> SPY net GEX <span class="pos">+160.8M</span> (continuing improvement: was +119M Fri, &minus;60M Thu, &minus;157M Wed) and SPXW <span class="pos">+41.1M</span> &mdash; both venues still positive &gamma;, range-holding tape. Net daily flow <span class="pos">+9.4%</span>. SPY spot $759.90 right at its weekly flip $759.9 &mdash; the range is centered on spot. Biggest whale of the day: <b>SNDK 2027-06-17 $1770 PUT</b> sold AT_BID at <b>$6.62M</b> (printed twice = a doubled ticket) &mdash; institutional put-write supporting the SNDK bull move.</div>
+
+<div class="rotnote"><b>Rotations vs Friday.</b> A bull-vs-bear sector split emerged: AI hardware/storage flipped strong bull (<b>SNDK</b> bull&rarr;strong bull, <b>MRVL</b> reentered as strong bull with stock +32.5% intraday), while clean-energy/crypto-miner/hardware tickers turned strong bear (<b>NVDA</b> neutral&rarr;strong bear, <b>IREN</b>/<b>RIOT</b>/<b>RKLB</b> all to strong bear, <b>AVGO</b> bull&rarr;bear). <b>WULF</b>/<b>CIFR</b> bull continuations cool but holding. <b>LITE</b>: spot +13.7% on the day but flow netted neutral with bearish whales &mdash; a real divergence.</div>
+
+<div class="topbox" id="topbox"></div>
+
+<div class="kpis" id="kpis"></div>
+
+<div class="legend">
+  <span><b style="color:#fca5a5">Sell-rip ▲</b> nearest +γ resistance above</span>
+  <span><b style="color:#86efac">Buy-dip ▼</b> nearest +γ support below</span>
+  <span><b style="color:#fca5a5">Break ▼</b> nearest &minus;γ level where downside accelerates</span>
+  <span><b style="color:#f59e0b">Flip</b> gamma zero-cross (above = stable)</span>
 </div>
 
-<!-- ═══════ CONVICTION RANKING ═══════ -->
+<div id="groups"></div>
 
-<div class="section-title">Conviction Ranking</div>
-<div class="ranking">
-  <div class="rank-row">
-    <div class="rank-num" style="color:var(--green)">1</div>
-    <div class="rank-ticker" style="color:var(--green)">AAPL</div>
-    <div class="rank-detail">Broke the 257.5–260 ceiling. Sitting on $15.8M pin at 260. Massive pos gamma 265–280 above. 262.5 (-$6.7M) is the only wall. Cleanest structure.</div>
-    <div class="rank-score" style="color:var(--green)">76%</div>
-    <div class="rank-delta" style="color:var(--green)">↑ 50%</div>
-  </div>
-  <div class="rank-row">
-    <div class="rank-num" style="color:var(--green)">2</div>
-    <div class="rank-ticker" style="color:var(--green)">NVDA</div>
-    <div class="rank-detail">Corridor lift confirmed: 175→188 in 3 weeks. Pin at 187.5 ($24.5M). $87M corridor 182.5–192.5. Ceiling at 195 (-$4.9M). Mon will be choppy (neg gamma at 185, 192.5).</div>
-    <div class="rank-score" style="color:var(--green)">72%</div>
-    <div class="rank-delta" style="color:var(--red)">↓ 78%</div>
-  </div>
-  <div class="rank-row">
-    <div class="rank-num" style="color:var(--yellow)">3</div>
-    <div class="rank-ticker" style="color:var(--yellow)">TSLA</div>
-    <div class="rank-detail">350 pin confirmed neg on 04/17 (-$5.3M) as warned. Must break above 355 to enter 370 pull zone ($6.3M). Bifurcated outcome: above 355 = bullish, below 350 = accelerates down.</div>
-    <div class="rank-score" style="color:var(--yellow)">52%</div>
-    <div class="rank-delta" style="color:var(--red)">↓ 55%</div>
-  </div>
-  <div class="rank-row">
-    <div class="rank-num" style="color:var(--orange)">4</div>
-    <div class="rank-ticker" style="color:var(--orange)">TSM</div>
-    <div class="rank-detail">360 thesis COMPLETE — from 325 to 370 in 3 weeks. Now $10 above the 360 pin. Overextended. 05/15 pin at 330 ($9.5M) suggests mean reversion risk. Take profits or trail tight.</div>
-    <div class="rank-score" style="color:var(--orange)">40%</div>
-    <div class="rank-delta" style="color:var(--red)">↓ 58%</div>
-  </div>
-</div>
+<div class="disc">Combined snapshot derived from the <code>tradeecho-daily-monitor</code> (2026-06-02 21:54 UTC) and <code>skylit-gex-vex</code> (2026-06-02 21:53 UTC) artifacts. All Skylit levels are this-week (Fri 6/5 expiry). Flow bias, premium, sweep% and whale tickets are TradeEcho. "Conviction" reflects only the agreement between directional flow and gamma structure, not a price target. Standard options-positioning conventions &mdash; information only, not investment advice.</div>
 
-<div class="alert-green">
-  <strong>NVDA corridor lift — 3 week scorecard:</strong> From $174.14 on 03/31 to $188.39 today. The framework called the corridor migration from 170–180 → 177.5–190 → 182.5–192.5. Each week the positive gamma shifted higher and spot followed. The 04/17 pin at 187.5 ($24.5M) is the resolution target. The thesis is now in harvest mode — tighten stops, take partials.
-</div>
+<script id="payload" type="application/json">
+{
+  "ranking": [
+    {"rank":1,"tk":"SNDK","dir":"LONG","type":"Strong bull + biggest book","trigger":"buy-dip $1650 · break $1600"},
+    {"rank":2,"tk":"MRVL","dir":"LONG","type":"Strong bull + parabolic day","trigger":"buy-dip $290 · break $260"},
+    {"rank":3,"tk":"NVDA","dir":"RANGE","type":"Bear flow vs largest +γ","trigger":"fade $225 · defend $217.5 · void $202.5"},
+    {"rank":4,"tk":"AVGO","dir":"SHORT","type":"Bear flow + bearish whales","trigger":"fade $510 · break $460"},
+    {"rank":5,"tk":"LITE","dir":"SHORT","type":"Whale bears fade +13.7% rip","trigger":"fade $1200 · break $900"},
+    {"rank":6,"tk":"WULF","dir":"LONG","type":"Bull continuation","trigger":"hold $24 · break $25"},
+    {"rank":7,"tk":"CIFR","dir":"LONG","type":"Bull continuation","trigger":"hold $26 break = momentum"},
+    {"rank":8,"tk":"RKLB","dir":"SHORT","type":"Aligned bear","trigger":"break $115 · sell-rip $130"},
+    {"rank":9,"tk":"AAOI","dir":"SHORT","type":"Bear flow vs +γ","trigger":"above flip $198 voids · break $195"},
+    {"rank":10,"tk":"IREN","dir":"SHORT","type":"Strong bear + mixed γ","trigger":"below $60 · break $52"}
+  ],
+  "kpis": [
+    ["Tickers (read)", "12"],
+    ["No-flow today", "GLD · SLV · IBIT"],
+    ["Top-5 setups", "SNDK · MRVL · NVDA · AVGO · LITE"],
+    ["Net flow today", "+9.4%"],
+    ["SPY net GEX", "+160.8M"],
+    ["Bull momentum", "4"],
+    ["Bear vs +γ", "5"],
+    ["Aligned bear", "1"]
+  ],
+  "groups": [
+    {
+      "title": "1 · Bullish flow into negative gamma — momentum bulls (fades risky)",
+      "thesis": "Bullish premium dominates but dealers are short gamma, so moves amplify. Treat as breakout/pivot setups, not dip-buys; fading extremes here is dangerous.",
+      "rows": [
+        {"tk":"SNDK","spot":1722.50,"day":-2.59,"bias":"STRONG BULLISH","biasc":"sb","net":40.9,"prem":"$53.80M","swp":18,"gamma":"Negative γ","gc":"g-neg","gex":"-0.6M","sell":"$1800","selld":"+4.5%","buy":"$1650","buyd":"-4.2%","brk":"$1600","brkd":"-7.1%","flip":"—","conv":"HIGH","convc":"c-high","plan":"<b>Largest book of the day at $53.80M</b> + biggest whale: $6.62M Jun-27 $1770 PUT sold AT_BID (printed twice = doubled bullish put-write). Plus $1.43M×2 Dec-18 $2700 CALL ASK sweeps (far-OTM upside chase). Skylit neg γ → trendy. Sell-rip $1800 is the magnet; buy-dip $1650 first hold; break $1600 voids. HIGH momentum, treat as trend not range."},
+        {"tk":"MRVL","spot":310.96,"day":32.50,"bias":"STRONG BULLISH","biasc":"sb","net":41.1,"prem":"$24.05M","swp":44,"gamma":"Negative γ","gc":"g-neg","gex":"-2.3M","sell":"—","selld":"","buy":"$290","buyd":"-6.7%","brk":"$260","brkd":"-16.4%","flip":"—","conv":"HIGH","convc":"c-high","plan":"Stock <b>+32.5% intraday</b> on $24M of strongly bullish flow (+41.1%). Heavy multi-expiry call buying: Jun-05 $300/$320 sweeps, Jun-12/Jun-18/Sep-18 $300 calls. Skylit neg γ, no flip (extreme regime). No nearby sell-rip in book — pure trend. Buy-dip $290 first hold, break $260 voids. Vol risk huge on a +32% day; size very small."},
+        {"tk":"WULF","spot":26.42,"day":3.22,"bias":"Bullish","biasc":"b","net":10.6,"prem":"$1.94M","swp":29,"gamma":"Negative γ","gc":"g-neg","gex":"-3.5M","sell":"$29","selld":"+9.8%","buy":"$24","buyd":"-9.2%","brk":"$25","brkd":"-5.4%","flip":"$24.3","conv":"MED","convc":"c-med","plan":"Continuation bullish (+10.6%) from Friday's strong bull. $436k Nov-20 $30 CALL AT_ASK (long-dated upside). Skylit neg γ trendy: spot $26.42 above flip $24.3 but the break level $25 sits just below spot — that's the line for the momentum. Above $25 keeps trend; below turns choppy."},
+        {"tk":"CIFR","spot":26.35,"day":9.45,"bias":"Bullish","biasc":"b","net":14.5,"prem":"$1.48M","swp":44,"gamma":"Negative γ","gc":"g-neg","gex":"-0.3M","sell":"$27","selld":"+2.5%","buy":"$24.5","buyd":"-7.0%","brk":"$26","brkd":"-1.3%","flip":"$23.6","conv":"MED","convc":"c-med","plan":"Continuation bull (+14.5%) on light premium. Stock +9.45% but Skylit shows neg γ AND break level $26 sits right at spot $26.35 — knife-edge. Hold above $26 keeps momentum toward sell-rip $27; lose $26 and it unwinds toward buy-dip $24.5."}
+      ]
+    },
+    {
+      "title": "2 · Bearish flow into positive gamma — conflict, fade rips / range likely",
+      "thesis": "Net flow leans bearish but positive dealer gamma defends. Clean trend lower needs the break to give way — until then, fade rallies into the sell-rip. Lower directional conviction.",
+      "rows": [
+        {"tk":"NVDA","spot":222.57,"day":-0.65,"bias":"STRONG BEARISH","biasc":"sbr","net":-47.7,"prem":"$12.46M","swp":72,"gamma":"Positive γ","gc":"g-pos","gex":"+94.4M","sell":"$225","selld":"+1.1%","buy":"$217.5","buyd":"-2.3%","brk":"$202.5","brkd":"-9.0%","flip":"$194.2","conv":"MED","convc":"c-med","plan":"<b>Aggressive put-buying campaign</b>: $3.36M + 2×$1.68M Jul-17 $235 PUTs AT_ASK/ABOVE_ASK SWEEP, plus $2.31M $225 PUT &mdash; multi-million bear ticket across one day. STRONG BEAR −47.7%, 72% sweeps. BUT Skylit shows the <b>largest positive γ in the book (+94.4M)</b>, spot well above flip $194. Conflict resolves over time, but for Wed: range trade. Fade rips into sell-rip $225, defend buy-dip $217.5; only a break of $202.5 confirms the puts."},
+        {"tk":"AAOI","spot":201.00,"day":8.97,"bias":"STRONG BEARISH","biasc":"sbr","net":-38.2,"prem":"$4.59M","swp":23,"gamma":"Positive γ","gc":"g-pos","gex":"+0.6M","sell":"$210","selld":"+4.5%","buy":"$200","buyd":"-0.5%","brk":"$195","brkd":"-3.0%","flip":"$198.1","conv":"MED","convc":"c-med","plan":"STRONG BEAR (−38.2%) on $4.59M but stock <b>+8.97% on the day</b> — a real divergence. Skylit pos γ with spot $201 just above flip $198.1. Sell-rip $210 caps; buy-dip $200 sits right at spot (defense level); break $195 confirms bear if it gives. MED conviction conflict trade."},
+        {"tk":"RIOT","spot":27.43,"day":-3.27,"bias":"STRONG BEARISH","biasc":"sbr","net":-48.7,"prem":"$693k","swp":80,"gamma":"Positive γ","gc":"g-pos","gex":"+7.2M","sell":"$29","selld":"+5.7%","buy":"$27","buyd":"-1.6%","brk":"$26","brkd":"-5.2%","flip":"$26.5","conv":"LOW","convc":"c-low","plan":"Highest negative net ratio on the watchlist (−48.7%) but on light premium ($693k, 80% sweeps). Spot $27.43 above flip $26.5 with pos γ — defended. Sell-rip $29; buy-dip $27 at spot; break $26 confirms bear. Low premium = low conviction directionally."},
+        {"tk":"AVGO","spot":484.30,"day":4.72,"bias":"Bearish","biasc":"br","net":-13.8,"prem":"$17.33M","swp":33,"gamma":"Positive γ","gc":"g-pos","gex":"+2.9M","sell":"$510","selld":"+5.3%","buy":"$420","buyd":"-13.3%","brk":"$460","brkd":"-5.0%","flip":"$418.1","conv":"MED","convc":"c-med","plan":"Flow flipped bear (−13.8% from Fri's +25.6%) on $17.33M. Whales lean bear: TWO $1.52M Jun-05 $500 CALLs sold AT_BID (call-write). Stock still +4.72% on day. Skylit pos γ but the support gap is huge: buy-dip way down at $420. Sell-rip $510 is the fade target; break $460 confirms bear. MED short bias on a rip."},
+        {"tk":"IREN","spot":66.46,"day":1.91,"bias":"STRONG BEARISH","biasc":"sbr","net":-43.8,"prem":"$10.19M","swp":57,"gamma":"Pos γ, below flip","gc":"g-mix","gex":"+2.3M","sell":"$70","selld":"+5.3%","buy":"$60","buyd":"-9.7%","brk":"$52","brkd":"-21.8%","flip":"$74.1","conv":"MED","convc":"c-med","plan":"STRONG BEAR −43.8% ($10.19M, 57% sweeps). $541k Jan-27 $70 CALL sold AT_BID (call-write bear). Skylit pos γ but spot below flip $74.1 → mixed regime. Sell-rip $70 right above; buy-dip $60 first support; break $52 is the deep trigger. Short bias on rejection of $70 or break of $60."}
+      ]
+    },
+    {
+      "title": "3 · Aligned bearish — breakdown watch",
+      "thesis": "Bearish flow into negative gamma. Moves amplify on the way down; the break level is the trend trigger.",
+      "rows": [
+        {"tk":"RKLB","spot":123.49,"day":0.75,"bias":"STRONG BEARISH","biasc":"sbr","net":-45.0,"prem":"$1.90M","swp":50,"gamma":"Negative γ","gc":"g-neg","gex":"-0.4M","sell":"$130","selld":"+5.3%","buy":"$110","buyd":"-10.9%","brk":"$115","brkd":"-6.9%","flip":"$113.2","conv":"MED","convc":"c-med","plan":"Cleanest aligned bear today: STRONG BEAR −45% + neg γ trendy. Spot $123.49 sits above flip $113.2 but break $115 is just below. Short trigger on break of $115 (sub-flip then opens toward $110); sell-rip far at $130 caps rallies. MED &mdash; aligned setup on light premium."}
+      ]
+    },
+    {
+      "title": "4 · Divergent — bullish spot, bearish whales",
+      "thesis": "Tape moved one way today, but the biggest options tickets pointed the other. High-information but lower-clarity setup — wait for the resolution.",
+      "rows": [
+        {"tk":"LITE","spot":1029.00,"day":13.70,"bias":"Neutral / Mixed","biasc":"n","net":-6.0,"prem":"$26.47M","swp":21,"gamma":"Negative γ","gc":"g-neg","gex":"-1.0M","sell":"$1200","selld":"+16.6%","buy":"$865","buyd":"-15.9%","brk":"$900","brkd":"-12.5%","flip":"$886.2","conv":"MED","convc":"c-med","plan":"Stock <b>+13.70%</b> on $26.47M but flow netted NEUTRAL (−6%). Biggest whales BEARISH: <b>$1.88M Dec-18 $1000 CALL sold AT_BID SWEEP</b> + $1.58M Jun-18 $1050 CALL sold AT_BID. Skylit neg γ trendy. Spot well above flip $886 = stable for now, but bearish whales fade the spike. Sell-rip far at $1200; break $900 voids. Short bias if confirmed by failure of $1029 hold."}
+      ]
+    },
+    {
+      "title": "5 · Range / neutral — levels watch",
+      "thesis": "Net flow balanced and structure undecided. Trade the levels if a side is taken.",
+      "rows": [
+        {"tk":"CLSK","spot":17.76,"day":-6.35,"bias":"Neutral / Mixed","biasc":"n","net":-8.0,"prem":"$1.36M","swp":19,"gamma":"Positive γ","gc":"g-pos","gex":"+2.1M","sell":"$19","selld":"+7.0%","buy":"$16","buyd":"-9.9%","brk":"$15","brkd":"-15.5%","flip":"$8.0","conv":"LOW","convc":"c-low","plan":"Neutral flow on light premium. Stock down 6.35% but pos γ defends. Sell-rip $19, buy-dip $16, break $15. Watch only — no edge until flow re-clusters."}
+      ]
+    }
+  ]
+}
+</script>
+<script>
+const D = JSON.parse(document.getElementById('payload').textContent);
 
-<div class="alert-blue">
-  <strong>AAPL breakout:</strong> The 257.5–260 ceiling that capped AAPL for 3 weeks finally broke. Spot at 260 is sitting on the biggest AAPL pin we've tracked ($15.8M). Above: 265 ($4.0M), 270 ($5.5M), 280 ($3.9M) — massive positive gamma upside. Only wall: 262.5 (-$6.7M). If 262.5 clears, AAPL could run to 270+.
-</div>
+const RANK = {};
+D.ranking.forEach(r => { RANK[r.tk] = r.rank; });
+const dirCls = d => d==='LONG'?'tdir-bull':d==='SHORT'?'tdir-bear':'tdir-rng';
+document.getElementById('topbox').innerHTML =
+  '<h3>Top 10 setups for Wednesday — ranked by edge</h3>'
+  + '<div class="topgrid">'
+  + D.ranking.map(r =>
+      `<div class="toprow ${r.rank<=5?'tier-top':'tier-next'}">`
+      + `<span class="toprank">${r.rank}</span>`
+      + `<span class="ttk">${r.tk}</span>`
+      + `<span class="${dirCls(r.dir)}">${r.dir}</span>`
+      + `<span class="ttype">· ${r.type}</span>`
+      + `<span class="tlvl">${r.trigger}</span>`
+      + `</div>`).join('')
+  + '</div>';
 
-<div class="alert-orange">
-  <strong>TSM — take profits:</strong> The 360 pin thesis played out fully — from 325 to 370 in 3 weeks. But spot is now $10 above the pin with thin gamma support at 370 ($1.1M). The 05/15 monthly shows the next pin at 330 ($9.5M) — well below current spot. This suggests longer-term positioning expects mean reversion. Trail stops tight or take profits.
-</div>
+document.getElementById('kpis').innerHTML = D.kpis
+  .map(([l,v])=>`<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div></div>`).join('');
 
-<!-- ═══════ GRIDS ═══════ -->
+const sign = (n,suf='%')=> (n>=0?'+':'') + n.toFixed(1) + suf;
+const dayCls = n => n>=0 ? 'pos':'neg';
+const netCls = n => n>=0 ? 'pos':'neg';
 
-<div class="section-title">Accumulation Grids — 04/17 OpEx</div>
-<div class="accum-grid">
-
-<!-- AAPL -->
-
-<div class="accum-card">
-  <div class="accum-header">
-    <div><span class="accum-ticker" style="color:var(--green)">AAPL</span><span style="color:var(--text-dim);font-size:12px;margin-left:8px">$260.49</span></div>
-    <div class="accum-meta">04/17 pin: 260 ($15.8M)<br/>Upside: 265–280 pos gamma | Wall: 262.5 (-$6.7M)</div>
-  </div>
-  <div class="accum-note">
-    <span style="color:var(--green)">★ HIGHEST CONVICTION.</span> $15.8M pin at 260 — spot is right on it. Positive gamma wall above: 265 ($4.0M), 267.5 ($2.4M), 270 ($5.5M), 272.5 ($2.5M), 280 ($3.9M). One obstacle: 262.5 (-$6.7M neg gamma). Below: 257.5 ($2.8M) support, 255 (-$3.9M) breakdown. 250 ($3.1M) secondary floor. Monday's 04/13 shows 260 as -$1.9M neg gamma — expect chop. 04/17 resolution pins at 260.
-  </div>
-  <div class="gamma-profile">
-    <div class="gamma-bar"><div class="strike-label">250</div><div class="gex-val gex-pos">+3.1M</div><div class="gex-bar" style="background:var(--green);width:19%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">255</div><div class="gex-val gex-neg">-3.9M</div><div class="gex-bar" style="background:var(--red);width:25%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">257.5</div><div class="gex-val gex-pos">+2.8M</div><div class="gex-bar" style="background:var(--green);width:18%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar gex-spot"><div class="strike-label" style="color:var(--orange)">260▲</div><div class="gex-val gex-pin">★15.8M</div><div class="gex-bar" style="background:var(--pin);width:100%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">262.5</div><div class="gex-val gex-neg">-6.7M</div><div class="gex-bar" style="background:var(--red);width:42%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">265</div><div class="gex-val gex-pos">+4.0M</div><div class="gex-bar" style="background:var(--green);width:25%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">270</div><div class="gex-val gex-pos">+5.5M</div><div class="gex-bar" style="background:var(--green);width:35%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">280</div><div class="gex-val gex-pos">+3.9M</div><div class="gex-bar" style="background:var(--green);width:25%;margin:3px auto 0"></div></div>
-  </div>
-  <table class="accum-table">
-    <tr><th style="width:55px">Tier</th><th style="width:70px">Buy</th><th style="width:45px">Size</th><th style="width:70px">TP</th><th style="width:70px">Stop</th><th>TP Prob</th></tr>
-    <tr><td>Tier 1</td><td class="buy-level">260</td><td>25%</td><td class="tp-level">265</td><td rowspan="4" class="stop-merged">253</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:70%">70%</div></div></td></tr>
-    <tr><td>Tier 2</td><td class="buy-level">258</td><td>25%</td><td class="tp-level">265</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:74%">74%</div></div></td></tr>
-    <tr><td>Tier 3</td><td class="buy-level">255</td><td>25%</td><td class="tp-level">262.5</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:72%">72%</div></div></td></tr>
-    <tr><td>Tier 4</td><td class="buy-level">252.5</td><td>25%</td><td class="tp-level">260</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:78%">78%</div></div></td></tr>
-    <tr class="summary-row"><td colspan="5" style="text-align:right;color:var(--text-dim);font-size:10px">WEIGHTED AVG</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:74%">74%</div></div></td></tr>
-  </table>
-</div>
-
-<!-- NVDA -->
-
-<div class="accum-card">
-  <div class="accum-header">
-    <div><span class="accum-ticker" style="color:var(--green)">NVDA</span><span style="color:var(--text-dim);font-size:12px;margin-left:8px">$188.39</span></div>
-    <div class="accum-meta">04/17 pin: 187.5 ($24.5M)<br/>Corridor: 182.5–192.5 ($87M) | Ceiling: 195 (-$4.9M)</div>
-  </div>
-  <div class="accum-note">
-    Corridor lift confirmed — 3rd consecutive week of positive gamma migrating higher. Spot at 188, right at pin ($24.5M at 187.5). Corridor 182.5–192.5: $8.7M + $22.1M + $24.5M + $18.1M + $13.5M = ~$87M. Floor: 180 (-$7.7M neg gamma). Ceiling: 195 (-$4.9M). Monday chop expected: 185 (-$6.7M) and 192.5 (-$12.1M) on 04/13. Harvest mode — tighten stops, take partials above 190.
-  </div>
-  <div class="gamma-profile">
-    <div class="gamma-bar"><div class="strike-label">180</div><div class="gex-val gex-neg">-7.7M</div><div class="gex-bar" style="background:var(--red);width:31%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">182.5</div><div class="gex-val gex-pos">+8.7M</div><div class="gex-bar" style="background:var(--green);width:35%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">185</div><div class="gex-val gex-pos">+22.1M</div><div class="gex-bar" style="background:var(--green);width:90%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar gex-spot"><div class="strike-label" style="color:var(--orange)">188▲</div><div class="gex-val gex-pin">★24.5M</div><div class="gex-bar" style="background:var(--pin);width:100%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">190</div><div class="gex-val gex-pos">+18.1M</div><div class="gex-bar" style="background:var(--green);width:74%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">192.5</div><div class="gex-val gex-pos">+13.5M</div><div class="gex-bar" style="background:var(--green);width:55%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">195</div><div class="gex-val gex-neg">-4.9M</div><div class="gex-bar" style="background:var(--red);width:20%;margin:3px auto 0"></div></div>
-  </div>
-  <table class="accum-table">
-    <tr><th style="width:55px">Tier</th><th style="width:70px">Buy</th><th style="width:45px">Size</th><th style="width:70px">TP</th><th style="width:70px">Stop</th><th>TP Prob</th></tr>
-    <tr><td>Tier 1</td><td class="buy-level">188</td><td>25%</td><td class="tp-level">192.5</td><td rowspan="4" class="stop-merged">179</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:70%">70%</div></div></td></tr>
-    <tr><td>Tier 2</td><td class="buy-level">187</td><td>25%</td><td class="tp-level">192</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:74%">74%</div></div></td></tr>
-    <tr><td>Tier 3</td><td class="buy-level">185</td><td>25%</td><td class="tp-level">190</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:76%">76%</div></div></td></tr>
-    <tr><td>Tier 4</td><td class="buy-level">182.5</td><td>25%</td><td class="tp-level">190</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:68%">68%</div></div></td></tr>
-    <tr class="summary-row"><td colspan="5" style="text-align:right;color:var(--text-dim);font-size:10px">WEIGHTED AVG</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-high" style="width:72%">72%</div></div></td></tr>
-  </table>
-</div>
-
-<!-- TSLA -->
-
-<div class="accum-card">
-  <div class="accum-header">
-    <div><span class="accum-ticker" style="color:var(--yellow)">TSLA</span><span style="color:var(--text-dim);font-size:12px;margin-left:8px">$351.26</span></div>
-    <div class="accum-meta">04/17 pin: 370 ($6.3M)<br/>⚠ 350 = -$5.3M neg gamma on 04/17</div>
-  </div>
-  <div class="accum-note">
-    Bifurcated outcome. 355 is the pivot — above it, pos gamma pulls toward 370 ($6.3M). Below 350, neg gamma (-$5.3M on 04/17) accelerates downside to 340–335 (also neg gamma -$1.8M to -$3.3M). 04/13 shows support at 350 ($3.5M), 345 ($3.6M), 340 ($2.5M). Use 04/13 support for entry; target 04/17 pin at 370. Stop below 345.
-  </div>
-  <div class="gamma-profile">
-    <div class="gamma-bar"><div class="strike-label">335</div><div class="gex-val gex-neg">-3.3M</div><div class="gex-bar" style="background:var(--red);width:52%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">340</div><div class="gex-val gex-neg">-1.8M</div><div class="gex-bar" style="background:var(--red);width:28%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">345</div><div class="gex-val gex-neg">-1.7M</div><div class="gex-bar" style="background:var(--red);width:27%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">350</div><div class="gex-val gex-neg">-5.3M</div><div class="gex-bar" style="background:var(--red);width:84%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar gex-spot"><div class="strike-label" style="color:var(--orange)">352▲</div><div class="gex-val gex-pos">+228K</div><div class="gex-bar" style="background:var(--green);width:4%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">355</div><div class="gex-val gex-pos">+2.4M</div><div class="gex-bar" style="background:var(--green);width:38%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">362.5</div><div class="gex-val gex-neg">-172K</div><div class="gex-bar" style="background:var(--red);width:3%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">370</div><div class="gex-val gex-pin">★6.3M</div><div class="gex-bar" style="background:var(--pin);width:100%;margin:3px auto 0"></div></div>
-  </div>
-  <table class="accum-table">
-    <tr><th style="width:55px">Tier</th><th style="width:70px">Buy</th><th style="width:45px">Size</th><th style="width:70px">TP</th><th style="width:70px">Stop</th><th>TP Prob</th></tr>
-    <tr><td>Tier 1</td><td class="buy-level">352</td><td>25%</td><td class="tp-level">365</td><td rowspan="4" class="stop-merged">343</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-med" style="width:50%">50%</div></div></td></tr>
-    <tr><td>Tier 2</td><td class="buy-level">350</td><td>25%</td><td class="tp-level">362.5</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-med" style="width:48%">48%</div></div></td></tr>
-    <tr><td>Tier 3</td><td class="buy-level">347</td><td>25%</td><td class="tp-level">360</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-med" style="width:52%">52%</div></div></td></tr>
-    <tr><td>Tier 4</td><td class="buy-level">345</td><td>25%</td><td class="tp-level">357.5</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-med" style="width:55%">55%</div></div></td></tr>
-    <tr class="summary-row"><td colspan="5" style="text-align:right;color:var(--text-dim);font-size:10px">WEIGHTED AVG</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-med" style="width:51%">51%</div></div></td></tr>
-  </table>
-</div>
-
-<!-- TSM -->
-
-<div class="accum-card">
-  <div class="accum-header">
-    <div><span class="accum-ticker" style="color:var(--orange)">TSM</span><span style="color:var(--text-dim);font-size:12px;margin-left:8px">$370.80</span></div>
-    <div class="accum-meta">04/17 pin: 360 ($9.0M) — BELOW spot<br/>⚠ 05/15 pin: 330 ($9.5M) — mean reversion risk</div>
-  </div>
-  <div class="accum-note">
-    <span style="color:var(--orange)">THESIS COMPLETE — TAKE PROFITS.</span> From $325 on 03/27 to $370 today = +14% in 2 weeks. The 360 pin ($9.0M) is now $10 BELOW spot — gravity pulls down, not up. 380 ($1.6M) is thin support above. The 05/15 monthly pin at 330 ($9.5M) signals institutional positioning for a pullback. Trail stop to 358 (below 360 pin) or take profits outright.
-  </div>
-  <div class="gamma-profile">
-    <div class="gamma-bar"><div class="strike-label">330</div><div class="gex-val" style="color:var(--purple)">05/15★9.5M</div><div class="gex-bar" style="background:var(--purple);width:100%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">340</div><div class="gex-val gex-pos">+2.4M</div><div class="gex-bar" style="background:var(--green);width:25%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">350</div><div class="gex-val gex-pos">+659K</div><div class="gex-bar" style="background:var(--green);width:7%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">360</div><div class="gex-val gex-pos">+9.0M</div><div class="gex-bar" style="background:var(--green);width:94%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar gex-spot"><div class="strike-label" style="color:var(--orange)">370▲</div><div class="gex-val gex-pos">+1.1M</div><div class="gex-bar" style="background:var(--green);width:11%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">380</div><div class="gex-val gex-pos">+1.6M</div><div class="gex-bar" style="background:var(--green);width:17%;margin:3px auto 0"></div></div>
-    <div class="gamma-bar"><div class="strike-label">390</div><div class="gex-val gex-pos">+648K</div><div class="gex-bar" style="background:var(--green);width:7%;margin:3px auto 0"></div></div>
-  </div>
-  <table class="accum-table">
-    <tr><th style="width:55px">Tier</th><th style="width:70px">Buy</th><th style="width:45px">Size</th><th style="width:70px">TP</th><th style="width:70px">Stop</th><th>TP Prob</th></tr>
-    <tr><td>Tier 1</td><td class="buy-level">370</td><td>25%</td><td class="tp-level">380</td><td rowspan="4" class="stop-merged">358</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-low" style="width:38%">38%</div></div></td></tr>
-    <tr><td>Tier 2</td><td class="buy-level">365</td><td>25%</td><td class="tp-level">378</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-med" style="width:42%">42%</div></div></td></tr>
-    <tr><td>Tier 3</td><td class="buy-level">362</td><td>25%</td><td class="tp-level">375</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-med" style="width:45%">45%</div></div></td></tr>
-    <tr><td>Tier 4</td><td class="buy-level">360</td><td>25%</td><td class="tp-level">370</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-med" style="width:55%">55%</div></div></td></tr>
-    <tr class="summary-row"><td colspan="5" style="text-align:right;color:var(--text-dim);font-size:10px">WEIGHTED AVG</td><td><div class="prob-bar-bg"><div class="prob-bar-fill prob-med" style="width:45%">45%</div></div></td></tr>
-  </table>
-</div>
-
-</div>
-
-<div class="note-box">
-  <strong>3-week framework performance:</strong><br/>
-  NVDA: $174.14 → $188.39 (+8.2%) — corridor lift thesis confirmed across 3 consecutive weeks of positive gamma migration<br/>
-  TSM: $338.91 → $370.80 (+9.4%) — 360 pin thesis fully delivered, now in take-profit mode<br/>
-  AAPL: $253.88 → $260.49 (+2.6%) — 257.5 ceiling finally broke, sitting on $15.8M pin<br/>
-  TSLA: $373.32 → $351.26 (-5.9%) — range-bound, now at bifurcation point<br/><br/>
-  <strong>Key positioning shift:</strong> AAPL moves to #1 conviction for the first time in this tracking series. The $15.8M pin at 260 with $20M+ of positive gamma above 265–280 is the cleanest structure in the set. NVDA is entering harvest mode — the corridor lift is mature and the 195 ceiling approaches. TSM thesis is complete — take profits. TSLA is the coin flip — 355 pivot determines the direction.
-</div>
-
+let html='';
+for(const g of D.groups){
+  html += `<div class="grp"><h2>${g.title}</h2><div class="thesis">${g.thesis}</div>`;
+  html += `<table><thead><tr>
+    <th>Ticker</th><th class="r">Spot</th><th class="r">Day%</th>
+    <th>Flow bias</th><th class="r">Net%</th><th class="r">Premium</th><th class="r">Swp%</th>
+    <th>Gamma</th><th>Sell-rip &#9650;</th><th>Buy-dip &#9660;</th><th>Break &#9660;</th><th class="r">Flip</th>
+    <th>Conv.</th><th>Tomorrow's plan</th></tr></thead><tbody>`;
+  for(const r of g.rows){
+    const rk = RANK[r.tk];
+    const rkBadge = rk ? `<span class="rank ${rk<=5?'top':''}">#${rk}</span>` : '';
+    html += `<tr>
+      <td>${rkBadge}<span class="tk">${r.tk}</span></td>
+      <td class="r">$${r.spot.toFixed(2)}</td>
+      <td class="r ${dayCls(r.day)}">${sign(r.day)}</td>
+      <td><span class="pill bias-${r.biasc}">${r.bias}</span></td>
+      <td class="r ${netCls(r.net)}">${sign(r.net)}</td>
+      <td class="r">${r.prem}</td>
+      <td class="r mut">${r.swp}%</td>
+      <td><span class="pill ${r.gc}">${r.gamma}</span><div class="gx">GEX ${r.gex}</div></td>
+      <td class="res">${r.sell}<span class="d"> ${r.selld}</span></td>
+      <td class="sup">${r.buy}<span class="d"> ${r.buyd}</span></td>
+      <td class="brk">${r.brk}<span class="d"> ${r.brkd}</span></td>
+      <td class="r mut">${r.flip}</td>
+      <td><span class="conv ${r.convc}">${r.conv}</span></td>
+      <td class="plan">${r.plan}</td>
+    </tr>`;
+  }
+  html += `</tbody></table></div>`;
+}
+document.getElementById('groups').innerHTML = html;
+</script>
 </body>
 </html>
