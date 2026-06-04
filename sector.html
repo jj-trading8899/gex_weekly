@@ -1,0 +1,358 @@
+<!DOCTYPE html><script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Sector Rotation Tracker",
+  "schemaVersion": 1,
+  "description": "Sector rotation heatmap combining TradeEcho premium-weighted net flow (x-axis) with Skylit gamma posture Σ GEX / Σ |GEX| (y-axis). Each sector is a bubble sized by premium with Fri→Tue rotation arrows. Quadrants: top-right supported bull, bottom-right momentum bull, top-left bear defended, bottom-left aligned bear. Whale-cluster overlay confirms the aggregate read per sector. Snapshot from 2026-06-02 captures with Fri 2026-05-29 baseline. Information only, not investment advice."
+}
+</script>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sector Rotation Tracker</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root{color-scheme:dark;--bg:#0b0f17;--panel:#121826;--panel2:#161b22;--line:#1f2937;--txt:#e5e7eb;--muted:#9aa4b2;--green:#22c55e;--red:#ef4444;--blue:#38bdf8;--amber:#f59e0b;--cyan:#06b6d4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:13px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;padding:16px;border-radius:12px}
+h1{font-size:21px;margin:0 0 3px;color:#f0f6fc}
+h2{font-size:15px;margin:24px 0 6px;color:#c9d1d9;border-bottom:1px solid var(--line);padding-bottom:4px}
+.sub{color:var(--muted);font-size:12px;margin-bottom:14px}
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:8px;padding:11px 14px;margin:8px 0 4px;color:#cbd5e1;line-height:1.55}
+.note b{color:#79c0ff}
+.chart-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:8px}
+.chart-box{position:relative;height:520px}
+.quadrants{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;font-size:11.5px}
+.qbox{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:9px 11px}
+.qbox .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+.qbox .lbl{font-weight:600;color:#f0f6fc;margin-bottom:2px}
+.qbox .desc{color:var(--muted);font-size:11px;line-height:1.45}
+.q-tr .tag{color:#56d364}.q-br .tag{color:#22d3ee}.q-tl .tag{color:#fbbf24}.q-bl .tag{color:#ff7b72}
+table{width:100%;border-collapse:collapse;background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:6px;font-size:12.5px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;background:#1c2128;white-space:nowrap}
+td.r,th.r{text-align:right;white-space:nowrap}
+tr:hover td{background:#1c2128}
+.tk{font-weight:700}.mut{color:var(--muted)}
+.pos{color:var(--green)}.neg{color:var(--red)}.amber{color:var(--amber)}
+.delta-bull{color:#56d364;font-weight:600}.delta-bear{color:#ff7b72;font-weight:600}
+.pill{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap}
+.qpill-tr{background:#22c55e22;color:#56d364;border:1px solid #22c55e55}
+.qpill-br{background:#06b6d422;color:#22d3ee;border:1px solid #06b6d455}
+.qpill-tl{background:#f59e0b22;color:#fbbf24;border:1px solid #f59e0b55}
+.qpill-bl{background:#ef444422;color:#ff7b72;border:1px solid #ef444455}
+.qpill-na{background:#9aa4b220;color:#b1bac4;border:1px solid #9aa4b240}
+.gridcol{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-top:8px}
+@media(max-width:1100px){.gridcol{grid-template-columns:1fr}}
+.disc{color:var(--muted);font-size:11px;margin-top:20px;border-top:1px solid var(--line);padding-top:10px;line-height:1.5}
+.disc b{color:#cbd5e1}
+.legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:11px;margin:8px 0 2px}
+.legend .sw{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:middle;margin-right:5px;border:1px solid rgba(255,255,255,.2)}
+</style>
+</head>
+<body>
+<h1>Sector Rotation Tracker</h1>
+<div class="sub">Premium-weighted flow (TradeEcho) &times; gamma posture (Skylit) by sector, with day-over-day rotation arrows · snapshot from <b style="color:#c9d1d9">Thu 2026-06-04</b> captures (baseline: Wed 2026-06-03) · tomorrow = weekly opex</div>
+
+<div class="note"><b>How to read.</b> Each bubble is a sector; <b>x</b> = premium-weighted net flow ratio (TradeEcho), <b>y</b> = gamma posture (Σ Net GEX / Σ |Net GEX| across the sector's Skylit names). Bubble size = total premium. Arrow = 1-session rotation Wed→Thu. <b>Opex backdrop:</b> SPY gamma exploded to +855M (massive pin), so today's rotation arrows are working against a powerful range-holding tape — chase moves are likely to be reversed by Friday's expiry.</div>
+
+<div class="chart-wrap">
+  <div class="chart-box"><canvas id="qchart"></canvas></div>
+  <div class="legend">
+    <span><span class="sw" style="background:#22c55e"></span>Supported bull</span>
+    <span><span class="sw" style="background:#06b6d4"></span>Momentum bull</span>
+    <span><span class="sw" style="background:#f59e0b"></span>Bear defended</span>
+    <span><span class="sw" style="background:#ef4444"></span>Aligned bear</span>
+    <span><span class="sw" style="background:rgba(255,255,255,.12);border:1px dashed rgba(255,255,255,.4)"></span>Wednesday position</span>
+    <span>→ solid bubble = Thursday</span>
+  </div>
+  <div class="quadrants">
+    <div class="qbox q-tr"><div class="tag">▲ &nbsp; ▶ &nbsp; Top-right</div><div class="lbl">Supported bull rotation IN</div><div class="desc">Bullish flow into positive γ. Range-holding. Buy dips, fade rips.</div></div>
+    <div class="qbox q-br"><div class="tag">▼ &nbsp; ▶ &nbsp; Bottom-right</div><div class="lbl">Momentum bull rotation IN</div><div class="desc">Bullish flow into negative γ. Trendy/breakout. Chase, don't fade.</div></div>
+    <div class="qbox q-tl"><div class="tag">▲ &nbsp; ◀ &nbsp; Top-left</div><div class="lbl">Bear flow defended</div><div class="desc">Bearish flow into positive γ. Conflict — needs break to confirm.</div></div>
+    <div class="qbox q-bl"><div class="tag">▼ &nbsp; ◀ &nbsp; Bottom-left</div><div class="lbl">Aligned bear rotation OUT</div><div class="desc">Bearish flow into negative γ. Highest-conviction breakdowns.</div></div>
+  </div>
+</div>
+
+<h2>Sector summary — Wed→Thu flow shift</h2>
+<div id="summary-table"></div>
+
+<div class="gridcol">
+  <div>
+    <h2>Whale clusters by sector (≥ $1M, today)</h2>
+    <div id="whale-table"></div>
+  </div>
+  <div>
+    <h2>Rotation reading</h2>
+    <div class="note" id="reading"></div>
+  </div>
+</div>
+
+<div class="disc">
+<b>Methodology.</b> For each sector S, flow_net_S = Σ(net_ratio × premium) / Σ(premium) across TradeEcho's trend rows; gamma_S = Σ Net GEX / Σ |Net GEX| across the sector's tickers in Skylit's this-week table. Sector mapping uses TradeEcho's fixed SECTOR_MAP. Sectors with no Skylit coverage (Clean Energy, Healthcare, Sector/Bond ETFs) can't be y-plotted. Static snapshot — refresh manually when source artifacts update.<br><br>
+Source artifacts: <code>tradeecho-daily-monitor</code> 2026-06-04 21:36 UTC · <code>skylit-gex-vex</code> 2026-06-04 16:02 UTC (mid-day capture). Baseline: 2026-06-03 captures. Standard options-positioning conventions — information only, not investment advice.
+</div>
+
+<script id="payload" type="application/json">
+{
+  "sectors": [
+    {"id":"semi","name":"Semiconductors","short":"Semis","tickers":"NVDA, AVGO, MRVL, SNDK","flow_today":-0.008,"flow_prior":0.099,"gamma":0.952,"premium":41.32,"sweep":44,"flag":null},
+    {"id":"opt","name":"Optical / Networking","short":"Optical","tickers":"AAOI, LITE","flow_today":0.110,"flow_prior":0.085,"gamma":-0.389,"premium":29.01,"sweep":26,"flag":null},
+    {"id":"comm_etf","name":"Commodity ETFs","short":"Commod ETFs","tickers":"GLD, SLV","flow_today":-0.171,"flow_prior":-0.339,"gamma":0.017,"premium":22.88,"sweep":38,"flag":null},
+    {"id":"crypto_etf","name":"Crypto ETFs","short":"Cryp ETFs","tickers":"IBIT, ETHA","flow_today":0.036,"flow_prior":-0.118,"gamma":1.000,"premium":20.30,"sweep":45,"flag":null},
+    {"id":"miners","name":"Crypto Miners","short":"Miners","tickers":"WULF, CIFR, CLSK, IREN, HIVE, RIOT","flow_today":0.170,"flow_prior":0.323,"gamma":0.544,"premium":10.89,"sweep":56,"flag":null},
+    {"id":"sec_etf","name":"Sector / Bond ETFs","short":"Sec/Bd","tickers":"XLF, XLU, HYG","flow_today":-0.243,"flow_prior":-0.246,"gamma":null,"premium":11.59,"sweep":72,"flag":"no Skylit; XLF dominates with $4.4M call-write whales"},
+    {"id":"aero","name":"Aerospace","short":"Aero","tickers":"RKLB","flow_today":-0.260,"flow_prior":-0.303,"gamma":1.000,"premium":1.80,"sweep":26,"flag":"single ticker; γ flipped from −1.0 to +1.0"},
+    {"id":"hlt","name":"Healthcare","short":"Hlth","tickers":"HIMS","flow_today":-0.243,"flow_prior":-0.440,"gamma":null,"premium":0.42,"sweep":50,"flag":"single ticker, no Skylit"},
+    {"id":"clean","name":"Nuclear / Clean Energy","short":"Clean En.","tickers":"EOSE, SMR, OKLO","flow_today":-0.501,"flow_prior":0.056,"gamma":null,"premium":0.37,"sweep":56,"flag":"no Skylit; tiny book = noisy"}
+  ],
+  "whales": [
+    {"sector":"Sector / Bond ETFs","tk":"XLF","desc":"2027-01-15 $55 CALL — AT_BID","prem":2.44,"dir":"BEAR","note":"BIGGEST ticket today — long-dated financial bear"},
+    {"sector":"Commodity ETFs","tk":"GLD","desc":"2026-06-12 $411 CALL — AT_BID SWEEP","prem":2.11,"dir":"BEAR","note":"GLD bear continues; spot pinned at $411"},
+    {"sector":"Sector / Bond ETFs","tk":"XLF","desc":"2026-09-18 $55 CALL — AT_BID","prem":1.96,"dir":"BEAR","note":"More XLF call-writes (same strike)"},
+    {"sector":"Crypto ETFs","tk":"IBIT","desc":"2028-12-15 $36 CALL — AT_ASK SWEEP","prem":1.85,"dir":"BULL","note":"Long-dated IBIT bull (flow_score +90)"},
+    {"sector":"Optical / Networking","tk":"LITE","desc":"2026-12-18 $1000 CALL — AT_ASK SWEEP","prem":1.56,"dir":"BULL","note":"Offsetting bull whale"},
+    {"sector":"Optical / Networking","tk":"LITE","desc":"2026-12-18 $1000 CALL — AT_BID SWEEP","prem":1.55,"dir":"BEAR","note":"Offsetting bear whale, same strike"},
+    {"sector":"Semiconductors","tk":"MRVL","desc":"2026-09-18 $270 CALL — AT_BID","prem":1.34,"dir":"BEAR","note":"Far-ITM call-write"},
+    {"sector":"Optical / Networking","tk":"LITE","desc":"2026-08-21 $640 PUT — AT_ASK","prem":1.09,"dir":"BEAR","note":"Deep-OTM put-buy bear hedge"},
+    {"sector":"Commodity ETFs","tk":"GLD","desc":"2026-09-18 $375 PUT — AT_MIDPOINT","prem":1.09,"dir":"NEUT","note":"Mid-fill, direction unclear"}
+  ]
+}
+</script>
+
+<script>
+const D = JSON.parse(document.getElementById('payload').textContent);
+
+function quadrantOf(x, y){
+  if (x==null || y==null) return null;
+  if (x>=0 && y>=0) return 'tr';
+  if (x>=0 && y<0) return 'br';
+  if (x<0 && y>=0) return 'tl';
+  return 'bl';
+}
+const QCOL = {
+  tr:{fill:'rgba(34,197,94,0.55)', stroke:'#22c55e', label:'Supported bull'},
+  br:{fill:'rgba(6,182,212,0.55)', stroke:'#06b6d4', label:'Momentum bull'},
+  tl:{fill:'rgba(245,158,11,0.55)', stroke:'#f59e0b', label:'Bear defended'},
+  bl:{fill:'rgba(239,68,68,0.55)', stroke:'#ef4444', label:'Aligned bear'}
+};
+
+const plottable = D.sectors.filter(s => s.flow_today!=null && s.gamma!=null);
+
+function radiusFor(prem){
+  const r = Math.sqrt(Math.max(prem,0.5)) * 2.1;
+  return Math.min(30, Math.max(7, r));
+}
+
+const quadrantBgPlugin = {
+  id:'qbg',
+  beforeDatasetsDraw(chart){
+    const {ctx, chartArea, scales:{x,y}} = chart;
+    const x0 = x.getPixelForValue(0), y0 = y.getPixelForValue(0);
+    const fill = (xs,xe,ys,ye,c) => { ctx.save(); ctx.fillStyle=c; ctx.fillRect(xs, ys, xe-xs, ye-ys); ctx.restore(); };
+    fill(x0, chartArea.right, chartArea.top, y0, 'rgba(34,197,94,0.06)');
+    fill(x0, chartArea.right, y0, chartArea.bottom, 'rgba(6,182,212,0.06)');
+    fill(chartArea.left, x0, chartArea.top, y0, 'rgba(245,158,11,0.06)');
+    fill(chartArea.left, x0, y0, chartArea.bottom, 'rgba(239,68,68,0.06)');
+    ctx.save();
+    ctx.strokeStyle='rgba(154,164,178,0.45)'; ctx.lineWidth=1; ctx.setLineDash([4,3]);
+    ctx.beginPath(); ctx.moveTo(x0, chartArea.top); ctx.lineTo(x0, chartArea.bottom); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(chartArea.left, y0); ctx.lineTo(chartArea.right, y0); ctx.stroke();
+    ctx.restore();
+    ctx.save();
+    ctx.fillStyle='rgba(154,164,178,0.6)'; ctx.font='10px -apple-system,sans-serif';
+    ctx.textAlign='right'; ctx.fillText('Supported bull', chartArea.right-6, chartArea.top+12);
+    ctx.fillText('Momentum bull', chartArea.right-6, chartArea.bottom-6);
+    ctx.textAlign='left'; ctx.fillText('Bear defended', chartArea.left+6, chartArea.top+12);
+    ctx.fillText('Aligned bear', chartArea.left+6, chartArea.bottom-6);
+    ctx.restore();
+  }
+};
+
+const arrowPlugin = {
+  id:'arrows',
+  afterDatasetsDraw(chart){
+    const {ctx, scales:{x,y}} = chart;
+    plottable.forEach(s => {
+      if (s.flow_prior==null) return;
+      const xT = x.getPixelForValue(s.flow_today);
+      const xF = x.getPixelForValue(s.flow_prior);
+      const yP = y.getPixelForValue(s.gamma);
+      if (Math.abs(xT-xF) < 4) return;
+      const q = quadrantOf(s.flow_today, s.gamma) || 'tr';
+      const col = QCOL[q].stroke;
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(xF, yP, radiusFor(s.premium)*0.55, 0, Math.PI*2);
+      ctx.strokeStyle='rgba(255,255,255,0.45)';
+      ctx.setLineDash([3,3]); ctx.lineWidth=1.2;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.setLineDash([4,3]);
+      ctx.moveTo(xF, yP); ctx.lineTo(xT, yP);
+      ctx.strokeStyle=col; ctx.lineWidth=1.8;
+      ctx.stroke();
+      ctx.setLineDash([]);
+      const dir = xT>xF ? 1 : -1;
+      const hx = xT - dir*6;
+      ctx.beginPath();
+      ctx.moveTo(xT, yP);
+      ctx.lineTo(hx, yP-5);
+      ctx.lineTo(hx, yP+5);
+      ctx.closePath();
+      ctx.fillStyle=col;
+      ctx.fill();
+      ctx.restore();
+    });
+    ctx.save();
+    ctx.font='600 11px -apple-system,sans-serif';
+    ctx.fillStyle='#e5e7eb';
+    plottable.forEach(s => {
+      const xT = x.getPixelForValue(s.flow_today);
+      const yP = y.getPixelForValue(s.gamma);
+      const r = radiusFor(s.premium);
+      ctx.textAlign='center';
+      ctx.fillText(s.short, xT, yP - r - 4);
+    });
+    ctx.restore();
+  }
+};
+
+const bubbleData = plottable.map(s => {
+  const q = quadrantOf(s.flow_today, s.gamma);
+  return {
+    x: s.flow_today,
+    y: s.gamma,
+    r: radiusFor(s.premium),
+    _sector: s,
+    _quadrant: q
+  };
+});
+
+new Chart(document.getElementById('qchart').getContext('2d'), {
+  type:'bubble',
+  data:{ datasets:[{
+    label:'Sector',
+    data: bubbleData,
+    backgroundColor: ctx => QCOL[ctx.raw._quadrant].fill,
+    borderColor: ctx => QCOL[ctx.raw._quadrant].stroke,
+    borderWidth: 2
+  }]},
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    layout:{padding:8},
+    plugins:{
+      legend:{display:false},
+      tooltip:{
+        callbacks:{
+          title: items => items[0].raw._sector.name,
+          label: ctx => {
+            const s = ctx.raw._sector;
+            const lines = [
+              'Flow net Thu: ' + (s.flow_today>=0?'+':'') + (s.flow_today*100).toFixed(1) + '%',
+              'Flow net Wed: ' + (s.flow_prior==null ? 'n/a' : ((s.flow_prior>=0?'+':'') + (s.flow_prior*100).toFixed(1) + '%')),
+            ];
+            if (s.flow_prior!=null) lines.push('Δ flow: ' + ((s.flow_today-s.flow_prior)>=0?'+':'') + ((s.flow_today-s.flow_prior)*100).toFixed(1) + ' pp');
+            lines.push('Gamma posture: ' + (s.gamma>=0?'+':'') + s.gamma.toFixed(2));
+            lines.push('Premium: $' + s.premium.toFixed(1) + 'M');
+            lines.push('Sweep%: ' + s.sweep + '%');
+            lines.push('Tickers: ' + s.tickers);
+            lines.push('Quadrant: ' + QCOL[ctx.raw._quadrant].label);
+            return lines;
+          }
+        }
+      }
+    },
+    scales:{
+      x:{
+        min:-1, max:1,
+        title:{display:true, text:'Flow net ratio (TradeEcho, premium-weighted)', color:'#c9d1d9'},
+        ticks:{color:'#9aa4b2', callback:v=> (v>=0?'+':'') + v.toFixed(1)},
+        grid:{color:'rgba(48,54,61,0.5)'}
+      },
+      y:{
+        min:-1, max:1,
+        title:{display:true, text:'Gamma posture (Skylit, Σ GEX / Σ |GEX|)', color:'#c9d1d9'},
+        ticks:{color:'#9aa4b2', callback:v=> (v>=0?'+':'') + v.toFixed(1)},
+        grid:{color:'rgba(48,54,61,0.5)'}
+      }
+    }
+  },
+  plugins:[quadrantBgPlugin, arrowPlugin]
+});
+
+function quadPill(q){
+  if (q==null) return '<span class="pill qpill-na">n/a</span>';
+  return `<span class="pill qpill-${q}">${QCOL[q].label}</span>`;
+}
+function fmtPct(v){ if (v==null) return '<span class="mut">—</span>'; const s = v>=0?'+':''; return s + (v*100).toFixed(1) + '%'; }
+function fmtDelta(today, prior){
+  if (today==null || prior==null) return '<span class="mut">—</span>';
+  const d = today - prior;
+  const cls = d>0?'delta-bull':d<0?'delta-bear':'mut';
+  const s = d>=0?'+':'';
+  return `<span class="${cls}">${s}${(d*100).toFixed(1)} pp</span>`;
+}
+function fmtGamma(v){ if (v==null) return '<span class="mut">—</span>'; const s = v>=0?'+':''; return s + v.toFixed(2); }
+
+const tbl = ['<table><thead><tr>',
+  '<th>Sector</th><th>Tickers</th>',
+  '<th class="r">Flow Thu</th><th class="r">Flow Wed</th><th class="r">Δ flow</th>',
+  '<th class="r">Gamma</th><th class="r">Premium $M</th><th class="r">Swp%</th>',
+  '<th>Quadrant</th><th>Note</th>',
+  '</tr></thead><tbody>'];
+const sortedSecs = D.sectors.slice().sort((a,b)=> (b.premium||0) - (a.premium||0));
+for (const s of sortedSecs){
+  const q = s.flow_today!=null && s.gamma!=null ? quadrantOf(s.flow_today, s.gamma) : null;
+  tbl.push(`<tr>
+    <td><b>${s.name}</b></td>
+    <td class="mut">${s.tickers}</td>
+    <td class="r">${fmtPct(s.flow_today)}</td>
+    <td class="r mut">${fmtPct(s.flow_prior)}</td>
+    <td class="r">${fmtDelta(s.flow_today, s.flow_prior)}</td>
+    <td class="r">${fmtGamma(s.gamma)}</td>
+    <td class="r">$${(s.premium||0).toFixed(1)}M</td>
+    <td class="r mut">${s.sweep!=null ? s.sweep+'%' : '—'}</td>
+    <td>${quadPill(q)}</td>
+    <td class="mut">${s.flag || ''}</td>
+  </tr>`);
+}
+tbl.push('</tbody></table>');
+document.getElementById('summary-table').innerHTML = tbl.join('');
+
+function dirCls(d){ return d==='BULL'?'pos':d==='BEAR'?'neg':'mut'; }
+const whtbl = ['<table><thead><tr>',
+  '<th>Sector</th><th>Ticker</th><th>Ticket</th><th class="r">$M</th><th>Dir</th><th>Note</th>',
+  '</tr></thead><tbody>'];
+for (const w of D.whales){
+  whtbl.push(`<tr>
+    <td>${w.sector}</td>
+    <td><span class="tk">${w.tk}</span></td>
+    <td>${w.desc}</td>
+    <td class="r"><b>$${w.prem.toFixed(2)}M</b></td>
+    <td><b class="${dirCls(w.dir)}">${w.dir}</b></td>
+    <td class="mut">${w.note}</td>
+  </tr>`);
+}
+whtbl.push('</tbody></table>');
+document.getElementById('whale-table').innerHTML = whtbl.join('');
+
+document.getElementById('reading').innerHTML = `
+  <b>The Thu 6/4 picture.</b> The biggest single move was <b>Semiconductors crossing the y-axis from supported bull to bear-defended</b> — flow netted to roughly zero (−0.8%) as MRVL/SNDK cooled and NVDA's −41.8% bear flow dragged the average down, even though the sector gamma stayed extremely positive (+0.95 from NVDA's +121M opex-defense). It's the first time Semis hasn't been clearly bullish in the series.
+  <br><br>
+  <b>Crypto ETFs flipped from bear to bull</b> (−12% → +4%) on IBIT's $1.85M Dec-28 $36 CALL bought AT_ASK SWEEP (flow_score +90) plus ETHA at +36% net — biggest sector quadrant change today.
+  <br><br>
+  <b>Commodity ETFs cooled bear</b> (−34% → −17%) as the book halved ($40.5M → $22.9M); GLD still bear-leaning with the $2.11M Jun-12 $411 CALL-write whale but no $15M-tier ticket today. Sits top-left, defended.
+  <br><br>
+  <b>Sector/Bond ETFs surged in size</b> ($6.4M → $11.6M, +81% premium growth) on <b>two huge XLF call-writes ($2.44M Jan-27 + $1.96M Sep) totalling $4.4M of long-dated financial bear</b>. XLU contradicts with strong bull (+97%) but XLF dominates. No Skylit so off-chart, but worth flagging.
+  <br><br>
+  <b>Aerospace</b>: RKLB's flow stayed bear (−26%) but <b>Skylit γ flipped from −1.0 to +1.0</b> — the sector moved from bottom-left (aligned bear) all the way to top-left (defended) in one session. Big structural shift for one ticker.
+  <br><br>
+  <b>Optical/Networking</b> stays in bottom-left with offsetting LITE whales (bull and bear $1.5M each at the same Dec $1000 strike) cancelling out at the aggregate. <b>Crypto Miners cooled but still top-right</b> (+32% → +17%), driven by WULF's continuation bull.
+  <br><br>
+  <b>Backdrop:</b> SPY GEX exploded to +855M (the strongest opex-pin signal in the series). Rotation arrows pointing one way are likely to be muted by the structural pin until Friday's expiry clears — best to weight sector reads by gamma posture more heavily today than usual.
+`;
+</script>
+</body>
+</html>
