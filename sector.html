@@ -1,8 +1,7 @@
 <!DOCTYPE html><script type="application/json" id="cowork-artifact-meta">
 {
   "name": "Sector Rotation Tracker",
-  "schemaVersion": 1,
-  "description": "Sector rotation heatmap combining TradeEcho premium-weighted net flow (x-axis) with Skylit gamma posture Σ GEX / Σ |GEX| (y-axis). Each sector is a bubble sized by premium with Fri→Tue rotation arrows. Quadrants: top-right supported bull, bottom-right momentum bull, top-left bear defended, bottom-left aligned bear. Whale-cluster overlay confirms the aggregate read per sector. Snapshot from 2026-06-02 captures with Fri 2026-05-29 baseline. Information only, not investment advice."
+  "schemaVersion": 1
 }
 </script>
 <html lang="en">
@@ -52,9 +51,9 @@ tr:hover td{background:#1c2128}
 </head>
 <body>
 <h1>Sector Rotation Tracker</h1>
-<div class="sub">Premium-weighted flow (TradeEcho) &times; gamma posture (Skylit) by sector, with day-over-day rotation arrows · snapshot from <b style="color:#c9d1d9">Thu 2026-06-04</b> captures (baseline: Wed 2026-06-03) · tomorrow = weekly opex</div>
+<div class="sub">Premium-weighted flow (TradeEcho) &times; gamma posture (Skylit) by sector, with day-over-day rotation arrows · snapshot from <b style="color:#c9d1d9">Mon 2026-06-08</b> close (baseline: Fri 2026-06-05) · same-session synced pair (both post-close)</div>
 
-<div class="note"><b>How to read.</b> Each bubble is a sector; <b>x</b> = premium-weighted net flow ratio (TradeEcho), <b>y</b> = gamma posture (Σ Net GEX / Σ |Net GEX| across the sector's Skylit names). Bubble size = total premium. Arrow = 1-session rotation Wed→Thu. <b>Opex backdrop:</b> SPY gamma exploded to +855M (massive pin), so today's rotation arrows are working against a powerful range-holding tape — chase moves are likely to be reversed by Friday's expiry.</div>
+<div class="note"><b>How to read.</b> Each bubble is a sector; <b>x</b> = premium-weighted net flow ratio (TradeEcho), <b>y</b> = gamma posture (Σ Net GEX / Σ |Net GEX| across the sector's Skylit names). Bubble size = total premium. Arrow = rotation Fri→Mon. <b>Tape regime:</b> SPY GEX exploded to +266M after Friday's selloff washout was followed by Monday's recovery bounce. Both index venues are now positive γ, and bullish flow (+16% net) returned across most sectors — but the heaviest single-day rotation was in Crypto Miners (+26 pp) where CLSK's premium tripled to $17M.</div>
 
 <div class="chart-wrap">
   <div class="chart-box"><canvas id="qchart"></canvas></div>
@@ -63,8 +62,8 @@ tr:hover td{background:#1c2128}
     <span><span class="sw" style="background:#06b6d4"></span>Momentum bull</span>
     <span><span class="sw" style="background:#f59e0b"></span>Bear defended</span>
     <span><span class="sw" style="background:#ef4444"></span>Aligned bear</span>
-    <span><span class="sw" style="background:rgba(255,255,255,.12);border:1px dashed rgba(255,255,255,.4)"></span>Wednesday position</span>
-    <span>→ solid bubble = Thursday</span>
+    <span><span class="sw" style="background:rgba(255,255,255,.12);border:1px dashed rgba(255,255,255,.4)"></span>Friday position</span>
+    <span>→ solid bubble = Monday</span>
   </div>
   <div class="quadrants">
     <div class="qbox q-tr"><div class="tag">▲ &nbsp; ▶ &nbsp; Top-right</div><div class="lbl">Supported bull rotation IN</div><div class="desc">Bullish flow into positive γ. Range-holding. Buy dips, fade rips.</div></div>
@@ -74,12 +73,12 @@ tr:hover td{background:#1c2128}
   </div>
 </div>
 
-<h2>Sector summary — Wed→Thu flow shift</h2>
+<h2>Sector summary — Fri→Mon flow shift</h2>
 <div id="summary-table"></div>
 
 <div class="gridcol">
   <div>
-    <h2>Whale clusters by sector (≥ $1M, today)</h2>
+    <h2>Whale clusters by sector (≥ $1M, Mon)</h2>
     <div id="whale-table"></div>
   </div>
   <div>
@@ -90,32 +89,32 @@ tr:hover td{background:#1c2128}
 
 <div class="disc">
 <b>Methodology.</b> For each sector S, flow_net_S = Σ(net_ratio × premium) / Σ(premium) across TradeEcho's trend rows; gamma_S = Σ Net GEX / Σ |Net GEX| across the sector's tickers in Skylit's this-week table. Sector mapping uses TradeEcho's fixed SECTOR_MAP. Sectors with no Skylit coverage (Clean Energy, Healthcare, Sector/Bond ETFs) can't be y-plotted. Static snapshot — refresh manually when source artifacts update.<br><br>
-Source artifacts: <code>tradeecho-daily-monitor</code> 2026-06-04 21:36 UTC · <code>skylit-gex-vex</code> 2026-06-04 16:02 UTC (mid-day capture). Baseline: 2026-06-03 captures. Standard options-positioning conventions — information only, not investment advice.
+Source artifacts: <code>tradeecho-daily-monitor</code> 2026-06-08 20:13 UTC + <code>skylit-gex-vex</code> 2026-06-08 20:11 UTC (both post-close, same-session). Baseline: 2026-06-05 captures. Standard options-positioning conventions — information only, not investment advice.
 </div>
 
 <script id="payload" type="application/json">
 {
   "sectors": [
-    {"id":"semi","name":"Semiconductors","short":"Semis","tickers":"NVDA, AVGO, MRVL, SNDK","flow_today":-0.008,"flow_prior":0.099,"gamma":0.952,"premium":41.32,"sweep":44,"flag":null},
-    {"id":"opt","name":"Optical / Networking","short":"Optical","tickers":"AAOI, LITE","flow_today":0.110,"flow_prior":0.085,"gamma":-0.389,"premium":29.01,"sweep":26,"flag":null},
-    {"id":"comm_etf","name":"Commodity ETFs","short":"Commod ETFs","tickers":"GLD, SLV","flow_today":-0.171,"flow_prior":-0.339,"gamma":0.017,"premium":22.88,"sweep":38,"flag":null},
-    {"id":"crypto_etf","name":"Crypto ETFs","short":"Cryp ETFs","tickers":"IBIT, ETHA","flow_today":0.036,"flow_prior":-0.118,"gamma":1.000,"premium":20.30,"sweep":45,"flag":null},
-    {"id":"miners","name":"Crypto Miners","short":"Miners","tickers":"WULF, CIFR, CLSK, IREN, HIVE, RIOT","flow_today":0.170,"flow_prior":0.323,"gamma":0.544,"premium":10.89,"sweep":56,"flag":null},
-    {"id":"sec_etf","name":"Sector / Bond ETFs","short":"Sec/Bd","tickers":"XLF, XLU, HYG","flow_today":-0.243,"flow_prior":-0.246,"gamma":null,"premium":11.59,"sweep":72,"flag":"no Skylit; XLF dominates with $4.4M call-write whales"},
-    {"id":"aero","name":"Aerospace","short":"Aero","tickers":"RKLB","flow_today":-0.260,"flow_prior":-0.303,"gamma":1.000,"premium":1.80,"sweep":26,"flag":"single ticker; γ flipped from −1.0 to +1.0"},
-    {"id":"hlt","name":"Healthcare","short":"Hlth","tickers":"HIMS","flow_today":-0.243,"flow_prior":-0.440,"gamma":null,"premium":0.42,"sweep":50,"flag":"single ticker, no Skylit"},
-    {"id":"clean","name":"Nuclear / Clean Energy","short":"Clean En.","tickers":"EOSE, SMR, OKLO","flow_today":-0.501,"flow_prior":0.056,"gamma":null,"premium":0.37,"sweep":56,"flag":"no Skylit; tiny book = noisy"}
+    {"id":"semi","name":"Semiconductors","short":"Semis","tickers":"NVDA, AVGO, MRVL, SNDK","flow_today":0.310,"flow_prior":0.372,"gamma":0.977,"premium":48.08,"sweep":28,"flag":null},
+    {"id":"comm_etf","name":"Commodity ETFs","short":"Commod ETFs","tickers":"GLD, SLV","flow_today":0.019,"flow_prior":-0.090,"gamma":1.000,"premium":33.26,"sweep":48,"flag":"$11M GLD $395 PUT war"},
+    {"id":"miners","name":"Crypto Miners","short":"Miners","tickers":"WULF, CIFR, CLSK, IREN, HIVE, RIOT","flow_today":0.388,"flow_prior":0.128,"gamma":-0.704,"premium":30.40,"sweep":68,"flag":"CLSK book tripled $5.85M→$17M"},
+    {"id":"opt","name":"Optical / Networking","short":"Optical","tickers":"AAOI, LITE","flow_today":-0.065,"flow_prior":-0.037,"gamma":0.333,"premium":28.22,"sweep":22,"flag":null},
+    {"id":"crypto_etf","name":"Crypto ETFs","short":"Cryp ETFs","tickers":"IBIT, ETHA","flow_today":0.062,"flow_prior":0.019,"gamma":1.000,"premium":18.42,"sweep":65,"flag":null},
+    {"id":"sec_etf","name":"Sector / Bond ETFs","short":"Sec/Bd","tickers":"XLF, XLU, HYG","flow_today":0.136,"flow_prior":-0.402,"gamma":null,"premium":3.63,"sweep":81,"flag":"no Skylit; +54 pp biggest unplottable flip"},
+    {"id":"aero","name":"Aerospace","short":"Aero","tickers":"RKLB","flow_today":-0.074,"flow_prior":-0.247,"gamma":1.000,"premium":3.18,"sweep":35,"flag":"single ticker"},
+    {"id":"clean","name":"Nuclear / Clean Energy","short":"Clean En.","tickers":"EOSE, SMR, OKLO","flow_today":-0.176,"flow_prior":1.000,"gamma":null,"premium":1.43,"sweep":56,"flag":"no Skylit; tiny book"},
+    {"id":"hlt","name":"Healthcare","short":"Hlth","tickers":"HIMS","flow_today":-0.262,"flow_prior":-0.101,"gamma":null,"premium":0.15,"sweep":40,"flag":"single ticker, no Skylit, tiny"}
   ],
   "whales": [
-    {"sector":"Sector / Bond ETFs","tk":"XLF","desc":"2027-01-15 $55 CALL — AT_BID","prem":2.44,"dir":"BEAR","note":"BIGGEST ticket today — long-dated financial bear"},
-    {"sector":"Commodity ETFs","tk":"GLD","desc":"2026-06-12 $411 CALL — AT_BID SWEEP","prem":2.11,"dir":"BEAR","note":"GLD bear continues; spot pinned at $411"},
-    {"sector":"Sector / Bond ETFs","tk":"XLF","desc":"2026-09-18 $55 CALL — AT_BID","prem":1.96,"dir":"BEAR","note":"More XLF call-writes (same strike)"},
-    {"sector":"Crypto ETFs","tk":"IBIT","desc":"2028-12-15 $36 CALL — AT_ASK SWEEP","prem":1.85,"dir":"BULL","note":"Long-dated IBIT bull (flow_score +90)"},
-    {"sector":"Optical / Networking","tk":"LITE","desc":"2026-12-18 $1000 CALL — AT_ASK SWEEP","prem":1.56,"dir":"BULL","note":"Offsetting bull whale"},
-    {"sector":"Optical / Networking","tk":"LITE","desc":"2026-12-18 $1000 CALL — AT_BID SWEEP","prem":1.55,"dir":"BEAR","note":"Offsetting bear whale, same strike"},
-    {"sector":"Semiconductors","tk":"MRVL","desc":"2026-09-18 $270 CALL — AT_BID","prem":1.34,"dir":"BEAR","note":"Far-ITM call-write"},
-    {"sector":"Optical / Networking","tk":"LITE","desc":"2026-08-21 $640 PUT — AT_ASK","prem":1.09,"dir":"BEAR","note":"Deep-OTM put-buy bear hedge"},
-    {"sector":"Commodity ETFs","tk":"GLD","desc":"2026-09-18 $375 PUT — AT_MIDPOINT","prem":1.09,"dir":"NEUT","note":"Mid-fill, direction unclear"}
+    {"sector":"Semiconductors","tk":"SNDK","desc":"2026-06-12 $1640 CALL — AT_ASK SWEEP","prem":3.27,"dir":"BULL","note":"BIGGEST ticket Mon — this-week bull bet"},
+    {"sector":"Crypto ETFs","tk":"ETHA","desc":"2027-01-15 $13 PUT — AT_BID","prem":2.37,"dir":"BULL","note":"Long-dated PUT-write bull (score +90)"},
+    {"sector":"Semiconductors","tk":"SNDK","desc":"2026-12-18 $2700 CALL — AT_ASK SWEEP","prem":2.05,"dir":"BULL","note":"Far-OTM upside chase"},
+    {"sector":"Semiconductors","tk":"MRVL","desc":"2026-07-24 $350 CALL — AT_ASK SWEEP","prem":1.21,"dir":"BULL","note":"Bull continuation whale"},
+    {"sector":"Commodity ETFs","tk":"GLD","desc":"2026-07-17 $395 PUT — ABOVE_ASK SWEEP","prem":1.09,"dir":"BEAR","note":"1 of 5 bear sweeps at $395 strike"},
+    {"sector":"Optical / Networking","tk":"AAOI","desc":"2026-07-17 $200 CALL — AT_BID","prem":1.09,"dir":"BEAR","note":"Call-write at-spot bear"},
+    {"sector":"Commodity ETFs","tk":"GLD","desc":"2026-07-17 $395 PUT — ABOVE_ASK SWEEP","prem":1.09,"dir":"BEAR","note":"2 of 5 bear sweeps at $395 strike"},
+    {"sector":"Commodity ETFs","tk":"GLD","desc":"2026-07-17 $395 PUT — AT_ASK SWEEP","prem":1.08,"dir":"BEAR","note":"3 of 5 bear sweeps at $395 strike"},
+    {"sector":"Commodity ETFs","tk":"GLD","desc":"2026-07-17 $395 PUT — AT_ASK SWEEP","prem":1.07,"dir":"BEAR","note":"4 of 5 bear sweeps at $395 strike"}
   ]
 }
 </script>
@@ -250,8 +249,8 @@ new Chart(document.getElementById('qchart').getContext('2d'), {
           label: ctx => {
             const s = ctx.raw._sector;
             const lines = [
-              'Flow net Thu: ' + (s.flow_today>=0?'+':'') + (s.flow_today*100).toFixed(1) + '%',
-              'Flow net Wed: ' + (s.flow_prior==null ? 'n/a' : ((s.flow_prior>=0?'+':'') + (s.flow_prior*100).toFixed(1) + '%')),
+              'Flow net Mon: ' + (s.flow_today>=0?'+':'') + (s.flow_today*100).toFixed(1) + '%',
+              'Flow net Fri: ' + (s.flow_prior==null ? 'n/a' : ((s.flow_prior>=0?'+':'') + (s.flow_prior*100).toFixed(1) + '%')),
             ];
             if (s.flow_prior!=null) lines.push('Δ flow: ' + ((s.flow_today-s.flow_prior)>=0?'+':'') + ((s.flow_today-s.flow_prior)*100).toFixed(1) + ' pp');
             lines.push('Gamma posture: ' + (s.gamma>=0?'+':'') + s.gamma.toFixed(2));
@@ -298,7 +297,7 @@ function fmtGamma(v){ if (v==null) return '<span class="mut">—</span>'; const 
 
 const tbl = ['<table><thead><tr>',
   '<th>Sector</th><th>Tickers</th>',
-  '<th class="r">Flow Thu</th><th class="r">Flow Wed</th><th class="r">Δ flow</th>',
+  '<th class="r">Flow Mon</th><th class="r">Flow Fri</th><th class="r">Δ flow</th>',
   '<th class="r">Gamma</th><th class="r">Premium $M</th><th class="r">Swp%</th>',
   '<th>Quadrant</th><th>Note</th>',
   '</tr></thead><tbody>'];
@@ -339,19 +338,17 @@ whtbl.push('</tbody></table>');
 document.getElementById('whale-table').innerHTML = whtbl.join('');
 
 document.getElementById('reading').innerHTML = `
-  <b>The Thu 6/4 picture.</b> The biggest single move was <b>Semiconductors crossing the y-axis from supported bull to bear-defended</b> — flow netted to roughly zero (−0.8%) as MRVL/SNDK cooled and NVDA's −41.8% bear flow dragged the average down, even though the sector gamma stayed extremely positive (+0.95 from NVDA's +121M opex-defense). It's the first time Semis hasn't been clearly bullish in the series.
+  <b>The Mon 6/8 picture.</b> <b>Crypto Miners broke into the momentum-bull quadrant</b> (bottom-right): flow jumped from +13% Fri to +39% Mon (Δ +26 pp), driven almost entirely by CLSK's premium tripling from $5.85M to $17M with +97% net ratio. But sector gamma posture is heavily negative (−0.70) — IREN/RIOT/CLSK all have neg γ this week, so this is a trend setup, not a fade. Chase rather than fade.
   <br><br>
-  <b>Crypto ETFs flipped from bear to bull</b> (−12% → +4%) on IBIT's $1.85M Dec-28 $36 CALL bought AT_ASK SWEEP (flow_score +90) plus ETHA at +36% net — biggest sector quadrant change today.
+  <b>Semiconductors stayed in supported-bull but cooled</b> (+37% → +31%, −6 pp). Book shrunk from $55M to $48M. NVDA's flow escalated to +70% and SNDK got the day's biggest whale ($3.27M Jun-12 $1640 CALL ASK), but AVGO exhausted (+56% → +6%) and MRVL cooled. The sector γ stays extreme at +0.98 thanks to NVDA's +81.5M defense — Friday's fragility is gone.
   <br><br>
-  <b>Commodity ETFs cooled bear</b> (−34% → −17%) as the book halved ($40.5M → $22.9M); GLD still bear-leaning with the $2.11M Jun-12 $411 CALL-write whale but no $15M-tier ticket today. Sits top-left, defended.
+  <b>Commodity ETFs flipped to slight bull</b> (−9% → +2%, Δ +11 pp) with the second-biggest book at $33M, but the headline is the <b>$11M institutional $395 GLD PUT war</b>: 5 bear SWEEPs ABOVE_ASK/AT_ASK vs 5 bull AT_BID PUT-writes at the same Jul-17 strike. Most concentrated single-strike battle in the series. Both venues have positive γ so the structural defense is intact — wait for the war to resolve.
   <br><br>
-  <b>Sector/Bond ETFs surged in size</b> ($6.4M → $11.6M, +81% premium growth) on <b>two huge XLF call-writes ($2.44M Jan-27 + $1.96M Sep) totalling $4.4M of long-dated financial bear</b>. XLU contradicts with strong bull (+97%) but XLF dominates. No Skylit so off-chart, but worth flagging.
+  <b>Crypto ETFs continuation bull</b> (+2% → +6%) with ETHA's $2.37M long-dated PUT-write whale. Top-right defended.
   <br><br>
-  <b>Aerospace</b>: RKLB's flow stayed bear (−26%) but <b>Skylit γ flipped from −1.0 to +1.0</b> — the sector moved from bottom-left (aligned bear) all the way to top-left (defended) in one session. Big structural shift for one ticker.
+  <b>Off-chart movers worth noting:</b> Sector/Bond ETFs jumped from −40% to +14% (<b>Δ +54 pp, biggest single-day flow shift today</b>) but the sector has no Skylit coverage so it can't be plotted. XLU flipped from STRONG BEAR Fri to STRONG BULL Mon. Nuclear/Clean Energy flipped from +1.0 to −0.18 but on tiny premium ($1.4M) — noisy.
   <br><br>
-  <b>Optical/Networking</b> stays in bottom-left with offsetting LITE whales (bull and bear $1.5M each at the same Dec $1000 strike) cancelling out at the aggregate. <b>Crypto Miners cooled but still top-right</b> (+32% → +17%), driven by WULF's continuation bull.
-  <br><br>
-  <b>Backdrop:</b> SPY GEX exploded to +855M (the strongest opex-pin signal in the series). Rotation arrows pointing one way are likely to be muted by the structural pin until Friday's expiry clears — best to weight sector reads by gamma posture more heavily today than usual.
+  <b>Backdrop:</b> SPY GEX rebuilt to +266M after Friday's selloff washout. Both index venues now positive γ. Rotation arrows are operating with structural support again — chase moves into the right quadrants are likelier to stick than they were three sessions ago. Miners' momentum entry (bottom-right) is the most aggressive new rotation IN.
 `;
 </script>
 </body>
