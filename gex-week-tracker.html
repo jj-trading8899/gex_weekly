@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEX Week Tracker — Jul 17 OpEx</title>
+<style>
+  :root{--bg:#0b0f14;--card:#121820;--line:#1f2937;--ink:#e5e7eb;--mut:#9ca3af;--gold:#f5c542;--green:#34d399;--red:#f87171;--blue:#60a5fa;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:20px;font-size:13px}
+  h1{font-size:17px;margin-bottom:2px}
+  .sub{color:var(--mut);font-size:11px;margin-bottom:14px}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+  .toolbar button{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:5px 12px;border-radius:6px;cursor:pointer;font:inherit}
+  .toolbar button.active{border-color:var(--gold);color:var(--gold)}
+  textarea{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:6px;font:inherit;width:280px;height:34px;vertical-align:middle;resize:vertical}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+  .card.dim{opacity:.45}
+  .hd{display:flex;justify-content:space-between;align-items:baseline}
+  .tk{font-size:15px;font-weight:700}
+  .badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px}
+  .pat{color:var(--gold);font-size:10px;margin:2px 0 4px}
+  .status{font-size:11px;font-weight:700;margin:4px 0 6px}
+  svg{width:100%;display:block}
+  input.px{background:#0b0f14;border:1px solid var(--line);color:var(--blue);font:inherit;font-weight:700;width:82px;padding:3px 6px;border-radius:5px}
+  .row{display:flex;gap:14px;align-items:center;margin-top:6px;font-size:11px;color:var(--mut);flex-wrap:wrap}
+  .row b{color:var(--ink)}
+  .ft{color:var(--mut);font-size:10px;margin-top:16px;border-top:1px solid var(--line);padding-top:8px}
+</style>
+</head>
+<body>
+<h1>GEX Week Tracker <span style="color:var(--mut);font-weight:400">— 20 names vs Skylit Heatseeker levels</span></h1>
+<div class="sub">Levels: Skylit /api/data 2026-07-05 20:41 UTC, near-window (exp ≤ Jul 17) · SPXW ref 7483.24 · squeeze 2026-07-04 · <b id="countdown"></b></div>
+<div class="toolbar">
+  <button id="fAll" class="active">All</button>
+  <button id="fGO">GO</button>
+  <button id="fCOND">CONDITIONAL</button>
+  <textarea id="bulk" placeholder="Bulk paste: TICKER price per line (e.g. CELH 34.12)"></textarea>
+  <button id="applyBulk">Apply prices</button>
+  <button id="clearPx">Reset</button>
+  <span id="saved" style="color:var(--mut);font-size:11px"></span>
+</div>
+<div class="grid" id="grid"></div>
+<div class="ft">Statuses recompute from the price you enter (persisted locally). STOPPED = at/below stop · WAIT = below reclaim trigger · ENTRY = in zone / trigger crossed · IN PLAY = past entry, below target · TARGET = at/above target. Window: now → Jul 17 OpEx, flat by Jul 24. Structural read of dealer positioning — not financial advice.</div>
+<script>
+const T = [
+ {t:"CELH",sq:8,v:"CONDITIONAL",pat:"VOL CATCH",spot:33.48,flip:34.05,king:35,ksz:"$2.58M",stop:33.00,tgt:35,entry:{type:"reclaim",lvl:34.05},pos:[[35,2584687],[30,267346],[33,246281]],neg:[[32,-980488],[27.5,-146139]]},
+ {t:"DKNG",sq:7,v:"GO",pat:"MAGNET DRIFT",spot:25.93,flip:15.02,king:30,ksz:"$4.19M",stop:24.90,tgt:30,entry:{type:"zone",lo:25.90,hi:26.00},pos:[[30,4190972],[22.5,1100610],[27.5,890367]],neg:[[25.5,-395716],[28,-219387]]},
+ {t:"LULU",sq:7,v:"CONDITIONAL",pat:"VOL CATCH",spot:118.12,flip:120.24,king:130,ksz:"$0.77M",stop:118.00,tgt:130,entry:{type:"reclaim",lvl:120.30},pos:[[130,769532],[105,198040],[122,165342]],neg:[[121,-248549],[115,-239853],[124,-149216]]},
+ {t:"BABA",sq:7,v:"GO",pat:"MAGNET DRIFT",spot:96.41,flip:75.09,king:100,ksz:"$4.54M",stop:92.90,tgt:100,entry:{type:"zone",lo:96.00,hi:96.50},pos:[[100,4543333],[102,678806],[93,567443]],neg:[[110,-379830]]},
+ {t:"ROKU",sq:7,v:"CONDITIONAL",pat:"PIN LOCK",spot:141.99,flip:null,king:140,ksz:"$1.26M",stop:137.00,tgt:145,entry:{type:"zone",lo:140.00,hi:140.40},pos:[[140,1261768],[130,275264],[150,167336]],neg:[[145,-699192],[142,-215988],[148,-163698]]},
+ {t:"CART",sq:7,v:"CONDITIONAL",pat:"VOL CATCH",spot:45.85,flip:46.19,king:48,ksz:"$3.94M",stop:45.00,tgt:48,entry:{type:"reclaim",lvl:46.25},pos:[[48,3937381],[50,45221]],neg:[[46,-174286],[45,-136453],[43,-97378]]},
+ {t:"EBAY",sq:7,v:"GO",pat:"MAGNET DRIFT",spot:115.38,flip:98.69,king:120,ksz:"$2.46M",stop:113.80,tgt:120,entry:{type:"zone",lo:115.00,hi:115.50},pos:[[120,2456721],[110,634290],[115,502140]],neg:[[116,-42924]]},
+ {t:"CRWD",sq:7,v:"GO",pat:"SHELF RIDE",spot:194.46,flip:null,king:190,ksz:"$0.96M",stop:188.50,tgt:200,entry:{type:"zone",lo:190.00,hi:191.00},pos:[[190,960113],[185,199189]],neg:[]},
+ {t:"GTLB",sq:7,v:"CONDITIONAL",pat:"VOL CATCH",spot:31.24,flip:32.04,king:32.5,ksz:"$0.49M",stop:31.40,tgt:35,entry:{type:"reclaim",lvl:32.10},pos:[[32.5,492150],[32,105005],[28.5,92763]],neg:[[30,-118401],[27.5,-143956]]},
+ {t:"WDAY",sq:7,v:"CONDITIONAL",pat:"ENGINEERED CASCADE",spot:135.58,flip:137.70,king:140,ksz:"$1.01M",stop:135.90,tgt:140,entry:{type:"reclaim",lvl:137.80},pos:[[140,1014454],[120,141294]],neg:[[130,-358724],[143,-186760],[135,-136021]]},
+ {t:"BP",sq:7,v:"GO",pat:"LADDERED MAGNET",spot:36.99,flip:36.44,king:38,ksz:"$4.19M",stop:36.40,tgt:38,entry:{type:"zone",lo:37.00,hi:37.10},pos:[[38,4188131],[35,779674],[42,766911]],neg:[[39,-1244651],[37,-949287],[41,-292926]]},
+ {t:"FCEL",sq:7,v:"GO",pat:"MAGNET DRIFT",spot:28.06,flip:24.58,king:30,ksz:"$0.53M",stop:26.80,tgt:30,entry:{type:"zone",lo:28.00,hi:28.10},pos:[[30,525194],[25,124532],[23,111985]],neg:[[21,-51020],[22,-35890]]},
+ {t:"NRG",sq:7,v:"GO",pat:"PIN LOCK",spot:139.63,flip:138.47,king:140,ksz:"$0.58M",stop:138.40,tgt:140,entry:{type:"zone",lo:139.00,hi:139.60},pos:[[140,580281],[138,22910]],neg:[[135,-170505],[160,-267148]]},
+ {t:"OXY",sq:7,v:"CONDITIONAL",pat:"GATED MAGNET",spot:48.81,flip:49.68,king:50,ksz:"$6.10M",stop:48.90,tgt:50,entry:{type:"reclaim",lvl:49.70},pos:[[50,6097653],[47.5,416422],[55,393888]],neg:[[51,-2670108],[49,-1428917],[49.5,-552319]]},
+ {t:"RTX",sq:7,v:"GO",pat:"SHELF RIDE",spot:198.78,flip:195.28,king:197.5,ksz:"$0.62M",stop:195.20,tgt:205,entry:{type:"zone",lo:197.60,hi:198.50},pos:[[197.5,616326],[190,104524]],neg:[[195,-238219],[205,-78845]]},
+ {t:"UPS",sq:7,v:"GO",pat:"PIN LOCK",spot:110.69,flip:100.63,king:110,ksz:"$6.65M",stop:109.30,tgt:111.10,entry:{type:"zone",lo:110.00,hi:110.70},pos:[[110,6654824],[105,762466],[114,642767]],neg:[[111,-453199]]},
+ {t:"BAC",sq:7,v:"CONDITIONAL",pat:"ENGINEERED CASCADE",spot:58.69,flip:59.77,king:60,ksz:"$13.0M",stop:58.90,tgt:60,entry:{type:"reclaim",lvl:59.80},pos:[[60,13004080],[58,1496223],[62,617740]],neg:[[59,-7045948],[57.5,-5370868],[62.5,-899823]]},
+ {t:"SYF",sq:7,v:"CONDITIONAL",pat:"THIN TAPE",spot:76.53,flip:75.20,king:77.5,ksz:"$0.10M",stop:75.10,tgt:77.5,entry:{type:"zone",lo:76.40,hi:76.60},pos:[[77.5,100079],[70,7243]],neg:[[80,-44835],[75,-6154]]},
+ {t:"DXCM",sq:7,v:"GO",pat:"MAGNET DRIFT",spot:71.36,flip:null,king:75,ksz:"$0.42M",stop:68.90,tgt:75,entry:{type:"zone",lo:71.00,hi:71.40},pos:[[75,419413],[71,59855],[65,56483]],neg:[[69,-37607],[80,-21072]]},
+ {t:"CSCO",sq:7,v:"CONDITIONAL",pat:"GATED MAGNET",spot:112.39,flip:null,king:120,ksz:"$4.30M",stop:112.30,tgt:120,entry:{type:"reclaim",lvl:115.20},pos:[[120,4304305],[125,670823],[105,525530]],neg:[[115,-1411120],[111,-359866],[118,-352983]]},
+];
+const LS="gex-week-prices-v1";
+let px={}; try{px=JSON.parse(localStorage.getItem(LS)||"{}")}catch(e){}
+let filter="All";
+const fmt=v=>{const a=Math.abs(v);return a>=1e6?"$"+(a/1e6).toFixed(2)+"M":"$"+Math.round(a/1e3)+"K"};
+
+function status(d,p){
+  if(p==null||isNaN(p)) return ["NO PRICE","var(--mut)"];
+  if(p<=d.stop) return ["STOPPED / below stop","var(--red)"];
+  if(p>=d.tgt) return ["AT TARGET "+d.tgt,"var(--gold)"];
+  if(d.entry.type==="reclaim"){
+    return p>=d.entry.lvl?["ENTRY TRIGGERED > "+d.entry.lvl,"var(--green)"]:["WAIT — below "+d.entry.lvl+" trigger","var(--gold)"];
+  }
+  if(p>=d.entry.lo&&p<=d.entry.hi) return ["ENTRY ZONE "+d.entry.lo+"–"+d.entry.hi,"var(--green)"];
+  if(p>d.entry.hi) return ["IN PLAY → target "+d.tgt,"var(--green)"];
+  return ["WATCH — above stop, below entry","var(--mut)"];
+}
+
+function bar(d,p){
+  const all=[d.stop,d.tgt,d.king,d.spot,...(d.flip?[d.flip]:[]),...d.pos.map(x=>x[0]),...d.neg.map(x=>x[0]),...(p?[p]:[]),...(d.entry.type==="zone"?[d.entry.lo,d.entry.hi]:[d.entry.lvl])];
+  const lo=Math.min(...all),hi=Math.max(...all),pad=(hi-lo)*0.06||1;
+  const X=v=>18+((v-(lo-pad))/((hi+pad)-(lo-pad)))*370;
+  const maxG=Math.max(...[...d.pos,...d.neg].map(x=>Math.abs(x[1])));
+  let s=`<svg viewBox="0 0 406 96">`;
+  s+=`<line x1="18" x2="388" y1="52" y2="52" stroke="#374151"/>`;
+  if(d.entry.type==="zone"){const a=X(d.entry.lo),b=X(d.entry.hi);s+=`<rect x="${a}" y="40" width="${Math.max(b-a,3)}" height="24" fill="var(--green)" opacity="0.18"/>`;}
+  for(const[st,g]of d.neg){const h=6+Math.abs(g)/maxG*26;s+=`<rect x="${X(st)-3.5}" y="52" width="7" height="${h}" fill="var(--red)" opacity="0.8" rx="2"/><text x="${X(st)}" y="${62+h}" text-anchor="middle" font-size="8" fill="var(--red)">${st}</text>`;}
+  for(const[st,g]of d.pos){const h=6+Math.abs(g)/maxG*26,k=st===d.king;s+=`<rect x="${X(st)-3.5}" y="${52-h}" width="7" height="${h}" fill="var(--green)" ${k?'stroke="var(--gold)" stroke-width="1.5"':''} rx="2"/><text x="${X(st)}" y="${46-h}" text-anchor="middle" font-size="8" fill="${k?'var(--gold)':'var(--ink)'}">${st}${k?" 👑":""}</text>`;}
+  if(d.flip!=null)s+=`<line x1="${X(d.flip)}" x2="${X(d.flip)}" y1="14" y2="88" stroke="var(--gold)" stroke-dasharray="4 3"/><text x="${X(d.flip)}" y="10" text-anchor="middle" font-size="8" fill="var(--gold)">flip ${d.flip}</text>`;
+  s+=`<line x1="${X(d.stop)}" x2="${X(d.stop)}" y1="34" y2="70" stroke="var(--red)" stroke-width="2"/><text x="${X(d.stop)}" y="80" text-anchor="middle" font-size="8" fill="var(--red)">stop</text>`;
+  s+=`<line x1="${X(d.tgt)}" x2="${X(d.tgt)}" y1="34" y2="70" stroke="var(--green)" stroke-width="2" opacity="0.7"/>`;
+  if(p!=null&&!isNaN(p))s+=`<path d="M ${X(p)} 24 l 6 8 l -6 8 l -6 -8 z" fill="var(--blue)"/><text x="${X(p)}" y="20" text-anchor="middle" font-size="9" font-weight="700" fill="var(--blue)">${p}</text>`;
+  else s+=`<circle cx="${X(d.spot)}" cy="32" r="3" fill="var(--mut)"/><text x="${X(d.spot)}" y="24" text-anchor="middle" font-size="8" fill="var(--mut)">ref ${d.spot}</text>`;
+  return s+`</svg>`;
+}
+
+function render(){
+  const g=document.getElementById("grid");g.innerHTML="";
+  const rank={"STOPPED":0,"ENTRY":1,"IN PLAY":2,"AT TARGET":3};
+  for(const d of T){
+    if(filter!=="All"&&!d.v.startsWith(filter))continue;
+    const p=px[d.t]!=null?parseFloat(px[d.t]):null;
+    const[stTxt,stCol]=status(d,p);
+    const vc=d.v==="GO"?"var(--green)":"var(--gold)";
+    const c=document.createElement("div");c.className="card";
+    c.innerHTML=`<div class="hd"><span class="tk">${d.t} <span style="color:var(--mut);font-size:10px">sq ${d.sq}</span></span>
+      <span class="badge" style="background:${vc}22;color:${vc}">${d.v}</span></div>
+      <div class="pat">${d.pat} — King ${d.king} POS ${d.ksz}</div>
+      <div class="status" style="color:${stCol}">● ${stTxt}</div>
+      ${bar(d,p)}
+      <div class="row"><span>live <input class="px" data-t="${d.t}" type="number" step="0.01" value="${px[d.t]??""}" placeholder="${d.spot}"></span>
+      <span>entry <b>${d.entry.type==="reclaim"?"> "+d.entry.lvl:d.entry.lo+"–"+d.entry.hi}</b></span>
+      <span>stop <b style="color:var(--red)">${d.stop}</b></span>
+      <span>tgt <b style="color:var(--green)">${d.tgt}</b></span></div>`;
+    g.appendChild(c);
+  }
+  document.querySelectorAll("input.px").forEach(i=>i.addEventListener("change",e=>{
+    const t=e.target.dataset.t,v=e.target.value;
+    if(v==="")delete px[t];else px[t]=v;
+    save();render();
+  }));
+}
+function save(){localStorage.setItem(LS,JSON.stringify(px));document.getElementById("saved").textContent="saved "+new Date().toLocaleTimeString();}
+document.getElementById("applyBulk").onclick=()=>{
+  const lines=document.getElementById("bulk").value.split(/\n|,/);
+  for(const ln of lines){const m=ln.trim().match(/^([A-Za-z]+)[\s:@=]+\$?([\d.]+)/);if(m){const t=m[1].toUpperCase();if(T.some(x=>x.t===t))px[t]=m[2];}}
+  save();render();
+};
+document.getElementById("clearPx").onclick=()=>{px={};save();render();};
+for(const[id,f]of[["fAll","All"],["fGO","GO"],["fCOND","CONDITIONAL"]]){
+  document.getElementById(id).onclick=e=>{filter=f;document.querySelectorAll(".toolbar button").forEach(b=>b.classList.remove("active"));e.target.classList.add("active");render();};
+}
+(function cd(){
+  const opex=new Date("2026-07-17T20:00:00Z"),flat=new Date("2026-07-24T20:00:00Z"),now=new Date();
+  const dd=x=>Math.max(0,Math.ceil((x-now)/864e5));
+  document.getElementById("countdown").textContent=`OpEx Jul 17 in ${dd(opex)}d · flat deadline Jul 24 in ${dd(flat)}d`;
+})();
+render();
+</script>
+</body>
+</html>
