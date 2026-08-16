@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Watchlist 2026-08-17",
+  "schemaVersion": 1,
+  "description": "Automated daily watchlist for 2026-08-17. TradeEcho + Skylit synced pair from 2026-08-15. Top 10 ranked by edge score v2 (flow strength × premium^0.35 × regime agreement × persistence × whale quality × defined-risk proximity × sweep tilt, with a liquidity floor). Information only, not investment advice."
+}
+</script>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Watchlist — 2026-08-17</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0f17;--panel:#121826;--panel2:#161b22;--line:#1f2937;--txt:#e5e7eb;--muted:#9aa4b2;--green:#22c55e;--red:#ef4444;--blue:#38bdf8;--amber:#f59e0b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:13px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;padding:16px;border-radius:12px}
+h1{font-size:21px;margin:0 0 3px;color:#f0f6fc}
+h2{font-size:15px;margin:26px 0 4px;color:#c9d1d9}
+.sub{color:var(--muted);font-size:12px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:12px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.kpi .v{font-size:17px;font-weight:700;margin-top:2px;color:#f0f6fc}
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:8px;padding:11px 14px;margin:8px 0 4px;color:#cbd5e1}
+.note b{color:#79c0ff}
+.rotnote{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;padding:11px 14px;margin:8px 0 4px;color:#cbd5e1}
+.rotnote b{color:#f0b72f}
+.rothead{list-style:none;margin:7px 0 0;padding:0}
+.rothead li{font-size:12.5px;line-height:1.55;color:#cbd5e1;display:flex;gap:8px;align-items:baseline;padding:1px 0}
+.rothead .lbl{min-width:84px;flex:0 0 auto;text-transform:uppercase;letter-spacing:.04em;font-size:10.5px;color:var(--muted);font-weight:600}
+.rothead .pos{color:var(--green)}.rothead .neg{color:var(--red)}.rothead .mut{color:var(--muted)}
+.rothead .lvl{color:#f0b72f}
+.topbox{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0 4px}
+.topbox h3{margin:0 0 8px;font-size:14px;color:#f0f6fc;font-weight:600}
+.topgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 14px}
+.toprow{display:flex;align-items:baseline;gap:8px;font-size:12.5px;line-height:1.5;color:#cbd5e1}
+.toprank{display:inline-block;min-width:22px;text-align:center;background:#1f2937;color:#f0f6fc;border-radius:5px;padding:1px 5px;font-weight:700;font-size:11px}
+.toprow.tier-top .toprank{background:#1d4ed8;color:#fff}
+.toprow.tier-next .toprank{background:#374151;color:#e5e7eb}
+.toprow .ttk{font-weight:700;color:#e5e7eb}
+.toprow .ttype{color:var(--muted);font-size:11.5px}
+.tdir-bull{color:#56d364}.tdir-bear{color:#ff7b72}.tdir-rng{color:#9aa4b2}
+.thesis{color:var(--muted);font-size:12.5px;margin:2px 0 8px}
+table{width:100%;border-collapse:collapse;background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:4px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;background:#1c2128;white-space:nowrap}
+td.r,th.r{text-align:right;white-space:nowrap}
+tr:hover td{background:#1c2128}
+.tk{font-weight:700;font-size:14px}
+.rank{display:inline-block;background:#1f2937;color:#f0f6fc;border-radius:5px;padding:1px 5px;font-weight:700;font-size:10px;margin-right:4px;vertical-align:middle}
+.rank.top{background:#1d4ed8;color:#fff}
+.pos{color:var(--green)}.neg{color:var(--red)}.mut{color:var(--muted)}
+.res{color:#fca5a5}.sup{color:#86efac}.brk{color:#fca5a5}
+.gx{color:var(--muted);font-size:10px;margin-left:2px}.d{color:var(--muted);font-size:10px}
+.pill{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap}
+.bias-sb{background:#22c55e22;color:#56d364;border:1px solid #22c55e55}
+.bias-b{background:#22c55e14;color:#46c455;border:1px solid #22c55e33}
+.bias-n{background:#9aa4b220;color:#b1bac4;border:1px solid #9aa4b240}
+.bias-br{background:#f59e0b1f;color:#e3b341;border:1px solid #f59e0b44}
+.bias-sbr{background:#ef444422;color:#ff7b72;border:1px solid #ef444455}
+.g-pos{background:#22c55e1a;color:#22c55e;border:1px solid #22c55e55}
+.g-neg{background:#ef44441a;color:#ef4444;border:1px solid #ef444455}
+.g-mix{background:#f59e0b1a;color:#f59e0b;border:1px solid #f59e0b55}
+.conv{font-weight:700;font-size:10px;padding:2px 6px;border-radius:4px}
+.c-high{background:#22c55e22;color:#56d364}.c-med{background:#f59e0b1f;color:#e3b341}.c-low{background:#9aa4b220;color:#b1bac4}
+.plan{color:#cbd5e1;font-size:12px;max-width:430px;white-space:normal;line-height:1.45}
+.grp{border-radius:10px;padding:1px 0 4px;margin-top:18px}
+.disc{color:var(--muted);font-size:11px;margin-top:20px;border-top:1px solid var(--line);padding-top:10px}
+.auto-tag{display:inline-block;background:#1d4ed8;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+<h1>Watchlist — 2026-08-17 <span class="auto-tag">AUTO</span></h1>
+<div class="sub">Flow &times; Gamma overlay · <b style="color:#c9d1d9">TradeEcho</b> 2026-08-14T23:44Z + <b style="color:#c9d1d9">Skylit</b> 2026-08-14T23:37:21Z (week 2026-08-17…2026-08-17) · 18 overlap tickers · pipeline-rendered</div>
+
+<div class="note"><b>Backdrop.</b> Source date: 2026-08-15. Net daily flow: +5.1%. Per-ticker plan text is templated from the pipeline (mechanical read of bias + γ regime + levels + whales); the LLM-augment step upgrades the top-10 plans into contextual writing.</div>
+
+<div class="rotnote"><b>Headline.</b>
+<ul class="rothead"><li><span class='lbl'>Regime</span><span><b>Positive-γ.</b> SPY GEX <span class='pos'>+122.8M</span>, spot <span class='lvl'>$776</span> &gt; <span class='lvl'>$774</span> flip; SPXW <span class='neg'>-17.0M</span> &lt; <span class='lvl'>$7,796</span>. Dips dampened.</span></li><li><span class='lbl'>Flow</span><span><span class='pos'>+5.1%</span> net (C $112.5M / P $61.7M) · Mild bull tilt, broad breadth (12↑ / 6↓).</span></li><li><span class='lbl'>Top setup</span><span><b>MRVL</b> <span class='pos'>LONG</span> (#1) — levels n/a</span></li><li><span class='lbl'>Big ticket</span><span><b>$5.06M</b> SLV 2027-03 $60.00 <span class='neg'>CALL</span> at-bid.</span></li><li><span class='lbl'>Rotations</span><span>CLSK <span class='pos'>+134pp</span> bear→bull · HIMS <span class='pos'>+73pp</span> bear→bull · NVDA <span class='pos'>+57pp</span> bear→bull</span></li><li><span class='lbl'>Watch</span><span><b>AVGO</b> $12.2M bear flow vs pos-γ — momentum, not a fade.</span></li></ul></div>
+
+<div class="topbox" id="topbox"></div>
+
+<div class="topbox" id="toplevels"></div>
+
+<div class="kpis" id="kpis"></div>
+
+<div id="groups"></div>
+
+<div class="disc">Built by <code>watchlist_pipeline.py</code> from <code>tradeecho-daily-monitor</code> (2026-08-14T23:44Z) + <code>skylit-gex-vex</code> (2026-08-14T23:37:21Z). Skylit weekly levels = 2026-08-17…2026-08-17. Edge score v2: |net_ratio| × (premium/1e6)^0.35 × regime-agreement mult × persistence/flip × flow-agreeing whale quality × defined-risk proximity × sweep tilt, with a $2M liquidity floor. Standard options-positioning conventions — information only, not investment advice.</div>
+
+<script id="payload" type="application/json">{"ranking": [{"rank": 1, "tk": "MRVL", "dir": "LONG", "type": "aligned bull", "trigger": "levels n/a"}, {"rank": 2, "tk": "SLV", "dir": "SHORT", "type": "aligned bear", "trigger": "break $58.00 confirms \u00b7 fade $65.00 rip"}, {"rank": 3, "tk": "NVDA", "dir": "LONG", "type": "aligned bull", "trigger": "hold $220 buy-dip \u00b7 $218 break voids"}, {"rank": 4, "tk": "XLF", "dir": "LONG", "type": "aligned bull", "trigger": "levels n/a"}, {"rank": 5, "tk": "AVGO", "dir": "SHORT", "type": "conflict bear", "trigger": "break $392 confirms \u00b7 fade $400 rip"}, {"rank": 6, "tk": "ETHA", "dir": "SHORT", "type": "aligned bear", "trigger": "levels n/a"}, {"rank": 7, "tk": "RIOT", "dir": "SHORT", "type": "aligned bear", "trigger": "levels n/a"}, {"rank": 8, "tk": "IREN", "dir": "SHORT", "type": "aligned bear", "trigger": "levels n/a"}, {"rank": 9, "tk": "GLD", "dir": "SHORT", "type": "range", "trigger": "break $399 confirms \u00b7 fade $404 rip"}, {"rank": 10, "tk": "SNDK", "dir": "LONG", "type": "range", "trigger": "levels n/a"}], "kpis": [["Tickers watched", "18"], ["Top-5 setups", "MRVL \u00b7 SLV \u00b7 NVDA \u00b7 XLF \u00b7 AVGO"], ["Net flow 15/", "+5.1%"], ["Total premium", "$174.2M"], ["Sweeps", "597 (40%)"], ["Tickers (TE)", "24"]], "groups": [{"title": "1 \u00b7 Bullish flow + positive \u03b3 above flip \u2014 aligned bull", "thesis": "Bull flow into pos \u03b3 defense, spot above flip. Cleanest fade-the-dip longs.", "rows": [{"tk": "MRVL", "spot": 220.86, "day": 0.0, "bias": "STRONG BULLISH", "biasc": "sb", "net": 49.96, "prem": "$11.64M", "swp": 29, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "HIGH", "convc": "c-high", "plan": "Cleanest bull on the board \u2014 net flow held at +50.0%, essentially unchanged from +49.6% prior (\u0394 +0.4), on $11.6M premium with max persistence. The two lead tickets both lean long: a $2.52M put written at the bid and a $1.14M call lifted at the ask. No Skylit levels here, so trade the flow directly \u2014 stay long while net holds above +40%; a fade back under +25% net would be the first real crack in the thesis."}, {"tk": "NVDA", "spot": 224.94, "day": -0.03, "bias": "Bullish", "biasc": "b", "net": 21.67, "prem": "$9.72M", "swp": 61, "gamma": "Positive \u03b3", "gc": "g-pos", "gex": "+41.5M", "sell": "$225", "selld": "+0.0%", "buy": "$220", "buyd": "-2.2%", "brk": "$218", "brkd": "-3.3%", "flip": "$219.40", "conv": "HIGH", "convc": "c-high", "plan": "Big sentiment flip \u2014 net swung to +21.7% from -35.0% prior (\u0394 +56.7) with 62% sweeps and a $2.23M call lifted at the ask leading. Skylit shows heavy positive gamma (GEX +41.5), spot 224.94 pinned right at the 225 sell-rip wall and well above the 219.4 flip, so expect the tape to stay orderly near here. Buy the 220 dip (-2.2%, +5.8 GEX support); losing the 217.5 break (-3.3%) drops price below flip and voids the bull setup."}, {"tk": "XLF", "spot": 57.91, "day": 0.0, "bias": "STRONG BULLISH", "biasc": "sb", "net": 39.519999999999996, "prem": "$7.97M", "swp": 43, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "HIGH", "convc": "c-high", "plan": "Financials firming \u2014 net climbed to +39.5% from +20.1% (\u0394 +19.4) on $8.0M, and both top tickets are puts sold at the bid ($1.81M + $1.14M), classic put-write bullish positioning. Low persistence (0.2) flags this as a fresh build rather than an established trend. No Skylit levels; stay long while net holds above +30%, and treat a slide back under +15% net as the thesis unwinding."}, {"tk": "WULF", "spot": 16.8, "day": 0.0, "bias": "Bullish", "biasc": "b", "net": 14.2, "prem": "$4.89M", "swp": 57, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "<b>Bullish</b> flow +14.2% on $4.89M (57% sweeps)."}, {"tk": "AAOI", "spot": 147.48, "day": 0.0, "bias": "Bullish", "biasc": "b", "net": 15.0, "prem": "$3.64M", "swp": 31, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "<b>Bullish</b> flow +15.0% on $3.64M (31% sweeps)."}, {"tk": "RKLB", "spot": 80.4, "day": 0.0, "bias": "Bullish", "biasc": "b", "net": 11.65, "prem": "$1.19M", "swp": 35, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "<b>Bullish</b> flow +11.7% on $1.19M (35% sweeps)."}, {"tk": "CLSK", "spot": 11.54, "day": 0.0, "bias": "STRONG BULLISH", "biasc": "sb", "net": 100.0, "prem": "$0.15M", "swp": 100, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "<b>STRONG BULLISH</b> flow +100.0% on $0.15M (100% sweeps)."}]}, {"title": "4 \u00b7 Bearish flow + negative \u03b3 \u2014 aligned breakdowns", "thesis": "Bear flow + neg \u03b3 = trend continuation. Break levels are triggers.", "rows": [{"tk": "SLV", "spot": 58.64, "day": 0.52, "bias": "STRONG BEARISH", "biasc": "sbr", "net": -32.62, "prem": "$15.38M", "swp": 50, "gamma": "Neg \u03b3, below flip", "gc": "g-neg", "gex": "-0.9M", "sell": "$65", "selld": "+10.8%", "buy": "$55", "buyd": "-6.2%", "brk": "$58", "brkd": "-1.1%", "flip": "$59.00", "conv": "HIGH", "convc": "c-high", "plan": "Sharp bearish rotation \u2014 net swung to -32.6% from just -4.3% prior (\u0394 -28.3) on $15.4M and a heavy 51% sweep tilt, headlined by a $5.06M call dumped at the bid (bearish). Skylit has silver at 58.64 in negative gamma (GEX -0.9) and below the 59.0 flip, so dealers amplify moves lower. Press short below the 58.0 break (-1.1%); a reclaim of the 59.0 flip flips regime positive and voids the bear lean."}, {"tk": "ETHA", "spot": 14.15, "day": 0.0, "bias": "Bearish", "biasc": "br", "net": -29.21, "prem": "$1.94M", "swp": 66, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "MED", "convc": "c-med", "plan": "Persistent but thin bearish lean \u2014 net -29.2% is actually less negative than the -48.6% prior (\u0394 +19.4), though 67% sweeps keep the tone urgent and persistence is maxed. At just $1.94M premium it sits under the $2M liquidity floor, so size and conviction are limited. No Skylit or named whales; stay short-biased while net stays negative, but a push back toward flat net would neutralize a low-conviction setup."}, {"tk": "RIOT", "spot": 18.98, "day": 0.0, "bias": "STRONG BEARISH", "biasc": "sbr", "net": -47.099999999999994, "prem": "$1.67M", "swp": 50, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "MED", "convc": "c-med", "plan": "Fresh hard-bearish print \u2014 net collapsed to -47.1% from -3.5% (\u0394 -43.6) with 50% sweeps, but on just $1.67M, below the liquidity floor with persistence only 0.2, so it reads as a one-day flip rather than a trend. No named whales or Skylit levels. Short-biased with the flow while net stays sub -30%; given the thin size, treat any snap back above -15% net as the flip fizzling."}, {"tk": "IREN", "spot": 45.06, "day": 0.0, "bias": "Bearish", "biasc": "br", "net": -21.52, "prem": "$2.09M", "swp": 33, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "Steady mild bearish \u2014 net -21.5% barely moved from -19.0% (\u0394 -2.5) on a thin $2.09M and only 33% sweeps, so low urgency. No whales or Skylit here. Nothing to chase: keep a light short lean while net stays negative, and a move back above flat net closes the idea."}]}, {"title": "5 \u00b7 Bearish flow + positive \u03b3 \u2014 fade rips / conflict", "thesis": "Bear flow but pos \u03b3 defends. Lower directional conviction; fade rallies and watch break.", "rows": [{"tk": "AVGO", "spot": 393.58, "day": -5.98, "bias": "Bearish", "biasc": "br", "net": -20.119999999999997, "prem": "$12.21M", "swp": 41, "gamma": "Positive \u03b3", "gc": "g-pos", "gex": "+4.0M", "sell": "$400", "selld": "+1.6%", "buy": "$380", "buyd": "-3.5%", "brk": "$392", "brkd": "-0.3%", "flip": "$390.40", "conv": "MED", "convc": "c-med", "plan": "Conflict name \u2014 net flipped to -20.1% from +26.9% (\u0394 -47.0) as price fell 5.98% on the day, yet the top whale is a $2.14M call bought at the ask (bullish), so flow and tape disagree. Skylit has spot 393.58 barely above the 390.4 flip with only a mild +4.0 GEX cushion. The 392.5 break (-0.3%) is the line: hold it and the dip-buy toward 380 stays live; lose it and price drops below flip into negative-gamma acceleration, confirming the bear."}]}, {"title": "7 \u00b7 Mixed / range \u2014 levels watch", "thesis": "Net flow balanced. Trade the structure, not the direction.", "rows": [{"tk": "GLD", "spot": 401.88, "day": 0.64, "bias": "Neutral / Mixed", "biasc": "n", "net": -9.15, "prem": "$20.41M", "swp": 38, "gamma": "Positive \u03b3", "gc": "g-pos", "gex": "+15.7M", "sell": "$404", "selld": "+0.5%", "buy": "$401", "buyd": "-0.2%", "brk": "$399", "brkd": "-0.7%", "flip": "$367.20", "conv": "LOW", "convc": "c-low", "plan": "Range/mixed read \u2014 net -9.2% is less bearish than -23.4% prior (\u0394 +14.2), but the two biggest tickets are $3.19M and $1.36M calls sold at the bid, a subtly bearish overwrite on $20.4M premium. Skylit has gold at 401.88 deep in positive gamma (GEX +15.7), far above the 367.2 flip and wedged between the 404 sell-rip and 401 buy-dip \u2014 a tight pin. Fade the 404 rip (+0.5%) while positive gamma holds; only a break under 399 (-0.7%) opens real downside room."}, {"tk": "SNDK", "spot": 1620.8, "day": 0.0, "bias": "Neutral / Mixed", "biasc": "n", "net": 8.01, "prem": "$37.18M", "swp": 26, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "Heaviest premium on the list ($37.2M) but a mixed net of just +8.0%, cooling from +16.4% (\u0394 -8.4) with low 27% sweeps. The lone big ticket is a $2.15M put sold at the bid, a mild bullish overwrite. No Skylit levels; with net near flat this is wait-and-see \u2014 a push of net back above +20% would tip it bullish, while a drop under flat turns it neutral-to-bearish."}, {"tk": "IBIT", "spot": 35.67, "day": 0.0, "bias": "Neutral / Mixed", "biasc": "n", "net": 8.690000000000001, "prem": "$7.52M", "swp": 70, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "<b>Neutral / Mixed</b> flow +8.7% on $7.52M (70% sweeps)."}, {"tk": "LITE", "spot": 943.76, "day": 0.0, "bias": "Neutral / Mixed", "biasc": "n", "net": -3.53, "prem": "$24.67M", "swp": 24, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "<b>Neutral / Mixed</b> flow -3.5% on $24.67M (24% sweeps). Whales: $1.42M CALL AT_BID BEAR."}, {"tk": "HIMS", "spot": 28.7, "day": 0.0, "bias": "Neutral / Mixed", "biasc": "n", "net": 4.859999999999999, "prem": "$1.28M", "swp": 35, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "<b>Neutral / Mixed</b> flow +4.9% on $1.28M (35% sweeps)."}, {"tk": "CIFR", "spot": 16.51, "day": 0.0, "bias": "Neutral / Mixed", "biasc": "n", "net": -1.17, "prem": "$3.67M", "swp": 42, "gamma": "n/a (no Skylit)", "gc": "g-mix", "gex": "\u2014", "sell": "\u2014", "selld": "", "buy": "\u2014", "buyd": "", "brk": "\u2014", "brkd": "", "flip": "\u2014", "conv": "LOW", "convc": "c-low", "plan": "<b>Neutral / Mixed</b> flow -1.2% on $3.67M (42% sweeps)."}]}]}</script>
+<script>
+const D = JSON.parse(document.getElementById('payload').textContent);
+
+const dirCls = d => d==='LONG'?'tdir-bull':d==='SHORT'?'tdir-bear':'tdir-rng';
+document.getElementById('topbox').innerHTML =
+  '<h3>Top 10 setups — ranked by edge score</h3>'
+  + '<div class="topgrid">'
+  + D.ranking.map(r =>
+      `<div class="toprow ${r.rank<=5?'tier-top':'tier-next'}">`
+      + `<span class="toprank">${r.rank}</span>`
+      + `<span class="ttk">${r.tk}</span>`
+      + `<span class="${dirCls(r.dir)}">${r.dir}</span>`
+      + `<span class="ttype">· ${r.type}</span>`
+      + `</div>`).join('')
+  + '</div>';
+
+// Buy-the-dip / Sell-the-rip levels for the highlighted (top-10) tickers.
+// Levels live on the group rows; join to the ranking by ticker.
+const lvlByTk = {};
+for(const g of D.groups){ for(const r of g.rows){ lvlByTk[r.tk] = r; } }
+const hasLvl = v => v && v !== '—';
+document.getElementById('toplevels').innerHTML =
+  '<h3>Buy-the-dip / Sell-the-rip — top 10</h3>'
+  + '<table><thead><tr>'
+  + '<th>#</th><th>Ticker</th><th>Dir</th><th class="r">Spot</th>'
+  + '<th>Buy-dip &#9660;</th><th>Sell-rip &#9650;</th><th class="r">Flip</th></tr></thead><tbody>'
+  + D.ranking.map(r => {
+      const lv = lvlByTk[r.tk] || {};
+      const spot = (lv.spot!=null) ? '$'+lv.spot.toFixed(2) : '—';
+      const buy  = hasLvl(lv.buy)  ? `${lv.buy}<span class="d"> ${lv.buyd||''}</span>`  : '<span class="mut">n/a</span>';
+      const sell = hasLvl(lv.sell) ? `${lv.sell}<span class="d"> ${lv.selld||''}</span>` : '<span class="mut">n/a</span>';
+      const flip = hasLvl(lv.flip) ? lv.flip : '—';
+      return `<tr>`
+        + `<td><span class="rank ${r.rank<=5?'top':''}">${r.rank}</span></td>`
+        + `<td><span class="tk">${r.tk}</span></td>`
+        + `<td class="${dirCls(r.dir)}">${r.dir}</td>`
+        + `<td class="r mut">${spot}</td>`
+        + `<td class="sup">${buy}</td>`
+        + `<td class="res">${sell}</td>`
+        + `<td class="r mut">${flip}</td>`
+        + `</tr>`;
+    }).join('')
+  + '</tbody></table>';
+
+document.getElementById('kpis').innerHTML = D.kpis
+  .map(([l,v])=>`<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div></div>`).join('');
+
+const sign = (n)=> (n>=0?'+':'') + n.toFixed(1) + '%';
+const dayCls = n => n>=0 ? 'pos':'neg';
+const netCls = n => n>=0 ? 'pos':'neg';
+
+let html='';
+for(const g of D.groups){
+  html += `<div class="grp"><h2>${g.title}</h2><div class="thesis">${g.thesis}</div>`;
+  html += `<table><thead><tr>
+    <th>Ticker</th><th class="r">Spot</th><th class="r">Day%</th>
+    <th>Flow bias</th><th class="r">Net%</th><th class="r">Premium</th><th class="r">Swp%</th>
+    <th>Gamma</th><th>Sell-rip &#9650;</th><th>Buy-dip &#9660;</th><th>Break &#9660;</th><th class="r">Flip</th>
+    <th>Conv.</th><th>Plan</th></tr></thead><tbody>`;
+  for(const r of g.rows){
+    html += `<tr>
+      <td><span class="tk">${r.tk}</span></td>
+      <td class="r">$${r.spot.toFixed(2)}</td>
+      <td class="r ${dayCls(r.day)}">${sign(r.day)}</td>
+      <td><span class="pill bias-${r.biasc}">${r.bias}</span></td>
+      <td class="r ${netCls(r.net)}">${sign(r.net)}</td>
+      <td class="r">${r.prem}</td>
+      <td class="r mut">${r.swp}%</td>
+      <td><span class="pill ${r.gc}">${r.gamma}</span><div class="gx">GEX ${r.gex}</div></td>
+      <td class="res">${r.sell}<span class="d"> ${r.selld}</span></td>
+      <td class="sup">${r.buy}<span class="d"> ${r.buyd}</span></td>
+      <td class="brk">${r.brk}<span class="d"> ${r.brkd}</span></td>
+      <td class="r mut">${r.flip}</td>
+      <td><span class="conv ${r.convc}">${r.conv}</span></td>
+      <td class="plan">${r.plan}</td>
+    </tr>`;
+  }
+  html += `</tbody></table></div>`;
+}
+document.getElementById('groups').innerHTML = html;
+</script>
+</body>
+</html>
