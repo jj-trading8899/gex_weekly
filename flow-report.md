@@ -14,74 +14,74 @@ _Pipeline knobs: mom×0.85 · conviction≥0.80_
 
 | Rank   | Ticker   | Composite   | Mom%   | Flow%   | Rot%   | Conviction   | ΔRank   |
 |:-------|:---------|:------------|:-------|:--------|:-------|:-------------|:--------|
-| 1      | MRVL     | 90.9        | 99     | 77      | 98     | NEUTRAL      | +3      |
+| 1      | MRVL     | 91.0        | 99     | 77      | 98     | NEUTRAL      | +3      |
 | 2      | XLV      | 84.6        | 81     | N/A     | 87     | CONFIRMED    | +1      |
-| 3      | XLE      | 81.9        | 82     | N/A     | 82     | CONFIRMED    | -2      |
-| 4      | XLK      | 79.8        | 74     | N/A     | 85     | NEUTRAL      | -2      |
+| 3      | XLE      | 82.6        | 83     | N/A     | 82     | CONFIRMED    | -2      |
+| 4      | XLK      | 80.1        | 75     | N/A     | 85     | NEUTRAL      | -2      |
 | 5      | IWM      | 76.9        | 69     | N/A     | 84     | NEUTRAL      | +1      |
 | 6      | SNDK     | 76.4        | 97     | 37      | 98     | NEUTRAL      | -1      |
-| 7      | AAPL     | 75.5        | 81     | 71      | 76     | NEUTRAL      | +5      |
-| 8      | CPER     | 73.1        | 70     | N/A     | 76     | NEUTRAL      | -1      |
-| 9      | CIFR     | 72.1        | 56     | 88      | 70     | NEUTRAL      | +11     |
-| 10     | INTC     | 71.7        | 77     | 67      | 73     | NEUTRAL      | -1      |
-| 11     | GOOGL    | 67.7        | 57     | 83      | 61     | NEUTRAL      | +5      |
-| 12     | ARM      | 67.4        | 85     | 26      | 93     | CONFLICT     | +2      |
-| 13     | AMZN     | 65.9        | 65     | 67      | 65     | NEUTRAL      | 0       |
-| 14     | GLD      | 65.3        | 46     | 97      | 50     | NEUTRAL      | +7      |
-| 15     | WULF     | 63.8        | 61     | 89      | 41     | NEUTRAL      | +8      |
-| 16     | HIMS     | 61.3        | 54     | 37      | 92     | NEUTRAL      | +22     |
+| 7      | AAPL     | 75.9        | 81     | 70      | 77     | NEUTRAL      | +5      |
+| 8      | CIFR     | 72.2        | 56     | 88      | 70     | NEUTRAL      | +12     |
+| 9      | INTC     | 71.9        | 77     | 67      | 73     | NEUTRAL      | 0       |
+| 10     | GOOGL    | 68.1        | 57     | 83      | 62     | NEUTRAL      | +6      |
+| 11     | ARM      | 67.4        | 85     | 26      | 93     | CONFLICT     | +3      |
+| 12     | AMZN     | 66.1        | 65     | 67      | 65     | NEUTRAL      | +1      |
+| 13     | GLD      | 65.6        | 46     | 97      | 51     | NEUTRAL      | +8      |
+| 14     | WULF     | 63.8        | 61     | 88      | 41     | NEUTRAL      | +9      |
+| 15     | CPER     | 63.1        | 63     | N/A     | 63     | NEUTRAL      | -8      |
+| 16     | HIMS     | 61.4        | 54     | 37      | 92     | NEUTRAL      | +22     |
 | 17     | SLV      | 61.2        | 50     | 75      | 58     | NEUTRAL      | +9      |
-| 18     | HIVE     | 60.3        | 53     | 98      | 29     | CONFLICT     | +16     |
-| 19     | SMH      | 58.5        | 79     | 14      | 86     | CONFLICT     | -4      |
-| 20     | XLF      | 58.0        | 73     | 33      | 71     | CONFLICT     | +19     |
-| 21     | XLI      | 57.8        | 52     | N/A     | 62     | NEUTRAL      | -11     |
-| 22     | UNH      | 57.2        | 88     | 18      | 71     | CONFLICT     | -14     |
+| 18     | HIVE     | 60.7        | 54     | 98      | 29     | CONFLICT     | +16     |
+| 19     | SMH      | 59.0        | 80     | 14      | 87     | CONFLICT     | -4      |
+| 20     | XLI      | 58.1        | 52     | N/A     | 63     | NEUTRAL      | -10     |
+| 21     | XLF      | 58.0        | 73     | 33      | 71     | CONFLICT     | +18     |
+| 22     | UNH      | 57.5        | 88     | 18      | 71     | CONFLICT     | -14     |
 | 23     | TSM      | 57.1        | 67     | 19      | 87     | CONFLICT     | +1      |
-| 24     | SMCI     | 56.0        | 45     | 57      | 65     | NEUTRAL      | +6      |
-| 25     | IREN     | 55.8        | 61     | 48      | 59     | NEUTRAL      | 0       |
+| 24     | IREN     | 56.3        | 61     | 48      | 60     | NEUTRAL      | +1      |
+| 25     | SMCI     | 56.0        | 45     | 57      | 65     | NEUTRAL      | +5      |
 | 26     | SPY      | 55.1        | 76     | 20      | 73     | CONFLICT     | +1      |
-| 27     | NVDA     | 54.1        | 59     | 53      | 51     | NEUTRAL      | -16     |
-| 28     | XLRE     | 53.4        | 51     | N/A     | 56     | NEUTRAL      | +4      |
-| 29     | QQQ      | 52.0        | 67     | 25      | 66     | CONFLICT     | 0       |
-| 30     | BIL      | 51.9        | 62     | N/A     | 44     | NEUTRAL      | +1      |
-| 31     | XLB      | 51.8        | 41     | N/A     | 61     | NEUTRAL      | +2      |
-| 32     | HYG      | 49.1        | 49     | N/A     | 50     | NEUTRAL      | +8      |
+| 27     | XLRE     | 54.7        | 51     | N/A     | 58     | NEUTRAL      | +5      |
+| 28     | NVDA     | 54.3        | 59     | 53      | 52     | NEUTRAL      | -17     |
+| 29     | BIL      | 52.3        | 62     | N/A     | 44     | NEUTRAL      | +2      |
+| 30     | QQQ      | 52.3        | 68     | 25      | 66     | CONFLICT     | -1      |
+| 31     | XLB      | 51.4        | 40     | N/A     | 61     | NEUTRAL      | +2      |
+| 32     | HYG      | 49.7        | 49     | N/A     | 50     | NEUTRAL      | +8      |
 | 33     | RGTI     | 48.0        | 42     | 59      | 42     | NEUTRAL      | -14     |
-| 34     | ETHA     | 46.1        | 24     | 87      | 24     | CONFLICT     | +13     |
-| 35     | XLP      | 44.8        | 38     | N/A     | 50     | NEUTRAL      | +8      |
-| 36     | XLU      | 44.7        | 32     | 63      | 38     | NEUTRAL      | +12     |
-| 37     | XLY      | 43.8        | 41     | N/A     | 47     | NEUTRAL      | +8      |
-| 38     | GOOG     | 43.5        | 56     | 18      | 58     | NEUTRAL      | -10     |
+| 34     | ETHA     | 46.3        | 24     | 87      | 25     | CONFLICT     | +13     |
+| 35     | XLP      | 45.2        | 39     | N/A     | 51     | NEUTRAL      | +8      |
+| 36     | XLU      | 44.9        | 32     | 63      | 38     | NEUTRAL      | +12     |
+| 37     | GOOG     | 44.1        | 56     | 19      | 59     | NEUTRAL      | -9      |
+| 38     | XLY      | 44.1        | 41     | N/A     | 47     | NEUTRAL      | +7      |
 | 39     | CLSK     | 42.8        | 54     | 47      | 29     | NEUTRAL      | -21     |
 | 40     | RIOT     | 41.5        | 53     | 11      | 63     | NEUTRAL      | -23     |
 | 41     | QBTS     | 41.1        | 42     | 25      | 56     | NEUTRAL      | -5      |
 | 42     | IBIT     | 40.3        | 24     | 79      | 16     | CONFLICT     | +12     |
-| 43     | AVGO     | 40.1        | 51     | 35      | 37     | NEUTRAL      | -1      |
-| 44     | IONQ     | 40.1        | 39     | 47      | 34     | NEUTRAL      | -9      |
-| 45     | MARA     | 39.5        | 33     | 71      | 13     | CONFLICT     | +4      |
+| 43     | IONQ     | 40.1        | 39     | 48      | 34     | NEUTRAL      | -8      |
+| 44     | AVGO     | 40.1        | 51     | 35      | 37     | NEUTRAL      | -2      |
+| 45     | MARA     | 39.7        | 34     | 71      | 13     | CONFLICT     | +4      |
 | 46     | RKLB     | 38.1        | 50     | 24      | 42     | NEUTRAL      | -5      |
 | 47     | AI       | 37.7        | 32     | 39      | 41     | NEUTRAL      | -25     |
 | 48     | SMR      | 37.3        | 10     | 82      | 15     | CONFLICT     | +9      |
-| 49     | BABA     | 36.2        | 24     | 55      | 27     | NEUTRAL      | -3      |
+| 49     | BABA     | 36.3        | 24     | 55      | 27     | NEUTRAL      | -3      |
 | 50     | NFLX     | 35.3        | 27     | 59      | 19     | NEUTRAL      | -6      |
-| 51     | LQD      | 32.4        | 29     | N/A     | 36     | NEUTRAL      | -1      |
-| 52     | TLT      | 30.9        | 28     | 28      | 37     | NEUTRAL      | +4      |
-| 53     | QCOM     | 30.7        | 39     | 35      | 19     | NEUTRAL      | +5      |
+| 51     | LQD      | 32.8        | 29     | N/A     | 36     | NEUTRAL      | -1      |
+| 52     | TLT      | 31.2        | 28     | 28      | 37     | NEUTRAL      | +4      |
+| 53     | QCOM     | 30.9        | 39     | 35      | 20     | NEUTRAL      | +5      |
 | 54     | EOSE     | 28.9        | 7      | 76      | 0      | CONFLICT     | +5      |
-| 55     | XLC      | 28.5        | 24     | N/A     | 32     | NEUTRAL      | 0       |
+| 55     | XLC      | 28.7        | 24     | N/A     | 32     | NEUTRAL      | 0       |
 | 56     | TSLA     | 25.8        | 33     | 27      | 19     | NEUTRAL      | -3      |
 | 57     | OKLO     | 24.8        | 8      | 58      | 6      | NEUTRAL      | +4      |
-| 58     | CRWV     | 22.4        | 26     | 13      | 29     | NEUTRAL      | -7      |
-| 59     | MSTR     | 22.3        | 6      | 56      | 2      | NEUTRAL      | +1      |
-| 60     | OPEN     | 21.5        | 35     | 22      | 10     | NEUTRAL      | -23     |
-| 61     | COIN     | 20.1        | 13     | 38      | 8      | NEUTRAL      | -9      |
+| 58     | CRWV     | 22.5        | 26     | 13      | 29     | NEUTRAL      | -7      |
+| 59     | MSTR     | 22.2        | 6      | 56      | 2      | NEUTRAL      | +1      |
+| 60     | OPEN     | 21.7        | 35     | 22      | 11     | NEUTRAL      | -23     |
+| 61     | COIN     | 20.3        | 13     | 39      | 9      | NEUTRAL      | -9      |
 | N/A    | AAPX     | N/A         | N/A    | 0       | N/A    | INSUFFICIENT | ·       |
 | N/A    | NVDU     | N/A         | N/A    | 54      | N/A    | INSUFFICIENT | ·       |
 | N/A    | NVDX     | N/A         | N/A    | 41      | N/A    | INSUFFICIENT | ·       |
 | N/A    | TSLL     | N/A         | N/A    | 52      | N/A    | INSUFFICIENT | ·       |
 | N/A    | ^GSPC    | N/A         | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 | N/A    | ^SKEW    | N/A         | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
-| N/A    | ^VIX     | N/A         | N/A    | 92      | N/A    | INSUFFICIENT | ·       |
+| N/A    | ^VIX     | N/A         | N/A    | 100     | N/A    | INSUFFICIENT | ·       |
 | N/A    | ^VIX3M   | N/A         | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 | N/A    | ^VVIX    | N/A         | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 
@@ -103,7 +103,7 @@ _Pipeline knobs: mom×0.85 · conviction≥0.80_
 | IWM      |          81 |           5.7 | No            | above cash |
 | RIOT     |          79 |         -19.5 | No            | above cash |
 | UNH      |          78 |          -4.7 | No            | above cash |
-| CPER     |          76 |          -0.4 | No            | above cash |
+| GOOGL    |          76 |         -16.1 | No            | above cash |
 
 ---
 
