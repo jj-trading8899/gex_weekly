@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TradeEcho Single Stocks Term Structure</title>
+<style>
+:root{ color-scheme: dark; }
+*{ box-sizing:border-box; }
+body{ margin:0; background:#0e1219; color:#e6e9ef; overflow-x:hidden;
+  font:13px/1.5 ui-monospace, SFMono-Regular, Menlo, "DM Mono", monospace; padding:18px 16px 40px; }
+@media (max-width:480px){ body{ padding:14px 10px 32px; } .card{ padding:12px 12px 13px; } }
+.wrap{ max-width:920px; margin:0 auto; }
+h1{ font-size:19px; margin:0 0 3px; letter-spacing:.02em; }
+.sub{ color:#8a90a0; font-size:11.5px; margin-bottom:6px; }
+.legend{ color:#8a90a0; font-size:11px; margin-bottom:18px; }
+.legend b{ color:#e6e9ef; }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr)); gap:14px; }
+.card{ background:#161c27; border:1px solid #2a323f; border-radius:12px; padding:14px 15px 15px;
+  box-shadow:0 1px 2px rgba(0,0,0,.35); }
+.chd{ display:flex; align-items:baseline; gap:9px; flex-wrap:wrap; }
+.tk{ font-size:18px; font-weight:600; letter-spacing:.03em; }
+.spot{ font-size:16px; font-weight:600; color:#e0b23a; }
+.chg{ font-size:12px; font-weight:600; }
+.pos{ color:#34d399; } .neg{ color:#f87171; } .flat{ color:#9aa0b0; }
+.pill{ margin-left:auto; font-size:10px; font-weight:600; letter-spacing:.04em;
+  padding:3px 9px; border-radius:20px; white-space:nowrap; }
+.range{ display:inline-block; margin-top:8px; font-size:10.5px; color:#e0b23a; letter-spacing:.03em;
+  padding:2px 8px; border:1px solid #5a4a1c; background:#231d0e; border-radius:5px; }
+.strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:12px 0 10px; }
+.strip3{ grid-template-columns:repeat(3,1fr); margin:4px 0 10px; }
+.opexlbl{ font-size:9.5px; color:#8a90a0; letter-spacing:.06em; margin:2px 0 0; text-transform:uppercase; }
+.exp{ border:1px solid #2a323f; border-radius:7px; padding:6px 6px 7px; text-align:center; background:#1b2230; }
+.exp .e{ font-size:9.5px; color:#8a90a0; letter-spacing:.06em; margin-bottom:3px; }
+.exp .g{ font-size:13px; font-weight:700; line-height:1.1; }
+.exp .v{ font-size:9px; color:#7a8090; margin-top:2px; }
+.exp.opex{ border-color:#5a4a1c; background:#241f10; }
+.lv{ display:flex; flex-wrap:wrap; gap:6px; margin:2px 0 10px; }
+.chip{ font-size:10px; padding:3px 8px; border-radius:6px; border:1px solid #2a323f; background:#1b2230; }
+.chip b{ font-weight:700; } .chip .k{ color:#8a90a0; margin-right:4px; }
+.k-pin b{ color:#e0b23a; } .k-wall b{ color:#f87171; } .k-sup b{ color:#34d399; } .k-flip b{ color:#a68bff; }
+.read{ font-size:11.5px; color:#c3cad6; line-height:1.55; }
+.foot{ margin-top:22px; padding-top:12px; border-top:1px solid #2a323f; color:#7a8090; font-size:10.5px; line-height:1.5; }
+.foot b{ color:#aab2c0; }
+.nvwrap{ margin-top:28px; padding-top:20px; border-top:1px solid #2a323f; }
+.nv-h{ font-size:15px; font-weight:600; margin:0 0 2px; letter-spacing:.02em; }
+.nv-sub{ color:#8a90a0; font-size:11px; margin-bottom:13px; }
+.nv-story{ background:#161c27; border:1px solid #2a323f; border-left:2px solid #e0b23a; border-radius:8px; padding:11px 13px; font-size:11.5px; line-height:1.55; color:#c3cad6; margin-bottom:16px; }
+.nv-story b{ color:#e0b23a; font-weight:400; }
+.nv-mxt{ font-size:12px; font-weight:600; letter-spacing:.04em; color:#e0b23a; margin:0 0 6px 2px; }
+.nv-mxt span{ color:#7a8090; font-weight:400; font-size:10px; letter-spacing:.02em; }
+.nv-mx{ background:#161c27; border:1px solid #2a323f; border-radius:10px; padding:12px 10px; margin-bottom:16px; overflow-x:auto; }
+.nv-row{ display:grid; grid-template-columns:54px repeat(4,1fr); gap:4px; align-items:center; }
+.nv-hd{ padding-bottom:7px; border-bottom:1px solid #2a323f; margin-bottom:6px; }
+.nv-hd span{ font-size:9px; color:#7a8090; letter-spacing:.08em; text-align:center; }
+.nv-hd span:first-child{ text-align:left; }
+.nv-rk{ font-size:10.5px; color:#8a90a0; padding:4px 0; }
+.nv-cell{ border-radius:4px; padding:3px 2px 4px; text-align:center; }
+.nv-cell .g{ font-size:11px; line-height:1; }
+.nv-cell .w{ font-size:6.5px; letter-spacing:.04em; margin-top:2px; }
+.nv-cell .d{ font-size:6px; margin-top:1px; }
+.nv-empty{ text-align:center; color:#3a4250; font-size:10px; }
+.nv-cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:12px; margin-bottom:16px; }
+.nv-card{ background:#161c27; border:1px solid #2a323f; border-radius:10px; padding:12px 12px 14px; }
+.nv-ct{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; }
+.nv-cl{ font-size:8.5px; color:#7a8090; letter-spacing:.16em; margin-bottom:2px; }
+.nv-cc{ font-size:12px; font-weight:600; }
+.nv-vd{ font-size:9px; letter-spacing:.06em; padding:3px 7px; border-radius:4px; white-space:nowrap; }
+.nv-bar{ position:relative; height:6px; background:#0e1219; border-radius:3px; margin:22px 6px 28px; }
+.nv-tick{ position:absolute; width:2px; transform:translateX(-50%); border-radius:1px; }
+.nv-lab{ position:absolute; top:13px; transform:translateX(-50%); font-size:8px; white-space:nowrap; }
+.nv-spot{ position:absolute; top:-20px; transform:translateX(-50%); background:#e0b23a; color:#0e1219; font-size:8px; font-weight:600; padding:1px 4px; border-radius:3px; white-space:nowrap; }
+.nv-st{ font-size:10.5px; color:#8a90a0; line-height:1.5; margin-bottom:10px; }
+.nv-lv{ display:flex; align-items:center; gap:7px; padding:5px 8px; border-radius:4px; margin-bottom:3px; }
+.nv-lv .gl{ width:13px; text-align:center; font-size:11px; }
+.nv-lv .k{ font-size:10.5px; font-weight:600; min-width:50px; }
+.nv-lv .wd{ font-size:8.5px; letter-spacing:.05em; min-width:66px; }
+.nv-lv .nt{ font-size:9px; color:#8a90a0; flex:1; text-align:right; }
+.nv-edge{ background:#231d0e; border:1px solid #5a4a1c; border-radius:10px; padding:13px 14px; font-size:11.5px; line-height:1.6; color:#e6e9ef; }
+.nv-edge b{ color:#e0b23a; font-weight:400; }
+.nv-lgd{ display:flex; flex-wrap:wrap; gap:10px; font-size:9px; color:#8a90a0; margin-bottom:14px; }
+.nv-lgd span b{ font-weight:400; }
+.hl{ background:#161c27; border:1px solid #5a4a1c; border-radius:12px; padding:16px 18px 18px; margin:0 0 18px; }
+.hl-t{ font-size:11px; color:#e0b23a; letter-spacing:.12em; text-transform:uppercase; margin:0 0 10px; }
+.hl ul{ margin:0; padding:0 0 0 1.1em; display:grid; gap:10px; }
+.hl li{ font-size:19px; line-height:1.45; color:#e6e9ef; }
+.hl li b{ color:#e0b23a; font-weight:600; }
+@media (max-width:480px){ .hl{ padding:13px 13px 15px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>TradeEcho — Single Stocks Term Structure <span style="font-size:12px;color:#6b7280;font-weight:400;">dealer positioning by expiry</span></h1>
+  <div class="sub" id="sub"></div>
+  <div class="legend">
+    <b>Net dealer positioning</b> per expiry (TradeEcho units, K contracts): <span class="pos">green = dampening</span> (dips bought, rallies sold — ranges hold) &middot;
+    <span class="neg">red = amplifying</span> (dealer hedging adds to moves). <b>VEX</b> = how much hedging shifts if volatility moves ($M).
+    Key: <span style="color:#e0b23a;">Pin</span> &middot; <span style="color:#f87171;">Cap</span> &middot;
+    <span style="color:#34d399;">Support</span> &middot; <span style="color:#a68bff;">Flip</span> (line between dampening and amplifying).
+  </div>
+  <div class="hl" id="hl"><div class="hl-t">Key Headline</div><ul id="hl-list"></ul></div>
+  <div class="grid" id="grid"></div>
+  <div id="ts-more"></div>
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+// ---- DATA injected by build.py from data/raw/<date>.json (TradeEcho Dealer Edge capture) ----
+const P = /*__PAYLOAD__*/null;
+const SNAPSHOT = P.snapshot, NEXT_OPEX = P.nextOpex, DATA = P.cards;
+
+const toneStyle = {
+  pos:{ bg:"#13291f", c:"#4ade80", bd:"#2f5a41" },
+  neg:{ bg:"#2c1418", c:"#f87171", bd:"#5c2a32" },
+  mix:{ bg:"#2a2410", c:"#e0b23a", bd:"#5a4a1c" },
+};
+const fmt = (n)=> (Math.abs(n)>=1000 ? (n/1000).toFixed(2)+"B" : Math.round(n)+"M");
+const gx = (g)=>{ const a=Math.abs(g), s=g>=0?"+":"−";
+  return a>=1000 ? s+(a/1000).toFixed(2)+"M" : s+(a>=100||a%1===0?a.toFixed(0):a.toFixed(1))+"K"; };
+const etTime = (iso)=>{ try{ return new Date(iso).toLocaleString("en-US",{timeZone:"America/New_York",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})+" ET"; }catch(e){ return iso; } };
+
+document.getElementById("sub").textContent =
+  "Snapshot "+SNAPSHOT+" close (data "+etTime(P.dataUpdatedAt)+") · next monthly opex "+NEXT_OPEX+" · TradeEcho Dealer Edge";
+
+document.getElementById("hl-list").innerHTML = (P.headlines||[]).map(x=>"<li>"+x+"</li>").join("");
+if(!(P.headlines||[]).length) document.getElementById("hl").hidden = true;
+
+const grid = document.getElementById("grid");
+DATA.forEach(d=>{
+  const ts = toneStyle[d.tone];
+  const strip = d.term.map((row,i)=>{
+    const [g,v]=row; const isOpex = i===d.opexIdx;
+    const gCls = g>0?"pos":(g<0?"neg":"flat");
+    return `<div class="exp ${isOpex?'opex':''}">
+      <div class="e">${d.cols[i]}${isOpex?' ★':''}</div>
+      <div class="g ${gCls}">${gx(g)}</div>
+      <div class="v">VEX ${(v>0?'+':'')}${fmt(v)}</div>
+    </div>`;
+  }).join("");
+  const card = document.createElement("div");
+  card.className="card";
+  card.innerHTML = `
+    <div class="chd">
+      <span class="tk">${d.t}</span>
+      <span class="spot">$${d.spot.toFixed(2)}</span>
+      <span class="chg flat">EOD</span>
+      <span class="pill" style="background:${ts.bg};color:${ts.c};border:1px solid ${ts.bd};">${d.regime}</span>
+    </div>
+    <div><span class="range">Range: ${d.range}</span></div>
+    <div class="strip">${strip}</div>
+    <div class="lv">
+      <span class="chip k-pin"><span class="k">Pin</span><b>${d.pin}</b></span>
+      <span class="chip k-wall"><span class="k">Cap</span><b>${d.wall}</b></span>
+      <span class="chip k-sup"><span class="k">Support</span><b>${d.sup}</b></span>
+      <span class="chip k-flip"><span class="k">Flip</span><b>${d.flip}</b></span>
+    </div>
+    <div class="read">${d.read}</div>`;
+  grid.appendChild(card);
+});
+
+// ---- Full per-strike term structure ----
+(function(){
+  const ROLE={
+    ceiling:{c:"#f87171",bg:"rgba(248,113,113,.10)",g:"▼",w:"RESIST"},
+    floor:{c:"#34d399",bg:"rgba(52,211,153,.10)",g:"▲",w:"SUPPORT"},
+    anchor:{c:"#e0b23a",bg:"rgba(224,178,58,.12)",g:"◆",w:"ANCHOR"},
+    trap:{c:"#ff9a47",bg:"rgba(255,154,71,.10)",g:"▽",w:"VOL TRIG"},
+  };
+  const STR={strong:{d:"●●●",o:1},mild:{d:"●●○",o:.85},weak:{d:"●○○",o:.6}};
+  const md=(iso)=>{const p=iso.split("-");return (+p[1])+"/"+(+p[2]);};
+  const TS=P.ts;
+  const money=(g)=>{ const a=Math.abs(g), s=g>=0?"+":"−";
+    return a>=1000 ? s+(a/1000).toFixed(2)+"M" : s+(a>=100||a%1===0?a.toFixed(0):a.toFixed(1))+"K"; };
+  const kfmt=(k)=>k%1===0?k.toFixed(0):String(k);
+  function classify(strikes,spot){
+    const maxAbs=Math.max(...strikes.map(s=>Math.abs(s[1])),0.01);
+    let aK=null,aV=0;strikes.forEach(([k,g])=>{if(g>aV){aV=g;aK=k;}});
+    const m={};
+    strikes.forEach(([k,g])=>{
+      let role;
+      if(g<0) role="trap";
+      else if(k===aK && g>=0.5*maxAbs) role="anchor";
+      else role = k>=spot ? "ceiling" : "floor";
+      const r=Math.abs(g)/maxAbs;
+      m[k]={k,g,role,str:r>0.6?"strong":(r>0.3?"mild":"weak")};
+    });
+    return m;
+  }
+  const pos=(v,a,b)=>((v-a)/(b-a))*100;
+  function build(D){
+    const SPOT=D.spot;
+    const N=D.perCol.length;
+    const gtc='grid-template-columns:54px repeat('+N+',1fr)';
+    const labels=D.perCol.map(c=>md(c.code));
+    let opexI=D.perCol.findIndex(c=>c.opex); if(opexI<0) opexI=N-1;
+    const opexLbl=labels[opexI];
+    const cls=D.perCol.map(c=>classify(c.strikes,SPOT));
+    const regime=(net)=>net>2?["DAMPENING","#34d399"]:(net<-2?["AMPLIFYING","#f87171"]:["MIXED / THIN","#7a8090"]);
+    let allK=[...new Set(D.perCol.flatMap(c=>c.strikes.map(s=>s[0])))];
+    allK.sort((a,b)=>Math.abs(a-SPOT)-Math.abs(b-SPOT));
+    const rows=allK.slice(0,12).sort((a,b)=>b-a);
+    const opex=D.perCol[opexI], opexCls=cls[opexI];
+    let anchor=null,anchorV=0;Object.values(opexCls).forEach(o=>{if(o.g>anchorV){anchorV=o.g;anchor=o;}});
+    const front=D.perCol[0];
+    let nTrap=null,nd=1e9;Object.values(cls[0]).forEach(o=>{if(o.role==="trap"&&Math.abs(o.k-SPOT)<nd){nd=Math.abs(o.k-SPOT);nTrap=o;}});
+    const lean=(n)=>n>=0?"dampening":"amplifying";
+    let h='<div class="nvwrap">';
+    h+='<div class="nv-h">'+D.t+' — Full Term Structure <span style="font-size:11px;color:#8a90a0;font-weight:400;">per-strike positioning</span></div>';
+    h+='<div class="nv-sub">$'+SPOT.toFixed(2)+' <span style="color:#9aa0b0">EOD</span> · snapshot '+SNAPSHOT+' · net '+lean(opex.net)+' into '+opexLbl+' opex</div>';
+    let intro='<b>'+D.t+'</b> at <b>$'+SPOT.toFixed(2)+'</b>. Front expiry ('+labels[0]+') is net '+lean(front.net)+' ('+money(front.net)+')';
+    if(nTrap) intro+=', with a trigger near <span style="color:#ff9a47">$'+kfmt(nTrap.k)+' ('+money(nTrap.g)+')</span> where moves can speed up';
+    intro+='. Into <b>'+opexLbl+' opex</b> net '+money(opex.net)+(anchor?', anchored by a <b>$'+kfmt(anchor.k)+' '+(anchor.role==="anchor"?"pin":"magnet")+' ('+money(anchor.g)+')</b>':'')+'.';
+    h+='<div class="nv-story">'+intro+'</div>';
+    h+='<div class="nv-lgd">';
+    for(const k of ["ceiling","floor","anchor","trap"]){const R=ROLE[k];h+='<span style="color:'+R.c+'">'+R.g+' <b>'+R.w+'</b></span>';}
+    h+='<span style="margin-left:auto;color:#7a8090;">●●● strong · ●●○ mild · ●○○ weak</span></div>';
+    h+='<div class="nv-mxt">'+D.t+' <span>· positioning by strike & expiry</span></div>';
+    h+='<div class="nv-mx"><div class="nv-row nv-hd" style="'+gtc+'"><span>STRIKE</span>'+labels.map((c,i)=>'<span>'+c+(i===opexI?' ★':'')+'</span>').join("")+'</div>';
+    for(const k of rows){
+      const nearSpot=Math.abs(k-SPOT)<=SPOT*0.006;
+      h+='<div class="nv-row" style="'+gtc+'"><span class="nv-rk" style="color:'+(nearSpot?"#e0b23a":"#8a90a0")+';font-weight:'+(nearSpot?600:400)+'">$'+kfmt(k)+(nearSpot?" ◆":"")+'</span>';
+      for(let j=0;j<N;j++){
+        const cell=cls[j][k];
+        if(!cell){h+='<span class="nv-empty">·</span>';continue;}
+        const R=ROLE[cell.role],S=STR[cell.str];
+        h+='<span class="nv-cell" title="'+money(cell.g)+'" style="background:'+R.bg+';border:1px solid '+R.c+'33;opacity:'+S.o+'"><div class="g" style="color:'+R.c+'">'+R.g+'</div><div class="w" style="color:'+R.c+'">'+R.w+'</div><div class="d" style="color:'+R.c+'">'+S.d+'</div></span>';
+      }
+      h+='</div>';
+    }
+    h+='</div>';
+    h+='<div class="nv-cards">';
+    D.perCol.forEach((c,j)=>{
+      const [rg,rc]=regime(c.net);
+      const ks=c.strikes.map(s=>s[0]).concat([SPOT]);
+      let lo=Math.min(...ks),hi=Math.max(...ks);const pad=(hi-lo)*0.06||SPOT*0.01;const bmin=lo-pad,bmax=hi+pad;
+      const arr=Object.values(cls[j]).sort((a,b)=>Math.abs(b.g)-Math.abs(a.g));
+      const maxA=Math.max(...arr.map(a=>Math.abs(a.g)),0.01);
+      const clab=c.opex?"MONTHLY OPEX":"WEEKLY";
+      h+='<div class="nv-card"><div class="nv-ct"><div><div class="nv-cl">'+clab+(c.opex?' ★':'')+'</div><div class="nv-cc">'+c.code+'</div></div><div class="nv-vd" style="color:'+rc+';border:1px solid '+rc+'55;background:'+rc+'11">'+rg+' '+money(c.net)+'</div></div>';
+      h+='<div class="nv-bar">';
+      h+='<div class="nv-spot" style="left:'+pos(SPOT,bmin,bmax)+'%">$'+SPOT.toFixed(2)+'</div>';
+      h+='<div class="nv-tick" style="left:'+pos(SPOT,bmin,bmax)+'%;top:-4px;height:14px;background:#e0b23a"></div>';
+      for(const l of arr){const R=ROLE[l.role];const p=pos(l.k,bmin,bmax);const big=Math.abs(l.g)/maxA>0.6;
+        h+='<div class="nv-tick" style="left:'+p+'%;top:'+(big?"-6px":"-3px")+';height:'+(big?24:18)+'px;background:'+R.c+';opacity:'+(big?1:.6)+'"></div>';
+        if(big||Math.abs(l.g)/maxA>0.25) h+='<div class="nv-lab" style="left:'+p+'%;color:'+R.c+';opacity:'+(big?1:.6)+'">$'+kfmt(l.k)+'</div>';}
+      h+='</div>';
+      for(const l of arr.slice(0,5)){const R=ROLE[l.role];
+        h+='<div class="nv-lv" style="background:'+R.bg+';border-left:2px solid '+R.c+'"><span class="gl" style="color:'+R.c+'">'+R.g+'</span><span class="k">$'+kfmt(l.k)+'</span><span class="wd" style="color:'+R.c+'">'+R.w+'</span><span class="nt">'+money(l.g)+'</span></div>';}
+      h+='</div>';
+    });
+    h+='</div>';
+    let edge='<b>THE EDGE</b> — '+D.t+' front expiry is net '+lean(front.net)+' ('+money(front.net)+')';
+    if(nTrap) edge+='; watch <span style="color:#ff9a47">$'+kfmt(nTrap.k)+'</span>, where a break can accelerate';
+    edge+='. Into <b>'+opexLbl+' opex</b> the board is '+regime(opex.net)[0].toLowerCase()+' ('+money(opex.net)+')'+(anchor?', with <b>$'+kfmt(anchor.k)+'</b> the '+(anchor.role==="anchor"?"main pin":"upside magnet"):'')+'. Structural positioning levels, not price targets — not investment advice.';
+    h+='<div class="nv-edge">'+edge+'</div>';
+    h+='</div>';
+    return h;
+  }
+  document.getElementById("ts-more").innerHTML = TS.map(build).join("");
+})();
+
+document.getElementById("foot").innerHTML =
+  "<b>Source:</b> TradeEcho Dealer Edge (dealer positioning and VEX summed per expiration), captured via the signed-in web app after the close. "+
+  "Positioning in TradeEcho units (K = thousands of contracts); VEX in $M. Positions as of the prior session's open interest, spot at capture. "+
+  "Columns run from the next expiry through the "+NEXT_OPEX+" monthly opex; the per-strike matrix adds the following Friday expiry, and the strip adds the next expiries after that. "+
+  "Levels are structural, not price targets — no IV, earnings or liquidity overlay. Built "+P.capturedAt.slice(0,16).replace("T"," ")+" UTC. "+
+  "Informational only, not investment advice.";
+</script>
+</body>
+</html>

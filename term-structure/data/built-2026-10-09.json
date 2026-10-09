@@ -1,0 +1,1060 @@
+{
+ "snapshot": "2026-10-09",
+ "nextOpex": "2026-10-16",
+ "dataUpdatedAt": "2026-10-09T20:05:18.122Z",
+ "capturedAt": "2026-10-09T22:27:14.902Z",
+ "headlines": [
+  "<b>AAPL</b> is the one to watch. It's sitting right on its flip at about $335, under a very large $340 level (+370K). There's almost no support below it, and selling would speed up around $330.",
+  "<b>NVDA</b> has the most positioning into opex (+751K), centred on $230\u2013235. The 10/12 expiry is net negative, though, so the next few sessions could be choppy.",
+  "<b>AMZN</b> is boxed between $260 and $265. <b>TSLA</b> is pulled toward $385\u2013400, and <b>GOOGL</b> toward $370\u2013375.",
+  "<b>AVGO</b> is the weakest board, at only +25.9K into opex. It's just above its $360 flip, and TradeEcho rates it 3/5."
+ ],
+ "cards": [
+  {
+   "t": "NVDA",
+   "spot": 229.3438,
+   "chg": null,
+   "cols": [
+    "10/12",
+    "10/14",
+    "10/16",
+    "10/23"
+   ],
+   "opexIdx": 2,
+   "regime": "pinning \u00b7 $235 cap",
+   "tone": "pos",
+   "term": [
+    [
+     -9.3,
+     420
+    ],
+    [
+     11.0,
+     306
+    ],
+    [
+     751.0,
+     4011
+    ],
+    [
+     163.1,
+     2279
+    ]
+   ],
+   "pin": "$230",
+   "wall": "$235 cap",
+   "sup": "$220",
+   "flip": "~$228",
+   "range": "$220-235 \u00b7 flip $228",
+   "read": "Closed $229.34. Into 10/16 opex dealers net +751K, heaviest at $235 (+156K) \u2014 the level price is pulled toward. Above the $227.8 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $235 (+156K). Support $220 (+109K). Under $220, the $212.5 pocket (\u22128.2K) is where selling speeds up. The 10/12 front expiry is net negative (\u22129.3K), so near-term swings can overshoot before opex takes over. TradeEcho's own read: Bearish."
+  },
+  {
+   "t": "TSLA",
+   "spot": 382.6394,
+   "chg": null,
+   "cols": [
+    "10/12",
+    "10/14",
+    "10/16",
+    "10/23"
+   ],
+   "opexIdx": 2,
+   "regime": "pinning \u00b7 $400 cap",
+   "tone": "pos",
+   "term": [
+    [
+     44.9,
+     366
+    ],
+    [
+     12.0,
+     156
+    ],
+    [
+     98.5,
+     2305
+    ],
+    [
+     21.1,
+     629
+    ]
+   ],
+   "pin": "$382.5",
+   "wall": "$400 cap",
+   "sup": "$377.5",
+   "flip": "~$370",
+   "range": "$377.5-400 \u00b7 flip $370",
+   "read": "Closed $382.64. Into 10/16 opex dealers net +98.5K, heaviest at $400 (+34.9K) \u2014 the level price is pulled toward. Above the $370.4 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $400 (+34.9K). Support $377.5 (+6.3K). Under $377.5, the $360 pocket (\u22124.3K) is where selling speeds up. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "AAPL",
+   "spot": 336.17,
+   "chg": null,
+   "cols": [
+    "10/12",
+    "10/14",
+    "10/16",
+    "10/23"
+   ],
+   "opexIdx": 2,
+   "regime": "on the flip $335",
+   "tone": "mix",
+   "term": [
+    [
+     -3.9,
+     622
+    ],
+    [
+     23.2,
+     326
+    ],
+    [
+     492.4,
+     6771
+    ],
+    [
+     27.5,
+     1275
+    ]
+   ],
+   "pin": "$337.5",
+   "wall": "$340 cap",
+   "sup": "$300 (thin)",
+   "flip": "~$335",
+   "range": "$300-340 \u00b7 flip $335",
+   "read": "Closed $336.17. Into 10/16 opex dealers net +492K, heaviest at $340 (+370K) \u2014 the level price is pulled toward. Above the $335.1 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $340 (+370K). Little real support below spot \u2014 thin $300 only. Below spot, the $330 pocket (\u221223.6K) is where selling speeds up. The 10/12 front expiry is net negative (\u22123.9K), so near-term swings can overshoot before opex takes over. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "AMZN",
+   "spot": 262.6,
+   "chg": null,
+   "cols": [
+    "10/12",
+    "10/14",
+    "10/16",
+    "10/23"
+   ],
+   "opexIdx": 2,
+   "regime": "pinning \u00b7 $265 cap",
+   "tone": "pos",
+   "term": [
+    [
+     65.5,
+     0
+    ],
+    [
+     32.8,
+     205
+    ],
+    [
+     400.2,
+     3007
+    ],
+    [
+     123.4,
+     723
+    ]
+   ],
+   "pin": "$262.5",
+   "wall": "$265 cap",
+   "sup": "$260",
+   "flip": "~$258",
+   "range": "$260-265 \u00b7 flip $258",
+   "read": "Closed $262.60. Into 10/16 opex dealers net +400K, heaviest at $260 (+118K) \u2014 the level price is pulled toward. Above the $257.5 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $265 (+95.0K). Support $260 (+118K). Under $260, the $250 pocket (\u221215.3K) is where selling speeds up. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "GOOGL",
+   "spot": 351.6608,
+   "chg": null,
+   "cols": [
+    "10/12",
+    "10/14",
+    "10/16",
+    "10/23"
+   ],
+   "opexIdx": 2,
+   "regime": "pinning \u00b7 $375 cap",
+   "tone": "pos",
+   "term": [
+    [
+     30.5,
+     135
+    ],
+    [
+     10.1,
+     150
+    ],
+    [
+     207.7,
+     5192
+    ],
+    [
+     23.5,
+     762
+    ]
+   ],
+   "pin": "$352.5",
+   "wall": "$375 cap",
+   "sup": "$350",
+   "flip": "~$350",
+   "range": "$350-375 \u00b7 flip $350",
+   "read": "Closed $351.66. Into 10/16 opex dealers net +208K, heaviest at $375 (+59.9K) \u2014 the level price is pulled toward. Above the $350.0 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $375 (+59.9K). Support $350 (+19.6K). Under $350, the $340 pocket (\u22128.3K) is where selling speeds up. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "AVGO",
+   "spot": 362.0,
+   "chg": null,
+   "cols": [
+    "10/12",
+    "10/14",
+    "10/16",
+    "10/23"
+   ],
+   "opexIdx": 2,
+   "regime": "pinning \u00b7 $370 cap",
+   "tone": "mix",
+   "term": [
+    [
+     -5.6,
+     196
+    ],
+    [
+     4.6,
+     144
+    ],
+    [
+     25.9,
+     2053
+    ],
+    [
+     12.0,
+     456
+    ]
+   ],
+   "pin": "$362.5",
+   "wall": "$370 cap",
+   "sup": "$360",
+   "flip": "~$360",
+   "range": "$360-370 \u00b7 flip $360",
+   "read": "Closed $362.00. Into 10/16 opex dealers net +25.9K, heaviest at $370 (+12.6K) \u2014 the level price is pulled toward. Above the $360.5 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $370 (+12.6K). Support $360 (+3.0K). Under $360, the $340 pocket (\u22128.6K) is where selling speeds up. The 10/12 front expiry is net negative (\u22125.6K), so near-term swings can overshoot before opex takes over. TradeEcho's own read: Bullish."
+  }
+ ],
+ "ts": [
+  {
+   "t": "NVDA",
+   "spot": 229.3438,
+   "chg": null,
+   "perCol": [
+    {
+     "code": "2026-10-12",
+     "net": -9.3,
+     "opex": false,
+     "strikes": [
+      [
+       245.0,
+       1.6
+      ],
+      [
+       240.0,
+       5.5
+      ],
+      [
+       237.5,
+       4.1
+      ],
+      [
+       232.5,
+       -1.5
+      ],
+      [
+       230.0,
+       21.0
+      ],
+      [
+       227.5,
+       -13.3
+      ],
+      [
+       225.0,
+       -17.1
+      ],
+      [
+       222.5,
+       -4.8
+      ],
+      [
+       220.0,
+       -5.4
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-14",
+     "net": 11.0,
+     "opex": false,
+     "strikes": [
+      [
+       245.0,
+       2.6
+      ],
+      [
+       240.0,
+       7.9
+      ],
+      [
+       237.5,
+       5.7
+      ],
+      [
+       235.0,
+       2.1
+      ],
+      [
+       232.5,
+       2.1
+      ],
+      [
+       227.5,
+       -4.4
+      ],
+      [
+       225.0,
+       -3.6
+      ],
+      [
+       222.5,
+       -3.5
+      ],
+      [
+       220.0,
+       -1.9
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-16",
+     "net": 751.0,
+     "opex": true,
+     "strikes": [
+      [
+       250.0,
+       43.2
+      ],
+      [
+       245.0,
+       46.7
+      ],
+      [
+       242.5,
+       28.4
+      ],
+      [
+       240.0,
+       134.1
+      ],
+      [
+       235.0,
+       156.0
+      ],
+      [
+       232.5,
+       58.0
+      ],
+      [
+       230.0,
+       145.7
+      ],
+      [
+       225.0,
+       20.5
+      ],
+      [
+       220.0,
+       108.8
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "t": "TSLA",
+   "spot": 382.6394,
+   "chg": null,
+   "perCol": [
+    {
+     "code": "2026-10-12",
+     "net": 44.9,
+     "opex": false,
+     "strikes": [
+      [
+       400.0,
+       2.6
+      ],
+      [
+       392.5,
+       2.6
+      ],
+      [
+       390.0,
+       5.2
+      ],
+      [
+       387.5,
+       2.7
+      ],
+      [
+       385.0,
+       8.2
+      ],
+      [
+       382.5,
+       3.3
+      ],
+      [
+       380.0,
+       12.9
+      ],
+      [
+       377.5,
+       3.6
+      ],
+      [
+       370.0,
+       -2.7
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-14",
+     "net": 12.0,
+     "opex": false,
+     "strikes": [
+      [
+       400.0,
+       2.5
+      ],
+      [
+       395.0,
+       0.6
+      ],
+      [
+       392.5,
+       0.6
+      ],
+      [
+       390.0,
+       1.5
+      ],
+      [
+       387.5,
+       0.9
+      ],
+      [
+       385.0,
+       1.8
+      ],
+      [
+       382.5,
+       1.5
+      ],
+      [
+       380.0,
+       2.0
+      ],
+      [
+       375.0,
+       2.6
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-16",
+     "net": 98.5,
+     "opex": true,
+     "strikes": [
+      [
+       420.0,
+       6.4
+      ],
+      [
+       410.0,
+       4.7
+      ],
+      [
+       400.0,
+       34.9
+      ],
+      [
+       397.5,
+       3.7
+      ],
+      [
+       390.0,
+       10.4
+      ],
+      [
+       385.0,
+       16.9
+      ],
+      [
+       382.5,
+       4.2
+      ],
+      [
+       377.5,
+       6.3
+      ],
+      [
+       360.0,
+       -4.3
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "t": "AAPL",
+   "spot": 336.17,
+   "chg": null,
+   "perCol": [
+    {
+     "code": "2026-10-12",
+     "net": -3.9,
+     "opex": false,
+     "strikes": [
+      [
+       347.5,
+       1.1
+      ],
+      [
+       345.0,
+       4.4
+      ],
+      [
+       342.5,
+       15.4
+      ],
+      [
+       340.0,
+       14.6
+      ],
+      [
+       337.5,
+       -5.2
+      ],
+      [
+       335.0,
+       -28.6
+      ],
+      [
+       332.5,
+       -3.7
+      ],
+      [
+       330.0,
+       -1.0
+      ],
+      [
+       327.5,
+       -1.0
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-14",
+     "net": 23.2,
+     "opex": false,
+     "strikes": [
+      [
+       352.5,
+       0.7
+      ],
+      [
+       350.0,
+       2.4
+      ],
+      [
+       347.5,
+       2.5
+      ],
+      [
+       345.0,
+       5.9
+      ],
+      [
+       342.5,
+       1.4
+      ],
+      [
+       340.0,
+       10.3
+      ],
+      [
+       337.5,
+       -1.4
+      ],
+      [
+       335.0,
+       3.3
+      ],
+      [
+       330.0,
+       -1.5
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-16",
+     "net": 492.4,
+     "opex": true,
+     "strikes": [
+      [
+       360.0,
+       22.8
+      ],
+      [
+       355.0,
+       11.3
+      ],
+      [
+       350.0,
+       60.8
+      ],
+      [
+       347.5,
+       10.3
+      ],
+      [
+       345.0,
+       71.3
+      ],
+      [
+       342.5,
+       8.6
+      ],
+      [
+       340.0,
+       370.4
+      ],
+      [
+       337.5,
+       -32.2
+      ],
+      [
+       330.0,
+       -23.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "t": "AMZN",
+   "spot": 262.6,
+   "chg": null,
+   "perCol": [
+    {
+     "code": "2026-10-12",
+     "net": 65.5,
+     "opex": false,
+     "strikes": [
+      [
+       270.0,
+       -0.6
+      ],
+      [
+       267.5,
+       7.8
+      ],
+      [
+       265.0,
+       12.1
+      ],
+      [
+       262.5,
+       18.8
+      ],
+      [
+       260.0,
+       27.5
+      ],
+      [
+       257.5,
+       4.2
+      ],
+      [
+       255.0,
+       -2.2
+      ],
+      [
+       252.5,
+       -0.7
+      ],
+      [
+       250.0,
+       -1.6
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-14",
+     "net": 32.8,
+     "opex": false,
+     "strikes": [
+      [
+       275.0,
+       9.3
+      ],
+      [
+       270.0,
+       3.9
+      ],
+      [
+       267.5,
+       5.8
+      ],
+      [
+       265.0,
+       5.3
+      ],
+      [
+       262.5,
+       2.9
+      ],
+      [
+       260.0,
+       5.3
+      ],
+      [
+       257.5,
+       1.5
+      ],
+      [
+       255.0,
+       2.2
+      ],
+      [
+       252.5,
+       -1.9
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-16",
+     "net": 400.2,
+     "opex": true,
+     "strikes": [
+      [
+       285.0,
+       10.8
+      ],
+      [
+       280.0,
+       29.7
+      ],
+      [
+       275.0,
+       56.8
+      ],
+      [
+       270.0,
+       77.5
+      ],
+      [
+       267.5,
+       12.0
+      ],
+      [
+       265.0,
+       95.0
+      ],
+      [
+       262.5,
+       14.0
+      ],
+      [
+       260.0,
+       117.6
+      ],
+      [
+       250.0,
+       -15.3
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "t": "GOOGL",
+   "spot": 351.6608,
+   "chg": null,
+   "perCol": [
+    {
+     "code": "2026-10-12",
+     "net": 30.5,
+     "opex": false,
+     "strikes": [
+      [
+       365.0,
+       0.7
+      ],
+      [
+       362.5,
+       0.4
+      ],
+      [
+       360.0,
+       5.5
+      ],
+      [
+       357.5,
+       2.0
+      ],
+      [
+       355.0,
+       6.0
+      ],
+      [
+       352.5,
+       6.6
+      ],
+      [
+       350.0,
+       3.7
+      ],
+      [
+       347.5,
+       7.5
+      ],
+      [
+       340.0,
+       -0.6
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-14",
+     "net": 10.1,
+     "opex": false,
+     "strikes": [
+      [
+       372.5,
+       1.6
+      ],
+      [
+       365.0,
+       0.7
+      ],
+      [
+       362.5,
+       0.5
+      ],
+      [
+       360.0,
+       1.0
+      ],
+      [
+       357.5,
+       0.7
+      ],
+      [
+       355.0,
+       3.2
+      ],
+      [
+       352.5,
+       2.3
+      ],
+      [
+       350.0,
+       2.1
+      ],
+      [
+       345.0,
+       -1.5
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-16",
+     "net": 207.7,
+     "opex": true,
+     "strikes": [
+      [
+       380.0,
+       6.8
+      ],
+      [
+       375.0,
+       59.9
+      ],
+      [
+       370.0,
+       50.6
+      ],
+      [
+       365.0,
+       15.9
+      ],
+      [
+       360.0,
+       40.4
+      ],
+      [
+       355.0,
+       22.9
+      ],
+      [
+       350.0,
+       19.6
+      ],
+      [
+       340.0,
+       -8.3
+      ],
+      [
+       330.0,
+       -5.7
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "t": "AVGO",
+   "spot": 362.0,
+   "chg": null,
+   "perCol": [
+    {
+     "code": "2026-10-12",
+     "net": -5.6,
+     "opex": false,
+     "strikes": [
+      [
+       400.0,
+       0.8
+      ],
+      [
+       375.0,
+       1.6
+      ],
+      [
+       372.5,
+       0.9
+      ],
+      [
+       370.0,
+       2.6
+      ],
+      [
+       367.5,
+       -2.1
+      ],
+      [
+       365.0,
+       -1.1
+      ],
+      [
+       362.5,
+       -2.2
+      ],
+      [
+       360.0,
+       -3.4
+      ],
+      [
+       352.5,
+       -1.2
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-14",
+     "net": 4.6,
+     "opex": false,
+     "strikes": [
+      [
+       382.5,
+       2.3
+      ],
+      [
+       380.0,
+       0.8
+      ],
+      [
+       375.0,
+       0.4
+      ],
+      [
+       370.0,
+       1.0
+      ],
+      [
+       365.0,
+       0.7
+      ],
+      [
+       362.5,
+       0.6
+      ],
+      [
+       360.0,
+       -0.4
+      ],
+      [
+       350.0,
+       -0.7
+      ],
+      [
+       342.5,
+       -0.3
+      ]
+     ]
+    },
+    {
+     "code": "2026-10-16",
+     "net": 25.9,
+     "opex": true,
+     "strikes": [
+      [
+       400.0,
+       5.5
+      ],
+      [
+       390.0,
+       6.2
+      ],
+      [
+       380.0,
+       9.7
+      ],
+      [
+       375.0,
+       5.7
+      ],
+      [
+       370.0,
+       12.6
+      ],
+      [
+       355.0,
+       -4.3
+      ],
+      [
+       350.0,
+       -6.7
+      ],
+      [
+       340.0,
+       -8.6
+      ],
+      [
+       330.0,
+       -4.6
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}
