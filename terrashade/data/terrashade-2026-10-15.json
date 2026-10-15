@@ -1,5 +1,6 @@
 {
- "pulled_at": "2026-10-15T21:48:10Z",
+ "pulled_at": "2026-10-15T21:55:36Z",
+ "staleness_reference": "2026-10-15T20:00:13Z",
  "mode": "eod",
  "source": "https://terrashade.onrender.com",
  "thresholds": {
@@ -9,72 +10,14 @@
  "note": "TerraShade only. No other provider is mixed into this file.",
  "summary": {
   "requested": 60,
-  "returned": 55,
-  "usable": 0,
+  "returned": 57,
+  "usable": 40,
   "no_data": [
    "RIVN",
    "MARA",
-   "BABA",
-   "AAOI",
    "LITE"
   ],
-  "stale": [
-   "SPY",
-   "QQQ",
-   "SPX",
-   "SPXW",
-   "IWM",
-   "NDX",
-   "NDXP",
-   "DIA",
-   "SMH",
-   "TLT",
-   "GLD",
-   "SLV",
-   "XLE",
-   "TQQQ",
-   "SOXL",
-   "IBIT",
-   "NVDA",
-   "AAPL",
-   "TSLA",
-   "MSFT",
-   "AMZN",
-   "META",
-   "GOOGL",
-   "AVGO",
-   "NFLX",
-   "ORCL",
-   "AMD",
-   "MU",
-   "INTC",
-   "TSM",
-   "ARM",
-   "PLTR",
-   "COIN",
-   "MSTR",
-   "HOOD",
-   "SOFI",
-   "SMCI",
-   "CRWD",
-   "UBER",
-   "SHOP",
-   "RBLX",
-   "JPM",
-   "BAC",
-   "WMT",
-   "COST",
-   "XOM",
-   "BA",
-   "LLY",
-   "GME",
-   "SPCX",
-   "NBIS",
-   "ASTS",
-   "RKLB",
-   "SNDK",
-   "IREN"
-  ],
+  "stale": [],
   "wide": [
    "GLD",
    "SLV",
@@ -86,6 +29,7 @@
    "RBLX",
    "GME",
    "ASTS",
+   "AAOI",
    "RKLB",
    "SNDK",
    "IREN"
@@ -99,7 +43,7 @@
    "spot": 771.86,
    "prev_close": 769.6,
    "chain_as_of": "2026-10-15 19:59:34",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 770.0,
    "call_wall": 775.0,
    "bias_boundary": 773.18,
@@ -130,10 +74,8 @@
    "bias": "short",
    "chg_pct": 0.29,
    "corridor_width_pct": 0.65,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "QQQ",
@@ -141,7 +83,7 @@
    "spot": 727.97,
    "prev_close": 728.95,
    "chain_as_of": "2026-10-15 19:59:53",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 725.0,
    "call_wall": 730.0,
    "bias_boundary": 736.26,
@@ -172,10 +114,8 @@
    "bias": "short",
    "chg_pct": -0.13,
    "corridor_width_pct": 0.69,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "SPX",
@@ -183,7 +123,7 @@
    "spot": 7747.07,
    "prev_close": 7718.94,
    "chain_as_of": "2026-10-15 19:59:39",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 7700.0,
    "call_wall": 8000.0,
    "bias_boundary": 7755.57,
@@ -214,10 +154,8 @@
    "bias": "short",
    "chg_pct": 0.36,
    "corridor_width_pct": 3.87,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "SPXW",
@@ -225,7 +163,7 @@
    "spot": 7747.07,
    "prev_close": 7718.94,
    "chain_as_of": "2026-10-15 19:59:44",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 7700.0,
    "call_wall": 7800.0,
    "bias_boundary": 7767.45,
@@ -251,10 +189,8 @@
    "bias": "short",
    "chg_pct": 0.36,
    "corridor_width_pct": 1.29,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "IWM",
@@ -262,7 +198,7 @@
    "spot": 275.13,
    "prev_close": 271.37,
    "chain_as_of": "2026-10-15 19:59:04",
-   "chain_age_min": 109,
+   "chain_age_min": 1,
    "put_wall": 275.0,
    "call_wall": 277.0,
    "bias_boundary": 280.13,
@@ -288,10 +224,8 @@
    "bias": "short",
    "chg_pct": 1.39,
    "corridor_width_pct": 0.73,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "NDX",
@@ -299,7 +233,7 @@
    "spot": 29715.28,
    "prev_close": 29950.82,
    "chain_as_of": "2026-10-15 19:59:45",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 29500.0,
    "call_wall": 30000.0,
    "bias_boundary": 30187.25,
@@ -325,10 +259,8 @@
    "bias": "short",
    "chg_pct": -0.79,
    "corridor_width_pct": 1.68,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "NDXP",
@@ -336,7 +268,7 @@
    "spot": 29715.28,
    "prev_close": 29950.82,
    "chain_as_of": "2026-10-15 19:59:45",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 29650.0,
    "call_wall": 30000.0,
    "bias_boundary": 30319.35,
@@ -362,10 +294,8 @@
    "bias": "short",
    "chg_pct": -0.79,
    "corridor_width_pct": 1.18,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "DIA",
@@ -373,7 +303,7 @@
    "spot": 521.63,
    "prev_close": 515.63,
    "chain_as_of": "2026-10-15 19:45:54",
-   "chain_age_min": 122,
+   "chain_age_min": 14,
    "put_wall": 520.0,
    "call_wall": 525.0,
    "bias_boundary": 514.24,
@@ -399,10 +329,8 @@
    "bias": "long",
    "chg_pct": 1.16,
    "corridor_width_pct": 0.96,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "SMH",
@@ -410,7 +338,7 @@
    "spot": 558.84,
    "prev_close": 564.74,
    "chain_as_of": "2026-10-15 20:00:07",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 550.0,
    "call_wall": 560.0,
    "bias_boundary": 597.78,
@@ -436,10 +364,8 @@
    "bias": "short",
    "chg_pct": -1.04,
    "corridor_width_pct": 1.79,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "TLT",
@@ -447,7 +373,7 @@
    "spot": 79.97,
    "prev_close": 78.89,
    "chain_as_of": "2026-10-15 19:54:04",
-   "chain_age_min": 114,
+   "chain_age_min": 6,
    "put_wall": 79.0,
    "call_wall": 80.0,
    "bias_boundary": 76.52,
@@ -473,10 +399,8 @@
    "bias": "long",
    "chg_pct": 1.37,
    "corridor_width_pct": 1.25,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "GLD",
@@ -484,7 +408,7 @@
    "spot": 382.71,
    "prev_close": 375.99,
    "chain_as_of": "2026-10-15 19:59:55",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 380.0,
    "call_wall": 450.0,
    "bias_boundary": 377.32,
@@ -511,7 +435,6 @@
    "chg_pct": 1.79,
    "corridor_width_pct": 18.29,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
@@ -522,7 +445,7 @@
    "spot": 51.92,
    "prev_close": 50.22,
    "chain_as_of": "2026-10-15 20:00:04",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 50.0,
    "call_wall": 60.0,
    "bias_boundary": 48.87,
@@ -549,7 +472,6 @@
    "chg_pct": 3.39,
    "corridor_width_pct": 19.26,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
@@ -560,7 +482,7 @@
    "spot": 66.56,
    "prev_close": 67.63,
    "chain_as_of": "2026-10-15 19:51:27",
-   "chain_age_min": 116,
+   "chain_age_min": 8,
    "put_wall": 60.0,
    "call_wall": 70.0,
    "bias_boundary": 64.74,
@@ -587,7 +509,6 @@
    "chg_pct": -1.58,
    "corridor_width_pct": 15.02,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
@@ -598,7 +519,7 @@
    "spot": 73.82,
    "prev_close": 74.12,
    "chain_as_of": "2026-10-15 20:00:00",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 72.0,
    "call_wall": 75.0,
    "bias_boundary": 76.87,
@@ -624,10 +545,8 @@
    "bias": "short",
    "chg_pct": -0.4,
    "corridor_width_pct": 4.06,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "SOXL",
@@ -635,7 +554,7 @@
    "spot": 107.35,
    "prev_close": 110.54,
    "chain_as_of": "2026-10-15 20:00:13",
-   "chain_age_min": 107,
+   "chain_age_min": 0,
    "put_wall": 100.0,
    "call_wall": 120.0,
    "bias_boundary": null,
@@ -662,7 +581,6 @@
    "chg_pct": -2.89,
    "corridor_width_pct": 18.63,
    "flags": [
-    "stale",
     "wide",
     "no_boundary"
    ],
@@ -674,7 +592,7 @@
    "spot": 46.59,
    "prev_close": 46.24,
    "chain_as_of": "2026-10-15 19:57:02",
-   "chain_age_min": 111,
+   "chain_age_min": 3,
    "put_wall": 46.0,
    "call_wall": 47.0,
    "bias_boundary": 43.72,
@@ -700,10 +618,8 @@
    "bias": "long",
    "chg_pct": 0.76,
    "corridor_width_pct": 2.15,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "NVDA",
@@ -711,7 +627,7 @@
    "spot": 217.23,
    "prev_close": 221.3,
    "chain_as_of": "2026-10-15 19:52:40",
-   "chain_age_min": 115,
+   "chain_age_min": 7,
    "put_wall": 210.0,
    "call_wall": 220.0,
    "bias_boundary": 213.09,
@@ -737,10 +653,8 @@
    "bias": "long",
    "chg_pct": -1.84,
    "corridor_width_pct": 4.6,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "AAPL",
@@ -748,7 +662,7 @@
    "spot": 342.0,
    "prev_close": 342.96,
    "chain_as_of": "2026-10-15 19:56:20",
-   "chain_age_min": 111,
+   "chain_age_min": 3,
    "put_wall": 340.0,
    "call_wall": 350.0,
    "bias_boundary": 314.36,
@@ -774,10 +688,8 @@
    "bias": "long",
    "chg_pct": -0.28,
    "corridor_width_pct": 2.92,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "TSLA",
@@ -785,7 +697,7 @@
    "spot": 362.44,
    "prev_close": 367.16,
    "chain_as_of": "2026-10-15 19:53:51",
-   "chain_age_min": 114,
+   "chain_age_min": 6,
    "put_wall": 360.0,
    "call_wall": 400.0,
    "bias_boundary": 358.4,
@@ -811,10 +723,8 @@
    "bias": "long",
    "chg_pct": -1.29,
    "corridor_width_pct": 11.04,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "MSFT",
@@ -822,7 +732,7 @@
    "spot": 539.44,
    "prev_close": 533.69,
    "chain_as_of": "2026-10-15 19:56:58",
-   "chain_age_min": 111,
+   "chain_age_min": 3,
    "put_wall": 535.0,
    "call_wall": 550.0,
    "bias_boundary": null,
@@ -849,7 +759,6 @@
    "chg_pct": 1.08,
    "corridor_width_pct": 2.78,
    "flags": [
-    "stale",
     "no_boundary"
    ],
    "usable": false
@@ -860,7 +769,7 @@
    "spot": 254.76,
    "prev_close": 254.08,
    "chain_as_of": "2026-10-15 19:59:59",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 250.0,
    "call_wall": 260.0,
    "bias_boundary": 242.86,
@@ -886,10 +795,8 @@
    "bias": "long",
    "chg_pct": 0.27,
    "corridor_width_pct": 3.93,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "META",
@@ -897,7 +804,7 @@
    "spot": 736.72,
    "prev_close": 737.54,
    "chain_as_of": "2026-10-15 20:00:00",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 730.0,
    "call_wall": 750.0,
    "bias_boundary": null,
@@ -924,7 +831,6 @@
    "chg_pct": -0.11,
    "corridor_width_pct": 2.71,
    "flags": [
-    "stale",
     "no_boundary"
    ],
    "usable": false
@@ -935,7 +841,7 @@
    "spot": 349.22,
    "prev_close": 347.64,
    "chain_as_of": "2026-10-15 19:57:43",
-   "chain_age_min": 110,
+   "chain_age_min": 2,
    "put_wall": 340.0,
    "call_wall": 350.0,
    "bias_boundary": 337.64,
@@ -961,10 +867,8 @@
    "bias": "long",
    "chg_pct": 0.45,
    "corridor_width_pct": 2.86,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "AVGO",
@@ -972,7 +876,7 @@
    "spot": 344.39,
    "prev_close": 346.25,
    "chain_as_of": "2026-10-15 19:57:00",
-   "chain_age_min": 111,
+   "chain_age_min": 3,
    "put_wall": 340.0,
    "call_wall": 350.0,
    "bias_boundary": 352.33,
@@ -998,10 +902,8 @@
    "bias": "short",
    "chg_pct": -0.54,
    "corridor_width_pct": 2.9,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "NFLX",
@@ -1009,7 +911,7 @@
    "spot": 72.61,
    "prev_close": 70.57,
    "chain_as_of": "2026-10-15 20:00:04",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 70.0,
    "call_wall": 75.0,
    "bias_boundary": 70.35,
@@ -1035,10 +937,8 @@
    "bias": "long",
    "chg_pct": 2.89,
    "corridor_width_pct": 6.89,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "ORCL",
@@ -1046,7 +946,7 @@
    "spot": 134.47,
    "prev_close": 130.55,
    "chain_as_of": "2026-10-15 20:00:06",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 130.0,
    "call_wall": 140.0,
    "bias_boundary": 136.64,
@@ -1072,10 +972,8 @@
    "bias": "short",
    "chg_pct": 3.0,
    "corridor_width_pct": 7.44,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "AMD",
@@ -1083,7 +981,7 @@
    "spot": 562.23,
    "prev_close": 570.82,
    "chain_as_of": "2026-10-15 20:00:08",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 550.0,
    "call_wall": 600.0,
    "bias_boundary": 566.69,
@@ -1109,10 +1007,8 @@
    "bias": "short",
    "chg_pct": -1.5,
    "corridor_width_pct": 8.89,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "MU",
@@ -1120,7 +1016,7 @@
    "spot": 931.24,
    "prev_close": 914.13,
    "chain_as_of": "2026-10-15 19:59:57",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 900.0,
    "call_wall": 1000.0,
    "bias_boundary": 926.58,
@@ -1146,10 +1042,8 @@
    "bias": "long",
    "chg_pct": 1.87,
    "corridor_width_pct": 10.74,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "INTC",
@@ -1157,7 +1051,7 @@
    "spot": 95.37,
    "prev_close": 98.12,
    "chain_as_of": "2026-10-15 19:50:32",
-   "chain_age_min": 117,
+   "chain_age_min": 9,
    "put_wall": 95.0,
    "call_wall": 100.0,
    "bias_boundary": 97.72,
@@ -1183,10 +1077,8 @@
    "bias": "short",
    "chg_pct": -2.8,
    "corridor_width_pct": 5.24,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "TSM",
@@ -1194,7 +1086,7 @@
    "spot": 422.25,
    "prev_close": 430.0,
    "chain_as_of": "2026-10-15 20:00:06",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 420.0,
    "call_wall": 430.0,
    "bias_boundary": 429.46,
@@ -1220,10 +1112,8 @@
    "bias": "short",
    "chg_pct": -1.8,
    "corridor_width_pct": 2.37,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "ARM",
@@ -1231,7 +1121,7 @@
    "spot": 244.79,
    "prev_close": 238.01,
    "chain_as_of": "2026-10-15 20:00:12",
-   "chain_age_min": 107,
+   "chain_age_min": 0,
    "put_wall": 240.0,
    "call_wall": 330.0,
    "bias_boundary": 256.65,
@@ -1258,7 +1148,6 @@
    "chg_pct": 2.85,
    "corridor_width_pct": 36.77,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
@@ -1269,7 +1158,7 @@
    "spot": 200.5,
    "prev_close": 200.97,
    "chain_as_of": "2026-10-15 20:00:13",
-   "chain_age_min": 107,
+   "chain_age_min": 0,
    "put_wall": 200.0,
    "call_wall": 210.0,
    "bias_boundary": 177.71,
@@ -1295,10 +1184,8 @@
    "bias": "long",
    "chg_pct": -0.23,
    "corridor_width_pct": 4.99,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "COIN",
@@ -1306,7 +1193,7 @@
    "spot": 183.81,
    "prev_close": 172.89,
    "chain_as_of": "2026-10-15 19:56:58",
-   "chain_age_min": 111,
+   "chain_age_min": 3,
    "put_wall": 180.0,
    "call_wall": 185.0,
    "bias_boundary": 173.32,
@@ -1332,10 +1219,8 @@
    "bias": "long",
    "chg_pct": 6.32,
    "corridor_width_pct": 2.72,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "MSTR",
@@ -1343,7 +1228,7 @@
    "spot": 151.29,
    "prev_close": 143.24,
    "chain_as_of": "2026-10-15 19:56:13",
-   "chain_age_min": 111,
+   "chain_age_min": 4,
    "put_wall": 150.0,
    "call_wall": 157.5,
    "bias_boundary": 142.88,
@@ -1369,10 +1254,8 @@
    "bias": "long",
    "chg_pct": 5.62,
    "corridor_width_pct": 4.96,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "HOOD",
@@ -1380,7 +1263,7 @@
    "spot": 103.99,
    "prev_close": 101.08,
    "chain_as_of": "2026-10-15 20:00:01",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 100.0,
    "call_wall": 105.0,
    "bias_boundary": 102.71,
@@ -1406,10 +1289,8 @@
    "bias": "long",
    "chg_pct": 2.88,
    "corridor_width_pct": 4.81,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "SOFI",
@@ -1417,7 +1298,7 @@
    "spot": 15.09,
    "prev_close": 14.22,
    "chain_as_of": "2026-10-15 20:00:10",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 15.0,
    "call_wall": 20.0,
    "bias_boundary": 14.08,
@@ -1444,7 +1325,6 @@
    "chg_pct": 6.12,
    "corridor_width_pct": 33.13,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
@@ -1455,7 +1335,7 @@
    "spot": 35.09,
    "prev_close": 35.78,
    "chain_as_of": "2026-10-15 20:00:06",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 35.0,
    "call_wall": 40.0,
    "bias_boundary": 34.97,
@@ -1482,7 +1362,6 @@
    "chg_pct": -1.93,
    "corridor_width_pct": 14.25,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
@@ -1493,7 +1372,7 @@
    "spot": 244.57,
    "prev_close": 249.29,
    "chain_as_of": "2026-10-15 19:59:58",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 240.0,
    "call_wall": 250.0,
    "bias_boundary": 243.95,
@@ -1519,10 +1398,8 @@
    "bias": "long",
    "chg_pct": -1.89,
    "corridor_width_pct": 4.09,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "UBER",
@@ -1530,7 +1407,7 @@
    "spot": 71.27,
    "prev_close": 69.29,
    "chain_as_of": "2026-10-15 19:59:57",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 70.0,
    "call_wall": 75.0,
    "bias_boundary": 70.25,
@@ -1556,10 +1433,8 @@
    "bias": "long",
    "chg_pct": 2.86,
    "corridor_width_pct": 7.02,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "SHOP",
@@ -1567,7 +1442,7 @@
    "spot": 178.14,
    "prev_close": 172.5,
    "chain_as_of": "2026-10-15 19:59:59",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 175.0,
    "call_wall": 180.0,
    "bias_boundary": null,
@@ -1594,7 +1469,6 @@
    "chg_pct": 3.27,
    "corridor_width_pct": 2.81,
    "flags": [
-    "stale",
     "no_boundary"
    ],
    "usable": false
@@ -1605,7 +1479,7 @@
    "spot": 51.13,
    "prev_close": 47.54,
    "chain_as_of": "2026-10-15 19:59:55",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 50.0,
    "call_wall": 65.0,
    "bias_boundary": 45.46,
@@ -1632,7 +1506,6 @@
    "chg_pct": 7.55,
    "corridor_width_pct": 29.34,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
@@ -1643,7 +1516,7 @@
    "spot": 335.56,
    "prev_close": 335.28,
    "chain_as_of": "2026-10-15 19:53:51",
-   "chain_age_min": 114,
+   "chain_age_min": 6,
    "put_wall": 330.0,
    "call_wall": 340.0,
    "bias_boundary": 333.2,
@@ -1669,10 +1542,8 @@
    "bias": "long",
    "chg_pct": 0.08,
    "corridor_width_pct": 2.98,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "BAC",
@@ -1680,7 +1551,7 @@
    "spot": 51.7,
    "prev_close": 51.39,
    "chain_as_of": "2026-10-15 19:59:54",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 50.0,
    "call_wall": 52.0,
    "bias_boundary": 52.59,
@@ -1706,10 +1577,8 @@
    "bias": "short",
    "chg_pct": 0.6,
    "corridor_width_pct": 3.87,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "WMT",
@@ -1717,7 +1586,7 @@
    "spot": 117.87,
    "prev_close": 116.16,
    "chain_as_of": "2026-10-15 19:59:55",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 115.0,
    "call_wall": 120.0,
    "bias_boundary": 102.76,
@@ -1743,10 +1612,8 @@
    "bias": "long",
    "chg_pct": 1.47,
    "corridor_width_pct": 4.24,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "COST",
@@ -1754,7 +1621,7 @@
    "spot": 978.01,
    "prev_close": 982.0,
    "chain_as_of": "2026-10-15 20:00:04",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 960.0,
    "call_wall": 1000.0,
    "bias_boundary": 953.73,
@@ -1780,10 +1647,8 @@
    "bias": "long",
    "chg_pct": -0.41,
    "corridor_width_pct": 4.09,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "XOM",
@@ -1791,7 +1656,7 @@
    "spot": 174.71,
    "prev_close": 177.01,
    "chain_as_of": "2026-10-15 19:48:14",
-   "chain_age_min": 119,
+   "chain_age_min": 11,
    "put_wall": 170.0,
    "call_wall": 175.0,
    "bias_boundary": 150.25,
@@ -1817,10 +1682,8 @@
    "bias": "long",
    "chg_pct": -1.3,
    "corridor_width_pct": 2.86,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "BA",
@@ -1828,7 +1691,7 @@
    "spot": 188.73,
    "prev_close": 184.66,
    "chain_as_of": "2026-10-15 19:59:59",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 185.0,
    "call_wall": 190.0,
    "bias_boundary": 189.7,
@@ -1854,10 +1717,8 @@
    "bias": "short",
    "chg_pct": 2.2,
    "corridor_width_pct": 2.65,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "LLY",
@@ -1865,7 +1726,7 @@
    "spot": 1251.61,
    "prev_close": 1208.74,
    "chain_as_of": "2026-10-15 19:56:56",
-   "chain_age_min": 111,
+   "chain_age_min": 3,
    "put_wall": 1200.0,
    "call_wall": 1260.0,
    "bias_boundary": 1165.82,
@@ -1891,10 +1752,8 @@
    "bias": "long",
    "chg_pct": 3.55,
    "corridor_width_pct": 4.79,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "GME",
@@ -1902,7 +1761,7 @@
    "spot": 28.02,
    "prev_close": 27.15,
    "chain_as_of": "2026-10-15 19:54:02",
-   "chain_age_min": 114,
+   "chain_age_min": 6,
    "put_wall": 25.0,
    "call_wall": 30.0,
    "bias_boundary": null,
@@ -1929,7 +1788,6 @@
    "chg_pct": 3.2,
    "corridor_width_pct": 17.84,
    "flags": [
-    "stale",
     "wide",
     "no_boundary"
    ],
@@ -1937,7 +1795,7 @@
   },
   {
    "ticker": "RIVN",
-   "status": "transport:TimeoutError",
+   "status": "http_503",
    "usable": false,
    "flags": [
     "no_data"
@@ -1953,11 +1811,38 @@
   },
   {
    "ticker": "BABA",
-   "status": "http_503",
-   "usable": false,
-   "flags": [
-    "no_data"
-   ]
+   "status": "ok",
+   "spot": 111.13,
+   "prev_close": 111.17,
+   "chain_as_of": "2026-10-15 20:00:00",
+   "chain_age_min": 0,
+   "put_wall": 110.0,
+   "call_wall": 115.0,
+   "bias_boundary": 106.37,
+   "anchor_strike": 115.0,
+   "anchor_value": 10622072.81,
+   "expected_moves": {
+    "daily": {
+     "low": 109.41,
+     "high": 112.85,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 109.41,
+     "high": 112.85,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 105.27,
+     "high": 116.99,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -0.04,
+   "corridor_width_pct": 4.5,
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "SPCX",
@@ -1965,7 +1850,7 @@
    "spot": 148.62,
    "prev_close": 152.16,
    "chain_as_of": "2026-10-15 19:56:21",
-   "chain_age_min": 111,
+   "chain_age_min": 3,
    "put_wall": 145.0,
    "call_wall": 150.0,
    "bias_boundary": 151.78,
@@ -1991,10 +1876,8 @@
    "bias": "short",
    "chg_pct": -2.33,
    "corridor_width_pct": 3.36,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "NBIS",
@@ -2002,7 +1885,7 @@
    "spot": 188.58,
    "prev_close": 186.01,
    "chain_as_of": "2026-10-15 19:59:59",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 180.0,
    "call_wall": 200.0,
    "bias_boundary": 192.3,
@@ -2028,10 +1911,8 @@
    "bias": "short",
    "chg_pct": 1.38,
    "corridor_width_pct": 10.61,
-   "flags": [
-    "stale"
-   ],
-   "usable": false
+   "flags": [],
+   "usable": true
   },
   {
    "ticker": "ASTS",
@@ -2039,7 +1920,7 @@
    "spot": 44.56,
    "prev_close": 42.14,
    "chain_as_of": "2026-10-15 19:48:53",
-   "chain_age_min": 119,
+   "chain_age_min": 11,
    "put_wall": 40.0,
    "call_wall": 50.0,
    "bias_boundary": 41.6,
@@ -2066,18 +1947,46 @@
    "chg_pct": 5.74,
    "corridor_width_pct": 22.44,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
   },
   {
    "ticker": "AAOI",
-   "status": "http_503",
-   "usable": false,
+   "status": "ok",
+   "spot": 83.73,
+   "prev_close": 86.22,
+   "chain_as_of": "2026-10-15 19:59:58",
+   "chain_age_min": 0,
+   "put_wall": 80.0,
+   "call_wall": 100.0,
+   "bias_boundary": 92.08,
+   "anchor_strike": 80.0,
+   "anchor_value": -1527775.8,
+   "expected_moves": {
+    "daily": {
+     "low": 80.14,
+     "high": 87.32,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 80.14,
+     "high": 87.32,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 73.23,
+     "high": 94.23,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -2.89,
+   "corridor_width_pct": 23.89,
    "flags": [
-    "no_data"
-   ]
+    "wide"
+   ],
+   "usable": false
   },
   {
    "ticker": "RKLB",
@@ -2085,7 +1994,7 @@
    "spot": 55.25,
    "prev_close": 59.18,
    "chain_as_of": "2026-10-15 19:59:59",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 55.0,
    "call_wall": 85.0,
    "bias_boundary": 59.08,
@@ -2112,7 +2021,6 @@
    "chg_pct": -6.64,
    "corridor_width_pct": 54.3,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
@@ -2123,7 +2031,7 @@
    "spot": 1394.83,
    "prev_close": 1403.34,
    "chain_as_of": "2026-10-15 20:00:09",
-   "chain_age_min": 108,
+   "chain_age_min": 0,
    "put_wall": 1300.0,
    "call_wall": 1500.0,
    "bias_boundary": 1466.72,
@@ -2150,7 +2058,6 @@
    "chg_pct": -0.61,
    "corridor_width_pct": 14.34,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
@@ -2161,7 +2068,7 @@
    "spot": 30.39,
    "prev_close": 30.56,
    "chain_as_of": "2026-10-15 19:50:35",
-   "chain_age_min": 117,
+   "chain_age_min": 9,
    "put_wall": 30.0,
    "call_wall": 40.0,
    "bias_boundary": 31.54,
@@ -2188,14 +2095,13 @@
    "chg_pct": -0.56,
    "corridor_width_pct": 32.91,
    "flags": [
-    "stale",
     "wide"
    ],
    "usable": false
   },
   {
    "ticker": "LITE",
-   "status": "http_503",
+   "status": "transport:TimeoutError",
    "usable": false,
    "flags": [
     "no_data"
