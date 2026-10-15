@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TerraShade Key Levels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#222b36;--line2:#1b232d;
+--txt:#e6edf3;--dim:#8b949e;--faint:#5c6672;
+--grn:#3fb950;--red:#f85149;--amb:#d29922;--cyan:#39c5cf;--violet:#a371f7;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.5;
+-webkit-font-smoothing:antialiased;padding:28px 20px 60px}
+.wrap{max-width:1340px;margin:0 auto}
+header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:24px}
+h1{font-size:21px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em}
+.src{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--dim);margin:0}
+.src b{color:var(--cyan);font-weight:500}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 26px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 16px;min-width:132px;flex:1}
+.kpi .v{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;line-height:1.1}
+.kpi .k{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.07em;margin-top:5px}
+.kpi.g .v{color:var(--grn)} .kpi.a .v{color:var(--amb)} .kpi.r .v{color:var(--red)}
+.grp{margin-bottom:30px}
+.grp-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px;
+padding-left:11px;border-left:3px solid var(--line)}
+.grp.good .grp-head{border-color:var(--grn)}
+.grp.warn .grp-head{border-color:var(--amb)}
+.grp.bad .grp-head{border-color:var(--red)}
+.grp h2{font-size:14.5px;font-weight:600;margin:0;display:flex;align-items:center;gap:9px}
+.cnt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);
+background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1px 9px}
+.grp-head p{margin:0;font-size:12.5px;color:var(--dim)}
+.tablewrap{background:var(--card);border:1px solid var(--line);border-radius:9px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;white-space:nowrap}
+th{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+color:var(--faint);text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);
+background:#12171e;position:sticky;top:0}
+td{padding:9px 13px;border-bottom:1px solid var(--line2);font-size:13px}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1a212b}
+.n{font-family:'JetBrains Mono',monospace;text-align:right}
+th.n{text-align:right}
+.tk{font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:.02em}
+.up{color:var(--grn)} .dn{color:var(--red)}
+.sup{color:var(--grn)} .res{color:var(--red)}
+.dim{color:var(--dim);font-size:12px}
+.bias{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;
+padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+.bias.long{background:rgba(63,185,80,.14);color:var(--grn)}
+.bias.short{background:rgba(248,81,73,.14);color:var(--red)}
+.bias.none{color:var(--faint)}
+.barcell{width:96px;min-width:96px}
+.bar{position:relative;height:5px;border-radius:3px;
+background:linear-gradient(90deg,rgba(63,185,80,.45),rgba(130,130,140,.3),rgba(248,81,73,.45))}
+.bar-dot{position:absolute;top:50%;width:8px;height:8px;border-radius:50%;
+background:var(--txt);border:1.5px solid var(--bg);transform:translate(-50%,-50%)}
+.flags{white-space:normal;min-width:210px}
+.flag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;
+padding:2px 7px;border-radius:4px;margin:1px 3px 1px 0;letter-spacing:.02em}
+.flag.ok{background:rgba(63,185,80,.11);color:var(--grn)}
+.flag.stale{background:rgba(210,153,34,.13);color:var(--amb)}
+.flag.wide{background:rgba(163,113,247,.13);color:var(--violet)}
+.flag.no_boundary{background:rgba(139,148,158,.13);color:var(--dim)}
+.flag.band_excludes{background:rgba(248,81,73,.13);color:var(--red)}
+.nodata{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:15px 17px}
+.nodata .syms{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--red);
+font-weight:500;letter-spacing:.04em;margin-bottom:6px}
+.nodata p{margin:0;font-size:12.5px;color:var(--dim)}
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);
+font-size:11.5px;color:var(--faint);line-height:1.7}
+footer b{color:var(--dim);font-weight:500}
+@media(max-width:720px){body{padding:18px 12px 44px} .kpi{min-width:104px}}
+</style></head>
+<body><div class="wrap">
+<header>
+<h1>TerraShade &mdash; Key Levels</h1>
+<p class="src">SOURCE <b>terrashade.onrender.com</b> &middot; PULLED 2026-10-15T21:48:10Z &middot; SNAPSHOT <b>terrashade-2026-10-15.json</b> &middot; PAGE BUILT 2026-10-15 21:49Z</p>
+</header>
+
+<div class="kpis">
+<div class="kpi g"><div class="v">0</div><div class="k">Clean</div></div>
+<div class="kpi a"><div class="v">39</div><div class="k">One flag</div></div>
+<div class="kpi r"><div class="v">16</div><div class="k">Multiple flags</div></div>
+<div class="kpi r"><div class="v">5</div><div class="k">No data</div></div>
+<div class="kpi"><div class="v">55</div><div class="k">Returned</div></div>
+</div>
+
+<section class="grp warn">
+<div class="grp-head"><h2>One flag<span class="cnt">39</span></h2><p>Usable with the noted caveat in mind.</p></div>
+<div class="tablewrap"><table><thead><tr>
+<th>Ticker</th><th class="n">Spot</th><th class="n">Chg</th><th class="n">Floor</th>
+<th class="n">Ceiling</th><th>Position</th><th class="n">Bias line</th><th>Bias</th>
+<th class="n">Anchor</th><th class="n">Day range</th><th class="n">Month range</th>
+<th class="n">Chain age</th><th>Quality</th>
+</tr></thead><tbody><tr>
+<td class="tk">AAPL</td><td class="n">342</td><td class="n dn">-0.28%</td>
+<td class="n sup">340</td><td class="n res">350</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:20.0%"></div></div></td>
+<td class="n">314.36</td><td><span class="bias long">Long</span></td><td class="n">340</td>
+<td class="n dim">339.35 &ndash; 345.91</td><td class="n dim">331.58 &ndash; 353.68</td>
+<td class="n dim">1h51m</td><td class="flags"><span class="flag stale">chain 1h51m old</span></td></tr><tr>
+<td class="tk">AMD</td><td class="n">562.23</td><td class="n dn">-1.50%</td>
+<td class="n sup">550</td><td class="n res">600</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:24.5%"></div></div></td>
+<td class="n">566.69</td><td><span class="bias short">Short</span></td><td class="n">620</td>
+<td class="n dim">548.8 &ndash; 575.66</td><td class="n dim">520.79 &ndash; 603.67</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">AMZN</td><td class="n">254.76</td><td class="n up">+0.27%</td>
+<td class="n sup">250</td><td class="n res">260</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:47.6%"></div></div></td>
+<td class="n">242.86</td><td><span class="bias long">Long</span></td><td class="n">260</td>
+<td class="n dim">251.82 &ndash; 257.72</td><td class="n dim">238.39 &ndash; 271.15</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">AVGO</td><td class="n">344.39</td><td class="n dn">-0.54%</td>
+<td class="n sup">340</td><td class="n res">350</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:43.9%"></div></div></td>
+<td class="n">352.33</td><td><span class="bias short">Short</span></td><td class="n">340</td>
+<td class="n dim">337.98 &ndash; 350</td><td class="n dim">325.33 &ndash; 362.65</td>
+<td class="n dim">1h51m</td><td class="flags"><span class="flag stale">chain 1h51m old</span></td></tr><tr>
+<td class="tk">BA</td><td class="n">188.73</td><td class="n up">+2.20%</td>
+<td class="n sup">185</td><td class="n res">190</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:74.6%"></div></div></td>
+<td class="n">189.7</td><td><span class="bias short">Short</span></td><td class="n">185</td>
+<td class="n dim">186.29 &ndash; 191.17</td><td class="n dim">177.94 &ndash; 199.52</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">BAC</td><td class="n">51.7</td><td class="n up">+0.60%</td>
+<td class="n sup">50</td><td class="n res">52</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:85.0%"></div></div></td>
+<td class="n">52.59</td><td><span class="bias short">Short</span></td><td class="n">50</td>
+<td class="n dim">51.13 &ndash; 52.27</td><td class="n dim">50.03 &ndash; 53.37</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">COIN</td><td class="n">183.81</td><td class="n up">+6.32%</td>
+<td class="n sup">180</td><td class="n res">185</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:76.2%"></div></div></td>
+<td class="n">173.32</td><td><span class="bias long">Long</span></td><td class="n">185</td>
+<td class="n dim">179.18 &ndash; 189.49</td><td class="n dim">165.68 &ndash; 202.99</td>
+<td class="n dim">1h51m</td><td class="flags"><span class="flag stale">chain 1h51m old</span></td></tr><tr>
+<td class="tk">COST</td><td class="n">978.01</td><td class="n dn">-0.41%</td>
+<td class="n sup">960</td><td class="n res">1,000</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:45.0%"></div></div></td>
+<td class="n">953.73</td><td><span class="bias long">Long</span></td><td class="n">1,000</td>
+<td class="n dim">969.6 &ndash; 986.42</td><td class="n dim">951.13 &ndash; 1,004.89</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">CRWD</td><td class="n">244.57</td><td class="n dn">-1.89%</td>
+<td class="n sup">240</td><td class="n res">250</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:45.7%"></div></div></td>
+<td class="n">243.95</td><td><span class="bias long">Long</span></td><td class="n">250</td>
+<td class="n dim">239.32 &ndash; 249.82</td><td class="n dim">227.04 &ndash; 262.1</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">DIA</td><td class="n">521.63</td><td class="n up">+1.16%</td>
+<td class="n sup">520</td><td class="n res">525</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:32.6%"></div></div></td>
+<td class="n">514.24</td><td><span class="bias long">Long</span></td><td class="n">525</td>
+<td class="n dim">519.14 &ndash; 524.12</td><td class="n dim">512.53 &ndash; 530.73</td>
+<td class="n dim">2h02m</td><td class="flags"><span class="flag stale">chain 2h02m old</span></td></tr><tr>
+<td class="tk">GOOGL</td><td class="n">349.22</td><td class="n up">+0.45%</td>
+<td class="n sup">340</td><td class="n res">350</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:92.2%"></div></div></td>
+<td class="n">337.64</td><td><span class="bias long">Long</span></td><td class="n">355</td>
+<td class="n dim">345.07 &ndash; 353.93</td><td class="n dim">328.57 &ndash; 370.43</td>
+<td class="n dim">1h50m</td><td class="flags"><span class="flag stale">chain 1h50m old</span></td></tr><tr>
+<td class="tk">HOOD</td><td class="n">103.99</td><td class="n up">+2.88%</td>
+<td class="n sup">100</td><td class="n res">105</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:79.8%"></div></div></td>
+<td class="n">102.71</td><td><span class="bias long">Long</span></td><td class="n">100</td>
+<td class="n dim">101.27 &ndash; 106.71</td><td class="n dim">93.22 &ndash; 114.76</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">IBIT</td><td class="n">46.59</td><td class="n up">+0.76%</td>
+<td class="n sup">46</td><td class="n res">47</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:59.0%"></div></div></td>
+<td class="n">43.72</td><td><span class="bias long">Long</span></td><td class="n">47</td>
+<td class="n dim">46.43 &ndash; 46.75</td><td class="n dim">44.28 &ndash; 48.9</td>
+<td class="n dim">1h51m</td><td class="flags"><span class="flag stale">chain 1h51m old</span></td></tr><tr>
+<td class="tk">INTC</td><td class="n">95.37</td><td class="n dn">-2.80%</td>
+<td class="n sup">95</td><td class="n res">100</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:7.4%"></div></div></td>
+<td class="n">97.72</td><td><span class="bias short">Short</span></td><td class="n">130</td>
+<td class="n dim">93.14 &ndash; 98.63</td><td class="n dim">85.98 &ndash; 105.79</td>
+<td class="n dim">1h57m</td><td class="flags"><span class="flag stale">chain 1h57m old</span></td></tr><tr>
+<td class="tk">IWM</td><td class="n">275.13</td><td class="n up">+1.39%</td>
+<td class="n sup">275</td><td class="n res">277</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:6.5%"></div></div></td>
+<td class="n">280.13</td><td><span class="bias short">Short</span></td><td class="n">275</td>
+<td class="n dim">274.89 &ndash; 275.37</td><td class="n dim">271.18 &ndash; 279.08</td>
+<td class="n dim">1h49m</td><td class="flags"><span class="flag stale">chain 1h49m old</span></td></tr><tr>
+<td class="tk">JPM</td><td class="n">335.56</td><td class="n up">+0.08%</td>
+<td class="n sup">330</td><td class="n res">340</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:55.6%"></div></div></td>
+<td class="n">333.2</td><td><span class="bias long">Long</span></td><td class="n">330</td>
+<td class="n dim">331.88 &ndash; 338.26</td><td class="n dim">324.68 &ndash; 345.46</td>
+<td class="n dim">1h54m</td><td class="flags"><span class="flag stale">chain 1h54m old</span></td></tr><tr>
+<td class="tk">LLY</td><td class="n">1,251.61</td><td class="n up">+3.55%</td>
+<td class="n sup">1,200</td><td class="n res">1,260</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:86.0%"></div></div></td>
+<td class="n">1,165.82</td><td><span class="bias long">Long</span></td><td class="n">1,260</td>
+<td class="n dim">1,239.61 &ndash; 1,274.68</td><td class="n dim">1,173.42 &ndash; 1,340.87</td>
+<td class="n dim">1h51m</td><td class="flags"><span class="flag stale">chain 1h51m old</span></td></tr><tr>
+<td class="tk">MSTR</td><td class="n">151.29</td><td class="n up">+5.62%</td>
+<td class="n sup">150</td><td class="n res">157.5</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:17.2%"></div></div></td>
+<td class="n">142.88</td><td><span class="bias long">Long</span></td><td class="n">157.5</td>
+<td class="n dim">146.03 &ndash; 155.55</td><td class="n dim">135.98 &ndash; 165.6</td>
+<td class="n dim">1h51m</td><td class="flags"><span class="flag stale">chain 1h51m old</span></td></tr><tr>
+<td class="tk">MU</td><td class="n">931.24</td><td class="n up">+1.87%</td>
+<td class="n sup">900</td><td class="n res">1,000</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:31.2%"></div></div></td>
+<td class="n">926.58</td><td><span class="bias long">Long</span></td><td class="n">900</td>
+<td class="n dim">907.89 &ndash; 954.59</td><td class="n dim">863.22 &ndash; 999.26</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">NBIS</td><td class="n">188.58</td><td class="n up">+1.38%</td>
+<td class="n sup">180</td><td class="n res">200</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:42.9%"></div></div></td>
+<td class="n">192.3</td><td><span class="bias short">Short</span></td><td class="n">180</td>
+<td class="n dim">180.7 &ndash; 196.46</td><td class="n dim">167.03 &ndash; 210.13</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">NDX</td><td class="n">29,715.28</td><td class="n dn">-0.79%</td>
+<td class="n sup">29,500</td><td class="n res">30,000</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:43.1%"></div></div></td>
+<td class="n">30,187.25</td><td><span class="bias short">Short</span></td><td class="n">29,475</td>
+<td class="n dim">29,535.63 &ndash; 29,894.93</td><td class="n dim">29,428.49 &ndash; 30,002.07</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">NDXP</td><td class="n">29,715.28</td><td class="n dn">-0.79%</td>
+<td class="n sup">29,650</td><td class="n res">30,000</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:18.7%"></div></div></td>
+<td class="n">30,319.35</td><td><span class="bias short">Short</span></td><td class="n">29,900</td>
+<td class="n dim">29,535.63 &ndash; 29,894.93</td><td class="n dim">29,048.62 &ndash; 30,381.93</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">NFLX</td><td class="n">72.61</td><td class="n up">+2.89%</td>
+<td class="n sup">70</td><td class="n res">75</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:52.2%"></div></div></td>
+<td class="n">70.35</td><td><span class="bias long">Long</span></td><td class="n">73</td>
+<td class="n dim">71.69 &ndash; 73.53</td><td class="n dim">66.58 &ndash; 78.64</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">NVDA</td><td class="n">217.23</td><td class="n dn">-1.84%</td>
+<td class="n sup">210</td><td class="n res">220</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:72.3%"></div></div></td>
+<td class="n">213.09</td><td><span class="bias long">Long</span></td><td class="n">250</td>
+<td class="n dim">213.34 &ndash; 221.01</td><td class="n dim">206.32 &ndash; 228.04</td>
+<td class="n dim">1h55m</td><td class="flags"><span class="flag stale">chain 1h55m old</span></td></tr><tr>
+<td class="tk">ORCL</td><td class="n">134.47</td><td class="n up">+3.00%</td>
+<td class="n sup">130</td><td class="n res">140</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:44.7%"></div></div></td>
+<td class="n">136.64</td><td><span class="bias short">Short</span></td><td class="n">130</td>
+<td class="n dim">131.47 &ndash; 137.47</td><td class="n dim">122.83 &ndash; 146.12</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">PLTR</td><td class="n">200.5</td><td class="n dn">-0.23%</td>
+<td class="n sup">200</td><td class="n res">210</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:5.0%"></div></div></td>
+<td class="n">177.71</td><td><span class="bias long">Long</span></td><td class="n">210</td>
+<td class="n dim">196.54 &ndash; 204.46</td><td class="n dim">187.86 &ndash; 213.14</td>
+<td class="n dim">1h47m</td><td class="flags"><span class="flag stale">chain 1h47m old</span></td></tr><tr>
+<td class="tk">QQQ</td><td class="n">727.97</td><td class="n dn">-0.13%</td>
+<td class="n sup">725</td><td class="n res">730</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:59.4%"></div></div></td>
+<td class="n">736.26</td><td><span class="bias short">Short</span></td><td class="n">725</td>
+<td class="n dim">727.3 &ndash; 728.65</td><td class="n dim">722.29 &ndash; 733.65</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">SMH</td><td class="n">558.84</td><td class="n dn">-1.04%</td>
+<td class="n sup">550</td><td class="n res">560</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:88.4%"></div></div></td>
+<td class="n">597.78</td><td><span class="bias short">Short</span></td><td class="n">560</td>
+<td class="n dim">549.87 &ndash; 567.81</td><td class="n dim">530.26 &ndash; 587.42</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">SPCX</td><td class="n">148.62</td><td class="n dn">-2.33%</td>
+<td class="n sup">145</td><td class="n res">150</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:72.4%"></div></div></td>
+<td class="n">151.78</td><td><span class="bias short">Short</span></td><td class="n">150</td>
+<td class="n dim">145.44 &ndash; 152.06</td><td class="n dim">138.12 &ndash; 159.38</td>
+<td class="n dim">1h51m</td><td class="flags"><span class="flag stale">chain 1h51m old</span></td></tr><tr>
+<td class="tk">SPX</td><td class="n">7,747.07</td><td class="n up">+0.36%</td>
+<td class="n sup">7,700</td><td class="n res">8,000</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:15.7%"></div></div></td>
+<td class="n">7,755.57</td><td><span class="bias short">Short</span></td><td class="n">8,000</td>
+<td class="n dim">7,744.75 &ndash; 7,749.39</td><td class="n dim">7,616 &ndash; 7,878.14</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">SPXW</td><td class="n">7,747.07</td><td class="n up">+0.36%</td>
+<td class="n sup">7,700</td><td class="n res">7,800</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:47.1%"></div></div></td>
+<td class="n">7,767.45</td><td><span class="bias short">Short</span></td><td class="n">7,900</td>
+<td class="n dim">7,744.75 &ndash; 7,749.39</td><td class="n dim">7,616 &ndash; 7,878.14</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">SPY</td><td class="n">771.86</td><td class="n up">+0.29%</td>
+<td class="n sup">770</td><td class="n res">775</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:37.2%"></div></div></td>
+<td class="n">773.18</td><td><span class="bias short">Short</span></td><td class="n">765</td>
+<td class="n dim">771.19 &ndash; 772.53</td><td class="n dim">760.3 &ndash; 783.42</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">TLT</td><td class="n">79.97</td><td class="n up">+1.37%</td>
+<td class="n sup">79</td><td class="n res">80</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:97.0%"></div></div></td>
+<td class="n">76.52</td><td><span class="bias long">Long</span></td><td class="n">80</td>
+<td class="n dim">79.5 &ndash; 80.44</td><td class="n dim">78.51 &ndash; 81.43</td>
+<td class="n dim">1h54m</td><td class="flags"><span class="flag stale">chain 1h54m old</span></td></tr><tr>
+<td class="tk">TQQQ</td><td class="n">73.82</td><td class="n dn">-0.40%</td>
+<td class="n sup">72</td><td class="n res">75</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:60.7%"></div></div></td>
+<td class="n">76.87</td><td><span class="bias short">Short</span></td><td class="n">72</td>
+<td class="n dim">72.13 &ndash; 75.51</td><td class="n dim">67.66 &ndash; 79.98</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">TSLA</td><td class="n">362.44</td><td class="n dn">-1.29%</td>
+<td class="n sup">360</td><td class="n res">400</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:6.1%"></div></div></td>
+<td class="n">358.4</td><td><span class="bias long">Long</span></td><td class="n">400</td>
+<td class="n dim">354.32 &ndash; 372.5</td><td class="n dim">336.95 &ndash; 389.87</td>
+<td class="n dim">1h54m</td><td class="flags"><span class="flag stale">chain 1h54m old</span></td></tr><tr>
+<td class="tk">TSM</td><td class="n">422.25</td><td class="n dn">-1.80%</td>
+<td class="n sup">420</td><td class="n res">430</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:22.5%"></div></div></td>
+<td class="n">429.46</td><td><span class="bias short">Short</span></td><td class="n">420</td>
+<td class="n dim">415.07 &ndash; 429.43</td><td class="n dim">403.36 &ndash; 441.14</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">UBER</td><td class="n">71.27</td><td class="n up">+2.86%</td>
+<td class="n sup">70</td><td class="n res">75</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:25.4%"></div></div></td>
+<td class="n">70.25</td><td><span class="bias long">Long</span></td><td class="n">65</td>
+<td class="n dim">70.31 &ndash; 72.23</td><td class="n dim">67.93 &ndash; 74.61</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">WMT</td><td class="n">117.87</td><td class="n up">+1.47%</td>
+<td class="n sup">115</td><td class="n res">120</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:57.4%"></div></div></td>
+<td class="n">102.76</td><td><span class="bias long">Long</span></td><td class="n">120</td>
+<td class="n dim">116.63 &ndash; 119.11</td><td class="n dim">113.94 &ndash; 121.8</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span></td></tr><tr>
+<td class="tk">XOM</td><td class="n">174.71</td><td class="n dn">-1.30%</td>
+<td class="n sup">170</td><td class="n res">175</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:94.2%"></div></div></td>
+<td class="n">150.25</td><td><span class="bias long">Long</span></td><td class="n">175</td>
+<td class="n dim">172.02 &ndash; 176.2</td><td class="n dim">166.89 &ndash; 181.34</td>
+<td class="n dim">1h59m</td><td class="flags"><span class="flag stale">chain 1h59m old</span></td></tr></tbody></table></div></section><section class="grp bad">
+<div class="grp-head"><h2>Multiple flags<span class="cnt">16</span></h2><p>Do not trade off these levels without re-pulling first.</p></div>
+<div class="tablewrap"><table><thead><tr>
+<th>Ticker</th><th class="n">Spot</th><th class="n">Chg</th><th class="n">Floor</th>
+<th class="n">Ceiling</th><th>Position</th><th class="n">Bias line</th><th>Bias</th>
+<th class="n">Anchor</th><th class="n">Day range</th><th class="n">Month range</th>
+<th class="n">Chain age</th><th>Quality</th>
+</tr></thead><tbody><tr>
+<td class="tk">ARM</td><td class="n">244.79</td><td class="n up">+2.85%</td>
+<td class="n sup">240</td><td class="n res">330</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:5.3%"></div></div></td>
+<td class="n">256.65</td><td><span class="bias short">Short</span></td><td class="n">250</td>
+<td class="n dim">237.35 &ndash; 252.23</td><td class="n dim">222.07 &ndash; 267.51</td>
+<td class="n dim">1h47m</td><td class="flags"><span class="flag stale">chain 1h47m old</span><span class="flag wide">corridor 37% wide</span></td></tr><tr>
+<td class="tk">ASTS</td><td class="n">44.56</td><td class="n up">+5.74%</td>
+<td class="n sup">40</td><td class="n res">50</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:45.6%"></div></div></td>
+<td class="n">41.6</td><td><span class="bias long">Long</span></td><td class="n">45</td>
+<td class="n dim">43.2 &ndash; 46.46</td><td class="n dim">39.66 &ndash; 50</td>
+<td class="n dim">1h59m</td><td class="flags"><span class="flag stale">chain 1h59m old</span><span class="flag wide">corridor 22% wide</span></td></tr><tr>
+<td class="tk">GLD</td><td class="n">382.71</td><td class="n up">+1.79%</td>
+<td class="n sup">380</td><td class="n res">450</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:3.9%"></div></div></td>
+<td class="n">377.32</td><td><span class="bias long">Long</span></td><td class="n">450</td>
+<td class="n dim">379.17 &ndash; 386.25</td><td class="n dim">371.96 &ndash; 393.46</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span><span class="flag wide">corridor 18% wide</span></td></tr><tr>
+<td class="tk">GME</td><td class="n">28.02</td><td class="n up">+3.20%</td>
+<td class="n sup">25</td><td class="n res">30</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:60.4%"></div></div></td>
+<td class="n">&mdash;</td><td><span class="bias none">&mdash;</span></td><td class="n">30</td>
+<td class="n dim">27.33 &ndash; 29.07</td><td class="n dim">25.02 &ndash; 31.38</td>
+<td class="n dim">1h54m</td><td class="flags"><span class="flag stale">chain 1h54m old</span><span class="flag wide">corridor 18% wide</span><span class="flag no_boundary">no bias boundary</span></td></tr><tr>
+<td class="tk">IREN</td><td class="n">30.39</td><td class="n dn">-0.56%</td>
+<td class="n sup">30</td><td class="n res">40</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:3.9%"></div></div></td>
+<td class="n">31.54</td><td><span class="bias short">Short</span></td><td class="n">30</td>
+<td class="n dim">28.88 &ndash; 31.49</td><td class="n dim">26.13 &ndash; 34.24</td>
+<td class="n dim">1h57m</td><td class="flags"><span class="flag stale">chain 1h57m old</span><span class="flag wide">corridor 33% wide</span></td></tr><tr>
+<td class="tk">META</td><td class="n">736.72</td><td class="n dn">-0.11%</td>
+<td class="n sup">730</td><td class="n res">750</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:33.6%"></div></div></td>
+<td class="n">&mdash;</td><td><span class="bias none">&mdash;</span></td><td class="n">750</td>
+<td class="n dim">726.55 &ndash; 746.53</td><td class="n dim">686.43 &ndash; 786.65</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span><span class="flag no_boundary">no bias boundary</span></td></tr><tr>
+<td class="tk">MSFT</td><td class="n">539.44</td><td class="n up">+1.08%</td>
+<td class="n sup">535</td><td class="n res">550</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:29.6%"></div></div></td>
+<td class="n">&mdash;</td><td><span class="bias none">&mdash;</span></td><td class="n">550</td>
+<td class="n dim">534.89 &ndash; 544.45</td><td class="n dim">512.13 &ndash; 567.21</td>
+<td class="n dim">1h51m</td><td class="flags"><span class="flag stale">chain 1h51m old</span><span class="flag no_boundary">no bias boundary</span></td></tr><tr>
+<td class="tk">RBLX</td><td class="n">51.13</td><td class="n up">+7.55%</td>
+<td class="n sup">50</td><td class="n res">65</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:7.5%"></div></div></td>
+<td class="n">45.46</td><td><span class="bias long">Long</span></td><td class="n">50</td>
+<td class="n dim">49.88 &ndash; 52.38</td><td class="n dim">43.91 &ndash; 58.36</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span><span class="flag wide">corridor 29% wide</span></td></tr><tr>
+<td class="tk">RKLB</td><td class="n">55.25</td><td class="n dn">-6.64%</td>
+<td class="n sup">55</td><td class="n res">85</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:0.8%"></div></div></td>
+<td class="n">59.08</td><td><span class="bias short">Short</span></td><td class="n">55</td>
+<td class="n dim">53.51 &ndash; 56.99</td><td class="n dim">50.07 &ndash; 60.43</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span><span class="flag wide">corridor 54% wide</span></td></tr><tr>
+<td class="tk">SHOP</td><td class="n">178.14</td><td class="n up">+3.27%</td>
+<td class="n sup">175</td><td class="n res">180</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:62.8%"></div></div></td>
+<td class="n">&mdash;</td><td><span class="bias none">&mdash;</span></td><td class="n">145</td>
+<td class="n dim">173.84 &ndash; 182.44</td><td class="n dim">165.88 &ndash; 190.4</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span><span class="flag no_boundary">no bias boundary</span></td></tr><tr>
+<td class="tk">SLV</td><td class="n">51.92</td><td class="n up">+3.39%</td>
+<td class="n sup">50</td><td class="n res">60</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:19.2%"></div></div></td>
+<td class="n">48.87</td><td><span class="bias long">Long</span></td><td class="n">50</td>
+<td class="n dim">51.13 &ndash; 52.71</td><td class="n dim">49.44 &ndash; 54.4</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span><span class="flag wide">corridor 19% wide</span></td></tr><tr>
+<td class="tk">SMCI</td><td class="n">35.09</td><td class="n dn">-1.93%</td>
+<td class="n sup">35</td><td class="n res">40</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:1.8%"></div></div></td>
+<td class="n">34.97</td><td><span class="bias long">Long</span></td><td class="n">35</td>
+<td class="n dim">33.96 &ndash; 36.21</td><td class="n dim">31.57 &ndash; 38.6</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span><span class="flag wide">corridor 14% wide</span></td></tr><tr>
+<td class="tk">SNDK</td><td class="n">1,394.83</td><td class="n dn">-0.61%</td>
+<td class="n sup">1,300</td><td class="n res">1,500</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:47.4%"></div></div></td>
+<td class="n">1,466.72</td><td><span class="bias short">Short</span></td><td class="n">1,400</td>
+<td class="n dim">1,346.29 &ndash; 1,443.37</td><td class="n dim">1,239.58 &ndash; 1,550.08</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span><span class="flag wide">corridor 14% wide</span></td></tr><tr>
+<td class="tk">SOFI</td><td class="n">15.09</td><td class="n up">+6.12%</td>
+<td class="n sup">15</td><td class="n res">20</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:1.8%"></div></div></td>
+<td class="n">14.08</td><td><span class="bias long">Long</span></td><td class="n">15</td>
+<td class="n dim">14.77 &ndash; 15.41</td><td class="n dim">13.68 &ndash; 16.5</td>
+<td class="n dim">1h48m</td><td class="flags"><span class="flag stale">chain 1h48m old</span><span class="flag wide">corridor 33% wide</span></td></tr><tr>
+<td class="tk">SOXL</td><td class="n">107.35</td><td class="n dn">-2.89%</td>
+<td class="n sup">100</td><td class="n res">120</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:36.7%"></div></div></td>
+<td class="n">&mdash;</td><td><span class="bias none">&mdash;</span></td><td class="n">100</td>
+<td class="n dim">101.83 &ndash; 112.87</td><td class="n dim">89.18 &ndash; 125.52</td>
+<td class="n dim">1h47m</td><td class="flags"><span class="flag stale">chain 1h47m old</span><span class="flag wide">corridor 19% wide</span><span class="flag no_boundary">no bias boundary</span></td></tr><tr>
+<td class="tk">XLE</td><td class="n">66.56</td><td class="n dn">-1.58%</td>
+<td class="n sup">60</td><td class="n res">70</td><td class="barcell"><div class="bar"><div class="bar-dot" style="left:65.6%"></div></div></td>
+<td class="n">64.74</td><td><span class="bias long">Long</span></td><td class="n">70</td>
+<td class="n dim">65.75 &ndash; 67.26</td><td class="n dim">64.06 &ndash; 68.95</td>
+<td class="n dim">1h56m</td><td class="flags"><span class="flag stale">chain 1h56m old</span><span class="flag wide">corridor 15% wide</span></td></tr></tbody></table></div></section><section class="grp bad">
+<div class="grp-head"><h2>No data<span class="cnt">5</span></h2>
+<p>Returned a build-pending response and never resolved on retry.</p></div>
+<div class="nodata"><div class="syms">RIVN &middot; MARA &middot; BABA &middot; AAOI &middot; LITE</div>
+<p>The unavailable set moves between runs. Some of these serve levels on other days,
+so treat coverage as a per-run fact rather than a fixed list.</p></div></section>
+
+<footer>
+<b>Floor / Ceiling</b> &mdash; heaviest put-side support at or below spot, heaviest call-side resistance at or above spot.
+<b>Position</b> &mdash; where spot sits between the two.
+<b>Bias line</b> &mdash; the price where dealer positioning flips; above it hedging dampens moves, below it hedging extends them.
+<b>Anchor</b> &mdash; single largest positioning strike across all expirations.<br>
+<b>Flag rules</b> &mdash; stale: chain older than 60 min at pull &middot;
+wide: corridor over 12% of spot &middot;
+no bias boundary: none found within &plusmn;15% of spot &middot;
+day range excludes spot: expected-move band does not contain the live price, which indicates the chain behind it is out of date.<br>
+Open interest only; same-session flow is not reflected. TerraShade data exclusively &mdash; no other provider is mixed in.
+</footer>
+
+</div></body></html>
