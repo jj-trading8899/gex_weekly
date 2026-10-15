@@ -136,19 +136,54 @@ def to_row(symbol, payload, now, thresholds):
     return grade(row, thresholds)
 
 
+def reference_time(payloads, now):
+    """
+    Staleness is measured against the freshest chain in the sweep, not wall-clock now.
+
+    TerraShade stops refreshing once the market closes, so a run at 21:48 UTC against a
+    20:00 UTC close would mark every ticker stale and report zero usable rows. Anchoring
+    on the newest chain the sweep saw asks the question that actually matters -- is this
+    ticker lagging the rest of the feed -- and needs no close time or DST handling.
+
+    Capped at now so a bad future timestamp cannot push the reference forward.
+    """
+    stamps = []
+    for payload in payloads:
+        raw = (payload.get("chain_as_of") or "").replace(" UTC", "")
+        try:
+            stamps.append(dt.datetime.strptime(raw, "%Y-%m-%d %H:%M:%S"))
+        except ValueError:
+            continue
+    return min(max(stamps), now) if stamps else now
+
+
 def sweep(tickers, cfg, now):
-    rows, http = [], cfg["http"]
+    http = cfg["http"]
+    got, failed = [], []
     for symbol in tickers:
         payload, err = fetch_levels(symbol, http)
         if err:
-            rows.append({"ticker": symbol, "status": err, "usable": False, "flags": ["no_data"]})
+            failed.append((symbol, err))
             print("  %-6s %s" % (symbol, err), file=sys.stderr)
         else:
-            row = to_row(symbol, payload, now, cfg["thresholds"])
-            rows.append(row)
-            print("  %-6s ok  %s" % (symbol, ",".join(row["flags"]) or "clean"), file=sys.stderr)
+            got.append((symbol, payload))
         time.sleep(http["delay_seconds"])
-    return rows
+
+    ref = reference_time([p for _, p in got], now)
+    if ref != now:
+        print("staleness measured against freshest chain %sZ (not run time %sZ)" % (
+            ref.isoformat(timespec="seconds"), now.isoformat(timespec="seconds")), file=sys.stderr)
+
+    rows = []
+    for symbol, payload in got:
+        row = to_row(symbol, payload, ref, cfg["thresholds"])
+        rows.append(row)
+        print("  %-6s ok  %s" % (symbol, ",".join(row["flags"]) or "clean"), file=sys.stderr)
+    for symbol, err in failed:
+        rows.append({"ticker": symbol, "status": err, "usable": False, "flags": ["no_data"]})
+
+    rows.sort(key=lambda r: tickers.index(r["ticker"]))
+    return rows, ref
 
 
 def capture_gexhist(tickers, http):
@@ -198,7 +233,7 @@ def main():
     print("%s sweep, %d tickers, %sZ" % (args.mode, len(tickers), now.isoformat(timespec="seconds")),
           file=sys.stderr)
 
-    rows = sweep(tickers, cfg, now)
+    rows, ref = sweep(tickers, cfg, now)
     ok = [r for r in rows if r["status"] == "ok"]
     usable = [r for r in ok if r["usable"]]
 
@@ -215,6 +250,7 @@ def main():
 
     meta = {
         "pulled_at": now.isoformat(timespec="seconds") + "Z",
+        "staleness_reference": ref.isoformat(timespec="seconds") + "Z",
         "mode": args.mode,
         "source": cfg["source"],
         "thresholds": cfg["thresholds"],
