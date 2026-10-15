@@ -1,0 +1,37 @@
+{
+  "source": "https://terrashade.onrender.com",
+  "note": "Open API. No auth, no key, no cookie. Do not add credentials here.",
+
+  "tickers": [
+    "SPY", "QQQ", "SPX", "SPXW", "IWM", "NDX", "NDXP", "DIA",
+    "SMH", "TLT", "GLD", "SLV", "XLE", "TQQQ", "SOXL", "IBIT",
+    "NVDA", "AAPL", "TSLA", "MSFT", "AMZN", "META", "GOOGL", "AVGO",
+    "NFLX", "ORCL", "AMD", "MU", "INTC", "TSM", "ARM", "PLTR",
+    "COIN", "MSTR", "HOOD", "SOFI", "SMCI", "CRWD", "UBER", "SHOP",
+    "RBLX", "JPM", "BAC", "WMT", "COST", "XOM", "BA", "LLY",
+    "GME", "RIVN", "MARA", "BABA", "SPCX",
+    "NBIS", "ASTS", "AAOI", "RKLB", "SNDK", "IREN", "LITE"
+  ],
+
+  "intraday_tickers": ["SPY", "QQQ", "SPX", "IWM", "NDX", "IBIT", "GLD", "TLT"],
+  "gexhist_tickers": ["SPY", "QQQ", "SPX", "IWM"],
+
+  "thresholds": {
+    "stale_minutes": 60,
+    "wide_corridor_pct": 12.0
+  },
+
+  "http": {
+    "delay_seconds": 0.5,
+    "timeout_seconds": 30,
+    "building_retries": 2,
+    "building_backoff_seconds": 20
+  },
+
+  "market_holidays": [
+    "2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25",
+    "2026-06-19", "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25",
+    "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26", "2027-05-31",
+    "2027-06-18", "2027-07-05", "2027-09-06", "2027-11-25", "2027-12-24"
+  ]
+}
