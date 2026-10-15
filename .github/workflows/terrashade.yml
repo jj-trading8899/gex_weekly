@@ -1,0 +1,82 @@
+name: TerraShade Levels
+
+# TerraShade is an open, unauthenticated API. No secrets are required and none
+# should be added to this workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'eod (full sweep) or intraday (index subset)'
+        type: choice
+        options: [eod, intraday]
+        default: eod
+      force:
+        description: 'Run even on a weekend or market holiday'
+        type: boolean
+        default: false
+
+  schedule:
+    # 21:50 UTC Mon-Fri. That is 17:50 ET in summer and 16:50 ET in winter,
+    # so it lands after the US close in both DST regimes without needing two entries.
+    - cron: '50 21 * * 1-5'
+
+    # Hourly intraday sweep of the index subset. Disabled on purpose - see
+    # terrashade/README.md for why the end-of-day gexhist capture covers this
+    # better. Uncomment only if you want your own polling as a backstop.
+    # - cron: '35 14-20 * * 1-5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: terrashade
+  cancel-in-progress: false
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Decide mode
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            # The hourly cron, if enabled, runs intraday; the 21:50 cron runs eod.
+            if [ "${{ github.event.schedule }}" = "50 21 * * 1-5" ]; then
+              echo "mode=eod" >> "$GITHUB_OUTPUT"
+            else
+              echo "mode=intraday" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pull levels
+        run: |
+          python terrashade/fetch_levels.py \
+            --mode "${{ steps.mode.outputs.mode }}" \
+            ${{ (github.event_name == 'workflow_dispatch' && inputs.force) && '--force' || '' }}
+
+      - name: Rebuild page
+        run: python terrashade/build_page.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "GitHub Action"
+          git config user.email "action@github.com"
+          git add terrashade/
+          if git diff --staged --quiet; then
+            echo "nothing changed"
+            exit 0
+          fi
+          git commit -m "terrashade ${{ steps.mode.outputs.mode }}: $(date -u +'%Y-%m-%d %H:%MZ')"
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push
