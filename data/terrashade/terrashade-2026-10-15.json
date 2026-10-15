@@ -1,0 +1,2163 @@
+{
+ "pulled_at": "2026-10-15T22:45:59Z",
+ "staleness_reference": "2026-10-15T20:00:13Z",
+ "mode": "eod",
+ "source": "https://terrashade.onrender.com",
+ "thresholds": {
+  "stale_minutes": 60,
+  "wide_corridor_pct": 12.0
+ },
+ "note": "TerraShade only. No other provider is mixed into this file.",
+ "summary": {
+  "requested": 60,
+  "returned": 60,
+  "usable": 40,
+  "no_data": [],
+  "stale": [],
+  "wide": [
+   "GLD",
+   "SLV",
+   "XLE",
+   "SOXL",
+   "ARM",
+   "SOFI",
+   "SMCI",
+   "RBLX",
+   "GME",
+   "ASTS",
+   "AAOI",
+   "RKLB",
+   "SNDK",
+   "IREN",
+   "LITE"
+  ],
+  "band_excludes": []
+ },
+ "rows": [
+  {
+   "ticker": "SPY",
+   "status": "ok",
+   "spot": 771.86,
+   "prev_close": 769.6,
+   "chain_as_of": "2026-10-15 19:59:34",
+   "chain_age_min": 0,
+   "put_wall": 770.0,
+   "call_wall": 775.0,
+   "bias_boundary": 773.18,
+   "anchor_strike": 765.0,
+   "anchor_value": -1343003661.97,
+   "expected_moves": {
+    "daily": {
+     "low": 771.19,
+     "high": 772.53,
+     "exp": "2026-10-15"
+    },
+    "weekly": {
+     "low": 768.3,
+     "high": 775.42,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 760.3,
+     "high": 783.42,
+     "exp": "2026-10-28"
+    },
+    "annual": {
+     "low": 567.74,
+     "high": 796.1,
+     "exp": null
+    }
+   },
+   "bias": "short",
+   "chg_pct": 0.29,
+   "corridor_width_pct": 0.65,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "QQQ",
+   "status": "ok",
+   "spot": 727.97,
+   "prev_close": 728.95,
+   "chain_as_of": "2026-10-15 19:59:53",
+   "chain_age_min": 0,
+   "put_wall": 725.0,
+   "call_wall": 730.0,
+   "bias_boundary": 736.26,
+   "anchor_strike": 725.0,
+   "anchor_value": -1303358175.84,
+   "expected_moves": {
+    "daily": {
+     "low": 727.3,
+     "high": 728.65,
+     "exp": "2026-10-15"
+    },
+    "weekly": {
+     "low": 722.29,
+     "high": 733.65,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 722.29,
+     "high": 733.65,
+     "exp": "2026-10-16"
+    },
+    "annual": {
+     "low": 480.27,
+     "high": 748.35,
+     "exp": null
+    }
+   },
+   "bias": "short",
+   "chg_pct": -0.13,
+   "corridor_width_pct": 0.69,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "SPX",
+   "status": "ok",
+   "spot": 7747.07,
+   "prev_close": 7718.94,
+   "chain_as_of": "2026-10-15 19:59:39",
+   "chain_age_min": 0,
+   "put_wall": 7700.0,
+   "call_wall": 8000.0,
+   "bias_boundary": 7755.57,
+   "anchor_strike": 8000.0,
+   "anchor_value": 15015329302.57,
+   "expected_moves": {
+    "daily": {
+     "low": 7744.75,
+     "high": 7749.39,
+     "exp": "2026-10-15"
+    },
+    "weekly": {
+     "low": 7719.66,
+     "high": 7774.48,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 7616.0,
+     "high": 7878.14,
+     "exp": "2026-10-30"
+    },
+    "annual": {
+     "low": 5685.59,
+     "high": 8005.41,
+     "exp": null
+    }
+   },
+   "bias": "short",
+   "chg_pct": 0.36,
+   "corridor_width_pct": 3.87,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "SPXW",
+   "status": "ok",
+   "spot": 7747.07,
+   "prev_close": 7718.94,
+   "chain_as_of": "2026-10-15 19:59:44",
+   "chain_age_min": 0,
+   "put_wall": 7700.0,
+   "call_wall": 7800.0,
+   "bias_boundary": 7767.45,
+   "anchor_strike": 7900.0,
+   "anchor_value": 4181404929.75,
+   "expected_moves": {
+    "daily": {
+     "low": 7744.75,
+     "high": 7749.39,
+     "exp": "2026-10-15"
+    },
+    "weekly": {
+     "low": 7711.8,
+     "high": 7782.34,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 7616.0,
+     "high": 7878.14,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": 0.36,
+   "corridor_width_pct": 1.29,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "IWM",
+   "status": "ok",
+   "spot": 275.13,
+   "prev_close": 271.37,
+   "chain_as_of": "2026-10-15 19:59:04",
+   "chain_age_min": 1,
+   "put_wall": 275.0,
+   "call_wall": 277.0,
+   "bias_boundary": 280.13,
+   "anchor_strike": 275.0,
+   "anchor_value": -1027453910.11,
+   "expected_moves": {
+    "daily": {
+     "low": 274.89,
+     "high": 275.37,
+     "exp": "2026-10-15"
+    },
+    "weekly": {
+     "low": 273.27,
+     "high": 276.99,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 271.18,
+     "high": 279.08,
+     "exp": "2026-10-22"
+    }
+   },
+   "bias": "short",
+   "chg_pct": 1.39,
+   "corridor_width_pct": 0.73,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "NDX",
+   "status": "ok",
+   "spot": 29715.28,
+   "prev_close": 29950.82,
+   "chain_as_of": "2026-10-15 19:59:45",
+   "chain_age_min": 0,
+   "put_wall": 29500.0,
+   "call_wall": 30000.0,
+   "bias_boundary": 30187.25,
+   "anchor_strike": 29475.0,
+   "anchor_value": 826110320.03,
+   "expected_moves": {
+    "daily": {
+     "low": 29535.63,
+     "high": 29894.93,
+     "exp": "2026-10-15"
+    },
+    "weekly": {
+     "low": 29428.49,
+     "high": 30002.07,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 29428.49,
+     "high": 30002.07,
+     "exp": "2026-10-16"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -0.79,
+   "corridor_width_pct": 1.68,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "NDXP",
+   "status": "ok",
+   "spot": 29715.28,
+   "prev_close": 29950.82,
+   "chain_as_of": "2026-10-15 19:59:45",
+   "chain_age_min": 0,
+   "put_wall": 29650.0,
+   "call_wall": 30000.0,
+   "bias_boundary": 30319.35,
+   "anchor_strike": 29900.0,
+   "anchor_value": -276071123.15,
+   "expected_moves": {
+    "daily": {
+     "low": 29535.63,
+     "high": 29894.93,
+     "exp": "2026-10-15"
+    },
+    "weekly": {
+     "low": 29428.49,
+     "high": 30002.07,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 29048.62,
+     "high": 30381.93,
+     "exp": "2026-10-26"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -0.79,
+   "corridor_width_pct": 1.18,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "DIA",
+   "status": "ok",
+   "spot": 521.63,
+   "prev_close": 515.63,
+   "chain_as_of": "2026-10-15 19:45:54",
+   "chain_age_min": 14,
+   "put_wall": 520.0,
+   "call_wall": 525.0,
+   "bias_boundary": 514.24,
+   "anchor_strike": 525.0,
+   "anchor_value": 73248783.77,
+   "expected_moves": {
+    "daily": {
+     "low": 519.14,
+     "high": 524.12,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 519.14,
+     "high": 524.12,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 512.53,
+     "high": 530.73,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 1.16,
+   "corridor_width_pct": 0.96,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "SMH",
+   "status": "ok",
+   "spot": 558.84,
+   "prev_close": 564.74,
+   "chain_as_of": "2026-10-15 20:00:07",
+   "chain_age_min": 0,
+   "put_wall": 550.0,
+   "call_wall": 560.0,
+   "bias_boundary": 597.78,
+   "anchor_strike": 560.0,
+   "anchor_value": -224070469.44,
+   "expected_moves": {
+    "daily": {
+     "low": 549.87,
+     "high": 567.81,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 549.87,
+     "high": 567.81,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 530.26,
+     "high": 587.42,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -1.04,
+   "corridor_width_pct": 1.79,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "TLT",
+   "status": "ok",
+   "spot": 79.97,
+   "prev_close": 78.89,
+   "chain_as_of": "2026-10-15 19:54:04",
+   "chain_age_min": 6,
+   "put_wall": 79.0,
+   "call_wall": 80.0,
+   "bias_boundary": 76.52,
+   "anchor_strike": 80.0,
+   "anchor_value": 412785787.39,
+   "expected_moves": {
+    "daily": {
+     "low": 79.5,
+     "high": 80.44,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 79.5,
+     "high": 80.44,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 78.51,
+     "high": 81.43,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 1.37,
+   "corridor_width_pct": 1.25,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "GLD",
+   "status": "ok",
+   "spot": 382.71,
+   "prev_close": 375.99,
+   "chain_as_of": "2026-10-15 19:59:55",
+   "chain_age_min": 0,
+   "put_wall": 380.0,
+   "call_wall": 450.0,
+   "bias_boundary": 377.32,
+   "anchor_strike": 450.0,
+   "anchor_value": 162711962.53,
+   "expected_moves": {
+    "daily": {
+     "low": 379.17,
+     "high": 386.25,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 379.17,
+     "high": 386.25,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 371.96,
+     "high": 393.46,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 1.79,
+   "corridor_width_pct": 18.29,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "SLV",
+   "status": "ok",
+   "spot": 51.92,
+   "prev_close": 50.22,
+   "chain_as_of": "2026-10-15 20:00:04",
+   "chain_age_min": 0,
+   "put_wall": 50.0,
+   "call_wall": 60.0,
+   "bias_boundary": 48.87,
+   "anchor_strike": 50.0,
+   "anchor_value": -9360572.81,
+   "expected_moves": {
+    "daily": {
+     "low": 51.13,
+     "high": 52.71,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 51.13,
+     "high": 52.71,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 49.44,
+     "high": 54.4,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 3.39,
+   "corridor_width_pct": 19.26,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "XLE",
+   "status": "ok",
+   "spot": 66.56,
+   "prev_close": 67.63,
+   "chain_as_of": "2026-10-15 19:51:27",
+   "chain_age_min": 8,
+   "put_wall": 60.0,
+   "call_wall": 70.0,
+   "bias_boundary": 64.74,
+   "anchor_strike": 70.0,
+   "anchor_value": 31401536.12,
+   "expected_moves": {
+    "daily": {
+     "low": 65.75,
+     "high": 67.26,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 65.75,
+     "high": 67.26,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 64.06,
+     "high": 68.95,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -1.58,
+   "corridor_width_pct": 15.02,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "TQQQ",
+   "status": "ok",
+   "spot": 73.82,
+   "prev_close": 74.12,
+   "chain_as_of": "2026-10-15 20:00:00",
+   "chain_age_min": 0,
+   "put_wall": 72.0,
+   "call_wall": 75.0,
+   "bias_boundary": 76.87,
+   "anchor_strike": 72.0,
+   "anchor_value": -8401836.85,
+   "expected_moves": {
+    "daily": {
+     "low": 72.13,
+     "high": 75.51,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 72.13,
+     "high": 75.51,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 67.66,
+     "high": 79.98,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -0.4,
+   "corridor_width_pct": 4.06,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "SOXL",
+   "status": "ok",
+   "spot": 107.35,
+   "prev_close": 110.54,
+   "chain_as_of": "2026-10-15 20:00:13",
+   "chain_age_min": 0,
+   "put_wall": 100.0,
+   "call_wall": 120.0,
+   "bias_boundary": null,
+   "anchor_strike": 100.0,
+   "anchor_value": -9280617.77,
+   "expected_moves": {
+    "daily": {
+     "low": 101.83,
+     "high": 112.87,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 101.83,
+     "high": 112.87,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 89.18,
+     "high": 125.52,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": null,
+   "chg_pct": -2.89,
+   "corridor_width_pct": 18.63,
+   "flags": [
+    "wide",
+    "no_boundary"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "IBIT",
+   "status": "ok",
+   "spot": 46.59,
+   "prev_close": 46.24,
+   "chain_as_of": "2026-10-15 19:57:02",
+   "chain_age_min": 3,
+   "put_wall": 46.0,
+   "call_wall": 47.0,
+   "bias_boundary": 43.72,
+   "anchor_strike": 47.0,
+   "anchor_value": 39978012.84,
+   "expected_moves": {
+    "daily": {
+     "low": 46.43,
+     "high": 46.75,
+     "exp": "2026-10-15"
+    },
+    "weekly": {
+     "low": 45.9,
+     "high": 47.28,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 44.28,
+     "high": 48.9,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 0.76,
+   "corridor_width_pct": 2.15,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "NVDA",
+   "status": "ok",
+   "spot": 217.23,
+   "prev_close": 221.3,
+   "chain_as_of": "2026-10-15 19:52:40",
+   "chain_age_min": 7,
+   "put_wall": 210.0,
+   "call_wall": 220.0,
+   "bias_boundary": 213.09,
+   "anchor_strike": 250.0,
+   "anchor_value": 110420160.45,
+   "expected_moves": {
+    "daily": {
+     "low": 213.34,
+     "high": 221.01,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 213.34,
+     "high": 221.01,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 206.32,
+     "high": 228.04,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -1.84,
+   "corridor_width_pct": 4.6,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "AAPL",
+   "status": "ok",
+   "spot": 342.0,
+   "prev_close": 342.96,
+   "chain_as_of": "2026-10-15 19:56:20",
+   "chain_age_min": 3,
+   "put_wall": 340.0,
+   "call_wall": 350.0,
+   "bias_boundary": 314.36,
+   "anchor_strike": 340.0,
+   "anchor_value": 758386887.01,
+   "expected_moves": {
+    "daily": {
+     "low": 339.35,
+     "high": 345.91,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 339.35,
+     "high": 345.91,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 331.58,
+     "high": 353.68,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -0.28,
+   "corridor_width_pct": 2.92,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "TSLA",
+   "status": "ok",
+   "spot": 362.44,
+   "prev_close": 367.16,
+   "chain_as_of": "2026-10-15 19:53:51",
+   "chain_age_min": 6,
+   "put_wall": 360.0,
+   "call_wall": 400.0,
+   "bias_boundary": 358.4,
+   "anchor_strike": 400.0,
+   "anchor_value": 63532439.2,
+   "expected_moves": {
+    "daily": {
+     "low": 354.32,
+     "high": 372.5,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 354.32,
+     "high": 372.5,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 336.95,
+     "high": 389.87,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -1.29,
+   "corridor_width_pct": 11.04,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "MSFT",
+   "status": "ok",
+   "spot": 539.44,
+   "prev_close": 533.69,
+   "chain_as_of": "2026-10-15 19:56:58",
+   "chain_age_min": 3,
+   "put_wall": 535.0,
+   "call_wall": 550.0,
+   "bias_boundary": null,
+   "anchor_strike": 550.0,
+   "anchor_value": 538510484.62,
+   "expected_moves": {
+    "daily": {
+     "low": 534.89,
+     "high": 544.45,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 534.89,
+     "high": 544.45,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 512.13,
+     "high": 567.21,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": null,
+   "chg_pct": 1.08,
+   "corridor_width_pct": 2.78,
+   "flags": [
+    "no_boundary"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "AMZN",
+   "status": "ok",
+   "spot": 254.76,
+   "prev_close": 254.08,
+   "chain_as_of": "2026-10-15 19:59:59",
+   "chain_age_min": 0,
+   "put_wall": 250.0,
+   "call_wall": 260.0,
+   "bias_boundary": 242.86,
+   "anchor_strike": 260.0,
+   "anchor_value": 145653958.07,
+   "expected_moves": {
+    "daily": {
+     "low": 251.82,
+     "high": 257.72,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 251.82,
+     "high": 257.72,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 238.39,
+     "high": 271.15,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 0.27,
+   "corridor_width_pct": 3.93,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "META",
+   "status": "ok",
+   "spot": 736.72,
+   "prev_close": 737.54,
+   "chain_as_of": "2026-10-15 20:00:00",
+   "chain_age_min": 0,
+   "put_wall": 730.0,
+   "call_wall": 750.0,
+   "bias_boundary": null,
+   "anchor_strike": 750.0,
+   "anchor_value": 521127745.52,
+   "expected_moves": {
+    "daily": {
+     "low": 726.55,
+     "high": 746.53,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 726.55,
+     "high": 746.53,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 686.43,
+     "high": 786.65,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": null,
+   "chg_pct": -0.11,
+   "corridor_width_pct": 2.71,
+   "flags": [
+    "no_boundary"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "GOOGL",
+   "status": "ok",
+   "spot": 349.22,
+   "prev_close": 347.64,
+   "chain_as_of": "2026-10-15 19:57:43",
+   "chain_age_min": 2,
+   "put_wall": 340.0,
+   "call_wall": 350.0,
+   "bias_boundary": 337.64,
+   "anchor_strike": 355.0,
+   "anchor_value": 106715626.12,
+   "expected_moves": {
+    "daily": {
+     "low": 345.07,
+     "high": 353.93,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 345.07,
+     "high": 353.93,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 328.57,
+     "high": 370.43,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 0.45,
+   "corridor_width_pct": 2.86,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "AVGO",
+   "status": "ok",
+   "spot": 344.39,
+   "prev_close": 346.25,
+   "chain_as_of": "2026-10-15 19:57:00",
+   "chain_age_min": 3,
+   "put_wall": 340.0,
+   "call_wall": 350.0,
+   "bias_boundary": 352.33,
+   "anchor_strike": 340.0,
+   "anchor_value": -74274934.44,
+   "expected_moves": {
+    "daily": {
+     "low": 337.98,
+     "high": 350.0,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 337.98,
+     "high": 350.0,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 325.33,
+     "high": 362.65,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -0.54,
+   "corridor_width_pct": 2.9,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "NFLX",
+   "status": "ok",
+   "spot": 72.61,
+   "prev_close": 70.57,
+   "chain_as_of": "2026-10-15 20:00:04",
+   "chain_age_min": 0,
+   "put_wall": 70.0,
+   "call_wall": 75.0,
+   "bias_boundary": 70.35,
+   "anchor_strike": 73.0,
+   "anchor_value": 15528176.65,
+   "expected_moves": {
+    "daily": {
+     "low": 71.69,
+     "high": 73.53,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 71.69,
+     "high": 73.53,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 66.58,
+     "high": 78.64,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 2.89,
+   "corridor_width_pct": 6.89,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "ORCL",
+   "status": "ok",
+   "spot": 134.47,
+   "prev_close": 130.55,
+   "chain_as_of": "2026-10-15 20:00:06",
+   "chain_age_min": 0,
+   "put_wall": 130.0,
+   "call_wall": 140.0,
+   "bias_boundary": 136.64,
+   "anchor_strike": 130.0,
+   "anchor_value": -36935388.57,
+   "expected_moves": {
+    "daily": {
+     "low": 131.47,
+     "high": 137.47,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 131.47,
+     "high": 137.47,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 122.83,
+     "high": 146.12,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": 3.0,
+   "corridor_width_pct": 7.44,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "AMD",
+   "status": "ok",
+   "spot": 562.23,
+   "prev_close": 570.82,
+   "chain_as_of": "2026-10-15 20:00:08",
+   "chain_age_min": 0,
+   "put_wall": 550.0,
+   "call_wall": 600.0,
+   "bias_boundary": 566.69,
+   "anchor_strike": 620.0,
+   "anchor_value": 30391406.33,
+   "expected_moves": {
+    "daily": {
+     "low": 548.8,
+     "high": 575.66,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 548.8,
+     "high": 575.66,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 520.79,
+     "high": 603.67,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -1.5,
+   "corridor_width_pct": 8.89,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "MU",
+   "status": "ok",
+   "spot": 931.24,
+   "prev_close": 914.13,
+   "chain_as_of": "2026-10-15 19:59:57",
+   "chain_age_min": 0,
+   "put_wall": 900.0,
+   "call_wall": 1000.0,
+   "bias_boundary": 926.58,
+   "anchor_strike": 900.0,
+   "anchor_value": -63212393.27,
+   "expected_moves": {
+    "daily": {
+     "low": 907.89,
+     "high": 954.59,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 907.89,
+     "high": 954.59,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 863.22,
+     "high": 999.26,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 1.87,
+   "corridor_width_pct": 10.74,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "INTC",
+   "status": "ok",
+   "spot": 95.37,
+   "prev_close": 98.12,
+   "chain_as_of": "2026-10-15 19:50:32",
+   "chain_age_min": 9,
+   "put_wall": 95.0,
+   "call_wall": 100.0,
+   "bias_boundary": 97.72,
+   "anchor_strike": 130.0,
+   "anchor_value": 15722208.77,
+   "expected_moves": {
+    "daily": {
+     "low": 93.14,
+     "high": 98.63,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 93.14,
+     "high": 98.63,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 85.98,
+     "high": 105.79,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -2.8,
+   "corridor_width_pct": 5.24,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "TSM",
+   "status": "ok",
+   "spot": 422.25,
+   "prev_close": 430.0,
+   "chain_as_of": "2026-10-15 20:00:06",
+   "chain_age_min": 0,
+   "put_wall": 420.0,
+   "call_wall": 430.0,
+   "bias_boundary": 429.46,
+   "anchor_strike": 420.0,
+   "anchor_value": -65205207.06,
+   "expected_moves": {
+    "daily": {
+     "low": 415.07,
+     "high": 429.43,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 415.07,
+     "high": 429.43,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 403.36,
+     "high": 441.14,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -1.8,
+   "corridor_width_pct": 2.37,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "ARM",
+   "status": "ok",
+   "spot": 244.79,
+   "prev_close": 238.01,
+   "chain_as_of": "2026-10-15 20:00:12",
+   "chain_age_min": 0,
+   "put_wall": 240.0,
+   "call_wall": 330.0,
+   "bias_boundary": 256.65,
+   "anchor_strike": 250.0,
+   "anchor_value": -7914751.31,
+   "expected_moves": {
+    "daily": {
+     "low": 237.35,
+     "high": 252.23,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 237.35,
+     "high": 252.23,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 222.07,
+     "high": 267.51,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": 2.85,
+   "corridor_width_pct": 36.77,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "PLTR",
+   "status": "ok",
+   "spot": 200.5,
+   "prev_close": 200.97,
+   "chain_as_of": "2026-10-15 20:00:13",
+   "chain_age_min": 0,
+   "put_wall": 200.0,
+   "call_wall": 210.0,
+   "bias_boundary": 177.71,
+   "anchor_strike": 210.0,
+   "anchor_value": 29521701.89,
+   "expected_moves": {
+    "daily": {
+     "low": 196.54,
+     "high": 204.46,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 196.54,
+     "high": 204.46,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 187.86,
+     "high": 213.14,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -0.23,
+   "corridor_width_pct": 4.99,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "COIN",
+   "status": "ok",
+   "spot": 183.81,
+   "prev_close": 172.89,
+   "chain_as_of": "2026-10-15 19:56:58",
+   "chain_age_min": 3,
+   "put_wall": 180.0,
+   "call_wall": 185.0,
+   "bias_boundary": 173.32,
+   "anchor_strike": 185.0,
+   "anchor_value": 18043710.07,
+   "expected_moves": {
+    "daily": {
+     "low": 179.18,
+     "high": 189.49,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 179.18,
+     "high": 189.49,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 165.68,
+     "high": 202.99,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 6.32,
+   "corridor_width_pct": 2.72,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "MSTR",
+   "status": "ok",
+   "spot": 151.29,
+   "prev_close": 143.24,
+   "chain_as_of": "2026-10-15 19:56:13",
+   "chain_age_min": 4,
+   "put_wall": 150.0,
+   "call_wall": 157.5,
+   "bias_boundary": 142.88,
+   "anchor_strike": 157.5,
+   "anchor_value": 33947517.91,
+   "expected_moves": {
+    "daily": {
+     "low": 146.03,
+     "high": 155.55,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 146.03,
+     "high": 155.55,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 135.98,
+     "high": 165.6,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 5.62,
+   "corridor_width_pct": 4.96,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "HOOD",
+   "status": "ok",
+   "spot": 103.99,
+   "prev_close": 101.08,
+   "chain_as_of": "2026-10-15 20:00:01",
+   "chain_age_min": 0,
+   "put_wall": 100.0,
+   "call_wall": 105.0,
+   "bias_boundary": 102.71,
+   "anchor_strike": 100.0,
+   "anchor_value": -8277660.8,
+   "expected_moves": {
+    "daily": {
+     "low": 101.27,
+     "high": 106.71,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 101.27,
+     "high": 106.71,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 93.22,
+     "high": 114.76,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 2.88,
+   "corridor_width_pct": 4.81,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "SOFI",
+   "status": "ok",
+   "spot": 15.09,
+   "prev_close": 14.22,
+   "chain_as_of": "2026-10-15 20:00:10",
+   "chain_age_min": 0,
+   "put_wall": 15.0,
+   "call_wall": 20.0,
+   "bias_boundary": 14.08,
+   "anchor_strike": 15.0,
+   "anchor_value": -3904656.97,
+   "expected_moves": {
+    "daily": {
+     "low": 14.77,
+     "high": 15.41,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 14.77,
+     "high": 15.41,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 13.68,
+     "high": 16.5,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 6.12,
+   "corridor_width_pct": 33.13,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "SMCI",
+   "status": "ok",
+   "spot": 35.09,
+   "prev_close": 35.78,
+   "chain_as_of": "2026-10-15 20:00:06",
+   "chain_age_min": 0,
+   "put_wall": 35.0,
+   "call_wall": 40.0,
+   "bias_boundary": 34.97,
+   "anchor_strike": 35.0,
+   "anchor_value": -2079114.2,
+   "expected_moves": {
+    "daily": {
+     "low": 33.96,
+     "high": 36.21,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 33.96,
+     "high": 36.21,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 31.57,
+     "high": 38.6,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -1.93,
+   "corridor_width_pct": 14.25,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "CRWD",
+   "status": "ok",
+   "spot": 244.57,
+   "prev_close": 249.29,
+   "chain_as_of": "2026-10-15 19:59:58",
+   "chain_age_min": 0,
+   "put_wall": 240.0,
+   "call_wall": 250.0,
+   "bias_boundary": 243.95,
+   "anchor_strike": 250.0,
+   "anchor_value": -5095263.41,
+   "expected_moves": {
+    "daily": {
+     "low": 239.32,
+     "high": 249.82,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 239.32,
+     "high": 249.82,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 227.04,
+     "high": 262.1,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -1.89,
+   "corridor_width_pct": 4.09,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "UBER",
+   "status": "ok",
+   "spot": 71.27,
+   "prev_close": 69.29,
+   "chain_as_of": "2026-10-15 19:59:57",
+   "chain_age_min": 0,
+   "put_wall": 70.0,
+   "call_wall": 75.0,
+   "bias_boundary": 70.25,
+   "anchor_strike": 65.0,
+   "anchor_value": -9254214.24,
+   "expected_moves": {
+    "daily": {
+     "low": 70.31,
+     "high": 72.23,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 70.31,
+     "high": 72.23,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 67.93,
+     "high": 74.61,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 2.86,
+   "corridor_width_pct": 7.02,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "SHOP",
+   "status": "ok",
+   "spot": 178.14,
+   "prev_close": 172.5,
+   "chain_as_of": "2026-10-15 19:59:59",
+   "chain_age_min": 0,
+   "put_wall": 175.0,
+   "call_wall": 180.0,
+   "bias_boundary": null,
+   "anchor_strike": 145.0,
+   "anchor_value": 7489596.59,
+   "expected_moves": {
+    "daily": {
+     "low": 173.84,
+     "high": 182.44,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 173.84,
+     "high": 182.44,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 165.88,
+     "high": 190.4,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": null,
+   "chg_pct": 3.27,
+   "corridor_width_pct": 2.81,
+   "flags": [
+    "no_boundary"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "RBLX",
+   "status": "ok",
+   "spot": 51.13,
+   "prev_close": 47.54,
+   "chain_as_of": "2026-10-15 19:59:55",
+   "chain_age_min": 0,
+   "put_wall": 50.0,
+   "call_wall": 65.0,
+   "bias_boundary": 45.46,
+   "anchor_strike": 50.0,
+   "anchor_value": 2616217.8,
+   "expected_moves": {
+    "daily": {
+     "low": 49.88,
+     "high": 52.38,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 49.88,
+     "high": 52.38,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 43.91,
+     "high": 58.36,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 7.55,
+   "corridor_width_pct": 29.34,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "JPM",
+   "status": "ok",
+   "spot": 335.56,
+   "prev_close": 335.28,
+   "chain_as_of": "2026-10-15 19:53:51",
+   "chain_age_min": 6,
+   "put_wall": 330.0,
+   "call_wall": 340.0,
+   "bias_boundary": 333.2,
+   "anchor_strike": 330.0,
+   "anchor_value": -31918407.59,
+   "expected_moves": {
+    "daily": {
+     "low": 331.88,
+     "high": 338.26,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 331.88,
+     "high": 338.26,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 324.68,
+     "high": 345.46,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 0.08,
+   "corridor_width_pct": 2.98,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "BAC",
+   "status": "ok",
+   "spot": 51.7,
+   "prev_close": 51.39,
+   "chain_as_of": "2026-10-15 19:59:54",
+   "chain_age_min": 0,
+   "put_wall": 50.0,
+   "call_wall": 52.0,
+   "bias_boundary": 52.59,
+   "anchor_strike": 50.0,
+   "anchor_value": -18877723.35,
+   "expected_moves": {
+    "daily": {
+     "low": 51.13,
+     "high": 52.27,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 51.13,
+     "high": 52.27,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 50.03,
+     "high": 53.37,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": 0.6,
+   "corridor_width_pct": 3.87,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "WMT",
+   "status": "ok",
+   "spot": 117.87,
+   "prev_close": 116.16,
+   "chain_as_of": "2026-10-15 19:59:55",
+   "chain_age_min": 0,
+   "put_wall": 115.0,
+   "call_wall": 120.0,
+   "bias_boundary": 102.76,
+   "anchor_strike": 120.0,
+   "anchor_value": 79697067.37,
+   "expected_moves": {
+    "daily": {
+     "low": 116.63,
+     "high": 119.11,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 116.63,
+     "high": 119.11,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 113.94,
+     "high": 121.8,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 1.47,
+   "corridor_width_pct": 4.24,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "COST",
+   "status": "ok",
+   "spot": 978.01,
+   "prev_close": 982.0,
+   "chain_as_of": "2026-10-15 20:00:04",
+   "chain_age_min": 0,
+   "put_wall": 960.0,
+   "call_wall": 1000.0,
+   "bias_boundary": 953.73,
+   "anchor_strike": 1000.0,
+   "anchor_value": 37952638.14,
+   "expected_moves": {
+    "daily": {
+     "low": 969.6,
+     "high": 986.42,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 969.6,
+     "high": 986.42,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 951.13,
+     "high": 1004.89,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -0.41,
+   "corridor_width_pct": 4.09,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "XOM",
+   "status": "ok",
+   "spot": 174.71,
+   "prev_close": 177.01,
+   "chain_as_of": "2026-10-15 19:48:14",
+   "chain_age_min": 11,
+   "put_wall": 170.0,
+   "call_wall": 175.0,
+   "bias_boundary": 150.25,
+   "anchor_strike": 175.0,
+   "anchor_value": 48828349.93,
+   "expected_moves": {
+    "daily": {
+     "low": 172.02,
+     "high": 176.2,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 172.02,
+     "high": 176.2,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 166.89,
+     "high": 181.34,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -1.3,
+   "corridor_width_pct": 2.86,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "BA",
+   "status": "ok",
+   "spot": 188.73,
+   "prev_close": 184.66,
+   "chain_as_of": "2026-10-15 19:59:59",
+   "chain_age_min": 0,
+   "put_wall": 185.0,
+   "call_wall": 190.0,
+   "bias_boundary": 189.7,
+   "anchor_strike": 185.0,
+   "anchor_value": -19302249.07,
+   "expected_moves": {
+    "daily": {
+     "low": 186.29,
+     "high": 191.17,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 186.29,
+     "high": 191.17,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 177.94,
+     "high": 199.52,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": 2.2,
+   "corridor_width_pct": 2.65,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "LLY",
+   "status": "ok",
+   "spot": 1251.61,
+   "prev_close": 1208.74,
+   "chain_as_of": "2026-10-15 19:56:56",
+   "chain_age_min": 3,
+   "put_wall": 1200.0,
+   "call_wall": 1260.0,
+   "bias_boundary": 1165.82,
+   "anchor_strike": 1260.0,
+   "anchor_value": 35250452.84,
+   "expected_moves": {
+    "daily": {
+     "low": 1239.61,
+     "high": 1274.68,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 1239.61,
+     "high": 1274.68,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 1173.42,
+     "high": 1340.87,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 3.55,
+   "corridor_width_pct": 4.79,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "GME",
+   "status": "ok",
+   "spot": 28.02,
+   "prev_close": 27.15,
+   "chain_as_of": "2026-10-15 19:54:02",
+   "chain_age_min": 6,
+   "put_wall": 25.0,
+   "call_wall": 30.0,
+   "bias_boundary": null,
+   "anchor_strike": 30.0,
+   "anchor_value": 13685246.61,
+   "expected_moves": {
+    "daily": {
+     "low": 27.33,
+     "high": 29.07,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 27.33,
+     "high": 29.07,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 25.02,
+     "high": 31.38,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": null,
+   "chg_pct": 3.2,
+   "corridor_width_pct": 17.84,
+   "flags": [
+    "wide",
+    "no_boundary"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "RIVN",
+   "status": "ok",
+   "spot": null,
+   "prev_close": null,
+   "chain_as_of": "",
+   "chain_age_min": null,
+   "put_wall": null,
+   "call_wall": null,
+   "bias_boundary": null,
+   "anchor_strike": null,
+   "anchor_value": null,
+   "expected_moves": {},
+   "bias": null,
+   "chg_pct": null,
+   "corridor_width_pct": null,
+   "flags": [
+    "no_boundary"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "MARA",
+   "status": "ok",
+   "spot": null,
+   "prev_close": null,
+   "chain_as_of": "",
+   "chain_age_min": null,
+   "put_wall": null,
+   "call_wall": null,
+   "bias_boundary": null,
+   "anchor_strike": null,
+   "anchor_value": null,
+   "expected_moves": {},
+   "bias": null,
+   "chg_pct": null,
+   "corridor_width_pct": null,
+   "flags": [
+    "no_boundary"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "BABA",
+   "status": "ok",
+   "spot": 111.13,
+   "prev_close": 111.17,
+   "chain_as_of": "2026-10-15 20:00:00",
+   "chain_age_min": 0,
+   "put_wall": 110.0,
+   "call_wall": 115.0,
+   "bias_boundary": 106.37,
+   "anchor_strike": 115.0,
+   "anchor_value": 10622072.81,
+   "expected_moves": {
+    "daily": {
+     "low": 109.41,
+     "high": 112.85,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 109.41,
+     "high": 112.85,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 105.27,
+     "high": 116.99,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": -0.04,
+   "corridor_width_pct": 4.5,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "SPCX",
+   "status": "ok",
+   "spot": 148.62,
+   "prev_close": 152.16,
+   "chain_as_of": "2026-10-15 19:56:21",
+   "chain_age_min": 3,
+   "put_wall": 145.0,
+   "call_wall": 150.0,
+   "bias_boundary": 151.78,
+   "anchor_strike": 150.0,
+   "anchor_value": -28645145.45,
+   "expected_moves": {
+    "daily": {
+     "low": 145.44,
+     "high": 152.06,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 145.44,
+     "high": 152.06,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 138.12,
+     "high": 159.38,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -2.33,
+   "corridor_width_pct": 3.36,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "NBIS",
+   "status": "ok",
+   "spot": 188.58,
+   "prev_close": 186.01,
+   "chain_as_of": "2026-10-15 19:59:59",
+   "chain_age_min": 0,
+   "put_wall": 180.0,
+   "call_wall": 200.0,
+   "bias_boundary": 192.3,
+   "anchor_strike": 180.0,
+   "anchor_value": -8292391.21,
+   "expected_moves": {
+    "daily": {
+     "low": 180.7,
+     "high": 196.46,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 180.7,
+     "high": 196.46,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 167.03,
+     "high": 210.13,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": 1.38,
+   "corridor_width_pct": 10.61,
+   "flags": [],
+   "usable": true
+  },
+  {
+   "ticker": "ASTS",
+   "status": "ok",
+   "spot": 44.56,
+   "prev_close": 42.14,
+   "chain_as_of": "2026-10-15 19:48:53",
+   "chain_age_min": 11,
+   "put_wall": 40.0,
+   "call_wall": 50.0,
+   "bias_boundary": 41.6,
+   "anchor_strike": 45.0,
+   "anchor_value": -1210480.77,
+   "expected_moves": {
+    "daily": {
+     "low": 43.2,
+     "high": 46.46,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 43.2,
+     "high": 46.46,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 39.66,
+     "high": 50.0,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "long",
+   "chg_pct": 5.74,
+   "corridor_width_pct": 22.44,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "AAOI",
+   "status": "ok",
+   "spot": 83.73,
+   "prev_close": 86.22,
+   "chain_as_of": "2026-10-15 19:59:58",
+   "chain_age_min": 0,
+   "put_wall": 80.0,
+   "call_wall": 100.0,
+   "bias_boundary": 92.08,
+   "anchor_strike": 80.0,
+   "anchor_value": -1527775.8,
+   "expected_moves": {
+    "daily": {
+     "low": 80.14,
+     "high": 87.32,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 80.14,
+     "high": 87.32,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 73.23,
+     "high": 94.23,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -2.89,
+   "corridor_width_pct": 23.89,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "RKLB",
+   "status": "ok",
+   "spot": 55.25,
+   "prev_close": 59.18,
+   "chain_as_of": "2026-10-15 19:59:59",
+   "chain_age_min": 0,
+   "put_wall": 55.0,
+   "call_wall": 85.0,
+   "bias_boundary": 59.08,
+   "anchor_strike": 55.0,
+   "anchor_value": -5032524.3,
+   "expected_moves": {
+    "daily": {
+     "low": 53.51,
+     "high": 56.99,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 53.51,
+     "high": 56.99,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 50.07,
+     "high": 60.43,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -6.64,
+   "corridor_width_pct": 54.3,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "SNDK",
+   "status": "ok",
+   "spot": 1394.83,
+   "prev_close": 1403.34,
+   "chain_as_of": "2026-10-15 20:00:09",
+   "chain_age_min": 0,
+   "put_wall": 1300.0,
+   "call_wall": 1500.0,
+   "bias_boundary": 1466.72,
+   "anchor_strike": 1400.0,
+   "anchor_value": -37940325.44,
+   "expected_moves": {
+    "daily": {
+     "low": 1346.29,
+     "high": 1443.37,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 1346.29,
+     "high": 1443.37,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 1239.58,
+     "high": 1550.08,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -0.61,
+   "corridor_width_pct": 14.34,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "IREN",
+   "status": "ok",
+   "spot": 30.39,
+   "prev_close": 30.56,
+   "chain_as_of": "2026-10-15 19:50:35",
+   "chain_age_min": 9,
+   "put_wall": 30.0,
+   "call_wall": 40.0,
+   "bias_boundary": 31.54,
+   "anchor_strike": 30.0,
+   "anchor_value": -4786675.04,
+   "expected_moves": {
+    "daily": {
+     "low": 28.88,
+     "high": 31.49,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 28.88,
+     "high": 31.49,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 26.13,
+     "high": 34.24,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -0.56,
+   "corridor_width_pct": 32.91,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  },
+  {
+   "ticker": "LITE",
+   "status": "ok",
+   "spot": 869.54,
+   "prev_close": 896.33,
+   "chain_as_of": "2026-10-15 19:59:57",
+   "chain_age_min": 0,
+   "put_wall": 850.0,
+   "call_wall": 1000.0,
+   "bias_boundary": 939.88,
+   "anchor_strike": 850.0,
+   "anchor_value": -9927786.66,
+   "expected_moves": {
+    "daily": {
+     "low": 840.77,
+     "high": 898.31,
+     "exp": "2026-10-16"
+    },
+    "weekly": {
+     "low": 840.77,
+     "high": 898.31,
+     "exp": "2026-10-16"
+    },
+    "monthly": {
+     "low": 785.64,
+     "high": 953.43,
+     "exp": "2026-10-30"
+    }
+   },
+   "bias": "short",
+   "chg_pct": -2.99,
+   "corridor_width_pct": 17.25,
+   "flags": [
+    "wide"
+   ],
+   "usable": false
+  }
+ ]
+}
