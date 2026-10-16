@@ -69,9 +69,11 @@ def build_ticker(t, v, snap_date):
         cols = future[: future.index(opex) + 1]
     else:
         cols = future[:3]
+    if opex in cols and len(cols) > 3:
+        # opex is weeks out: keep the real front expiry, the first Friday weekly after it, and opex
+        fri = [e for e in cols[1:-1] if dt.date.fromisoformat(e).weekday() == 4]
+        cols = [cols[0]] + fri[:1] + [opex]
     cols = cols[-4:] if len(cols) > 4 else cols
-    if opex in cols and cols.index(opex) > 2:   # keep matrix to <=3 columns ending at opex
-        cols = [cols[0]] + cols[-2:]
     if len(cols) < 3:   # opex is near: add the following Friday expiry to the matrix
         nxt = [e for e in future if e > cols[-1] and dt.date.fromisoformat(e).weekday() == 4]
         if nxt:
