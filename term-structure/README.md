@@ -4,6 +4,8 @@ Builds the "TradeEcho Single Stocks Term Structure" page (NVDA, TSLA, AAPL, AMZN
 
 ## Layout
 
+In the gex_weekly repo the snapshots live in `data/term-structure/` (`raw/` + `built-*.json`); build.py and the save script find them there automatically. In the standalone pipeline folder they live in `data/` as below.
+
 ```
 capture/capture.js   browser snippet: pulls Dealer Edge data for the 6 tickers (runs in your signed-in TradeEcho tab)
 data/raw/DATE.json   one compact snapshot per run (input)

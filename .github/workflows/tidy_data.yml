@@ -1,0 +1,30 @@
+name: File new data JSON into data/ subfolders
+# Routines that still write to the old flat paths (e.g. the watchlist bot's
+# data/dealer-edge-DATE.json) get their files moved into the data/ tree here.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/*.json'
+      - 'term-structure/data/**'
+
+jobs:
+  tidy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Move files
+        run: |
+          shopt -s nullglob
+          mkdir -p data/dealer-edge data/term-structure/raw
+          for f in data/dealer-edge-*.json; do git mv -f "$f" data/dealer-edge/; done
+          for f in term-structure/data/raw/*.json; do git mv -f "$f" data/term-structure/raw/; done
+          for f in term-structure/data/built-*.json; do git mv -f "$f" data/term-structure/; done
+      - name: Commit if changed
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git diff --cached --quiet || (git commit -m "data: file new JSON into data/ subfolders" && git push)

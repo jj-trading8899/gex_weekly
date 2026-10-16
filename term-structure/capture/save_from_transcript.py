@@ -8,6 +8,8 @@ import datetime as dt, glob, json, os, sys
 from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_REPO_DATA = os.path.join(ROOT, "..", "data", "term-structure")
+DATA = os.path.normpath(_REPO_DATA) if os.path.isdir(_REPO_DATA) else os.path.join(ROOT, "data")
 paths = sys.argv[1:] or sorted(glob.glob(os.path.expanduser("~/.claude/projects/**/*.jsonl"), recursive=True),
                                key=os.path.getmtime)[-3:]
 found = None
@@ -35,7 +37,7 @@ bad = [t for t, v in data["tickers"].items() if "error" in v]
 if bad:
     sys.exit(f"Capture has errors for {bad}: " + "; ".join(data['tickers'][t]['error'] for t in bad))
 et = dt.datetime.fromisoformat(data["capturedAt"].replace("Z", "+00:00")).astimezone(ZoneInfo("America/New_York"))
-out = os.path.join(ROOT, "data/raw", et.date().isoformat() + ".json")
+out = os.path.join(DATA, "raw", et.date().isoformat() + ".json")
 os.makedirs(os.path.dirname(out), exist_ok=True)
 json.dump(data, open(out, "w"))
 print(out)
