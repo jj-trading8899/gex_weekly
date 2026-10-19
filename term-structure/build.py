@@ -172,7 +172,7 @@ def build_ticker(t, v, snap_date):
         "flip": f"~${flip:.0f}" if flip is not None else "—",
         "range": rng, "read": " ".join(parts),
     }
-    ts = {"t": t, "spot": spot, "chg": None, "perCol": per_col}
+    ts = {"t": t, "spot": spot, "chg": None, "flip": round(flip, 2) if flip is not None else None, "perCol": per_col}
     top_above = sorted(pos_above[:2], key=lambda r: r[0])
     card["_stats"] = {
         "t": t, "spot": spot, "flip": flip, "tone": tone, "rating": v.get("rating"),

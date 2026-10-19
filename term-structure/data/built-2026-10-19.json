@@ -245,6 +245,7 @@
    "t": "NVDA",
    "spot": 217.11,
    "chg": null,
+   "flip": 217.0,
    "perCol": [
     {
      "code": "2026-10-21",
@@ -381,6 +382,7 @@
    "t": "TSLA",
    "spot": 367.77,
    "chg": null,
+   "flip": 352.11,
    "perCol": [
     {
      "code": "2026-10-23",
@@ -517,6 +519,7 @@
    "t": "AAPL",
    "spot": 343.0,
    "chg": null,
+   "flip": 343.72,
    "perCol": [
     {
      "code": "2026-10-21",
@@ -653,6 +656,7 @@
    "t": "AMZN",
    "spot": 262.54,
    "chg": null,
+   "flip": 251.68,
    "perCol": [
     {
      "code": "2026-10-21",
@@ -789,6 +793,7 @@
    "t": "GOOGL",
    "spot": 344.69,
    "chg": null,
+   "flip": 342.63,
    "perCol": [
     {
      "code": "2026-10-21",
@@ -925,6 +930,7 @@
    "t": "AVGO",
    "spot": 334.52,
    "chg": null,
+   "flip": 332.18,
    "perCol": [
     {
      "code": "2026-10-21",
