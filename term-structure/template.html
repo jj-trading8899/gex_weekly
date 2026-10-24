@@ -69,6 +69,11 @@ h1{ font-size:19px; margin:0 0 3px; letter-spacing:.02em; }
 .nv-bar{ position:relative; height:6px; background:#0e1219; border-radius:3px; margin:22px 6px 28px; }
 .nv-tick{ position:absolute; width:2px; transform:translateX(-50%); border-radius:1px; }
 .nv-lab{ position:absolute; top:13px; transform:translateX(-50%); font-size:8px; white-space:nowrap; }
+.nv-fliprow{ position:relative; height:0; border-top:2px dashed #a68bff; margin:4px 0 5px; }
+.nv-fliprow span{ position:absolute; right:0; top:-8px; font-size:8.5px; color:#a68bff; background:#161c27; padding:0 4px; letter-spacing:.04em; }
+.nv-bar.hasflip{ margin-bottom:40px; }
+.nv-flip{ position:absolute; top:-9px; height:26px; width:0; border-left:2px dashed #a68bff; transform:translateX(-1px); }
+.nv-fliplab{ position:absolute; top:25px; transform:translateX(-50%); font-size:8px; color:#a68bff; white-space:nowrap; }
 .nv-spot{ position:absolute; top:-20px; transform:translateX(-50%); background:#e0b23a; color:#0e1219; font-size:8px; font-weight:600; padding:1px 4px; border-radius:3px; white-space:nowrap; }
 .nv-st{ font-size:10.5px; color:#8a90a0; line-height:1.5; margin-bottom:10px; }
 .nv-lv{ display:flex; align-items:center; gap:7px; padding:5px 8px; border-radius:4px; margin-bottom:3px; }
@@ -213,10 +218,15 @@ DATA.forEach(d=>{
     h+='<div class="nv-story">'+intro+'</div>';
     h+='<div class="nv-lgd">';
     for(const k of ["ceiling","floor","anchor","trap"]){const R=ROLE[k];h+='<span style="color:'+R.c+'">'+R.g+' <b>'+R.w+'</b></span>';}
+    if(D.flip!=null) h+='<span style="color:#a68bff">┆ <b>FLIP</b></span>';
     h+='<span style="margin-left:auto;color:#7a8090;">●●● strong · ●●○ mild · ●○○ weak</span></div>';
     h+='<div class="nv-mxt">'+D.t+' <span>· positioning by strike & expiry</span></div>';
     h+='<div class="nv-mx"><div class="nv-row nv-hd" style="'+gtc+'"><span>STRIKE</span>'+labels.map((c,i)=>'<span>'+c+(i===opexI?' ★':'')+'</span>').join("")+'</div>';
+    const MFLIP=(D.flip!=null&&isFinite(D.flip))?D.flip:null;
+    const flipRow='<div class="nv-fliprow"><span>flip $'+(MFLIP!=null?MFLIP.toFixed(1):'')+'</span></div>';
+    let flipDone=MFLIP==null;
     for(const k of rows){
+      if(!flipDone && k<=MFLIP){ h+=flipRow; flipDone=true; }
       const nearSpot=Math.abs(k-SPOT)<=SPOT*0.006;
       h+='<div class="nv-row" style="'+gtc+'"><span class="nv-rk" style="color:'+(nearSpot?"#e0b23a":"#8a90a0")+';font-weight:'+(nearSpot?600:400)+'">$'+kfmt(k)+(nearSpot?" ◆":"")+'</span>';
       for(let j=0;j<N;j++){
@@ -227,22 +237,27 @@ DATA.forEach(d=>{
       }
       h+='</div>';
     }
+    if(!flipDone) h+=flipRow;
     h+='</div>';
     h+='<div class="nv-cards">';
     D.perCol.forEach((c,j)=>{
       const [rg,rc]=regime(c.net);
-      const ks=c.strikes.map(s=>s[0]).concat([SPOT]);
+      const FLIP=(D.flip!=null&&isFinite(D.flip))?D.flip:null;
+      const ks=c.strikes.map(s=>s[0]).concat([SPOT]).concat(FLIP!=null?[FLIP]:[]);
       let lo=Math.min(...ks),hi=Math.max(...ks);const pad=(hi-lo)*0.06||SPOT*0.01;const bmin=lo-pad,bmax=hi+pad;
       const arr=Object.values(cls[j]).sort((a,b)=>Math.abs(b.g)-Math.abs(a.g));
       const maxA=Math.max(...arr.map(a=>Math.abs(a.g)),0.01);
       const clab=c.opex?"MONTHLY OPEX":"WEEKLY";
       h+='<div class="nv-card"><div class="nv-ct"><div><div class="nv-cl">'+clab+(c.opex?' ★':'')+'</div><div class="nv-cc">'+c.code+'</div></div><div class="nv-vd" style="color:'+rc+';border:1px solid '+rc+'55;background:'+rc+'11">'+rg+' '+money(c.net)+'</div></div>';
-      h+='<div class="nv-bar">';
+      h+='<div class="nv-bar'+(FLIP!=null?' hasflip':'')+'">';
       h+='<div class="nv-spot" style="left:'+pos(SPOT,bmin,bmax)+'%">$'+SPOT.toFixed(2)+'</div>';
       h+='<div class="nv-tick" style="left:'+pos(SPOT,bmin,bmax)+'%;top:-4px;height:14px;background:#e0b23a"></div>';
       for(const l of arr){const R=ROLE[l.role];const p=pos(l.k,bmin,bmax);const big=Math.abs(l.g)/maxA>0.6;
         h+='<div class="nv-tick" style="left:'+p+'%;top:'+(big?"-6px":"-3px")+';height:'+(big?24:18)+'px;background:'+R.c+';opacity:'+(big?1:.6)+'"></div>';
         if(big||Math.abs(l.g)/maxA>0.25) h+='<div class="nv-lab" style="left:'+p+'%;color:'+R.c+';opacity:'+(big?1:.6)+'">$'+kfmt(l.k)+'</div>';}
+      if(FLIP!=null){const fp=pos(FLIP,bmin,bmax);
+        h+='<div class="nv-flip" title="Flip $'+FLIP.toFixed(2)+': dampening above, amplifying below" style="left:'+fp+'%"></div>';
+        h+='<div class="nv-fliplab" style="left:'+fp+'%">flip $'+FLIP.toFixed(1)+'</div>';}
       h+='</div>';
       for(const l of arr.slice(0,5)){const R=ROLE[l.role];
         h+='<div class="nv-lv" style="background:'+R.bg+';border-left:2px solid '+R.c+'"><span class="gl" style="color:'+R.c+'">'+R.g+'</span><span class="k">$'+kfmt(l.k)+'</span><span class="wd" style="color:'+R.c+'">'+R.w+'</span><span class="nt">'+money(l.g)+'</span></div>';}
