@@ -160,7 +160,7 @@ def build_ticker(t, v, snap_date):
         parts.append(f"The {md(cols[0])} front expiry is net negative ({fmt_k(k(front_net))}), "
                      "so near-term swings can overshoot before opex takes over.")
     if v.get("outlook"):
-        parts.append(f"TradeEcho's own read: {v['outlook'].split(',')[0].split(' ')[0]}.")
+        parts.append(f"TradeEcho's own read: {v['outlook'].split(',')[0].split(' ')[0].rstrip('.:;')}.")
 
     card = {
         "t": t, "spot": spot, "chg": None, "cols": [md(e) for e in strip],
@@ -224,6 +224,8 @@ def headlines(stats):
             line += f" The {big['front']} expiry is net negative, though, so the next few sessions could be choppy."
         if big["flip"] is not None and big["spot"] < big["flip"]:
             line += f" It closed just below its ${big['flip']:.0f} flip, so moves can run until it gets back above."
+        elif big["flip"] is not None and abs(big["spot"] - big["flip"]) / big["spot"] < 0.004:
+            line += f" It's also sitting right on its ${big['flip']:.0f} flip."
         out.append(line); used.add(big["t"])
     # 3) the rest: boxed in, or pulled toward a level
     boxed, pulled, below = [], [], []
@@ -240,7 +242,12 @@ def headlines(stats):
         used.add(s["t"])
     sentences = [b + "." for b in boxed]
     if pulled:
-        p = [f"<b>{t}</b> toward {lv}" for t, lv in pulled]
+        S = {s["t"]: s for s in stats}
+        def on_flip(t):   # a "pulled" name sitting on its flip: the pull only holds while it stays above
+            s = S[t]
+            return s["flip"] is not None and abs(s["spot"] - s["flip"]) / s["spot"] < 0.004
+        p = [f"<b>{t}</b> toward {lv}" + (f" (only while it holds its ${S[t]['flip']:.0f} flip)" if on_flip(t) else "")
+             for t, lv in pulled]
         p[0] = p[0].replace("</b> toward", "</b> is pulled toward")
         sentences.append((p[0] if len(p) == 1 else ", ".join(p[:-1]) + ", and " + p[-1]) + ".")
     if sentences:
