@@ -122,6 +122,14 @@ def headline(tick, lv, spot, cont, buydip_null, ser, vexflip):
         return "The ceiling keeps stepping down."
     if len(pins) >= 3 and pins[-1] > pins[-2] > pins[-3]:
         return "The corridor is lifting."
+    gexstr = ser[-1][1]["gexstr"]
+    # Spot resting on the put wall with no strength behind it is not a pin regime.
+    if gexstr <= 2 and abs(spot - lv["putwall"]) <= 0.003 * spot:
+        return "Standing on the floor."
+    # The benign default only applies when the book actually has strength and
+    # spot is above the bias boundary; otherwise say what is true instead.
+    if gexstr <= 2 or spot < lv["flip"]:
+        return "Under the pivot, nothing holding it."
     return "The pin's still in charge."
 
 
