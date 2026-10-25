@@ -376,6 +376,58 @@
       ]
      ]
     }
+   ],
+   "ladder": [
+    {
+     "k": 240.0,
+     "kind": "sell",
+     "strength": 0.33,
+     "n": 3,
+     "odds": 52
+    },
+    {
+     "k": 230.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 79
+    },
+    {
+     "k": 217.5,
+     "kind": "sell",
+     "strength": 0.33,
+     "n": 2,
+     "odds": 51
+    },
+    {
+     "k": 213.0,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 210.0,
+     "kind": "buy",
+     "strength": 0.04,
+     "n": 1,
+     "odds": 34,
+     "pin": true
+    },
+    {
+     "k": 200.0,
+     "kind": "trigger",
+     "strength": 0.81,
+     "n": 3,
+     "odds": 83
+    },
+    {
+     "k": 190.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 86
+    }
    ]
   },
   {
@@ -512,6 +564,65 @@
        -2.1
       ]
      ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 420.0,
+     "kind": "sell",
+     "strength": 0.4,
+     "n": 3,
+     "odds": 60
+    },
+    {
+     "k": 400.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 84
+    },
+    {
+     "k": 385.0,
+     "kind": "sell",
+     "strength": 0.53,
+     "n": 3,
+     "odds": 71
+    },
+    {
+     "k": 372.2,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 370.0,
+     "kind": "buy",
+     "strength": 0.01,
+     "n": 1,
+     "odds": 42
+    },
+    {
+     "k": 365.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 2,
+     "odds": 75,
+     "pin": true
+    },
+    {
+     "k": 350.0,
+     "kind": "buy",
+     "strength": 0.16,
+     "n": 1,
+     "odds": 43
+    },
+    {
+     "k": 340.0,
+     "kind": "trigger",
+     "strength": 0.86,
+     "n": 3,
+     "odds": 74
     }
    ]
   },
@@ -650,6 +761,58 @@
       ]
      ]
     }
+   ],
+   "ladder": [
+    {
+     "k": 360.0,
+     "kind": "sell",
+     "strength": 0.54,
+     "n": 3,
+     "odds": 72
+    },
+    {
+     "k": 355.0,
+     "kind": "sell",
+     "strength": 0.47,
+     "n": 3,
+     "odds": 70
+    },
+    {
+     "k": 350.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 88
+    },
+    {
+     "k": 347.5,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 345.0,
+     "kind": "buy",
+     "strength": 0.08,
+     "n": 1,
+     "odds": 45
+    },
+    {
+     "k": 340.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 84,
+     "pin": true
+    },
+    {
+     "k": 330.0,
+     "kind": "trigger",
+     "strength": 0.73,
+     "n": 3,
+     "odds": 73
+    }
    ]
   },
   {
@@ -786,6 +949,57 @@
        -14.6
       ]
      ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 280.0,
+     "kind": "sell",
+     "strength": 0.96,
+     "n": 3,
+     "odds": 79
+    },
+    {
+     "k": 270.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 83
+    },
+    {
+     "k": 265.0,
+     "kind": "sell",
+     "strength": 0.66,
+     "n": 3,
+     "odds": 73
+    },
+    {
+     "k": 250,
+     "kind": "pin",
+     "strength": 0.11,
+     "n": 1,
+     "odds": 50
+    },
+    {
+     "k": 248.2,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 240.0,
+     "kind": "trigger",
+     "strength": 0.96,
+     "n": 3,
+     "odds": 82
+    },
+    {
+     "k": 230.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 80
     }
    ]
   },
@@ -924,6 +1138,51 @@
       ]
      ]
     }
+   ],
+   "ladder": [
+    {
+     "k": 360.0,
+     "kind": "sell",
+     "strength": 0.35,
+     "n": 3,
+     "odds": 54
+    },
+    {
+     "k": 355.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 78
+    },
+    {
+     "k": 345.0,
+     "kind": "sell",
+     "strength": 0.42,
+     "n": 2,
+     "odds": 51
+    },
+    {
+     "k": 326.4,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 320.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 88,
+     "pin": true
+    },
+    {
+     "k": 315.0,
+     "kind": "trigger",
+     "strength": 0.63,
+     "n": 3,
+     "odds": 80
+    }
    ]
   },
   {
@@ -1060,6 +1319,57 @@
        -3.9
       ]
      ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 370.0,
+     "kind": "sell",
+     "strength": 0.47,
+     "n": 3,
+     "odds": 56
+    },
+    {
+     "k": 337.5,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 82
+    },
+    {
+     "k": 332.5,
+     "kind": "sell",
+     "strength": 0.36,
+     "n": 2,
+     "odds": 52
+    },
+    {
+     "k": 332.4,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 320.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 88
+    },
+    {
+     "k": 310,
+     "kind": "pin",
+     "strength": 0.0,
+     "n": 3,
+     "odds": null
+    },
+    {
+     "k": 300.0,
+     "kind": "trigger",
+     "strength": 0.95,
+     "n": 3,
+     "odds": 87
     }
    ]
   }

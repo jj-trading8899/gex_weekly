@@ -172,7 +172,8 @@ def build_ticker(t, v, snap_date):
         "flip": f"~${flip:.0f}" if flip is not None else "—",
         "range": rng, "read": " ".join(parts),
     }
-    ts = {"t": t, "spot": spot, "chg": None, "flip": round(flip, 2) if flip is not None else None, "perCol": per_col}
+    ts = {"t": t, "spot": spot, "chg": None, "flip": round(flip, 2) if flip is not None else None, "perCol": per_col,
+          "ladder": trade_ladder(spot, flip, anchor, cols, by_exp, opex)}
     top_above = sorted(pos_above[:2], key=lambda r: r[0])
     card["_stats"] = {
         "t": t, "spot": spot, "flip": flip, "tone": tone, "rating": v.get("rating"),
@@ -183,6 +184,64 @@ def build_ticker(t, v, snap_date):
         "core": sorted(r[0] for r in sorted([r for r in lv if r[1] > 0], key=lambda r: -r[1])[:2]),
     }
     return card, ts, lv_exp
+
+
+def trade_ladder(spot, flip, anchor, cols, by_exp, opex):
+    """Buy / sell / trigger levels with a heuristic odds score (not a calibrated probability).
+
+    Aggregates positioning per strike across the matrix expiries. A level is stronger when
+    it is large relative to the board, shows up in several expiries, and sits close to spot.
+    Odds = chance the level holds on first test (buy/sell/pin) or that a break accelerates (trigger).
+    """
+    agg, cnt, sign_cnt = {}, {}, {}
+    n_cols = len(cols)
+    for e in cols:
+        w = 1.5 if e == opex else 1.0   # opex positions are the stickiest
+        for strike, g, _ in by_exp[e]:
+            if abs(strike - spot) > spot * WINDOW:
+                continue
+            agg[strike] = agg.get(strike, 0) + g * w
+            sign_cnt[strike] = sign_cnt.get(strike, 0) + (1 if g > 0 else -1 if g < 0 else 0)
+    for strike, v in agg.items():   # expiries that agree with the aggregate sign
+        cnt[strike] = sum(1 for e in cols for st, g, _ in by_exp[e] if st == strike and (g > 0) == (v > 0) and g != 0)
+    if not agg:
+        return []
+    max_pos = max((v for v in agg.values() if v > 0), default=1)
+    max_neg = max((-v for v in agg.values() if v < 0), default=1)
+
+    def odds(strike, v, kind):
+        strength = (v / max_pos) if v > 0 else (-v / max_neg)
+        agree = abs(sign_cnt[strike]) / n_cols
+        dist = min(abs(strike - spot) / spot, 0.15) / 0.15
+        p = 38 + 34 * strength + 14 * agree - 12 * dist
+        if flip is not None:
+            if kind == "buy" and spot < flip: p -= 10     # buying below the flip: dealers add to moves
+            if kind == "sell" and spot > flip: p += 4
+            if kind == "trigger" and spot < flip: p += 8
+        return int(max(18, min(88, round(p))))
+
+    rows = []
+    sells = sorted([(s, v) for s, v in agg.items() if s > spot * 1.003 and v > 0], key=lambda x: -x[1])[:3]
+    buys = sorted([(s, v) for s, v in agg.items() if s <= spot and v > 0], key=lambda x: -x[1])[:2]
+    trigs = sorted([(s, v) for s, v in agg.items() if s < spot and v < 0], key=lambda x: x[1])[:2]
+    for s, v in sells:
+        rows.append({"k": s, "kind": "sell", "strength": round(v / max_pos, 2), "n": cnt[s], "odds": odds(s, v, "sell")})
+    for s, v in buys:
+        rows.append({"k": s, "kind": "buy", "strength": round(v / max_pos, 2), "n": cnt[s], "odds": odds(s, v, "buy")})
+    for s, v in trigs:
+        rows.append({"k": s, "kind": "trigger", "strength": round(-v / max_neg, 2), "n": cnt[s], "odds": odds(s, v, "trigger")})
+    if anchor is not None and not any(r["k"] == anchor for r in rows):
+        v = agg.get(anchor, 0)
+        rows.append({"k": anchor, "kind": "pin", "strength": round(max(v, 0) / max_pos, 2), "n": cnt.get(anchor, 0),
+                     "odds": odds(anchor, v, "sell" if anchor > spot else "buy") if v > 0 else None})
+    else:
+        for r in rows:
+            if r["k"] == anchor:
+                r["pin"] = True
+    if flip is not None:
+        rows.append({"k": round(flip, 1), "kind": "flip", "strength": None, "n": None, "odds": None})
+    rows.sort(key=lambda r: -r["k"])
+    return rows
 
 
 def headlines(stats):
