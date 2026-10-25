@@ -259,7 +259,7 @@ DATA.forEach(d=>{
       plan+='. '+(above?'Above the flip, so dips are more likely to get bought.':'<span style="color:#f87171">Below the flip</span>, so bounces are weaker and breaks run further — size down.');
       h+='<div class="tl"><div class="tl-t">'+D.t+' <span>· key levels to trade · odds are positioning-based estimates, not forecasts</span></div>';
       h+='<div class="tl-plan">'+plan+'</div>';
-      h+='<table><tr><th>LEVEL</th><th>VS SPOT</th><th>ROLE</th><th>WHAT TO DO</th><th>STRENGTH</th><th style="text-align:right">ODDS</th></tr>';
+      h+='<table><tr><th>LEVEL</th><th>VS SPOT</th><th>ROLE</th><th>STRENGTH</th><th>WHAT TO DO</th><th style="text-align:right">ODDS</th></tr>';
       let spotDone=false, flipDone=D.flip==null;
       for(const r of L){
         if(!spotDone && r.k<=SPOT){ h+='<tr class="spot"><td colspan="6">◆ SPOT $'+SPOT.toFixed(2)+'</td></tr>'; spotDone=true; }
@@ -271,8 +271,8 @@ DATA.forEach(d=>{
         h+='<tr><td class="lv" style="color:'+K.c+'">$'+kfmt(r.k)+(r.pin?' <span class="tag" style="color:#e0b23a;background:rgba(224,178,58,.12)">PIN</span>':'')+'</td>';
         h+='<td class="dist">'+(d>=0?'+':'')+d.toFixed(1)+'%</td>';
         h+='<td><span class="tag" style="color:'+K.c+';background:'+K.bg+'">'+K.w+'</span></td>';
-        h+='<td class="act">'+K.a+'</td>';
         h+='<td><div class="bar"><i style="width:'+Math.round((r.strength||0)*100)+'%;background:'+K.c+'"></i></div><div style="font-size:8px;color:#7a8090;margin-top:2px">'+Math.round((r.strength||0)*100)+'% of board'+agree+'</div></td>';
+        h+='<td class="act">'+K.a+'</td>';
         h+='<td class="odds" style="color:'+K.c+'">'+oddsLbl+'<div style="font-size:8px;color:#7a8090;font-weight:400">'+(r.odds==null?'':oddsWhat)+'</div></td></tr>';
       }
       if(!spotDone) h+='<tr class="spot"><td colspan="6">◆ SPOT $'+SPOT.toFixed(2)+'</td></tr>';
