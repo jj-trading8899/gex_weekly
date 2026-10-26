@@ -91,6 +91,39 @@ h1{ font-size:19px; margin:0 0 3px; letter-spacing:.02em; }
 .hl li{ font-size:19px; line-height:1.45; color:#e6e9ef; }
 .hl li b{ color:#e0b23a; font-weight:600; }
 @media (max-width:480px){ .hl{ padding:13px 13px 15px; } }
+.tl{ background:#161c27; border:1px solid #2a323f; border-radius:10px; padding:12px 12px 10px; margin-bottom:16px; overflow-x:auto; }
+.tl-t{ font-size:12px; font-weight:600; letter-spacing:.04em; color:#e0b23a; margin:0 0 2px 2px; }
+.tl-t span{ color:#7a8090; font-weight:400; font-size:10px; letter-spacing:.02em; }
+.tl-plan{ font-size:11px; color:#c3cad6; margin:0 0 10px 2px; line-height:1.5; }
+.tl table{ width:100%; border-collapse:collapse; min-width:520px; }
+.tl th{ font-size:8.5px; color:#7a8090; letter-spacing:.1em; text-align:left; padding:4px 6px; border-bottom:1px solid #2a323f; font-weight:400; }
+.tl td{ padding:6px 6px; font-size:11px; border-bottom:1px solid #1e2532; vertical-align:middle; white-space:nowrap; }
+.tl tr:last-child td{ border-bottom:0; }
+.tl td.lv{ font-weight:700; font-size:12.5px; }
+.tl td.dist{ color:#8a90a0; font-variant-numeric:tabular-nums; }
+.tl .tag{ display:inline-block; font-size:8.5px; letter-spacing:.08em; padding:2px 7px; border-radius:4px; font-weight:600; }
+.tl .act{ color:#c3cad6; white-space:normal; min-width:150px; }
+.tl .bar{ position:relative; height:10px; background:#0e1219; border-radius:5px; width:120px; overflow:hidden; }
+.tl .bar i{ position:absolute; left:0; top:0; bottom:0; border-radius:5px; }
+.tl td.odds{ font-weight:700; font-variant-numeric:tabular-nums; text-align:right; }
+.tl tr.spot td{ padding:3px 6px; font-size:9px; color:#e0b23a; letter-spacing:.08em; border-bottom:1px dashed #5a4a1c; border-top:1px dashed #5a4a1c; background:#1a1a12; }
+.tl tr.flip td{ padding:3px 6px; font-size:9px; color:#a68bff; letter-spacing:.08em; border-bottom:1px dashed #4b3f7a; background:#16142a; }
+.tl-note{ font-size:9.5px; color:#7a8090; margin:8px 2px 0; line-height:1.45; }
+.ag{ background:#161c27; border:1px solid #2a323f; border-radius:12px; padding:14px 16px 14px; margin:0 0 18px; }
+.ag-t{ font-size:11px; color:#e0b23a; letter-spacing:.12em; text-transform:uppercase; margin:0 0 6px; }
+.ag-row{ display:grid; grid-template-columns:22px 1fr; gap:4px 8px; padding:10px 0; border-top:1px solid #2a323f; }
+.ag-row:first-of-type{ border-top:0; }
+.ag-ic{ font-size:15px; line-height:1.5; text-align:center; }
+.ag-hd{ display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 10px; font-size:15px; }
+.ag-hd .tk{ font-weight:700; color:#e6e9ef; font-size:15px; letter-spacing:.03em; }
+.ag-hd .px{ color:#e0b23a; font-weight:600; font-variant-numeric:tabular-nums; }
+.ag-hd .ln{ font-weight:700; }
+.ag-thin{ font-size:9px; letter-spacing:.1em; color:#7a8090; border:1px solid #3a4250; border-radius:4px; padding:1px 5px; align-self:center; }
+.ag-lv{ grid-column:2; display:flex; flex-wrap:wrap; gap:3px 14px; font-size:11.5px; color:#8a90a0; font-variant-numeric:tabular-nums; }
+.ag-lv b{ font-weight:600; }
+.ag-key{ font-size:10.5px; color:#8a90a0; line-height:1.55; margin-top:8px; border-top:1px solid #2a323f; padding-top:10px; }
+.ag-key b{ color:#c3cad6; }
+@media (min-width:760px){ .ag-list{ display:grid; grid-template-columns:1fr 1fr; column-gap:28px; } .ag-row:nth-of-type(2){ border-top:0; } }
 </style>
 </head>
 <body>
@@ -103,6 +136,7 @@ h1{ font-size:19px; margin:0 0 3px; letter-spacing:.02em; }
     Key: <span style="color:#e0b23a;">Pin</span> &middot; <span style="color:#f87171;">Cap</span> &middot;
     <span style="color:#34d399;">Support</span> &middot; <span style="color:#a68bff;">Flip</span> (line between dampening and amplifying).
   </div>
+  <div class="ag" id="ag"><div class="ag-t">At a glance · into opex</div><div class="ag-list" id="ag-list"></div><div class="ag-key" id="ag-key"></div></div>
   <div class="hl" id="hl"><div class="hl-t">Key Headline</div><ul id="hl-list"></ul></div>
   <div class="grid" id="grid"></div>
   <div id="ts-more"></div>
@@ -129,6 +163,39 @@ document.getElementById("sub").textContent =
 
 document.getElementById("hl-list").innerHTML = (P.headlines||[]).map(x=>"<li>"+x+"</li>").join("");
 if(!(P.headlines||[]).length) document.getElementById("hl").hidden = true;
+
+// ---- At a glance ----
+(function(){
+  const G=P.glance||[]; if(!G.length){ document.getElementById("ag").hidden=true; return; }
+  const LEAN={
+    down:{i:"↓",w:"Downside-prone",c:"#f87171"},
+    edge:{i:"⇅",w:"On the edge",c:"#e0b23a"},
+    shaky:{i:"↘",w:"Shaky",c:"#d08a4a"},
+    up:{i:"↗",w:"Pulled up",c:"#34d399"},
+    range:{i:"↔",w:"Range-bound",c:"#34d399"},
+  };
+  const px=(v)=>v==null?null:(v>=1000?v.toFixed(0):(v%1===0?v.toFixed(0):String(+v.toFixed(2))));
+  const bd=(g)=>{ const a=Math.abs(g), s=g>=0?"+":"−"; return a>=1000? s+(a/1000).toFixed(2)+"M" : s+(a>=100?a.toFixed(0):a.toFixed(1))+"K"; };
+  let h='';
+  for(const g of G){
+    const L=LEAN[g.lean]; const dim=g.thin?';opacity:.7':'';
+    h+='<div class="ag-row"><div class="ag-ic" style="color:'+L.c+dim+'">'+L.i+'</div>';
+    h+='<div class="ag-hd"><span class="tk">'+g.t+'</span><span class="px">$'+g.spot.toFixed(2)+'</span><span class="ln" style="color:'+L.c+dim+'">'+L.w+'</span>'+(g.thin?'<span class="ag-thin">THIN</span>':'')+'</div>';
+    h+='<div class="ag-lv">';
+    if(g.flip!=null) h+='<span>flip <b style="color:#7aa2ff">$'+px(g.flip)+'</b></span>';
+    h+='<span>up to '+(g.up!=null?'<b style="color:#f87171">$'+px(g.up)+' cap</b>':'<b style="color:#c3cad6">no cap</b>')+'</span>';
+    h+='<span>down to '+(g.down!=null?'<b style="color:#ff9a47">$'+px(g.down)+'</b>':'<b style="color:#c3cad6">no floor</b>')+'</span>';
+    h+='<span>board <b style="color:'+(g.board>=0?'#34d399':'#f87171')+'">'+bd(g.board)+'</b></span>';
+    h+='</div></div>';
+  }
+  document.getElementById("ag-list").innerHTML=h;
+  document.getElementById("ag-key").innerHTML='<b>Lean</b> is how the next move is likely to behave, not a forecast: '+
+    '<span style="color:#f87171">↓ downside-prone</span> (below flip, negative board: drops tend to run) · '+
+    '<span style="color:#e0b23a">⇅ on the edge</span> (within 0.4% of flip: the next close decides) · '+
+    '<span style="color:#d08a4a">↘ shaky</span> (above flip but little underneath, or below flip with a positive board) · '+
+    '<span style="color:#34d399">↗ pulled up / ↔ range-bound</span> (positive board above the flip: moves get absorbed). '+
+    '<b>Up to</b> = first cap overhead · <b>Down to</b> = solid support, or where selling speeds up · <b>Board</b> = net positioning into '+P.nextOpex+' opex · <b>thin</b> = board under ±2K, weak signal.';
+})();
 
 const grid = document.getElementById("grid");
 DATA.forEach(d=>{
@@ -220,6 +287,47 @@ DATA.forEach(d=>{
     for(const k of ["ceiling","floor","anchor","trap"]){const R=ROLE[k];h+='<span style="color:'+R.c+'">'+R.g+' <b>'+R.w+'</b></span>';}
     if(D.flip!=null) h+='<span style="color:#a68bff">┆ <b>FLIP</b></span>';
     h+='<span style="margin-left:auto;color:#7a8090;">●●● strong · ●●○ mild · ●○○ weak</span></div>';
+    // ---- Key levels to trade (plain-language ladder with odds) ----
+    const KIND={
+      sell:{c:"#f87171",bg:"rgba(248,113,113,.12)",w:"SELL ZONE",a:"Sell / trim into it. Rallies tend to stall here first."},
+      buy:{c:"#34d399",bg:"rgba(52,211,153,.12)",w:"BUY ZONE",a:"Buy dips into it. Expect a bounce on the first test."},
+      trigger:{c:"#ff9a47",bg:"rgba(255,154,71,.12)",w:"BREAK TRIGGER",a:"Not support. If lost, selling speeds up — stop below, don't buy above until reclaimed."},
+      pin:{c:"#e0b23a",bg:"rgba(224,178,58,.12)",w:"PIN",a:"Price gravitates here into expiry. Fade moves away from it while it holds."},
+    };
+    const L=D.ladder||[];
+    if(L.length){
+      const sells=L.filter(r=>r.kind==="sell"), buys=L.filter(r=>r.kind==="buy"), trigs=L.filter(r=>r.kind==="trigger");
+      const best=(arr)=>arr.length?arr.reduce((a,b)=>(b.odds||0)>(a.odds||0)?b:a):null;
+      const bs=best(sells), bb=best(buys), bt=trigs.length?trigs.reduce((a,b)=>b.k>a.k?b:a):null;
+      const above=D.flip==null||SPOT>=D.flip;
+      let plan='<b style="color:#e0b23a">Plan:</b> ';
+      if(bb) plan+='buy toward <b style="color:#34d399">$'+kfmt(bb.k)+'</b> ('+bb.odds+'% holds), ';
+      else plan+='no real buy level below spot — ';
+      if(bs) plan+='sell / take profit into <b style="color:#f87171">$'+kfmt(bs.k)+'</b> ('+bs.odds+'% holds)';
+      if(bt) plan+='; invalid below <b style="color:#ff9a47">$'+kfmt(bt.k)+'</b> ('+bt.odds+'% accelerates)';
+      plan+='. '+(above?'Above the flip, so dips are more likely to get bought.':'<span style="color:#f87171">Below the flip</span>, so bounces are weaker and breaks run further — size down.');
+      h+='<div class="tl"><div class="tl-t">'+D.t+' <span>· key levels to trade · odds are positioning-based estimates, not forecasts</span></div>';
+      h+='<div class="tl-plan">'+plan+'</div>';
+      h+='<table><tr><th>LEVEL</th><th>VS SPOT</th><th>ROLE</th><th>STRENGTH</th><th>WHAT TO DO</th><th style="text-align:right">ODDS</th></tr>';
+      let spotDone=false, flipDone=D.flip==null;
+      for(const r of L){
+        if(!spotDone && r.k<=SPOT){ h+='<tr class="spot"><td colspan="6">◆ SPOT $'+SPOT.toFixed(2)+'</td></tr>'; spotDone=true; }
+        if(r.kind==="flip"){ h+='<tr class="flip"><td colspan="6">┆ FLIP $'+kfmt(r.k)+' — dampening above, amplifying below</td></tr>'; flipDone=true; continue; }
+        const K=KIND[r.kind]; const d=(r.k-SPOT)/SPOT*100;
+        const oddsLbl=r.odds==null?'—':r.odds+'%';
+        const oddsWhat=r.kind==="trigger"?"accelerates":"holds";
+        const agree=r.n!=null?' · '+r.n+'/'+N+' expiries':'';
+        h+='<tr><td class="lv" style="color:'+K.c+'">$'+kfmt(r.k)+(r.pin?' <span class="tag" style="color:#e0b23a;background:rgba(224,178,58,.12)">PIN</span>':'')+'</td>';
+        h+='<td class="dist">'+(d>=0?'+':'')+d.toFixed(1)+'%</td>';
+        h+='<td><span class="tag" style="color:'+K.c+';background:'+K.bg+'">'+K.w+'</span></td>';
+        h+='<td><div class="bar"><i style="width:'+Math.round((r.strength||0)*100)+'%;background:'+K.c+'"></i></div><div style="font-size:8px;color:#7a8090;margin-top:2px">'+Math.round((r.strength||0)*100)+'% of board'+agree+'</div></td>';
+        h+='<td class="act">'+K.a+'</td>';
+        h+='<td class="odds" style="color:'+K.c+'">'+oddsLbl+'<div style="font-size:8px;color:#7a8090;font-weight:400">'+(r.odds==null?'':oddsWhat)+'</div></td></tr>';
+      }
+      if(!spotDone) h+='<tr class="spot"><td colspan="6">◆ SPOT $'+SPOT.toFixed(2)+'</td></tr>';
+      h+='</table>';
+      h+='<div class="tl-note">Odds = how likely the level holds on its first test (or, for a break trigger, that a break through it speeds up). Scored from the size of dealer positioning at the strike, how many expiries agree, distance from spot and which side of the flip price sits. A heuristic for sizing and placement, not a measured probability.</div></div>';
+    }
     h+='<div class="nv-mxt">'+D.t+' <span>· positioning by strike & expiry</span></div>';
     h+='<div class="nv-mx"><div class="nv-row nv-hd" style="'+gtc+'"><span>STRIKE</span>'+labels.map((c,i)=>'<span>'+c+(i===opexI?' ★':'')+'</span>').join("")+'</div>';
     const MFLIP=(D.flip!=null&&isFinite(D.flip))?D.flip:null;
@@ -283,3 +391,5 @@ document.getElementById("foot").innerHTML =
 </script>
 </body>
 </html>
+
+</body></html>

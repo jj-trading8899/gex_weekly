@@ -163,7 +163,7 @@ def build_ticker(t, v, snap_date):
         parts.append(f"The {md(cols[0])} front expiry is net negative ({fmt_k(k(front_net))}), "
                      "so near-term swings can overshoot before opex takes over.")
     if v.get("outlook"):
-        parts.append(f"TradeEcho's own read: {v['outlook'].split(',')[0].split(' ')[0]}.")
+        parts.append(f"TradeEcho's own read: {v['outlook'].split(',')[0].split(' ')[0].rstrip('.:;')}.")
 
     card = {
         "t": t, "spot": spot, "chg": None, "cols": [md(e) for e in strip],
@@ -175,7 +175,8 @@ def build_ticker(t, v, snap_date):
         "flip": f"~${flip:.0f}" if flip is not None else "—",
         "range": rng, "read": " ".join(parts),
     }
-    ts = {"t": t, "spot": spot, "chg": None, "flip": round(flip, 2) if flip is not None else None, "perCol": per_col}
+    ts = {"t": t, "spot": spot, "chg": None, "flip": round(flip, 2) if flip is not None else None, "perCol": per_col,
+          "ladder": trade_ladder(spot, flip, anchor, cols, by_exp, opex)}
     top_above = sorted(pos_above[:2], key=lambda r: r[0])
     card["_stats"] = {
         "t": t, "spot": spot, "flip": flip, "tone": tone, "rating": v.get("rating"),
@@ -186,6 +187,88 @@ def build_ticker(t, v, snap_date):
         "core": sorted(r[0] for r in sorted([r for r in lv if r[1] > 0], key=lambda r: -r[1])[:2]),
     }
     return card, ts, lv_exp
+
+
+def trade_ladder(spot, flip, anchor, cols, by_exp, opex):
+    """Buy / sell / trigger levels with a heuristic odds score (not a calibrated probability).
+
+    Aggregates positioning per strike across the matrix expiries. A level is stronger when
+    it is large relative to the board, shows up in several expiries, and sits close to spot.
+    Odds = chance the level holds on first test (buy/sell/pin) or that a break accelerates (trigger).
+    """
+    agg, cnt, sign_cnt = {}, {}, {}
+    n_cols = len(cols)
+    for e in cols:
+        w = 1.5 if e == opex else 1.0   # opex positions are the stickiest
+        for strike, g, _ in by_exp[e]:
+            if abs(strike - spot) > spot * WINDOW:
+                continue
+            agg[strike] = agg.get(strike, 0) + g * w
+            sign_cnt[strike] = sign_cnt.get(strike, 0) + (1 if g > 0 else -1 if g < 0 else 0)
+    for strike, v in agg.items():   # expiries that agree with the aggregate sign
+        cnt[strike] = sum(1 for e in cols for st, g, _ in by_exp[e] if st == strike and (g > 0) == (v > 0) and g != 0)
+    if not agg:
+        return []
+    max_pos = max((v for v in agg.values() if v > 0), default=1)
+    max_neg = max((-v for v in agg.values() if v < 0), default=1)
+
+    def odds(strike, v, kind):
+        strength = (v / max_pos) if v > 0 else (-v / max_neg)
+        agree = abs(sign_cnt[strike]) / n_cols
+        dist = min(abs(strike - spot) / spot, 0.15) / 0.15
+        p = 38 + 34 * strength + 14 * agree - 12 * dist
+        if flip is not None:
+            if kind == "buy" and spot < flip: p -= 10     # buying below the flip: dealers add to moves
+            if kind == "sell" and spot > flip: p += 4
+            if kind == "trigger" and spot < flip: p += 8
+        return int(max(18, min(88, round(p))))
+
+    rows = []
+    sells = sorted([(s, v) for s, v in agg.items() if s > spot * 1.003 and v > 0], key=lambda x: -x[1])[:3]
+    # a buy zone must be near enough and big enough to matter; otherwise show none rather than a weak far level
+    buys = sorted([(s, v) for s, v in agg.items() if s <= spot and v > 0
+                   and v / max_pos >= 0.05 and (spot - s) / spot <= 0.08], key=lambda x: -x[1])[:2]
+    trigs = sorted([(s, v) for s, v in agg.items() if s < spot and v < 0], key=lambda x: x[1])[:2]
+    for s, v in sells:
+        rows.append({"k": s, "kind": "sell", "strength": round(v / max_pos, 2), "n": cnt[s], "odds": odds(s, v, "sell")})
+    for s, v in buys:
+        rows.append({"k": s, "kind": "buy", "strength": round(v / max_pos, 2), "n": cnt[s], "odds": odds(s, v, "buy")})
+    for s, v in trigs:
+        rows.append({"k": s, "kind": "trigger", "strength": round(-v / max_neg, 2), "n": cnt[s], "odds": odds(s, v, "trigger")})
+    if anchor is not None and not any(r["k"] == anchor for r in rows):
+        v = agg.get(anchor, 0)
+        rows.append({"k": anchor, "kind": "pin", "strength": round(max(v, 0) / max_pos, 2), "n": cnt.get(anchor, 0),
+                     "odds": odds(anchor, v, "sell" if anchor > spot else "buy") if v > 0 else None})
+    else:
+        for r in rows:
+            if r["k"] == anchor:
+                r["pin"] = True
+    if flip is not None:
+        rows.append({"k": round(flip, 1), "kind": "flip", "strength": None, "n": None, "odds": None})
+    rows.sort(key=lambda r: -r["k"])
+    return rows
+
+
+def glance(stats):
+    """At-a-glance lean per ticker into opex (plain directional language, no forecasts)."""
+    out = []
+    for s in stats:
+        spot, flip, net = s["spot"], s["flip"], s["opex_net"]
+        boxed = s["sup"] and s["wall"] and not s["sup_thin"] and (s["wall"] - s["sup"]) / spot < 0.03
+        if flip is not None and abs(spot - flip) / spot < 0.004:
+            lean = "edge"
+        elif flip is not None and spot < flip:
+            lean = "down" if net < 0 else "shaky"
+        elif net <= 0 or not s["sup"] or s["sup_thin"]:
+            lean = "shaky"
+        elif boxed:
+            lean = "range"
+        else:
+            lean = "up"
+        down = s["sup"] if (s["sup"] and not s["sup_thin"]) else s["neg"]
+        out.append({"t": s["t"], "spot": spot, "lean": lean, "flip": round(flip, 2) if flip is not None else None,
+                    "up": s["wall"], "down": down, "board": net, "thin": abs(net) < 2})
+    return out
 
 
 def headlines(stats):
@@ -227,6 +310,8 @@ def headlines(stats):
             line += f" The {big['front']} expiry is net negative, though, so the next few sessions could be choppy."
         if big["flip"] is not None and big["spot"] < big["flip"]:
             line += f" It closed just below its ${big['flip']:.0f} flip, so moves can run until it gets back above."
+        elif big["flip"] is not None and abs(big["spot"] - big["flip"]) / big["spot"] < 0.004:
+            line += f" It's also sitting right on its ${big['flip']:.0f} flip."
         out.append(line); used.add(big["t"])
     # 3) the rest: boxed in, or pulled toward a level
     boxed, pulled, below = [], [], []
@@ -243,7 +328,12 @@ def headlines(stats):
         used.add(s["t"])
     sentences = [b + "." for b in boxed]
     if pulled:
-        p = [f"<b>{t}</b> toward {lv}" for t, lv in pulled]
+        S = {s["t"]: s for s in stats}
+        def on_flip(t):   # a "pulled" name sitting on its flip: the pull only holds while it stays above
+            s = S[t]
+            return s["flip"] is not None and abs(s["spot"] - s["flip"]) / s["spot"] < 0.004
+        p = [f"<b>{t}</b> toward {lv}" + (f" (only while it holds its ${S[t]['flip']:.0f} flip)" if on_flip(t) else "")
+             for t, lv in pulled]
         p[0] = p[0].replace("</b> toward", "</b> is pulled toward")
         sentences.append((p[0] if len(p) == 1 else ", ".join(p[:-1]) + ", and " + p[-1]) + ".")
     if sentences:
@@ -283,7 +373,7 @@ def main():
     updated = max(v.get("updated", "") for v in snap["tickers"].values() if "error" not in v)
     stats = [c.pop("_stats") for c in cards]
     payload = {"snapshot": snap_date.isoformat(), "nextOpex": opex, "dataUpdatedAt": updated,
-               "capturedAt": snap["capturedAt"], "headlines": headlines(stats), "cards": cards, "ts": ts}
+               "capturedAt": snap["capturedAt"], "headlines": headlines(stats), "glance": glance(stats), "cards": cards, "ts": ts}
     tpl = open(os.path.join(ROOT, "template.html")).read()
     html = tpl.replace("/*__PAYLOAD__*/null", json.dumps(payload, separators=(",", ":")))
     out = os.path.join(ROOT, "index.html")
