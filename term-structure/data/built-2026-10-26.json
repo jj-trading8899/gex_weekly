@@ -10,6 +10,68 @@
   "<b>GOOGL</b> closed below its flip ($326), with net negative positioning into opex, so moves can run until it gets back above.",
   "<b>AVGO</b> is the weakest board, at only \u221257.3K into opex. It's just above its $328 flip, and TradeEcho rates it 2/5."
  ],
+ "glance": [
+  {
+   "t": "NVDA",
+   "spot": 216.12,
+   "lean": "edge",
+   "flip": 216.53,
+   "up": 230.0,
+   "down": 210.0,
+   "board": 203.6,
+   "thin": false
+  },
+  {
+   "t": "TSLA",
+   "spot": 391.5,
+   "lean": "up",
+   "flip": 368.41,
+   "up": 400.0,
+   "down": 380.0,
+   "board": 36.3,
+   "thin": false
+  },
+  {
+   "t": "AAPL",
+   "spot": 344.0901,
+   "lean": "shaky",
+   "flip": 347.15,
+   "up": 350.0,
+   "down": 335.0,
+   "board": 132.2,
+   "thin": false
+  },
+  {
+   "t": "AMZN",
+   "spot": 249.1,
+   "lean": "shaky",
+   "flip": 247.51,
+   "up": 270.0,
+   "down": 230.0,
+   "board": 111.4,
+   "thin": false
+  },
+  {
+   "t": "GOOGL",
+   "spot": 316.8,
+   "lean": "down",
+   "flip": 325.73,
+   "up": 355.0,
+   "down": 290.0,
+   "board": -7.2,
+   "thin": false
+  },
+  {
+   "t": "AVGO",
+   "spot": 329.0093,
+   "lean": "shaky",
+   "flip": 327.58,
+   "up": 370.0,
+   "down": 300.0,
+   "board": -57.3,
+   "thin": false
+  }
+ ],
  "cards": [
   {
    "t": "NVDA",

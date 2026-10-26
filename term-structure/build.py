@@ -246,6 +246,28 @@ def trade_ladder(spot, flip, anchor, cols, by_exp, opex):
     return rows
 
 
+def glance(stats):
+    """At-a-glance lean per ticker into opex (plain directional language, no forecasts)."""
+    out = []
+    for s in stats:
+        spot, flip, net = s["spot"], s["flip"], s["opex_net"]
+        boxed = s["sup"] and s["wall"] and not s["sup_thin"] and (s["wall"] - s["sup"]) / spot < 0.03
+        if flip is not None and abs(spot - flip) / spot < 0.004:
+            lean = "edge"
+        elif flip is not None and spot < flip:
+            lean = "down" if net < 0 else "shaky"
+        elif net <= 0 or not s["sup"] or s["sup_thin"]:
+            lean = "shaky"
+        elif boxed:
+            lean = "range"
+        else:
+            lean = "up"
+        down = s["sup"] if (s["sup"] and not s["sup_thin"]) else s["neg"]
+        out.append({"t": s["t"], "spot": spot, "lean": lean, "flip": round(flip, 2) if flip is not None else None,
+                    "up": s["wall"], "down": down, "board": net, "thin": abs(net) < 2})
+    return out
+
+
 def headlines(stats):
     """One plain-language line per ticker: watch-list first, weakest last."""
     S = {s["t"]: s for s in stats}
@@ -348,7 +370,7 @@ def main():
     updated = max(v.get("updated", "") for v in snap["tickers"].values() if "error" not in v)
     stats = [c.pop("_stats") for c in cards]
     payload = {"snapshot": snap_date.isoformat(), "nextOpex": opex, "dataUpdatedAt": updated,
-               "capturedAt": snap["capturedAt"], "headlines": headlines(stats), "cards": cards, "ts": ts}
+               "capturedAt": snap["capturedAt"], "headlines": headlines(stats), "glance": glance(stats), "cards": cards, "ts": ts}
     tpl = open(os.path.join(ROOT, "template.html")).read()
     html = tpl.replace("/*__PAYLOAD__*/null", json.dumps(payload, separators=(",", ":")))
     out = os.path.join(ROOT, "index.html")
