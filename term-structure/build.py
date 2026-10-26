@@ -222,7 +222,9 @@ def trade_ladder(spot, flip, anchor, cols, by_exp, opex):
 
     rows = []
     sells = sorted([(s, v) for s, v in agg.items() if s > spot * 1.003 and v > 0], key=lambda x: -x[1])[:3]
-    buys = sorted([(s, v) for s, v in agg.items() if s <= spot and v > 0], key=lambda x: -x[1])[:2]
+    # a buy zone must be near enough and big enough to matter; otherwise show none rather than a weak far level
+    buys = sorted([(s, v) for s, v in agg.items() if s <= spot and v > 0
+                   and v / max_pos >= 0.05 and (spot - s) / spot <= 0.08], key=lambda x: -x[1])[:2]
     trigs = sorted([(s, v) for s, v in agg.items() if s < spot and v < 0], key=lambda x: x[1])[:2]
     for s, v in sells:
         rows.append({"k": s, "kind": "sell", "strength": round(v / max_pos, 2), "n": cnt[s], "odds": odds(s, v, "sell")})
