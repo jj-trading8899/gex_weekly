@@ -109,7 +109,7 @@ for gname, tks in groups.items():
             f'<tr data-tk="{t}" data-group="{html.escape(gname)}"><th>{t}</th><td>{px(d["s"])}</td><td><span class="pill {d["tone"]}">{d["regime"]}</span></td>'
             f'<td>{px(d["flip"])}</td><td>{px(d["anc"])}</td><td>{px(d["drift"])}</td>'
             f'<td>{px(d["below"][0]) if d["below"] else "—"}</td><td>{px(d["above"][0]) if d["above"] else "—"}</td>'
-            f'<td>{d["rating"]}</td></tr>')
+            '</tr>')
         chips = "".join(f'<span class="chip {"b" if v <= d["s"] else "a"}">{px(v)}</span>' for v in d["dl"])
         vm = px(d["vmag"]) + (" (pushes away)" if d["vsign"] == -1 else "")
         cards.append(f'''<article class="card">
