@@ -1,0 +1,248 @@
+<title>Term Structure Key Levels</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: reference sheet. Summary table first, then one card per ticker with a level ladder. */
+:root{
+  --bg:#f3f5f6; --panel:#ffffff; --ink:#15202a; --muted:#5b6872; --rule:#d9dfe3;
+  --accent:#1f6f8b;
+  --pos:#1b7f4c; --pos-bg:#e1f2e8; --neg:#b53a2e; --neg-bg:#f8e3e0; --mid:#9a6a07; --mid-bg:#f6edd6;
+  --f-disp:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1418; --panel:#151d22; --ink:#e3e9ed; --muted:#93a1ab; --rule:#26323a;
+  --accent:#5fb3cf;
+  --pos:#5ccf8f; --pos-bg:#143024; --neg:#ef7d70; --neg-bg:#3a1c19; --mid:#e3b04b; --mid-bg:#352a12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1418; --panel:#151d22; --ink:#e3e9ed; --muted:#93a1ab; --rule:#26323a;
+  --accent:#5fb3cf;
+  --pos:#5ccf8f; --pos-bg:#143024; --neg:#ef7d70; --neg-bg:#3a1c19; --mid:#e3b04b; --mid-bg:#352a12; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:28px}
+h1{font:800 clamp(26px,4vw,36px)/1.1 var(--f-disp);margin:0;letter-spacing:-.01em;text-wrap:balance}
+h2{font:700 13px var(--f-disp);text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin:0 0 12px}
+.meta{color:var(--muted);margin:6px 0 0;max-width:70ch}
+.meta b{color:var(--ink);font-weight:600}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;font:13px var(--f-num);font-variant-numeric:tabular-nums}
+th,td{padding:8px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--rule)}
+thead th{font:600 11px var(--f-body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--panel)}
+tbody th{text-align:left;font:700 13px var(--f-disp)}
+td:nth-child(3){text-align:left}
+tbody tr:last-child>*{border-bottom:0}
+.pill{display:inline-block;font:600 11px var(--f-body);padding:2px 8px;border-radius:999px;letter-spacing:.02em}
+.pill.pos{color:var(--pos);background:var(--pos-bg)}.pill.neg{color:var(--neg);background:var(--neg-bg)}.pill.mid{color:var(--mid);background:var(--mid-bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:14px 16px;display:grid;gap:10px;min-width:0}
+.card header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 10px}
+.card h3{font:800 20px var(--f-disp);margin:0}
+.spot{font:500 15px var(--f-num)}
+.rt{margin-left:auto;font:12px var(--f-body);color:var(--muted)}
+.lad{width:100%;height:auto;max-width:100%}
+.ax{stroke:var(--rule);stroke-width:2}
+.dl-b{stroke:var(--pos);stroke-width:2.5}.dl-a{stroke:var(--neg);stroke-width:2.5}
+.fl{stroke:var(--mid);stroke-width:1.5;stroke-dasharray:3 3}
+.dr{fill:var(--accent)}.an{fill:var(--ink)}
+.sp{fill:var(--panel);stroke:var(--ink);stroke-width:2.5}
+.kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 12px;margin:0}
+.kv div{min-width:0}.kv .wide{grid-column:1/-1}
+dt{font:600 10.5px var(--f-body);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+dd{margin:2px 0 0;font:500 14px var(--f-num);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 13px var(--f-num);padding:1px 8px;border-radius:4px}
+.chip.b{color:var(--pos);background:var(--pos-bg)}.chip.a{color:var(--neg);background:var(--neg-bg)}
+.read{margin:0;font-size:13.5px;color:var(--muted);border-top:1px solid var(--rule);padding-top:10px}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--muted);margin:0}
+.key span{display:inline-flex;align-items:center;gap:6px}
+.key svg{width:14px;height:14px}
+.note{font-size:12.5px;color:var(--muted);max-width:80ch;margin:0}
+@media (max-width:420px){.kv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+<div class="wrap">
+  <header>
+    <h1>Term Structure Key Levels</h1>
+    <p class="meta">Mega cap and mid cap term-structure names. Captured <b>Wed 28 Oct 2026, 5:40 PM ET</b>. Positions as of <b>2026-10-27</b> close; price is the last quote at capture.</p>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Ticker</th><th>Price</th><th>Regime</th><th>Flip</th><th>Anchor</th><th>Drift target</th><th>Support</th><th>Ceiling</th><th>Rating</th></tr></thead>
+      <tbody>
+<tr><th>NVDA</th><td>215.65</td><td><span class="pill neg">below flip</span></td><td>216.62</td><td>217.5</td><td>225</td><td>—</td><td>217.5</td><td>4</td></tr>
+<tr><th>TSLA</th><td>404.78</td><td><span class="pill pos">above flip</span></td><td>402.93</td><td>405</td><td>420</td><td>402.5</td><td>410</td><td>5</td></tr>
+<tr><th>AAPL</th><td>344.69</td><td><span class="pill pos">above flip</span></td><td>342.61</td><td>345</td><td>350</td><td>—</td><td>350</td><td>5</td></tr>
+<tr><th>AMZN</th><td>255.75</td><td><span class="pill pos">above flip</span></td><td>252.64</td><td>255</td><td>280</td><td>—</td><td>265</td><td>5</td></tr>
+<tr><th>GOOGL</th><td>303.4</td><td><span class="pill neg">below flip</span></td><td>312.5</td><td>305</td><td>350</td><td>290</td><td>305</td><td>2</td></tr>
+<tr><th>AVGO</th><td>352.08</td><td><span class="pill pos">above flip</span></td><td>342.17</td><td>355</td><td>360</td><td>350</td><td>352.5</td><td>4</td></tr>
+<tr><th>NBIS</th><td>183.35</td><td><span class="pill pos">above flip</span></td><td>168.06</td><td>190</td><td>200</td><td>150</td><td>190</td><td>4</td></tr>
+<tr><th>MRVL</th><td>252.01</td><td><span class="pill pos">above flip</span></td><td>233.41</td><td>265</td><td>265</td><td>—</td><td>260</td><td>4</td></tr>
+<tr><th>SNDK</th><td>1,415</td><td><span class="pill pos">above flip</span></td><td>1,393</td><td>1,500</td><td>1,500</td><td>1,400</td><td>1,450</td><td>5</td></tr>
+<tr><th>LITE</th><td>918.8</td><td><span class="pill pos">above flip</span></td><td>866.22</td><td>900</td><td>900</td><td>—</td><td>920</td><td>5</td></tr>
+<tr><th>SPCX</th><td>145.09</td><td><span class="pill neg">below flip</span></td><td>148.06</td><td>145</td><td>160</td><td>144</td><td>—</td><td>2</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note" style="margin-top:8px">Support and ceiling are the nearest TradeEcho defense lines below and above price.</p>
+  </section>
+
+  <p class="key">
+    <span><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="4.5" class="sp"/></svg>Price</span>
+    <span><svg viewBox="0 0 14 14"><path d="M7 2 L12 7 L7 12 L2 7 Z" class="an"/></svg>Anchor</span>
+    <span><svg viewBox="0 0 14 14"><line x1="7" y1="0" x2="7" y2="14" class="fl"/></svg>Flip</span>
+    <span><svg viewBox="0 0 14 14"><path d="M2 3 L12 3 L7 11 Z" class="dr"/></svg>Drift target</span>
+    <span><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13" class="dl-b"/></svg>Defense below price</span>
+    <span><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13" class="dl-a"/></svg>Defense above price</span>
+  </p>
+
+<section><h2>Mega cap</h2><div class="grid"><article class="card">
+  <header><h3>NVDA</h3><span class="spot">215.65</span><span class="pill neg">below flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 4/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for NVDA"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="59.3" y1="15" x2="59.3" y2="33" class="dl-a"/><line x1="295.7" y1="15" x2="295.7" y2="33" class="dl-a"/><line x1="201.1" y1="15" x2="201.1" y2="33" class="dl-a"/><line x1="42.6" y1="6" x2="42.6" y2="42" class="fl"/><path d="M196.1 8 L206.1 8 L201.1 15 Z" class="dr"/><path d="M59.3 33 L64.3 38 L59.3 43 L54.3 38 Z" class="an"/><circle cx="24.3" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>217.5</dd></div>
+    <div><dt>Flip</dt><dd>216.62</dd></div>
+    <div><dt>Drift target</dt><dd>225</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip a">217.5</span><span class="chip a">230</span><span class="chip a">225</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>230</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>215.98</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>250, 240, 245</dd></div>
+  </dl>
+  <p class="read">0.4% below the flip at 216.62: moves tend to run further until it is reclaimed. Anchor 217.5 is 0.9% above. No defense line below price. Nearest line above 217.5. Drift target 225 (+4.3%).</p>
+</article><article class="card">
+  <header><h3>TSLA</h3><span class="spot">404.78</span><span class="pill pos">above flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 5/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for TSLA"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="295.7" y1="15" x2="295.7" y2="33" class="dl-a"/><line x1="140.6" y1="15" x2="140.6" y2="33" class="dl-a"/><line x1="24.3" y1="15" x2="24.3" y2="33" class="dl-b"/><line x1="30.9" y1="6" x2="30.9" y2="42" class="fl"/><path d="M290.7 8 L300.7 8 L295.7 15 Z" class="dr"/><path d="M63.1 33 L68.1 38 L63.1 43 L58.1 38 Z" class="an"/><circle cx="59.6" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>405</dd></div>
+    <div><dt>Flip</dt><dd>402.93</dd></div>
+    <div><dt>Drift target</dt><dd>420</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip a">420</span><span class="chip a">410</span><span class="chip b">402.5</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>420</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>404.02</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>450, 435, 440</dd></div>
+  </dl>
+  <p class="read">0.5% above the flip at 402.93: dips tend to get bought while it holds. On the anchor at 405. First defense below 402.5. Nearest line above 410. Drift target 420 (+3.8%).</p>
+</article><article class="card">
+  <header><h3>AAPL</h3><span class="spot">344.69</span><span class="pill pos">above flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 5/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for AAPL"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="139.6" y1="15" x2="139.6" y2="33" class="dl-a"/><line x1="217.7" y1="15" x2="217.7" y2="33" class="dl-a"/><line x1="295.7" y1="15" x2="295.7" y2="33" class="dl-a"/><line x1="24.3" y1="6" x2="24.3" y2="42" class="fl"/><path d="M134.6 8 L144.6 8 L139.6 15 Z" class="dr"/><path d="M61.6 33 L66.6 38 L61.6 43 L56.6 38 Z" class="an"/><circle cx="56.7" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>345</dd></div>
+    <div><dt>Flip</dt><dd>342.61</dd></div>
+    <div><dt>Drift target</dt><dd>350</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip a">350</span><span class="chip a">355</span><span class="chip a">360</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>360</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>345.09</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>350, 370, 355</dd></div>
+  </dl>
+  <p class="read">0.6% above the flip at 342.61: dips tend to get bought while it holds. On the anchor at 345. No defense line below price. Nearest line above 350. Drift target 350 (+1.5%).</p>
+</article><article class="card">
+  <header><h3>AMZN</h3><span class="spot">255.75</span><span class="pill pos">above flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 5/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for AMZN"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="295.7" y1="15" x2="295.7" y2="33" class="dl-a"/><line x1="196.5" y1="15" x2="196.5" y2="33" class="dl-a"/><line x1="146.9" y1="15" x2="146.9" y2="33" class="dl-a"/><line x1="24.3" y1="6" x2="24.3" y2="42" class="fl"/><path d="M290.7 8 L300.7 8 L295.7 15 Z" class="dr"/><path d="M47.7 33 L52.7 38 L47.7 43 L42.7 38 Z" class="an"/><circle cx="55.2" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>255</dd></div>
+    <div><dt>Flip</dt><dd>252.64</dd></div>
+    <div><dt>Drift target</dt><dd>280</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip a">280</span><span class="chip a">270</span><span class="chip a">265</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>300</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>255.19</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>280, 290, 270</dd></div>
+  </dl>
+  <p class="read">1.2% above the flip at 252.64: dips tend to get bought while it holds. On the anchor at 255. No defense line below price. Nearest line above 265. Drift target 280 (+9.5%).</p>
+</article><article class="card">
+  <header><h3>GOOGL</h3><span class="spot">303.4</span><span class="pill neg">below flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 2/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for GOOGL"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="92.1" y1="15" x2="92.1" y2="33" class="dl-a"/><line x1="114.8" y1="15" x2="114.8" y2="33" class="dl-a"/><line x1="24.3" y1="15" x2="24.3" y2="33" class="dl-b"/><line x1="126.1" y1="6" x2="126.1" y2="42" class="fl"/><path d="M290.7 8 L300.7 8 L295.7 15 Z" class="dr"/><path d="M92.1 33 L97.1 38 L92.1 43 L87.1 38 Z" class="an"/><circle cx="84.9" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>305</dd></div>
+    <div><dt>Flip</dt><dd>312.5</dd></div>
+    <div><dt>Drift target</dt><dd>350</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip a">305</span><span class="chip a">310</span><span class="chip b">290</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>310 (pushes away)</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>302.57</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>290, 280, 370</dd></div>
+  </dl>
+  <p class="read">2.9% below the flip at 312.5: moves tend to run further until it is reclaimed. Anchor 305 is 0.5% above. First defense below 290. Nearest line above 305. Drift target 350 (+15.4%).</p>
+</article><article class="card">
+  <header><h3>AVGO</h3><span class="spot">352.08</span><span class="pill pos">above flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 4/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for AVGO"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="24.3" y1="15" x2="24.3" y2="33" class="dl-b"/><line x1="227.9" y1="15" x2="227.9" y2="33" class="dl-b"/><line x1="244.8" y1="15" x2="244.8" y2="33" class="dl-a"/><line x1="174.7" y1="6" x2="174.7" y2="42" class="fl"/><path d="M290.7 8 L300.7 8 L295.7 15 Z" class="dr"/><path d="M261.8 33 L266.8 38 L261.8 43 L256.8 38 Z" class="an"/><circle cx="242.0" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>355</dd></div>
+    <div><dt>Flip</dt><dd>342.17</dd></div>
+    <div><dt>Drift target</dt><dd>360</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip b">320</span><span class="chip b">350</span><span class="chip a">352.5</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>400</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>352.07</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>300, 320, 420</dd></div>
+  </dl>
+  <p class="read">2.9% above the flip at 342.17: dips tend to get bought while it holds. Anchor 355 is 0.8% above. First defense below 350, then 320. Nearest line above 352.5. Drift target 360 (+2.2%).</p>
+</article></div></section>
+<section><h2>Mid cap</h2><div class="grid"><article class="card">
+  <header><h3>NBIS</h3><span class="spot">183.35</span><span class="pill pos">above flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 4/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for NBIS"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="295.7" y1="15" x2="295.7" y2="33" class="dl-a"/><line x1="241.4" y1="15" x2="241.4" y2="33" class="dl-a"/><line x1="24.3" y1="15" x2="24.3" y2="33" class="dl-b"/><line x1="122.3" y1="6" x2="122.3" y2="42" class="fl"/><path d="M290.7 8 L300.7 8 L295.7 15 Z" class="dr"/><path d="M241.4 33 L246.4 38 L241.4 43 L236.4 38 Z" class="an"/><circle cx="205.3" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>190</dd></div>
+    <div><dt>Flip</dt><dd>168.06</dd></div>
+    <div><dt>Drift target</dt><dd>200</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip a">200</span><span class="chip a">190</span><span class="chip b">150</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>140</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>185.07</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>200, 150, 220</dd></div>
+  </dl>
+  <p class="read">9.1% above the flip at 168.06: dips tend to get bought while it holds. Anchor 190 is 3.6% above. First defense below 150. Nearest line above 190. Drift target 200 (+9.1%).</p>
+</article><article class="card">
+  <header><h3>MRVL</h3><span class="spot">252.01</span><span class="pill pos">above flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 4/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for MRVL"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="132.7" y1="15" x2="132.7" y2="33" class="dl-a"/><line x1="153.1" y1="15" x2="153.1" y2="33" class="dl-a"/><line x1="295.7" y1="15" x2="295.7" y2="33" class="dl-a"/><line x1="24.3" y1="6" x2="24.3" y2="42" class="fl"/><path d="M148.1 8 L158.1 8 L153.1 15 Z" class="dr"/><path d="M153.1 33 L158.1 38 L153.1 43 L148.1 38 Z" class="an"/><circle cx="100.1" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>265</dd></div>
+    <div><dt>Flip</dt><dd>233.41</dd></div>
+    <div><dt>Drift target</dt><dd>265</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip a">260</span><span class="chip a">265</span><span class="chip a">300</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>300</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>251.87</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>270, 200, 310</dd></div>
+  </dl>
+  <p class="read">8.0% above the flip at 233.41: dips tend to get bought while it holds. Anchor 265 is 5.2% above. No defense line below price. Nearest line above 260. Drift target 265 (+5.2%).</p>
+</article><article class="card">
+  <header><h3>SNDK</h3><span class="spot">1,415</span><span class="pill pos">above flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 5/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for SNDK"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="160.0" y1="15" x2="160.0" y2="33" class="dl-b"/><line x1="227.9" y1="15" x2="227.9" y2="33" class="dl-a"/><line x1="24.3" y1="15" x2="24.3" y2="33" class="dl-b"/><line x1="150.0" y1="6" x2="150.0" y2="42" class="fl"/><path d="M290.7 8 L300.7 8 L295.7 15 Z" class="dr"/><path d="M295.7 33 L300.7 38 L295.7 43 L290.7 38 Z" class="an"/><circle cx="180.4" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>1,500</dd></div>
+    <div><dt>Flip</dt><dd>1,393</dd></div>
+    <div><dt>Drift target</dt><dd>1,500</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip b">1,400</span><span class="chip a">1,450</span><span class="chip b">1,300</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>1,500</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>1,415</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>1,300, 1,520, 1,510</dd></div>
+  </dl>
+  <p class="read">1.6% above the flip at 1,393: dips tend to get bought while it holds. Anchor 1,500 is 6.0% above. First defense below 1,400, then 1,300. Nearest line above 1,450. Drift target 1,500 (+6.0%).</p>
+</article><article class="card">
+  <header><h3>LITE</h3><span class="spot">918.8</span><span class="pill pos">above flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 5/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for LITE"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="194.3" y1="15" x2="194.3" y2="33" class="dl-a"/><line x1="295.7" y1="15" x2="295.7" y2="33" class="dl-a"/><line x1="133.4" y1="15" x2="133.4" y2="33" class="dl-a"/><line x1="24.3" y1="6" x2="24.3" y2="42" class="fl"/><path d="M87.8 8 L97.8 8 L92.8 15 Z" class="dr"/><path d="M92.8 33 L97.8 38 L92.8 43 L87.8 38 Z" class="an"/><circle cx="131.0" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>900</dd></div>
+    <div><dt>Flip</dt><dd>866.22</dd></div>
+    <div><dt>Drift target</dt><dd>900</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip a">950</span><span class="chip a">1,000</span><span class="chip a">920</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>1,000</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>915.34</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>900, 950, 800</dd></div>
+  </dl>
+  <p class="read">6.1% above the flip at 866.22: dips tend to get bought while it holds. Anchor 900 is 2.0% below. No defense line below price. Nearest line above 920. Drift target 900 (-2.0%).</p>
+</article><article class="card">
+  <header><h3>SPCX</h3><span class="spot">145.09</span><span class="pill neg">below flip</span><span class="rt" title="TradeEcho rating, 1 to 5">rating 2/5</span></header>
+  <svg viewBox="0 0 320 46" class="lad" role="img" aria-label="Level ladder for SPCX"><line x1="8" y1="24" x2="312" y2="24" class="ax"/><line x1="78.6" y1="15" x2="78.6" y2="33" class="dl-b"/><line x1="24.3" y1="15" x2="24.3" y2="33" class="dl-b"/><line x1="122.0" y1="15" x2="122.0" y2="33" class="dl-b"/><line x1="166.1" y1="6" x2="166.1" y2="42" class="fl"/><path d="M290.7 8 L300.7 8 L295.7 15 Z" class="dr"/><path d="M132.9 33 L137.9 38 L132.9 43 L127.9 38 Z" class="an"/><circle cx="133.8" cy="24" r="5" class="sp"/></svg>
+  <dl class="kv">
+    <div><dt>Anchor</dt><dd>145</dd></div>
+    <div><dt>Flip</dt><dd>148.06</dd></div>
+    <div><dt>Drift target</dt><dd>160</dd></div>
+    <div class="wide"><dt>Defense lines</dt><dd class="chips"><span class="chip b">140</span><span class="chip b">135</span><span class="chip b">144</span></dd></div>
+    <div><dt>Vol-shift magnet</dt><dd>180</dd></div>
+    <div><dt>Vol-shift pivot</dt><dd>144.6</dd></div>
+    <div><dt>Vol-shift walls</dt><dd>135, 170, 130</dd></div>
+  </dl>
+  <p class="read">2.0% below the flip at 148.06: moves tend to run further until it is reclaimed. On the anchor at 145. First defense below 144, then 140. Drift target 160 (+10.3%).</p>
+</article></div></section>
+
+  <p class="note">Source: TradeEcho key levels, the same numbers its Cortex assistant quotes. Defense lines are listed in TradeEcho's order. Above the flip, moves tend to be damped and dips bought; below it, moves tend to extend. Informational only, not investment advice.</p>
+</div>
