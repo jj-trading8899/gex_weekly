@@ -113,7 +113,7 @@ for gname, tks in groups.items():
         chips = "".join(f'<span class="chip {"b" if v <= d["s"] else "a"}">{px(v)}</span>' for v in d["dl"])
         vm = px(d["vmag"]) + (" (pushes away)" if d["vsign"] == -1 else "")
         cards.append(f'''<article class="card">
-  <header><h3>{t}</h3><span class="spot">{px(d["s"])}</span><span class="pill {d["tone"]}">{d["regime"]}</span><span class="rt" title="TradeEcho rating, 1 to 5">rating {d["rating"]}/5</span></header>
+  <header><h3>{t}</h3><span class="spot">{px(d["s"])}</span><span class="pill {d["tone"]}">{d["regime"]}</span><span class="rt" title="Rating, 1 to 5">rating {d["rating"]}/5</span></header>
   {ladder(d)}
   <dl class="kv">
     <div><dt>Anchor</dt><dd>{px(d["anc"])}</dd></div>
