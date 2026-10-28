@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Watchlist 2026-10-27",
+  "schemaVersion": 1,
+  "description": "Automated daily watchlist for 2026-10-27. TradeEcho + Dealer Edge synced pair from 2026-10-26. Top 10 ranked by edge score v2 (flow strength × premium^0.35 × regime agreement × persistence × whale quality × defined-risk proximity × sweep tilt, with a liquidity floor). Information only, not investment advice."
+}
+</script>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Watchlist — 2026-10-27</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0f17;--panel:#121826;--panel2:#161b22;--line:#1f2937;--txt:#e5e7eb;--muted:#9aa4b2;--green:#22c55e;--red:#ef4444;--blue:#38bdf8;--amber:#f59e0b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:13px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;padding:16px;border-radius:12px}
+h1{font-size:21px;margin:0 0 3px;color:#f0f6fc}
+h2{font-size:15px;margin:26px 0 4px;color:#c9d1d9}
+.sub{color:var(--muted);font-size:12px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:12px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.kpi .v{font-size:17px;font-weight:700;margin-top:2px;color:#f0f6fc}
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:8px;padding:11px 14px;margin:8px 0 4px;color:#cbd5e1}
+.note b{color:#79c0ff}
+.rotnote{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;padding:11px 14px;margin:8px 0 4px;color:#cbd5e1}
+.rotnote b{color:#f0b72f}
+.rothead{list-style:none;margin:7px 0 0;padding:0}
+.rothead li{font-size:12.5px;line-height:1.55;color:#cbd5e1;display:flex;gap:8px;align-items:baseline;padding:1px 0}
+.rothead .lbl{min-width:84px;flex:0 0 auto;text-transform:uppercase;letter-spacing:.04em;font-size:10.5px;color:var(--muted);font-weight:600}
+.rothead .pos{color:var(--green)}.rothead .neg{color:var(--red)}.rothead .mut{color:var(--muted)}
+.rothead .lvl{color:#f0b72f}
+.topbox{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0 4px}
+.topbox h3{margin:0 0 8px;font-size:14px;color:#f0f6fc;font-weight:600}
+.topgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 14px}
+.toprow{display:flex;align-items:baseline;gap:8px;font-size:12.5px;line-height:1.5;color:#cbd5e1}
+.toprank{display:inline-block;min-width:22px;text-align:center;background:#1f2937;color:#f0f6fc;border-radius:5px;padding:1px 5px;font-weight:700;font-size:11px}
+.toprow.tier-top .toprank{background:#1d4ed8;color:#fff}
+.toprow.tier-next .toprank{background:#374151;color:#e5e7eb}
+.toprow .ttk{font-weight:700;color:#e5e7eb}
+.toprow .ttype{color:var(--muted);font-size:11.5px}
+.tdir-bull{color:#56d364}.tdir-bear{color:#ff7b72}.tdir-rng{color:#9aa4b2}
+.thesis{color:var(--muted);font-size:12.5px;margin:2px 0 8px}
+table{width:100%;border-collapse:collapse;background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:4px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;background:#1c2128;white-space:nowrap}
+td.r,th.r{text-align:right;white-space:nowrap}
+tr:hover td{background:#1c2128}
+.tk{font-weight:700;font-size:14px}
+.rank{display:inline-block;background:#1f2937;color:#f0f6fc;border-radius:5px;padding:1px 5px;font-weight:700;font-size:10px;margin-right:4px;vertical-align:middle}
+.rank.top{background:#1d4ed8;color:#fff}
+.pos{color:var(--green)}.neg{color:var(--red)}.mut{color:var(--muted)}
+.res{color:#fca5a5}.sup{color:#86efac}.brk{color:#fca5a5}
+.gx{color:var(--muted);font-size:10px;margin-left:2px}.d{color:var(--muted);font-size:10px}
+.pill{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap}
+.bias-sb{background:#22c55e22;color:#56d364;border:1px solid #22c55e55}
+.bias-b{background:#22c55e14;color:#46c455;border:1px solid #22c55e33}
+.bias-n{background:#9aa4b220;color:#b1bac4;border:1px solid #9aa4b240}
+.bias-br{background:#f59e0b1f;color:#e3b341;border:1px solid #f59e0b44}
+.bias-sbr{background:#ef444422;color:#ff7b72;border:1px solid #ef444455}
+.g-pos{background:#22c55e1a;color:#22c55e;border:1px solid #22c55e55}
+.g-neg{background:#ef44441a;color:#ef4444;border:1px solid #ef444455}
+.g-mix{background:#f59e0b1a;color:#f59e0b;border:1px solid #f59e0b55}
+.conv{font-weight:700;font-size:10px;padding:2px 6px;border-radius:4px}
+.c-high{background:#22c55e22;color:#56d364}.c-med{background:#f59e0b1f;color:#e3b341}.c-low{background:#9aa4b220;color:#b1bac4}
+.plan{color:#cbd5e1;font-size:12px;max-width:430px;white-space:normal;line-height:1.45}
+.grp{border-radius:10px;padding:1px 0 4px;margin-top:18px}
+.disc{color:var(--muted);font-size:11px;margin-top:20px;border-top:1px solid var(--line);padding-top:10px}
+.auto-tag{display:inline-block;background:#1d4ed8;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+<h1>Watchlist — 2026-10-27 <span class="auto-tag">AUTO</span></h1>
+<div class="sub">Flow &times; Gamma overlay · <b style="color:#c9d1d9">TradeEcho</b> 2026-10-26T22:56Z + <b style="color:#c9d1d9">Dealer Edge</b> 2026-10-26T21:00:00Z (week 2026-10-27…2026-10-30) · 18 overlap tickers · pipeline-rendered</div>
+
+<div class="note"><b>Backdrop.</b> Source date: 2026-10-26. Net daily flow: +0.0%. Per-ticker plan text is templated from the pipeline (mechanical read of bias + γ regime + levels + whales); the LLM-augment step upgrades the top-10 plans into contextual writing.</div>
+
+<div class="rotnote"><b>Headline.</b>
+<ul class="rothead"><li><span class='lbl'>Regime</span><span><b>Negative-γ.</b> SPY GEX <span class='neg'>-160.4K contracts</span>, spot <span class='lvl'>$765</span> &lt; <span class='lvl'>$766</span> flip; SPXW <span class='neg'>-12.3K contracts</span> &lt; <span class='lvl'>$7,731</span>. Trendy — dips can cascade.</span></li><li><span class='lbl'>Flow</span><span><span class='pos'>+0.0%</span> net (C $131.0M / P $89.8M) · Flat balanced, mixed breadth (7↑ / 7↓).</span></li><li><span class='lbl'>Top setup</span><span><b>LITE</b> <span class='neg'>SHORT</span> (#1) — break <span class='lvl'>$815</span> confirms · fade <span class='lvl'>$825</span> rip</span></li><li><span class='lbl'>Big ticket</span><span><b>$3.79M</b> GLD 2028-01 $340 <span class='pos'>PUT</span> at-bid.</span></li><li><span class='lbl'>Rotations</span><span>LITE <span class='neg'>-76pp</span> →bear · AVGO <span class='pos'>+33pp</span> bear→bull · MRVL <span class='pos'>+30pp</span> bear→bull</span></li><li><span class='lbl'>Watch</span><span><b>AAOI</b> $6.2M bull flow vs neg-γ — momentum, not a fade.</span></li></ul></div>
+
+<div class="topbox" id="topbox"></div>
+
+<div class="rotnote" id="algoradar"><b>Large-trade radar (10/26).</b> <span class="mut" style="font-size:11.5px">Non-index names from TradeEcho Algo Edge with 3+ prints, $1M+ net directional premium and 30%+ of premium directional. Spread legs and prints between bid and ask are left out of the direction. ◆ = on the watchlist / Dealer Edge list.</span>
+<ul class="rothead">
+<li><span class='lbl'>SPCX <span class='pos'>▲</span></span><span><span class='pos'>$8.1M</span> net · 8 prints · Nov-20 $150 calls bought · ref $147.65 ◆</span></li>
+<li><span class='lbl'>TSM <span class='pos'>▲</span></span><span><span class='pos'>$6.9M</span> net · 3 prints · Dec-18 $400 puts sold · ref $426.85 ◆</span></li>
+<li><span class='lbl'>MSFT <span class='pos'>▲</span></span><span><span class='pos'>$3.4M</span> net · 5 prints · Nov-20 $530 calls bought · ref $532.01</span></li>
+<li><span class='lbl'>DRAM <span class='neg'>▼</span></span><span><span class='neg'>$2.7M</span> net · 4 prints · Nov-20 $47 puts bought · ref $48.57</span></li>
+<li><span class='lbl'>AAPL <span class='neg'>▼</span></span><span><span class='neg'>$1.7M</span> net · 4 prints · Nov-04 $362.50 calls sold · ref $343.10 ◆</span></li>
+</ul>
+<div style="margin-top:8px"><b>Previous radar (10/23) → 10/26 move</b></div><ul class="rothead">
+<li><span class='lbl'>GE ▲</span><span><span class='pos'>+0.9%</span> ✓ <span class='mut'>($13.0M net)</span></span></li>
+<li><span class='lbl'>TSM ▼</span><span><span class='pos'>+2.0%</span> ✗ <span class='mut'>($11.6M net)</span></span></li>
+<li><span class='lbl'>GLD ▲</span><span><span class='pos'>+0.3%</span> ✓ <span class='mut'>($5.6M net)</span></span></li>
+<li><span class='lbl'>AMD ▼</span><span><span class='pos'>+2.9%</span> ✗ <span class='mut'>($5.1M net)</span></span></li>
+<li><span class='lbl'>AMZN ▼</span><span><span class='pos'>+0.5%</span> ✗ <span class='mut'>($2.1M net)</span></span></li>
+</ul>
+<div class='mut' style='font-size:11.5px;margin-top:6px'>Running tally since 10/5: 64 names scored, direction right 33 of 64 (52%), median move 1.52%, 18 moved 3% or more. Next-day moves are close-to-close from TradeEcho quotes; backfilled days before 10/09 are estimated from print prices.</div>
+</div>
+
+<div class="topbox" id="toplevels"></div>
+
+<div class="rotnote" id="trend"><b>Movers &amp; trends (10/26 close).</b> <span class="mut" style="font-size:11.5px">Moves are scaled by each name's own 10-day volatility (z). Flow is premium-adjusted: net ÷ (total + $2M), so names printing under $1M carry no direction. Flow led = yesterday's flow pointed the way; flow chased = today's flow followed the move. 73 sessions of history since 06/16.</span>
+<div style="margin-top:8px"><b>Top movers</b> <span class="mut">(by z)</span></div>
+<div class="tw"><table><thead><tr><th>Ticker</th><th class="r">Day%</th><th class="r">z</th><th class="r">5d%</th><th class="r">10d range</th><th class="r">Flow today</th><th>Tag</th><th>Pivot</th></tr></thead><tbody>
+<tr><td><span class='tk'>TSLA</span></td><td class='r'><span class='pos'>+5.1%</span></td><td class='r'>+1.7</td><td class='r'><span class='pos'>+6.5%</span></td><td class='r mut'>100%</td><td class='r'><span class='mut'>—</span></td><td><span class=mut>—</span></td><td class='mut'>pivot unchanged · spot +6.4% vs pivot</td></tr>
+<tr><td><span class='tk'>LITE</span></td><td class='r'><span class='pos'>+8.7%</span></td><td class='r'>+1.5</td><td class='r'><span class='neg'>-1.7%</span></td><td class='r mut'>29%</td><td class='r'><span class='neg'>-37.4%</span> <span class='mut'>$26.1M</span></td><td>flow led</td><td class='mut'>pivot moved with price</td></tr>
+<tr><td><span class='tk'>ARM</span></td><td class='r'><span class='pos'>+6.7%</span></td><td class='r'>+1.5</td><td class='r'><span class='neg'>-1.8%</span></td><td class='r mut'>30%</td><td class='r'><span class='mut'>—</span></td><td><span class=mut>—</span></td><td class='mut'>pivot moved with price</td></tr>
+<tr><td><span class='tk'>AAPL</span></td><td class='r'><span class='neg'>-1.0%</span></td><td class='r'>-1.4</td><td class='r'><span class='pos'>+0.3%</span></td><td class='r mut'>49%</td><td class='r'><span class='mut'>—</span></td><td><span class=mut>—</span></td><td class='mut'>pivot unchanged · spot -0.8% vs pivot</td></tr>
+<tr><td><span class='tk'>ETHA</span></td><td class='r'><span class='neg'>-3.2%</span></td><td class='r'>-1.3</td><td class='r'><span class='neg'>-3.2%</span></td><td class='r mut'>0%</td><td class='r'><span class='neg'>-10.1%</span> <span class='mut'>$1.1M</span></td><td>flow chased</td><td class='mut'></td></tr>
+<tr><td><span class='tk'>COHR</span></td><td class='r'><span class='pos'>+7.1%</span></td><td class='r'>+1.2</td><td class='r'><span class='neg'>-4.2%</span></td><td class='r mut'>18%</td><td class='r'><span class='mut'>—</span></td><td><span class=mut>—</span></td><td class='mut'>pivot moved with price</td></tr>
+<tr><td><span class='tk'>INTC</span></td><td class='r'><span class='pos'>+4.6%</span></td><td class='r'>+1.2</td><td class='r'><span class='neg'>-1.5%</span></td><td class='r mut'>29%</td><td class='r'><span class='mut'>—</span></td><td><span class=mut>—</span></td><td class='mut'>pivot unchanged · spot -2.5% vs pivot</td></tr>
+<tr><td><span class='tk'>NVDA</span></td><td class='r'><span class='pos'>+2.4%</span></td><td class='r'>+1.1</td><td class='r'><span class='neg'>-0.5%</span></td><td class='r mut'>27%</td><td class='r'><span class='pos'>+0.8%</span> <span class='mut'>$17.6M</span></td><td>against flow</td><td class='mut'>pivot moved with price</td></tr>
+</tbody></table></div>
+<div style="margin-top:10px"><b>Trend board</b> <span class="mut">(price 5d · flow 5d · positioning agree → Up/Down with confirmations out of 3)</span></div>
+<div class="tw"><table><thead><tr><th>Ticker</th><th>State</th><th class="r">5d%</th><th class="r">Flow 5d</th><th class="r">Streak</th><th class="r">Pivot drift 5d</th><th class="r">Positioning 5d</th><th>Spot vs pivot</th></tr></thead><tbody>
+<tr><td><span class='tk'>CLSK</span></td><td><span class='neg'><b>Down</b> 3/3</span></td><td class='r'><span class='neg'>-7.3%</span></td><td class='r'><span class='neg'>-15.6%</span></td><td class='r mut'>1d bear</td><td class='r'><span class='neg'>-11.1%</span></td><td class='r mut'>-144K</td><td class='mut'>below $8</td></tr>
+<tr><td><span class='tk'>SLV</span></td><td><span class='neg'><b>Down</b> 3/3</span></td><td class='r'><span class='neg'>-5.6%</span></td><td class='r'><span class='neg'>-23.8%</span></td><td class='r mut'>1d bear</td><td class='r'><span class='neg'>-3.9%</span></td><td class='r mut'>-130K</td><td class='mut'>below $49</td></tr>
+<tr><td><span class='tk'>CIFR</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-14.1%</span></td><td class='r'><span class='neg'>-5.4%</span></td><td class='r mut'>—</td><td class='r'><span class='pos'>+0.0%</span></td><td class='r mut'>+25K</td><td class='mut'>below $9</td></tr>
+<tr><td><span class='tk'>NBIS</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-10.1%</span></td><td class='r'>—</td><td class='r mut'>—</td><td class='r'><span class='pos'>+0.0%</span></td><td class='r mut'>-14K</td><td class='mut'>below $172</td></tr>
+<tr><td><span class='tk'>IREN</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-8.5%</span></td><td class='r'><span class='pos'>+3.6%</span></td><td class='r mut'>1d bull</td><td class='r'><span class='neg'>-7.1%</span></td><td class='r mut'>-151K</td><td class='mut'>below $26</td></tr>
+<tr><td><span class='tk'>GOOGL</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-8.1%</span></td><td class='r'>—</td><td class='r mut'>—</td><td class='r'><span class='neg'>-5.0%</span></td><td class='r mut'>-16K</td><td class='mut'>below $326</td></tr>
+<tr><td><span class='tk'>HUT</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-7.6%</span></td><td class='r'>—</td><td class='r mut'>—</td><td class='r'><span class='neg'>-1.5%</span></td><td class='r mut'>-23K</td><td class='mut'>below $67</td></tr>
+<tr><td><span class='tk'>MARA</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-7.2%</span></td><td class='r'>—</td><td class='r mut'>—</td><td class='r'><span class='neg'>-12.5%</span></td><td class='r mut'>-1,804K</td><td class='mut'>below $7</td></tr>
+<tr><td><span class='tk'>TSLA</span></td><td><span class='pos'><b>Up</b> 2/3</span></td><td class='r'><span class='pos'>+6.5%</span></td><td class='r'>—</td><td class='r mut'>—</td><td class='r'><span class='pos'>+4.5%</span></td><td class='r mut'>-45K</td><td class='mut'>above $368</td></tr>
+<tr><td><span class='tk'>ASTS</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-5.8%</span></td><td class='r'>—</td><td class='r mut'>—</td><td class='r'><span class='neg'>-4.8%</span></td><td class='r mut'>-38K</td><td class='mut'>below $40</td></tr>
+<tr><td><span class='tk'>COIN</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-5.7%</span></td><td class='r'>—</td><td class='r mut'>—</td><td class='r'><span class='pos'>+0.0%</span></td><td class='r mut'>+21K</td><td class='mut'>below $168</td></tr>
+<tr><td><span class='tk'>OKLO</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-4.7%</span></td><td class='r'><span class='neg'>-10.7%</span></td><td class='r mut'>—</td><td class='r'><span class='mut'>—</span></td><td class='r mut'>—</td><td class='mut'><span class='mut'>n/a</span></td></tr>
+<tr><td><span class='tk'>XOM</span></td><td><span class='pos'><b>Up</b> 2/3</span></td><td class='r'><span class='pos'>+3.5%</span></td><td class='r'>—</td><td class='r mut'>—</td><td class='r'><span class='pos'>+0.0%</span></td><td class='r mut'>-4K</td><td class='mut'>above $173</td></tr>
+<tr><td><span class='tk'>IBIT</span></td><td><span class='neg'><b>Down</b> 2/3</span></td><td class='r'><span class='neg'>-2.5%</span></td><td class='r'><span class='pos'>+8.0%</span></td><td class='r mut'>—</td><td class='r'><span class='pos'>+0.0%</span></td><td class='r mut'>-6K</td><td class='mut'>below $46</td></tr>
+</tbody></table></div>
+<div class='mut' style='font-size:11.5px;margin-top:4px'>Mixed / no trend: AAOI · AAPL · AMD · AMZN · ARM · AVGO · COHR · EOSE · ETHA · GLD · HIMS · HYG · INTC · LITE · MRVL · MU · NVDA · QQQ · RIOT · RKLB · SMCI · SMR · SNDK · SPCX · SPX · SPY · TSM · WULF · XLF · XLU</div>
+<div style="margin-top:10px"><b>Changes since last close</b></div><ul class="rothead">
+<li><span class='lbl'>AVGO</span><span><span class='pos'>flow flipped</span> bullish: +11.4% on $12.0M after -21.7% on $16.4M</span></li>
+<li><span class='lbl'>LITE</span><span><span class='neg'>flow flipped</span> bearish: -37.4% on $26.1M after +38.1% on $17.9M</span></li>
+<li><span class='lbl'>Pivot</span><span><span class='pos'>crossed up</span>: <b>COHR</b> $222, <b>MRVL</b> $233, <b>SNDK</b> $1245, <b>TSM</b> $421</span></li>
+<li><span class='lbl'>Call wall</span><span><span class='pos'>cleared</span>: <b>MU</b> $900 → $904.89, <b>TSLA</b> $385 → $391.50</span></li>
+<li><span class='lbl'>Put wall</span><span><span class='neg'>lost</span>: <b>GOOGL</b> $320 → $316.80, <b>MARA</b> $7 → $6.87</span></li>
+</ul>
+<div class='mut' style='font-size:11.5px;margin-top:8px'><b>Top-10 scorecard</b> (every night's ranking vs the next close, since 06/16): 1-day direction right <b>335 of 698</b> (48%), beat SPY 335 of 698, median move 2.1% · 3-day: right 321 of 679 (47%), beat SPY 324 of 679 · by setup (1-day): aligned 195/402 · conflict 66/111 · momentum 47/124 · mixed 12/31 · range 15/30. Direction right = close moved the way the setup pointed; RANGE setups are not scored.</div>
+</div>
+<div class="kpis" id="kpis"></div>
+
+<div id="groups"></div>
+
+<div class="disc">Built by <code>watchlist_pipeline.py</code> from <code>tradeecho-daily-monitor</code> (2026-10-26T22:56Z) + <code>skylit-gex-vex</code> (2026-10-26T21:00:00Z). Dealer Edge weekly levels = 2026-10-27…2026-10-30. Caveats: 2,511 prints on 10/26 ($220.8M premium) after dropping prior-day prints (100 / 759 / 125 across the three groups). Full-day coverage in all groups (spans 08:00-15:59, 09:30-15:59, 09:30-16:20). The download did not need approval. SPCX was fetched on its own and merged into the miners group. Dealer Edge levels use each name's nearest expiry after 10/26: 10/27 for SPY, SPX, QQQ, IBIT, GLD and the other daily-expiry names; 10/28 for TSLA, NVDA, MU, AMZN, AMD, SPCX, AVGO, AAPL, SLV; 10/30 for the rest. Far buy-dips that are not usable levels: CLSK $4, CIFR $4, RIOT $7, SPCX $121, NBIS $124, COIN $131, SLV $42, IREN $22.50, HUT $56, AMZN $222.50, AAPL $307.50. Bias label vs net-sign disagreements (the label is used): NVDA, LITE, ARM, AAOI, INTC, SMCI, MARA, IBIT, COIN, CIFR are labelled short with positive net; SNDK is labelled long with net -0.9K. SPY closed $765.46, just under its $766 pivot, with dealer positioning net -160K (from -755K); the latest flow report on the site is still dated 10/23 (risk-off, SPY positioning -$15.4B). Rally day: six names up more than 5% (LITE +8.7%, COHR +7.1%, AAOI +6.9%, ARM +6.7%, WULF +5.9%, TSLA +5.1%), none down more than 5%. Outsized positioning swings: MARA +1,640K (from -579K) and SMCI +609K (from -24K). Radar: DRAM's $47 puts bought printed in the same second as a larger Jan-2027 $38 put line traded between bid and ask, so read DRAM as a put spread rather than an outright bet. Edge score v2: |net_ratio| × (premium/1e6)^0.35 × regime-agreement mult × persistence/flip × flow-agreeing whale quality × defined-risk proximity × sweep tilt, with a $2M liquidity floor. *Net% is premium-adjusted: net ÷ (total + $2M), so a name printing $0.2M cannot show ±100%. Standard options-positioning conventions — information only, not investment advice.</div>
+
+<script id="payload" type="application/json">{"ranking":[{"rank":1,"tk":"LITE","dir":"SHORT","type":"aligned bear","trigger":"break $815 confirms · fade $825 rip"},{"rank":2,"tk":"MRVL","dir":"LONG","type":"aligned bull","trigger":"hold $228 buy-dip · $232 break voids"},{"rank":3,"tk":"SLV","dir":"SHORT","type":"aligned bear","trigger":"break $48.50 confirms · fade $49.50 rip"},{"rank":4,"tk":"AAOI","dir":"LONG","type":"momentum bull","trigger":"reclaim $72.00 flip · $70.00 break voids"},{"rank":5,"tk":"AVGO","dir":"LONG","type":"aligned bull","trigger":"hold $328 buy-dip · $325 break voids"},{"rank":6,"tk":"IREN","dir":"LONG","type":"momentum bull","trigger":"reclaim $26.00 flip · $25.00 break voids"},{"rank":7,"tk":"RIOT","dir":"LONG","type":"momentum bull","trigger":"reclaim $13.00 flip · $12.50 break voids"},{"rank":8,"tk":"GLD","dir":"LONG","type":"range","trigger":"hold $363 buy-dip · $367 break voids"},{"rank":9,"tk":"SNDK","dir":"SHORT","type":"range","trigger":"break $1,250 confirms · fade $1,285 rip"},{"rank":10,"tk":"CLSK","dir":"SHORT","type":"aligned bear","trigger":"break $7.50 confirms · fade $8.50 rip"}],"kpis":[["Tickers watched","18"],["Top-5 setups","LITE · MRVL · SLV · AAOI · AVGO"],["Net flow 26/","+0.0%"],["Total premium","$220.8M"],["Sweeps","1127 (45%)"],["Tickers (TE)","24"]],"groups":[{"title":"1 · Bullish flow + positive γ above flip — aligned bull","thesis":"Bull flow into pos γ defense, spot above flip. Cleanest fade-the-dip longs.","rows":[{"tk":"MRVL","spot":233.45,"day":2.53,"bias":"Bullish","biasc":"b","net":29.220000000000002,"prem":"$14.63M","swp":43,"gamma":"Positive γ","gc":"g-pos","gex":"+9.1K","sell":"$235","selld":"+0.7%","buy":"$227.50","buyd":"-2.5%","brk":"$232.50","brkd":"-0.4%","flip":"$233.00","conv":"HIGH","convc":"c-high","plan":"Flow flipped bullish above a rising pivot. Flow (10/26) is Bullish +29.2% (reversed from -0.9%) on $14.6M with 43% sweeps; the main whale was $1.59M of puts sold at the bid. Spot $233.45 (from $227.70) is above the $233 pivot, so dealer hedging dampens moves (net +9.1K, from -12.8K) into the 10/30 expiry. Levels: break $232.50, buy-dip / put wall $227.50, sell-rip $235, call wall / pin $242.50. Plan: buy holds above $232.50 for $235 then $242.50; failure below $227.50."},{"tk":"AVGO","spot":329.01,"day":2.1,"bias":"Bullish","biasc":"b","net":11.39,"prem":"$11.96M","swp":54,"gamma":"Positive γ","gc":"g-pos","gex":"+1.3K","sell":"$332.50","selld":"+1.1%","buy":"$327.50","buyd":"-0.5%","brk":"$325","brkd":"-1.2%","flip":"$328.00","conv":"MED","convc":"c-med","plan":"Flow reversed bullish; price back above a lower pivot. Flow (10/26) is Bullish +11.4% (reversed from -21.7%) on $12.0M with 55% sweeps. Spot $329.01 (from $322.23) is above the $328 pivot (lowered from $332), so dealer hedging dampens moves (net +1.3K, from -5.7K) into the 10/28 expiry. Levels: break $325, buy-dip / put wall $327.50, sell-rip $332.50, call wall / pin $335. Plan: buy dips toward $327.50 for $332.50 then $335; failure below $325."},{"tk":"HIMS","spot":27.74,"day":0.62,"bias":"Bullish","biasc":"b","net":19.97,"prem":"$0.99M","swp":78,"gamma":"n/a (not in Dealer Edge)","gc":"g-mix","gex":"—","sell":"—","selld":"","buy":"—","buyd":"","brk":"—","brkd":"","flip":"—","conv":"LOW","convc":"c-low","plan":"<b>Bullish</b> flow +20.0% on $0.99M (78% sweeps)."}]},{"title":"2 · Bullish flow into negative γ — momentum bull (fades risky)","thesis":"Bull flow but dealers short gamma → moves amplify. Treat as trend, not range; fades risky.","rows":[{"tk":"AAOI","spot":71.97,"day":6.92,"bias":"STRONG BULLISH","biasc":"sb","net":35.52,"prem":"$6.24M","swp":18,"gamma":"Neg γ, below flip","gc":"g-neg","gex":"+8.9K","sell":"$72","selld":"+0.0%","buy":"$71","buyd":"-1.4%","brk":"$70","brkd":"-2.7%","flip":"$72.00","conv":"MED","convc":"c-med","plan":"Momentum name pressing its pivot. Flow (10/26) is Strong Bullish +35.5% (from +17.6%) on $6.2M with 19% sweeps. Spot $71.97 (from $67.31, +6.9%) sits just under the $72 pivot (raised from $69), so dealer hedging still amplifies moves (net +8.9K, from -6.7K) into the 10/30 expiry. Levels: break $70, buy-dip / put wall $71, sell-rip $72, call wall / pin $74. Plan: buy a close above $72 for $74; failure below $70."},{"tk":"IREN","spot":25.3,"day":1.61,"bias":"Bullish","biasc":"b","net":14.69,"prem":"$5.89M","swp":52,"gamma":"Neg γ, below flip","gc":"g-neg","gex":"-152.9K","sell":"$26","selld":"+2.8%","buy":"$22.50","buyd":"-11.1%","brk":"$25","brkd":"-1.2%","flip":"$26.00","conv":"LOW","convc":"c-low","plan":"Bullish flow, still under a higher pivot. Flow (10/26) is Bullish +14.7% (from +9.1%) on $5.9M with 53% sweeps. Spot $25.30 (from $24.90) is below the $26 pivot (raised from $23), so dealer hedging amplifies moves (net -152.9K) into the 10/30 expiry. Levels: break $25, sell-rip $26, call wall / pin $28; the $22.50 buy-dip is too far to use. Plan: buy a reclaim of $26 for $28; failure below $25."},{"tk":"RIOT","spot":12.6,"day":0.64,"bias":"Bullish","biasc":"b","net":23.78,"prem":"$1.91M","swp":44,"gamma":"Neg γ, below flip","gc":"g-neg","gex":"-327.5K","sell":"$13.50","selld":"+7.1%","buy":"$7","buyd":"-44.4%","brk":"$12.50","brkd":"-0.8%","flip":"$13.00","conv":"LOW","convc":"c-low","plan":"Thin but bullish flow under the pivot. Flow (10/26) is Bullish +23.8% (reversed from -5.5%) on $1.9M with 44% sweeps; the main whale was $1.15M of calls bought at the ask. Spot $12.60 (from $12.52) is below the $13 pivot, so dealer hedging amplifies moves (net -327.5K, one of the largest negative books) into the 10/30 expiry. Levels: break $12.50, sell-rip / call wall / pin $13.50; the $7 buy-dip is not usable. Plan: buy above $13 for $13.50; failure below $12.50. Size small: premium is light."}]},{"title":"4 · Bearish flow + negative γ — aligned breakdowns","thesis":"Bear flow + neg γ = trend continuation. Break levels are triggers.","rows":[{"tk":"LITE","spot":820.64,"day":8.69,"bias":"STRONG BEARISH","biasc":"sbr","net":-37.39,"prem":"$26.14M","swp":31,"gamma":"Neg γ, below flip","gc":"g-neg","gex":"+1.5K","sell":"$825","selld":"+0.5%","buy":"$820","buyd":"-0.1%","brk":"$815","brkd":"-0.7%","flip":"$821.00","conv":"HIGH","convc":"c-high","plan":"Gap-and-fade risk at the pivot. Flow (10/26) is Strong Bearish -37.4% (reversed from +38.1%) on $26.1M with 31% sweeps; the big tickets were $3.77M of puts bought at the ask and $2.44M of calls sold at the bid. Spot $820.64 (from $755.00, +8.7%) closed a hair under the $821 pivot, so dealer hedging amplifies moves (net +1.5K, flat) into the 10/30 expiry. Levels: break $815, buy-dip $820, sell-rip $825, put wall $790, call wall / pin $900. Plan: short a slip below $815 toward $790; stand aside on a hold above $825 (failure level), which re-opens $900."},{"tk":"SLV","spot":48.63,"day":-0.18,"bias":"Bearish","biasc":"br","net":-23.45,"prem":"$4.54M","swp":51,"gamma":"Neg γ, below flip","gc":"g-neg","gex":"-25.0K","sell":"$49.50","selld":"+1.8%","buy":"$42","buyd":"-13.6%","brk":"$48.50","brkd":"-0.3%","flip":"$49.00","conv":"HIGH","convc":"c-high","plan":"Bearish flow below the pivot. Flow (10/26) is Bearish -23.4% (from -4.1%) on $4.5M with 52% sweeps; the main whale was $1.85M of calls sold at the bid. Spot $48.63 (from $48.72) is below the $49 pivot (lowered from $50), so dealer hedging amplifies moves (net -25K, from -110K) into the 10/28 expiry. Levels: break $48.50, sell-rip $49.50, call wall / pin $50; the $42 buy-dip is too far to use. Plan: short a break of $48.50; failure above $49.50."},{"tk":"CLSK","spot":7.8,"day":-0.89,"bias":"Bearish","biasc":"br","net":-11.690000000000001,"prem":"$1.29M","swp":87,"gamma":"Neg γ, below flip","gc":"g-neg","gex":"-9.3K","sell":"$8.50","selld":"+9.0%","buy":"$4","buyd":"-48.7%","brk":"$7.50","brkd":"-3.9%","flip":"$8.00","conv":"LOW","convc":"c-low","plan":"Thin bearish flow below the pivot. Flow (10/26) is Bearish -11.7% (from -6.8%) on $1.3M with 88% sweeps. Spot $7.80 (from $7.87) is below the $8 pivot, so dealer hedging amplifies moves (net -9.3K, from +57.5K) into the 10/30 expiry. Levels: break $7.50, sell-rip / call wall / pin $8.50; the $4 buy-dip is not usable. Plan: short below $7.50; failure above $8. Size small: premium is light."},{"tk":"XLF","spot":56.32,"day":0.15,"bias":"Bearish","biasc":"br","net":-16.76,"prem":"$0.92M","swp":63,"gamma":"n/a (not in Dealer Edge)","gc":"g-mix","gex":"—","sell":"—","selld":"","buy":"—","buyd":"","brk":"—","brkd":"","flip":"—","conv":"LOW","convc":"c-low","plan":"<b>Bearish</b> flow -16.8% on $0.92M (63% sweeps)."},{"tk":"ETHA","spot":52.18,"day":-3.24,"bias":"Bearish","biasc":"br","net":-10.13,"prem":"$1.14M","swp":78,"gamma":"n/a (not in Dealer Edge)","gc":"g-mix","gex":"—","sell":"—","selld":"","buy":"—","buyd":"","brk":"—","brkd":"","flip":"—","conv":"LOW","convc":"c-low","plan":"<b>Bearish</b> flow -10.1% on $1.14M (78% sweeps)."}]},{"title":"7 · Mixed / range — levels watch","thesis":"Net flow balanced. Trade the structure, not the direction.","rows":[{"tk":"GLD","spot":367.72,"day":0.3,"bias":"Neutral / Mixed","biasc":"n","net":6.97,"prem":"$25.11M","swp":36,"gamma":"Positive γ","gc":"g-pos","gex":"+21.2K","sell":"$368","selld":"+0.1%","buy":"$363","buyd":"-1.3%","brk":"$367","brkd":"-0.2%","flip":"$367.00","conv":"LOW","convc":"c-low","plan":"Range into tomorrow's expiry. Flow (10/26) is Neutral / Mixed +7.0% (from +9.1%) on $25.1M with 36% sweeps; whales cut both ways: $3.79M of Jan-2028 $340 puts sold at the bid against $3.46M of puts bought at the ask. Spot $367.72 (from $366.61) is just above the $367 pivot (lowered from $371), so dealer hedging dampens moves (net +21.2K) into the 10/27 expiry. Levels: buy-dip / put wall $363, break $367, sell-rip / call wall / pin $368. Plan: fade the edges of $363-$368 into the expiry; a close below $363 opens the downside."},{"tk":"SNDK","spot":1253.95,"day":1.14,"bias":"Neutral / Mixed","biasc":"n","net":-5.06,"prem":"$58.71M","swp":32,"gamma":"Positive γ","gc":"g-pos","gex":"-0.9K","sell":"$1285","selld":"+2.5%","buy":"$1245","buyd":"-0.7%","brk":"$1250","brkd":"-0.3%","flip":"$1245.00","conv":"LOW","convc":"c-low","plan":"Big premium, no conviction. Flow (10/26) is Neutral / Mixed -5.1% (from +0.4%) on $58.7M with 32% sweeps; notable tickets were $1.17M of calls sold at the bid and $0.99M of puts sold at the bid. Spot $1,253.95 (from $1,239.85) is above the $1,245 pivot, with dealer positioning flat (net -0.9K) into the 10/30 expiry. Levels: buy-dip / put wall $1,245, break $1,250, sell-rip $1,285, call wall / pin $1,300. Plan: trade the $1,245-$1,285 range; failure below $1,245."},{"tk":"WULF","spot":11.94,"day":5.85,"bias":"Neutral / Mixed","biasc":"n","net":7.9,"prem":"$7.56M","swp":66,"gamma":"Pos γ, below flip","gc":"g-mix","gex":"+183.9K","sell":"$12","selld":"+0.5%","buy":"$10","buyd":"-16.2%","brk":"$11.50","brkd":"-3.7%","flip":"$12.00","conv":"LOW","convc":"c-low","plan":"<b>Neutral / Mixed</b> flow +7.9% on $7.56M (66% sweeps). Positive γ, spot below flip $12.00. Sell-rip $12 (+0.5%), buy-dip $10 (-16.2%), break $11.50 (-3.7%)."},{"tk":"CIFR","spot":7.69,"day":-3.03,"bias":"Neutral / Mixed","biasc":"n","net":5.050000000000001,"prem":"$2.82M","swp":46,"gamma":"Neg γ, below flip","gc":"g-neg","gex":"+157.4K","sell":"$8.50","selld":"+10.5%","buy":"$4","buyd":"-48.0%","brk":"$7.50","brkd":"-2.5%","flip":"$9.00","conv":"LOW","convc":"c-low","plan":"<b>Neutral / Mixed</b> flow +5.1% on $2.82M (46% sweeps). Negative γ, spot below flip $9.00. Sell-rip $8.50 (+10.5%), buy-dip $4 (-48.0%), break $7.50 (-2.5%)."},{"tk":"IBIT","spot":45.15,"day":-1.66,"bias":"Neutral / Mixed","biasc":"n","net":-3.2800000000000002,"prem":"$4.72M","swp":67,"gamma":"Neg γ, below flip","gc":"g-neg","gex":"+13.9K","sell":"$46","selld":"+1.9%","buy":"$44.50","buyd":"-1.4%","brk":"$45","brkd":"-0.3%","flip":"$46.00","conv":"LOW","convc":"c-low","plan":"<b>Neutral / Mixed</b> flow -3.3% on $4.72M (67% sweeps). Negative γ, spot below flip $46.00. Sell-rip $46 (+1.9%), buy-dip $44.50 (-1.4%), break $45 (-0.3%)."},{"tk":"RKLB","spot":53.88,"day":2.65,"bias":"Neutral / Mixed","biasc":"n","net":3.4799999999999995,"prem":"$2.83M","swp":25,"gamma":"Positive γ","gc":"g-pos","gex":"+15.8K","sell":"$54","selld":"+0.2%","buy":"$53","buyd":"-1.6%","brk":"$51","brkd":"-5.3%","flip":"$52.00","conv":"LOW","convc":"c-low","plan":"<b>Neutral / Mixed</b> flow +3.5% on $2.83M (25% sweeps). Positive γ, spot above flip $52.00. Sell-rip $54 (+0.2%), buy-dip $53 (-1.6%), break $51 (-5.3%)."},{"tk":"NVDA","spot":216.12,"day":2.37,"bias":"Neutral / Mixed","biasc":"n","net":0.7799999999999999,"prem":"$17.56M","swp":83,"gamma":"Neg γ, below flip","gc":"g-neg","gex":"+60.0K","sell":"$217.50","selld":"+0.6%","buy":"$215","buyd":"-0.5%","brk":"$212.50","brkd":"-1.7%","flip":"$217.00","conv":"LOW","convc":"c-low","plan":"<b>Neutral / Mixed</b> flow +0.8% on $17.56M (83% sweeps). Negative γ, spot below flip $217.00. Sell-rip $217.50 (+0.6%), buy-dip $215 (-0.5%), break $212.50 (-1.7%). Whales: $1.70M CALL AT_BID BEAR; $1.09M CALL AT_BID BEAR; $0.93M PUT AT_ASK BEAR."}]}]}</script>
+<script>
+const D = JSON.parse(document.getElementById('payload').textContent);
+
+const dirCls = d => d==='LONG'?'tdir-bull':d==='SHORT'?'tdir-bear':'tdir-rng';
+document.getElementById('topbox').innerHTML =
+  '<h3>Top 10 setups — ranked by edge score</h3>'
+  + '<div class="topgrid">'
+  + D.ranking.map(r =>
+      `<div class="toprow ${r.rank<=5?'tier-top':'tier-next'}">`
+      + `<span class="toprank">${r.rank}</span>`
+      + `<span class="ttk">${r.tk}</span>`
+      + `<span class="${dirCls(r.dir)}">${r.dir}</span>`
+      + `<span class="ttype">· ${r.type}</span>`
+      + `</div>`).join('')
+  + '</div>';
+
+// Buy-the-dip / Sell-the-rip levels for the highlighted (top-10) tickers.
+// Levels live on the group rows; join to the ranking by ticker.
+const lvlByTk = {};
+for(const g of D.groups){ for(const r of g.rows){ lvlByTk[r.tk] = r; } }
+const hasLvl = v => v && v !== '—';
+document.getElementById('toplevels').innerHTML =
+  '<h3>Buy-the-dip / Sell-the-rip — top 10</h3>'
+  + '<table><thead><tr>'
+  + '<th>#</th><th>Ticker</th><th>Dir</th><th class="r">Spot</th>'
+  + '<th>Buy-dip &#9660;</th><th>Sell-rip &#9650;</th><th class="r">Flip</th></tr></thead><tbody>'
+  + D.ranking.map(r => {
+      const lv = lvlByTk[r.tk] || {};
+      const spot = (lv.spot!=null) ? '$'+lv.spot.toFixed(2) : '—';
+      const buy  = hasLvl(lv.buy)  ? `${lv.buy}<span class="d"> ${lv.buyd||''}</span>`  : '<span class="mut">n/a</span>';
+      const sell = hasLvl(lv.sell) ? `${lv.sell}<span class="d"> ${lv.selld||''}</span>` : '<span class="mut">n/a</span>';
+      const flip = hasLvl(lv.flip) ? lv.flip : '—';
+      return `<tr>`
+        + `<td><span class="rank ${r.rank<=5?'top':''}">${r.rank}</span></td>`
+        + `<td><span class="tk">${r.tk}</span></td>`
+        + `<td class="${dirCls(r.dir)}">${r.dir}</td>`
+        + `<td class="r mut">${spot}</td>`
+        + `<td class="sup">${buy}</td>`
+        + `<td class="res">${sell}</td>`
+        + `<td class="r mut">${flip}</td>`
+        + `</tr>`;
+    }).join('')
+  + '</tbody></table>';
+
+document.getElementById('kpis').innerHTML = D.kpis
+  .map(([l,v])=>`<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div></div>`).join('');
+
+const sign = (n)=> (n>=0?'+':'') + n.toFixed(1) + '%';
+const dayCls = n => n>=0 ? 'pos':'neg';
+const netCls = n => n>=0 ? 'pos':'neg';
+
+let html='';
+for(const g of D.groups){
+  html += `<div class="grp"><h2>${g.title}</h2><div class="thesis">${g.thesis}</div>`;
+  html += `<table><thead><tr>
+    <th>Ticker</th><th class="r">Spot</th><th class="r">Day%</th>
+    <th>Flow bias</th><th class="r">Net%*</th><th class="r">Premium</th><th class="r">Swp%</th>
+    <th>Gamma</th><th>Sell-rip &#9650;</th><th>Buy-dip &#9660;</th><th>Break &#9660;</th><th class="r">Flip</th>
+    <th>Conv.</th><th>Plan</th></tr></thead><tbody>`;
+  for(const r of g.rows){
+    html += `<tr>
+      <td><span class="tk">${r.tk}</span></td>
+      <td class="r">$${r.spot.toFixed(2)}</td>
+      <td class="r ${dayCls(r.day)}">${sign(r.day)}</td>
+      <td><span class="pill bias-${r.biasc}">${r.bias}</span></td>
+      <td class="r ${netCls(r.net)}">${sign(r.net)}</td>
+      <td class="r">${r.prem}</td>
+      <td class="r mut">${r.swp}%</td>
+      <td><span class="pill ${r.gc}">${r.gamma}</span><div class="gx">GEX ${r.gex}</div></td>
+      <td class="res">${r.sell}<span class="d"> ${r.selld}</span></td>
+      <td class="sup">${r.buy}<span class="d"> ${r.buyd}</span></td>
+      <td class="brk">${r.brk}<span class="d"> ${r.brkd}</span></td>
+      <td class="r mut">${r.flip}</td>
+      <td><span class="conv ${r.convc}">${r.conv}</span></td>
+      <td class="plan">${r.plan}</td>
+    </tr>`;
+  }
+  html += `</tbody></table></div>`;
+}
+document.getElementById('groups').innerHTML = html;
+</script>
+</body>
+</html>
