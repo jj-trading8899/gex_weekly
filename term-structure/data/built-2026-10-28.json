@@ -1,0 +1,1465 @@
+{
+ "snapshot": "2026-10-28",
+ "nextOpex": "2026-11-20",
+ "dataUpdatedAt": "2026-10-28T20:05:16.682Z",
+ "capturedAt": "2026-10-28T21:40:33.617Z",
+ "headlines": [
+  "<b>NVDA</b> is the one to watch. It's sitting below its flip at about $217, under a very large $230 level (+149K). Support is $210; below that, selling would speed up around $190.",
+  "<b>AMZN</b> has the next-most positioning into opex (+181K, after <b>NVDA</b>'s +217K), centred on $265\u2013270.",
+  "<b>TSLA</b> is pulled toward $420\u2013435, <b>AAPL</b> toward $350\u2013360, and <b>AVGO</b> toward $380\u2013400.",
+  "<b>GOOGL</b> is the weakest board, at only \u221261.2K into opex. It's below its $312 flip, and TradeEcho rates it 2/5."
+ ],
+ "glance": [
+  {
+   "t": "NVDA",
+   "spot": 215.65,
+   "lean": "shaky",
+   "flip": 216.62,
+   "up": 230.0,
+   "down": 210.0,
+   "board": 216.6,
+   "thin": false
+  },
+  {
+   "t": "TSLA",
+   "spot": 404.78,
+   "lean": "up",
+   "flip": 402.93,
+   "up": 420.0,
+   "down": 400.0,
+   "board": 56.2,
+   "thin": false
+  },
+  {
+   "t": "AAPL",
+   "spot": 344.69,
+   "lean": "up",
+   "flip": 342.61,
+   "up": 350.0,
+   "down": 335.0,
+   "board": 139.0,
+   "thin": false
+  },
+  {
+   "t": "AMZN",
+   "spot": 255.75,
+   "lean": "up",
+   "flip": 252.64,
+   "up": 270.0,
+   "down": 255.0,
+   "board": 180.8,
+   "thin": false
+  },
+  {
+   "t": "GOOGL",
+   "spot": 303.4,
+   "lean": "down",
+   "flip": 312.5,
+   "up": 337.5,
+   "down": 290.0,
+   "board": -61.2,
+   "thin": false
+  },
+  {
+   "t": "AVGO",
+   "spot": 352.084,
+   "lean": "shaky",
+   "flip": 342.17,
+   "up": 400.0,
+   "down": 347.5,
+   "board": -1.0,
+   "thin": true
+  }
+ ],
+ "cards": [
+  {
+   "t": "NVDA",
+   "spot": 215.65,
+   "chg": null,
+   "cols": [
+    "10/30",
+    "11/6",
+    "11/20",
+    "11/27"
+   ],
+   "opexIdx": 2,
+   "regime": "below flip $217 \u00b7 moves amplify",
+   "tone": "neg",
+   "term": [
+    [
+     691.7,
+     2746
+    ],
+    [
+     -16.9,
+     951
+    ],
+    [
+     216.6,
+     6035
+    ],
+    [
+     1.7,
+     793
+    ]
+   ],
+   "pin": "$217.5",
+   "wall": "$230 cap",
+   "sup": "$210",
+   "flip": "~$217",
+   "range": "$210-230 \u00b7 flip $217",
+   "read": "Closed $215.65. Into 11/20 opex dealers net +217K, heaviest at $230 (+149K) \u2014 the level price is pulled toward. Below the $216.6 flip, so dealer hedging adds to moves \u2014 breaks can run. Cap at $230 (+149K). Support $210 (+66.1K). Under $210, the $190 pocket (\u221270.5K) is where selling speeds up. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "TSLA",
+   "spot": 404.78,
+   "chg": null,
+   "cols": [
+    "10/30",
+    "11/6",
+    "11/20",
+    "11/27"
+   ],
+   "opexIdx": 2,
+   "regime": "pinning \u00b7 $420 cap",
+   "tone": "pos",
+   "term": [
+    [
+     175.0,
+     1098
+    ],
+    [
+     24.9,
+     629
+    ],
+    [
+     56.2,
+     1375
+    ],
+    [
+     10.2,
+     349
+    ]
+   ],
+   "pin": "$405",
+   "wall": "$420 cap",
+   "sup": "$400",
+   "flip": "~$403",
+   "range": "$400-420 \u00b7 flip $403",
+   "read": "Closed $404.78. Into 11/20 opex dealers net +56.2K, heaviest at $400 (+16.0K) \u2014 the level price is pulled toward. Above the $402.9 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $420 (+7.0K). Support $400 (+16.0K). Under $400, the $350 pocket (\u22122.2K) is where selling speeds up. TradeEcho's own read: Neutral."
+  },
+  {
+   "t": "AAPL",
+   "spot": 344.69,
+   "chg": null,
+   "cols": [
+    "10/30",
+    "11/6",
+    "11/20",
+    "11/27"
+   ],
+   "opexIdx": 2,
+   "regime": "pinning \u00b7 $350 cap",
+   "tone": "pos",
+   "term": [
+    [
+     94.3,
+     2736
+    ],
+    [
+     -0.9,
+     1719
+    ],
+    [
+     139.0,
+     5630
+    ],
+    [
+     -4.0,
+     675
+    ]
+   ],
+   "pin": "$345",
+   "wall": "$350 cap",
+   "sup": "$335",
+   "flip": "~$343",
+   "range": "$335-350 \u00b7 flip $343",
+   "read": "Closed $344.69. Into 11/20 opex dealers net +139K, heaviest at $350 (+39.6K) \u2014 the level price is pulled toward. Above the $342.6 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $350 (+39.6K). Support $335 (+8.6K). Under $335, the $330 pocket (\u221210.9K) is where selling speeds up. TradeEcho's own read: Neutral."
+  },
+  {
+   "t": "AMZN",
+   "spot": 255.75,
+   "chg": null,
+   "cols": [
+    "10/30",
+    "11/6",
+    "11/20",
+    "11/27"
+   ],
+   "opexIdx": 2,
+   "regime": "pinning \u00b7 $270 cap",
+   "tone": "pos",
+   "term": [
+    [
+     207.6,
+     1118
+    ],
+    [
+     28.3,
+     453
+    ],
+    [
+     180.8,
+     3923
+    ],
+    [
+     5.1,
+     198
+    ]
+   ],
+   "pin": "$255",
+   "wall": "$270 cap",
+   "sup": "$255",
+   "flip": "~$253",
+   "range": "$255-270 \u00b7 flip $253",
+   "read": "Closed $255.75. Into 11/20 opex dealers net +181K, heaviest at $270 (+53.1K) \u2014 the level price is pulled toward. Above the $252.6 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $270 (+53.1K). Support $255 (+14.4K). Under $255, the $230 pocket (\u221212.2K) is where selling speeds up. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "GOOGL",
+   "spot": 303.4,
+   "chg": null,
+   "cols": [
+    "10/30",
+    "11/6",
+    "11/20",
+    "11/27"
+   ],
+   "opexIdx": 2,
+   "regime": "below flip $312 \u00b7 moves amplify",
+   "tone": "neg",
+   "term": [
+    [
+     -67.7,
+     754
+    ],
+    [
+     -7.1,
+     274
+    ],
+    [
+     -61.2,
+     2672
+    ],
+    [
+     -10.3,
+     100
+    ]
+   ],
+   "pin": "$305",
+   "wall": "$337.5 cap",
+   "sup": "none",
+   "flip": "~$312",
+   "range": "$290-337.5 \u00b7 flip $312",
+   "read": "Closed $303.40. Into 11/20 opex dealers net \u221261.2K, heaviest at $337.5 (+9.3K) \u2014 the level price is pulled toward. Below the $312.5 flip, so dealer hedging adds to moves \u2014 breaks can run. Cap at $337.5 (+9.3K). Little real support below spot. Below spot, the $290 pocket (\u221227.8K) is where selling speeds up. The 10/30 front expiry is net negative (\u221267.7K), so near-term swings can overshoot before opex takes over. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "AVGO",
+   "spot": 352.084,
+   "chg": null,
+   "cols": [
+    "10/30",
+    "11/6",
+    "11/20",
+    "11/27"
+   ],
+   "opexIdx": 2,
+   "regime": "net negative into opex",
+   "tone": "neg",
+   "term": [
+    [
+     51.9,
+     378
+    ],
+    [
+     4.4,
+     331
+    ],
+    [
+     -1.0,
+     2286
+    ],
+    [
+     -1.6,
+     283
+    ]
+   ],
+   "pin": "$355",
+   "wall": "$400 cap",
+   "sup": "$347.5",
+   "flip": "~$342",
+   "range": "$347.5-400 \u00b7 flip $342",
+   "read": "Closed $352.08. Into 11/20 opex dealers net \u22121.0K, heaviest at $400 (+9.0K) \u2014 the level price is pulled toward. Above the $342.2 flip, so dealer hedging leans against moves and dips tend to get bought. Cap at $400 (+9.0K). Support $347.5 (+1.3K). Under $347.5, the $320 pocket (\u22128.2K) is where selling speeds up. TradeEcho's own read: Bullish."
+  }
+ ],
+ "ts": [
+  {
+   "t": "NVDA",
+   "spot": 215.65,
+   "chg": null,
+   "flip": 216.62,
+   "perCol": [
+    {
+     "code": "2026-10-30",
+     "net": 691.7,
+     "opex": false,
+     "strikes": [
+      [
+       230.0,
+       22.7
+      ],
+      [
+       227.5,
+       31.5
+      ],
+      [
+       225.0,
+       116.3
+      ],
+      [
+       222.5,
+       62.8
+      ],
+      [
+       220.0,
+       222.9
+      ],
+      [
+       217.5,
+       231.6
+      ],
+      [
+       215.0,
+       149.5
+      ],
+      [
+       210.0,
+       -80.5
+      ],
+      [
+       205.0,
+       -33.1
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-06",
+     "net": -16.9,
+     "opex": false,
+     "strikes": [
+      [
+       235.0,
+       5.4
+      ],
+      [
+       230.0,
+       12.8
+      ],
+      [
+       225.0,
+       6.9
+      ],
+      [
+       222.5,
+       9.1
+      ],
+      [
+       217.5,
+       6.9
+      ],
+      [
+       215.0,
+       -8.0
+      ],
+      [
+       210.0,
+       -17.7
+      ],
+      [
+       205.0,
+       -11.3
+      ],
+      [
+       200.0,
+       -15.8
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": 216.6,
+     "opex": true,
+     "strikes": [
+      [
+       245.0,
+       40.4
+      ],
+      [
+       240.0,
+       50.0
+      ],
+      [
+       235.0,
+       24.8
+      ],
+      [
+       230.0,
+       149.0
+      ],
+      [
+       215.0,
+       -29.6
+      ],
+      [
+       210.0,
+       66.1
+      ],
+      [
+       205.0,
+       -32.1
+      ],
+      [
+       200.0,
+       -37.3
+      ],
+      [
+       190.0,
+       -70.5
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 230.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 81
+    },
+    {
+     "k": 220.0,
+     "kind": "sell",
+     "strength": 0.97,
+     "n": 2,
+     "odds": 74
+    },
+    {
+     "k": 217.5,
+     "kind": "sell",
+     "strength": 0.89,
+     "n": 2,
+     "odds": 72,
+     "pin": true
+    },
+    {
+     "k": 216.6,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 215.0,
+     "kind": "buy",
+     "strength": 0.37,
+     "n": 1,
+     "odds": 45
+    },
+    {
+     "k": 205.0,
+     "kind": "trigger",
+     "strength": 0.84,
+     "n": 3,
+     "odds": 85
+    },
+    {
+     "k": 190.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 84
+    }
+   ]
+  },
+  {
+   "t": "TSLA",
+   "spot": 404.78,
+   "chg": null,
+   "flip": 402.93,
+   "perCol": [
+    {
+     "code": "2026-10-30",
+     "net": 175.0,
+     "opex": false,
+     "strikes": [
+      [
+       425.0,
+       8.0
+      ],
+      [
+       420.0,
+       34.5
+      ],
+      [
+       415.0,
+       16.2
+      ],
+      [
+       412.5,
+       12.0
+      ],
+      [
+       410.0,
+       20.6
+      ],
+      [
+       407.5,
+       5.9
+      ],
+      [
+       405.0,
+       7.6
+      ],
+      [
+       400.0,
+       31.0
+      ],
+      [
+       395.0,
+       12.2
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-06",
+     "net": 24.9,
+     "opex": false,
+     "strikes": [
+      [
+       440.0,
+       1.3
+      ],
+      [
+       435.0,
+       1.3
+      ],
+      [
+       430.0,
+       1.8
+      ],
+      [
+       425.0,
+       2.9
+      ],
+      [
+       420.0,
+       6.6
+      ],
+      [
+       415.0,
+       2.8
+      ],
+      [
+       410.0,
+       2.8
+      ],
+      [
+       400.0,
+       3.7
+      ],
+      [
+       392.5,
+       -1.6
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": 56.2,
+     "opex": true,
+     "strikes": [
+      [
+       450.0,
+       3.5
+      ],
+      [
+       445.0,
+       3.7
+      ],
+      [
+       440.0,
+       3.8
+      ],
+      [
+       435.0,
+       5.3
+      ],
+      [
+       430.0,
+       3.9
+      ],
+      [
+       420.0,
+       7.0
+      ],
+      [
+       415.0,
+       3.3
+      ],
+      [
+       410.0,
+       4.5
+      ],
+      [
+       400.0,
+       16.0
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 420.0,
+     "kind": "sell",
+     "strength": 0.88,
+     "n": 3,
+     "odds": 83
+    },
+    {
+     "k": 415.0,
+     "kind": "sell",
+     "strength": 0.41,
+     "n": 3,
+     "odds": 68
+    },
+    {
+     "k": 410.0,
+     "kind": "sell",
+     "strength": 0.51,
+     "n": 3,
+     "odds": 72
+    },
+    {
+     "k": 405,
+     "kind": "pin",
+     "strength": 0.22,
+     "n": 3,
+     "odds": 64
+    },
+    {
+     "k": 402.9,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 400.0,
+     "kind": "buy",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 85
+    },
+    {
+     "k": 395.0,
+     "kind": "buy",
+     "strength": 0.24,
+     "n": 2,
+     "odds": 49
+    },
+    {
+     "k": 380.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 81
+    },
+    {
+     "k": 350.0,
+     "kind": "trigger",
+     "strength": 0.75,
+     "n": 3,
+     "odds": 67
+    }
+   ]
+  },
+  {
+   "t": "AAPL",
+   "spot": 344.69,
+   "chg": null,
+   "flip": 342.61,
+   "perCol": [
+    {
+     "code": "2026-10-30",
+     "net": 94.3,
+     "opex": false,
+     "strikes": [
+      [
+       355.0,
+       26.4
+      ],
+      [
+       352.5,
+       10.8
+      ],
+      [
+       350.0,
+       101.5
+      ],
+      [
+       347.5,
+       39.9
+      ],
+      [
+       340.0,
+       -29.9
+      ],
+      [
+       337.5,
+       -14.4
+      ],
+      [
+       335.0,
+       -19.9
+      ],
+      [
+       332.5,
+       -10.4
+      ],
+      [
+       330.0,
+       -7.7
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-06",
+     "net": -0.9,
+     "opex": false,
+     "strikes": [
+      [
+       365.0,
+       4.6
+      ],
+      [
+       362.5,
+       5.4
+      ],
+      [
+       360.0,
+       13.3
+      ],
+      [
+       355.0,
+       8.7
+      ],
+      [
+       350.0,
+       13.2
+      ],
+      [
+       330.0,
+       -12.7
+      ],
+      [
+       325.0,
+       -10.5
+      ],
+      [
+       320.0,
+       -13.1
+      ],
+      [
+       310.0,
+       -5.7
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": 139.0,
+     "opex": true,
+     "strikes": [
+      [
+       370.0,
+       21.3
+      ],
+      [
+       365.0,
+       21.2
+      ],
+      [
+       360.0,
+       32.4
+      ],
+      [
+       355.0,
+       25.3
+      ],
+      [
+       350.0,
+       39.6
+      ],
+      [
+       345.0,
+       13.0
+      ],
+      [
+       335.0,
+       8.6
+      ],
+      [
+       330.0,
+       -10.9
+      ],
+      [
+       300.0,
+       -7.9
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 360.0,
+     "kind": "sell",
+     "strength": 0.38,
+     "n": 3,
+     "odds": 65
+    },
+    {
+     "k": 355.0,
+     "kind": "sell",
+     "strength": 0.42,
+     "n": 3,
+     "odds": 68
+    },
+    {
+     "k": 350.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 88
+    },
+    {
+     "k": 345,
+     "kind": "pin",
+     "strength": 0.06,
+     "n": 1,
+     "odds": 48
+    },
+    {
+     "k": 342.6,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 340.0,
+     "kind": "trigger",
+     "strength": 0.92,
+     "n": 2,
+     "odds": 73
+    },
+    {
+     "k": 330.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 83
+    }
+   ]
+  },
+  {
+   "t": "AMZN",
+   "spot": 255.75,
+   "chg": null,
+   "flip": 252.64,
+   "perCol": [
+    {
+     "code": "2026-10-30",
+     "net": 207.6,
+     "opex": false,
+     "strikes": [
+      [
+       285.0,
+       11.9
+      ],
+      [
+       282.5,
+       14.0
+      ],
+      [
+       280.0,
+       56.8
+      ],
+      [
+       275.0,
+       12.9
+      ],
+      [
+       270.0,
+       15.7
+      ],
+      [
+       267.5,
+       14.5
+      ],
+      [
+       265.0,
+       39.5
+      ],
+      [
+       260.0,
+       11.6
+      ],
+      [
+       255.0,
+       15.0
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-06",
+     "net": 28.3,
+     "opex": false,
+     "strikes": [
+      [
+       290.0,
+       3.0
+      ],
+      [
+       280.0,
+       5.2
+      ],
+      [
+       275.0,
+       4.7
+      ],
+      [
+       270.0,
+       11.5
+      ],
+      [
+       265.0,
+       5.9
+      ],
+      [
+       260.0,
+       8.7
+      ],
+      [
+       240.0,
+       -4.7
+      ],
+      [
+       235.0,
+       -2.9
+      ],
+      [
+       230.0,
+       -1.5
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": 180.8,
+     "opex": true,
+     "strikes": [
+      [
+       290.0,
+       34.4
+      ],
+      [
+       280.0,
+       23.9
+      ],
+      [
+       275.0,
+       16.0
+      ],
+      [
+       270.0,
+       53.1
+      ],
+      [
+       265.0,
+       35.8
+      ],
+      [
+       260.0,
+       12.2
+      ],
+      [
+       255.0,
+       14.4
+      ],
+      [
+       240.0,
+       -12.1
+      ],
+      [
+       230.0,
+       -12.2
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 280.0,
+     "kind": "sell",
+     "strength": 0.92,
+     "n": 3,
+     "odds": 80
+    },
+    {
+     "k": 270.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 86
+    },
+    {
+     "k": 265.0,
+     "kind": "sell",
+     "strength": 0.93,
+     "n": 3,
+     "odds": 85
+    },
+    {
+     "k": 255.0,
+     "kind": "buy",
+     "strength": 0.35,
+     "n": 3,
+     "odds": 64,
+     "pin": true
+    },
+    {
+     "k": 252.6,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 252.5,
+     "kind": "buy",
+     "strength": 0.07,
+     "n": 2,
+     "odds": 44
+    },
+    {
+     "k": 240.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 81
+    },
+    {
+     "k": 230.0,
+     "kind": "trigger",
+     "strength": 0.81,
+     "n": 3,
+     "odds": 72
+    }
+   ]
+  },
+  {
+   "t": "GOOGL",
+   "spot": 303.4,
+   "chg": null,
+   "flip": 312.5,
+   "perCol": [
+    {
+     "code": "2026-10-30",
+     "net": -67.7,
+     "opex": false,
+     "strikes": [
+      [
+       340.0,
+       6.8
+      ],
+      [
+       335.0,
+       6.2
+      ],
+      [
+       332.5,
+       6.2
+      ],
+      [
+       330.0,
+       6.5
+      ],
+      [
+       305.0,
+       -54.3
+      ],
+      [
+       300.0,
+       -42.1
+      ],
+      [
+       295.0,
+       -16.1
+      ],
+      [
+       292.5,
+       -8.6
+      ],
+      [
+       290.0,
+       -6.8
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-06",
+     "net": -7.1,
+     "opex": false,
+     "strikes": [
+      [
+       340.0,
+       1.5
+      ],
+      [
+       337.5,
+       0.6
+      ],
+      [
+       335.0,
+       0.8
+      ],
+      [
+       330.0,
+       0.7
+      ],
+      [
+       327.5,
+       0.8
+      ],
+      [
+       305.0,
+       -4.4
+      ],
+      [
+       300.0,
+       -11.8
+      ],
+      [
+       295.0,
+       -1.4
+      ],
+      [
+       290.0,
+       -1.1
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": -61.2,
+     "opex": true,
+     "strikes": [
+      [
+       340.0,
+       7.1
+      ],
+      [
+       337.5,
+       9.3
+      ],
+      [
+       310.0,
+       -48.7
+      ],
+      [
+       305.0,
+       -16.0
+      ],
+      [
+       300.0,
+       -27.0
+      ],
+      [
+       295.0,
+       -7.6
+      ],
+      [
+       290.0,
+       -27.8
+      ],
+      [
+       280.0,
+       -9.4
+      ],
+      [
+       275.0,
+       -8.0
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 345.0,
+     "kind": "sell",
+     "strength": 0.67,
+     "n": 3,
+     "odds": 64
+    },
+    {
+     "k": 340.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 76
+    },
+    {
+     "k": 337.5,
+     "kind": "sell",
+     "strength": 0.87,
+     "n": 3,
+     "odds": 73
+    },
+    {
+     "k": 312.5,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 305,
+     "kind": "pin",
+     "strength": 0.0,
+     "n": 3,
+     "odds": null
+    },
+    {
+     "k": 300.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 88
+    },
+    {
+     "k": 290.0,
+     "kind": "trigger",
+     "strength": 0.53,
+     "n": 3,
+     "odds": 74
+    }
+   ]
+  },
+  {
+   "t": "AVGO",
+   "spot": 352.084,
+   "chg": null,
+   "flip": 342.17,
+   "perCol": [
+    {
+     "code": "2026-10-30",
+     "net": 51.9,
+     "opex": false,
+     "strikes": [
+      [
+       375.0,
+       3.0
+      ],
+      [
+       370.0,
+       3.5
+      ],
+      [
+       365.0,
+       3.3
+      ],
+      [
+       360.0,
+       10.3
+      ],
+      [
+       357.5,
+       3.9
+      ],
+      [
+       355.0,
+       6.4
+      ],
+      [
+       350.0,
+       12.1
+      ],
+      [
+       345.0,
+       4.2
+      ],
+      [
+       335.0,
+       -3.2
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-06",
+     "net": 4.4,
+     "opex": false,
+     "strikes": [
+      [
+       380.0,
+       1.1
+      ],
+      [
+       370.0,
+       2.0
+      ],
+      [
+       357.5,
+       1.9
+      ],
+      [
+       352.5,
+       1.9
+      ],
+      [
+       350.0,
+       -0.9
+      ],
+      [
+       345.0,
+       -1.6
+      ],
+      [
+       340.0,
+       -1.0
+      ],
+      [
+       330.0,
+       -1.3
+      ],
+      [
+       320.0,
+       -1.0
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": -1.0,
+     "opex": true,
+     "strikes": [
+      [
+       400.0,
+       9.0
+      ],
+      [
+       390.0,
+       6.1
+      ],
+      [
+       380.0,
+       6.3
+      ],
+      [
+       355.0,
+       5.5
+      ],
+      [
+       350.0,
+       -5.3
+      ],
+      [
+       330.0,
+       -7.3
+      ],
+      [
+       320.0,
+       -8.2
+      ],
+      [
+       310.0,
+       -5.7
+      ],
+      [
+       300.0,
+       -6.8
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 400.0,
+     "kind": "sell",
+     "strength": 0.91,
+     "n": 3,
+     "odds": 76
+    },
+    {
+     "k": 380.0,
+     "kind": "sell",
+     "strength": 0.76,
+     "n": 3,
+     "odds": 75
+    },
+    {
+     "k": 355.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 88,
+     "pin": true
+    },
+    {
+     "k": 350.0,
+     "kind": "buy",
+     "strength": 0.21,
+     "n": 1,
+     "odds": 49
+    },
+    {
+     "k": 347.5,
+     "kind": "buy",
+     "strength": 0.35,
+     "n": 3,
+     "odds": 63
+    },
+    {
+     "k": 342.2,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null
+    },
+    {
+     "k": 330.0,
+     "kind": "trigger",
+     "strength": 0.94,
+     "n": 3,
+     "odds": 79
+    },
+    {
+     "k": 320.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "odds": 79
+    }
+   ]
+  }
+ ]
+}
