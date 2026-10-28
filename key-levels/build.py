@@ -106,7 +106,7 @@ for gname, tks in groups.items():
             continue
         d = derive(t, r)
         rows.append(
-            f'<tr><th>{t}</th><td>{px(d["s"])}</td><td><span class="pill {d["tone"]}">{d["regime"]}</span></td>'
+            f'<tr data-tk="{t}" data-group="{html.escape(gname)}"><th>{t}</th><td>{px(d["s"])}</td><td><span class="pill {d["tone"]}">{d["regime"]}</span></td>'
             f'<td>{px(d["flip"])}</td><td>{px(d["anc"])}</td><td>{px(d["drift"])}</td>'
             f'<td>{px(d["below"][0]) if d["below"] else "—"}</td><td>{px(d["above"][0]) if d["above"] else "—"}</td>'
             f'<td>{d["rating"]}</td></tr>')
@@ -134,6 +134,10 @@ tpl = open(os.path.join(HERE, "template.html")).read()
 out = (tpl.replace("{{STAMP}}", stamp)
           .replace("{{POSDATE}}", ", ".join(sorted(pos)) or "—")
           .replace("{{ROWS}}", "\n".join(rows))
+          .replace("{{OPTIONS}}", "".join(
+              f'<optgroup label="{html.escape(g)}"><option value="g:{html.escape(g)}">All {html.escape(g.lower())}</option>'
+              + "".join(f'<option value="t:{t}">{t}</option>' for t in tks if t in D["tickers"]) + "</optgroup>"
+              for g, tks in groups.items()))
           .replace("{{SECTIONS}}", "\n".join(sections)))
 dst = os.path.join(HERE, "index.html")
 open(dst, "w").write(out)
