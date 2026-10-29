@@ -1,0 +1,188 @@
+{
+ "date": "2026-10-29",
+ "slot": "14:30",
+ "asof": "14:54 ET",
+ "rows": [
+  {
+   "tk": "SPY",
+   "group": "Index",
+   "price": 767.55,
+   "chg_pct": -0.34,
+   "support": 764,
+   "pivot": 772,
+   "resistance": 770,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Below break 770: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "QQQ",
+   "group": "Index",
+   "price": 713.09,
+   "chg_pct": -1.02,
+   "support": 709,
+   "pivot": 724,
+   "resistance": 724,
+   "shift": "resistance up",
+   "status": "Below break 720: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "AAPL",
+   "group": "Mega-cap tech",
+   "price": 350.33,
+   "chg_pct": 1.64,
+   "support": 350,
+   "pivot": 344,
+   "resistance": 352,
+   "shift": "support up, pivot up, resistance up",
+   "status": "Through resistance 348",
+   "tone": "pos"
+  },
+  {
+   "tk": "GOOGL",
+   "group": "Mega-cap tech",
+   "price": 283.22,
+   "chg_pct": -6.65,
+   "support": null,
+   "pivot": 283,
+   "resistance": 305,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 302: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "AMZN",
+   "group": "Mega-cap tech",
+   "price": 245.21,
+   "chg_pct": -4.12,
+   "support": null,
+   "pivot": 247,
+   "resistance": 248,
+   "shift": "pivot down, resistance down",
+   "status": "Crossed below pivot 253",
+   "tone": "neg"
+  },
+  {
+   "tk": "NVDA",
+   "group": "Mega-cap tech",
+   "price": 212.99,
+   "chg_pct": -1.23,
+   "support": null,
+   "pivot": 214,
+   "resistance": 215,
+   "shift": "pivot down, resistance down",
+   "status": "Below support 215, above break 212",
+   "tone": "neg"
+  },
+  {
+   "tk": "TSLA",
+   "group": "Mega-cap tech",
+   "price": 405.58,
+   "chg_pct": 0.2,
+   "support": 405,
+   "pivot": 398,
+   "resistance": 408,
+   "shift": "support up, pivot down, resistance up",
+   "status": "Through resistance 405",
+   "tone": "pos"
+  },
+  {
+   "tk": "AVGO",
+   "group": "Mega-cap tech",
+   "price": 344.48,
+   "chg_pct": -2.16,
+   "support": 342,
+   "pivot": 342,
+   "resistance": 345,
+   "shift": "support down, resistance down",
+   "status": "Below support 350, above break 340",
+   "tone": "neg"
+  },
+  {
+   "tk": "AMD",
+   "group": "Semis & memory",
+   "price": 562.95,
+   "chg_pct": -2.86,
+   "support": 555,
+   "pivot": 564,
+   "resistance": 565,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Crossed below pivot 573",
+   "tone": "neg"
+  },
+  {
+   "tk": "TSM",
+   "group": "Semis & memory",
+   "price": 429.16,
+   "chg_pct": -2.64,
+   "support": 428,
+   "pivot": 421,
+   "resistance": 430,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Below support 440, above break 422",
+   "tone": "neg"
+  },
+  {
+   "tk": "MU",
+   "group": "Semis & memory",
+   "price": 929.68,
+   "chg_pct": -5.71,
+   "support": 922,
+   "pivot": 936,
+   "resistance": 940,
+   "shift": "support down, pivot up, resistance down",
+   "status": "Below break 930: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "SNDK",
+   "group": "Semis & memory",
+   "price": 1327.45,
+   "chg_pct": -6.19,
+   "support": 1325,
+   "pivot": 1326,
+   "resistance": 1365,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Below break 1,392: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "MRVL",
+   "group": "Semis & memory",
+   "price": 216.62,
+   "chg_pct": -14.04,
+   "support": null,
+   "pivot": 227,
+   "resistance": 228,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 232: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "SPCX",
+   "group": "Other large caps",
+   "price": 143.48,
+   "chg_pct": -1.11,
+   "support": 122,
+   "pivot": 147,
+   "resistance": 149,
+   "shift": "pivot down",
+   "status": "Below break 145: plan off",
+   "tone": "neg"
+  }
+ ],
+ "events": [
+  {
+   "tk": "AMZN",
+   "text": "Crossed below pivot 253",
+   "tone": "neg"
+  },
+  {
+   "tk": "MU",
+   "text": "Below break 930: plan off",
+   "tone": "neg"
+  }
+ ],
+ "generated": "2026-10-29T18:56Z"
+}
