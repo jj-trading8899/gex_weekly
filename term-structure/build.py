@@ -13,6 +13,9 @@ import os
 import sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+# In the gex_weekly repo the snapshots live in ../data/term-structure; in the Mac pipeline folder, in ./data
+_REPO_DATA = os.path.join(ROOT, "..", "data", "term-structure")
+DATA = os.path.normpath(_REPO_DATA) if os.path.isdir(_REPO_DATA) else os.path.join(ROOT, "data")
 TOP_PER_COL = 9          # strikes kept per expiry column
 WINDOW = 0.15            # only strikes within +/-15% of spot
 STRIP_MAX = 4            # cells in the per-expiry strip
@@ -357,7 +360,7 @@ def headlines(stats):
 
 
 def main():
-    src = sys.argv[1] if len(sys.argv) > 1 else sorted(glob.glob(os.path.join(ROOT, "data/raw/*.json")))[-1]
+    src = sys.argv[1] if len(sys.argv) > 1 else sorted(glob.glob(os.path.join(DATA, "raw/*.json")))[-1]
     snap = json.load(open(src))
     snap_date = dt.date.fromisoformat(os.path.basename(src)[:10])
     cards, ts, opex = [], [], None
@@ -376,7 +379,7 @@ def main():
     html = tpl.replace("/*__PAYLOAD__*/null", json.dumps(payload, separators=(",", ":")))
     out = os.path.join(ROOT, "index.html")
     open(out, "w").write(html)
-    json.dump(payload, open(os.path.join(ROOT, f"data/built-{snap_date.isoformat()}.json"), "w"), indent=1)
+    json.dump(payload, open(os.path.join(DATA, f"built-{snap_date.isoformat()}.json"), "w"), indent=1)
     print(f"built {out} from {os.path.basename(src)} · {len(cards)} tickers · opex {opex}")
 
 
