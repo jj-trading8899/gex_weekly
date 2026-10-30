@@ -341,7 +341,8 @@ def headlines(stats):
     if below:
         names = " and ".join(f"<b>{s['t']}</b>" for s in below) if len(below) <= 2 else \
             ", ".join(f"<b>{s['t']}</b>" for s in below[:-1]) + f", and <b>{below[-1]['t']}</b>"
-        flips = " and ".join(f"${s['flip']:.0f}" for s in below)
+        flips = " and ".join(f"${s['flip']:.0f}" for s in below) if len(below) <= 2 else \
+            ", ".join(f"${s['flip']:.0f}" for s in below[:-1]) + f", and ${below[-1]['flip']:.0f}"
         line = f"{names} closed below {'its flip' if len(below) == 1 else 'their flips'} ({flips})"
         if all(s["opex_net"] < 0 for s in below):
             line += f", with net negative positioning into opex"
