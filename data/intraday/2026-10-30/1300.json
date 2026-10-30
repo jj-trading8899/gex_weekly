@@ -1,0 +1,207 @@
+{
+ "date": "2026-10-30",
+ "slot": "13:00",
+ "asof": "13:04 ET",
+ "rows": [
+  {
+   "tk": "SPY",
+   "group": "Index",
+   "price": 755.81,
+   "chg_pct": -1.21,
+   "support": null,
+   "pivot": 770,
+   "resistance": 767,
+   "shift": "resistance down",
+   "status": "Below break 765: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "QQQ",
+   "group": "Index",
+   "price": 690.18,
+   "chg_pct": -2.18,
+   "support": null,
+   "pivot": 697,
+   "resistance": 692,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 705: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "AAPL",
+   "group": "Mega-cap tech",
+   "price": 347.09,
+   "chg_pct": -1.33,
+   "support": 345,
+   "pivot": 348,
+   "resistance": 352,
+   "shift": "",
+   "status": "Below break 350: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "GOOGL",
+   "group": "Mega-cap tech",
+   "price": 279.61,
+   "chg_pct": -0.95,
+   "support": 240,
+   "pivot": 281,
+   "resistance": 285,
+   "shift": "support up, pivot down, resistance down",
+   "status": "Below break 280: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "AMZN",
+   "group": "Mega-cap tech",
+   "price": 238.6,
+   "chg_pct": 8.18,
+   "support": null,
+   "pivot": 247,
+   "resistance": 245,
+   "shift": "pivot up, resistance up",
+   "status": "Through resistance 225",
+   "tone": "pos"
+  },
+  {
+   "tk": "NVDA",
+   "group": "Mega-cap tech",
+   "price": 203.92,
+   "chg_pct": -3.88,
+   "support": null,
+   "pivot": 213,
+   "resistance": 218,
+   "shift": "pivot down, resistance up",
+   "status": "Below break 210: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "TSLA",
+   "group": "Mega-cap tech",
+   "price": 399.26,
+   "chg_pct": -0.3,
+   "support": 395,
+   "pivot": 398,
+   "resistance": 402,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Testing support 400",
+   "tone": "flat"
+  },
+  {
+   "tk": "AVGO",
+   "group": "Mega-cap tech",
+   "price": 323.96,
+   "chg_pct": -4.91,
+   "support": null,
+   "pivot": 327,
+   "resistance": 335,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 340: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "AMD",
+   "group": "Semis & memory",
+   "price": 500.77,
+   "chg_pct": -7.14,
+   "support": 498,
+   "pivot": 512,
+   "resistance": 550,
+   "shift": "support down, pivot down, resistance up",
+   "status": "Below break 538: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "TSM",
+   "group": "Semis & memory",
+   "price": 405.43,
+   "chg_pct": -4.83,
+   "support": null,
+   "pivot": 422,
+   "resistance": 425,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 425: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "MU",
+   "group": "Semis & memory",
+   "price": 879.1,
+   "chg_pct": -3.7,
+   "support": 865,
+   "pivot": 908,
+   "resistance": 930,
+   "shift": "pivot down, resistance up",
+   "status": "Below break 912: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "SNDK",
+   "group": "Semis & memory",
+   "price": 1154.3,
+   "chg_pct": -10.2,
+   "support": 1105,
+   "pivot": 1215,
+   "resistance": 1155,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 1,285: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "MRVL",
+   "group": "Semis & memory",
+   "price": 194.63,
+   "chg_pct": -8.5,
+   "support": null,
+   "pivot": 223,
+   "resistance": 202,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 212: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "SPCX",
+   "group": "Other large caps",
+   "price": 137.31,
+   "chg_pct": -3.56,
+   "support": 120,
+   "pivot": 146,
+   "resistance": 141,
+   "shift": "support down, resistance down",
+   "status": "Below break 142: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "LITE",
+   "group": "Last night's top 3",
+   "price": 818.61,
+   "chg_pct": -9.35,
+   "support": 795,
+   "pivot": 825,
+   "resistance": 820,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Below break 895: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "GLD",
+   "group": "Last night's top 3",
+   "price": 356.92,
+   "chg_pct": -3.25,
+   "support": 356,
+   "pivot": 358,
+   "resistance": 358,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 368: plan off",
+   "tone": "neg"
+  }
+ ],
+ "events": [
+  {
+   "tk": "GOOGL",
+   "text": "Below break 280: plan off",
+   "tone": "neg"
+  }
+ ],
+ "generated": "2026-10-30T17:08Z"
+}
