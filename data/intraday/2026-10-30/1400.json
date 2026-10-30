@@ -1,0 +1,207 @@
+{
+ "date": "2026-10-30",
+ "slot": "14:00",
+ "asof": "14:03 ET",
+ "rows": [
+  {
+   "tk": "SPY",
+   "group": "Index",
+   "price": 753.57,
+   "chg_pct": -1.5,
+   "support": null,
+   "pivot": 770,
+   "resistance": 767,
+   "shift": "resistance down",
+   "status": "Below break 765: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "QQQ",
+   "group": "Index",
+   "price": 686.78,
+   "chg_pct": -2.66,
+   "support": null,
+   "pivot": 697,
+   "resistance": 691,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 705: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "AAPL",
+   "group": "Mega-cap tech",
+   "price": 344.15,
+   "chg_pct": -2.16,
+   "support": 302,
+   "pivot": 348,
+   "resistance": 345,
+   "shift": "resistance down",
+   "status": "Below break 350: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "GOOGL",
+   "group": "Mega-cap tech",
+   "price": 278.64,
+   "chg_pct": -1.29,
+   "support": 260,
+   "pivot": 281,
+   "resistance": 285,
+   "shift": "support up, pivot down, resistance down",
+   "status": "Below break 280: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "AMZN",
+   "group": "Mega-cap tech",
+   "price": 238.95,
+   "chg_pct": 8.34,
+   "support": 202,
+   "pivot": 244,
+   "resistance": 245,
+   "shift": "pivot up, resistance up",
+   "status": "Through resistance 225",
+   "tone": "pos"
+  },
+  {
+   "tk": "NVDA",
+   "group": "Mega-cap tech",
+   "price": 202.37,
+   "chg_pct": -4.61,
+   "support": null,
+   "pivot": 194,
+   "resistance": 215,
+   "shift": "pivot down",
+   "status": "Below break 210: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "TSLA",
+   "group": "Mega-cap tech",
+   "price": 395.53,
+   "chg_pct": -1.23,
+   "support": 395,
+   "pivot": 397,
+   "resistance": 402,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Below break 398: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "AVGO",
+   "group": "Mega-cap tech",
+   "price": 322.04,
+   "chg_pct": -5.47,
+   "support": 285,
+   "pivot": 327,
+   "resistance": 338,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Below break 340: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "AMD",
+   "group": "Semis & memory",
+   "price": 497.18,
+   "chg_pct": -7.8,
+   "support": 472,
+   "pivot": 512,
+   "resistance": 498,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Below break 538: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "TSM",
+   "group": "Semis & memory",
+   "price": 402.37,
+   "chg_pct": -5.55,
+   "support": null,
+   "pivot": 422,
+   "resistance": 425,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 425: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "MU",
+   "group": "Semis & memory",
+   "price": 868.9,
+   "chg_pct": -4.82,
+   "support": 865,
+   "pivot": 908,
+   "resistance": 930,
+   "shift": "pivot down, resistance up",
+   "status": "Below break 912: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "SNDK",
+   "group": "Semis & memory",
+   "price": 1128.84,
+   "chg_pct": -12.18,
+   "support": 1125,
+   "pivot": 1180,
+   "resistance": 1135,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 1,285: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "MRVL",
+   "group": "Semis & memory",
+   "price": 191.35,
+   "chg_pct": -10.04,
+   "support": null,
+   "pivot": 223,
+   "resistance": 202,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 212: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "SPCX",
+   "group": "Other large caps",
+   "price": 135.96,
+   "chg_pct": -4.51,
+   "support": 120,
+   "pivot": 146,
+   "resistance": 141,
+   "shift": "support down, resistance down",
+   "status": "Below break 142: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "LITE",
+   "group": "Last night's top 3",
+   "price": 825.11,
+   "chg_pct": -8.63,
+   "support": 820,
+   "pivot": 824,
+   "resistance": 848,
+   "shift": "support down, pivot down, resistance down",
+   "status": "Below break 895: plan off",
+   "tone": "neg"
+  },
+  {
+   "tk": "GLD",
+   "group": "Last night's top 3",
+   "price": 355.55,
+   "chg_pct": -3.62,
+   "support": 325,
+   "pivot": 356,
+   "resistance": 356,
+   "shift": "pivot down, resistance down",
+   "status": "Below break 368: plan off",
+   "tone": "neg"
+  }
+ ],
+ "events": [
+  {
+   "tk": "TSLA",
+   "text": "Below break 398: plan off",
+   "tone": "neg"
+  }
+ ],
+ "generated": "2026-10-30T18:07Z"
+}
