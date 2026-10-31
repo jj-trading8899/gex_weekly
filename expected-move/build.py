@@ -264,7 +264,9 @@ def svg(d):
 
     # level labels: de-collide vertically, then dodge the day text
     FS, LS = 19, 1.4
-    marks = [(d["callwall"], d["ceilLabel"], RD, 0), (d["spot"], "SPOT", A, 1),
+    # The spot level is carried by the dashed line and the NOW pill at the left;
+    # it needs no gutter label of its own.
+    marks = [(d["callwall"], d["ceilLabel"], RD, 0),
              (d["putwall"], d["floorLabel"], G, 0), (d["brk"], "IF FLOOR BREAKS &#8594;", M, 2)]
     if abs(d["callwall"] - d["pin"]) / d["spot"] >= .0015:
         marks.insert(1, (d["pin"], "PIN", A, 0))
@@ -310,6 +312,9 @@ def svg(d):
     nl = "NOW %s" % f(d["spot"])
     nw = tw(nl, 19) + 26
     ny = Y(d["spot"])
+    # dashed spot line, previously drawn as part of the (now removed) gutter mark
+    o.append('<line x1="104" y1="%.1f" x2="%d" y2="%.1f" stroke="%s" stroke-width="1.4" '
+             'opacity=".65" stroke-dasharray="7 6"/>' % (ny, CR + 4, ny, A))
     o.append('<rect x="16" y="%.1f" width="%.1f" height="32" rx="8" fill="%s"/>'
              '<text x="%.1f" y="%.1f" text-anchor="middle" fill="#231d05" font-size="19" font-weight="700">%s</text>'
              % (ny - 16, nw, A, 16 + nw / 2, ny + 7, nl))
