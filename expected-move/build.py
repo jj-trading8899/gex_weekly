@@ -87,9 +87,9 @@ def damping(r):
 def directions(ser, gexstr, pin, spot):
     """gexstr>=4 mean-reverts (alternate); <=2 follows pin migration.
 
-    The centre path pulls toward the pin, so when the pin sits above spot the
-    midweek day leans up even inside a falling-pin regime; that is the
-    mean-reversion component, not a directional call.
+    The midweek day is turned toward the pin when it sits on the far side of
+    spot; that is the mean-reversion component, not a directional call. The
+    band centre itself only pulls toward the pin when pin_pull() allows it.
     """
     pins = [r["pin"] for _, r in ser][-4:]
     falling = len(pins) >= 2 and pins[-1] < pins[0]
@@ -133,7 +133,17 @@ def headline(tick, lv, spot, cont, buydip_null, ser, vexflip):
     return "The pin's still in charge."
 
 
-def project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, opex_friday=True):
+def pin_pull(row):
+    """The pin only pulls price when the book is not short and has strength.
+
+    Scored 12-30 Oct: with bias short and strength at the bottom of the scale the
+    pin sat above spot every week and acted as a ceiling; centring toward it
+    leaned the band up 9 of 9 times while the market fell 9 of 9.
+    """
+    return row["bias"] != "short" and row["gexstr"] >= 3
+
+
+def project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, opex_friday=True, pull=True):
     C = lv["callwall"] - lv["putwall"]
     Ceff = C * dampf
     h_struct = 0.40 * Ceff
@@ -146,7 +156,7 @@ def project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, opex_friday=True)
 
     ramp = [1.00, 1.04, 1.08, 1.12, 1.00]
     opex = [1, 1, 1, 1, 1.8 if opex_friday else 1.0]
-    w = [0.2, 0.3, 0.5, 0.45, 0.1]
+    w = [0.2, 0.3, 0.5, 0.45, 0.1] if pull else [0.0] * 5
     # Mid-week: compress the remaining weights so the path still lands on Friday.
     days, carry = [], spot
     for i in range(n_done, 5):
@@ -165,7 +175,8 @@ def project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, opex_friday=True)
         carry = c
     meta = dict(C=round(C, 2), dampf=round(dampf, 3), sigma=round(sig, 2),
                 h_struct=round(h_struct, 2), h_real=round(h_real, 2), floored=floored,
-                onfloor=onfloor, vexw=round(vw, 3), cont=round(C / sig, 2) if sig else None)
+                onfloor=onfloor, vexw=round(vw, 3), cont=round(C / sig, 2) if sig else None,
+                pull=pull)
     return days, meta
 
 # ------------------------------------------------------------------ renderer
@@ -366,8 +377,10 @@ def fmt(v, dp):
 
 
 def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_date,
-        blend=None, extra=""):
+        blend=None, extra="", pull=None):
     """Assemble one chart's data object, rail and note."""
+    if pull is None:
+        pull = pin_pull(ser[-1][1])
     # week[0] is the next trading day; its weekday is how many days already closed.
     monday = wk_start - dt.timedelta(days=wk_start.weekday())
     n_done = wk_start.weekday()
@@ -386,7 +399,7 @@ def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_da
     n_done = len(actuals)
     gexstr = ser[-1][1]["gexstr"]
     dirs = directions(ser, gexstr, lv["pin"], spot)
-    days, meta = project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done)
+    days, meta = project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, pull=pull)
     cont = meta["cont"]
     d = dict(ticker=tag, dp=dp, spot=round(spot, dp), pin=round(lv["pin"], dp),
              callwall=round(lv["callwall"], dp), putwall=round(lv["putwall"], dp),
@@ -414,6 +427,9 @@ def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_da
     else:
         bits.append("Structural width governs: %s of corridor against %s of average daily movement."
                     % (fmt(meta["C"], dp), fmt(meta["sigma"], dp)))
+    if not pull:
+        bits.append("Positioning is short or weak, so the bands are centred on the close and the "
+                    "pin is treated as a ceiling, not a target.")
     if meta["onfloor"]:
         bits.append("No bid near spot and spot already on the put wall, so the lower clip is "
                     "released rather than printing identical lows.")
@@ -450,7 +466,8 @@ def main():
                          wS * damping(S) + wY * damping(Y),
                          wS * sigma(spx) + wY * (sigma(spy) * k), wS * vS + wY * vY,
                          fS or fY, S["buydip"] is None and Y["buydip"] is None,
-                         wk_start, cap_date, blend=(wS, wY, k))
+                         wk_start, cap_date, blend=(wS, wY, k),
+                         pull=pin_pull(S) and pin_pull(Y))
     lvY = dict(pin=Y["pin"], callwall=Y["callwall"], putwall=Y["putwall"],
                brk=Y["brk"], flip=Y["flip"])
     dY, rY, nY, mY = one("SPY", spy, lvY, Y["spot"], 2, damping(Y), sigma(spy), vY, fY,
