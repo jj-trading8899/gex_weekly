@@ -332,8 +332,13 @@ def headlines(stats):
         def on_flip(t):   # a "pulled" name sitting on its flip: the pull only holds while it stays above
             s = S[t]
             return s["flip"] is not None and abs(s["spot"] - s["flip"]) / s["spot"] < 0.004
-        p = [f"<b>{t}</b> toward {lv}" + (f" (only while it holds its ${S[t]['flip']:.0f} flip)" if on_flip(t) else "")
-             for t, lv in pulled]
+        def note(t):   # keep the pull honest when the name is on its flip or has little underneath it
+            if on_flip(t):
+                return f" (only while it holds its ${S[t]['flip']:.0f} flip)"
+            if not S[t]["sup"] or S[t]["sup_thin"]:
+                return " (with little support underneath)"
+            return ""
+        p = [f"<b>{t}</b> toward {lv}" + note(t) for t, lv in pulled]
         p[0] = p[0].replace("</b> toward", "</b> is pulled toward")
         sentences.append((p[0] if len(p) == 1 else ", ".join(p[:-1]) + ", and " + p[-1]) + ".")
     if sentences:
