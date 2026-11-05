@@ -321,7 +321,11 @@ def headlines(stats):
         if s["flip"] is not None and s["spot"] < s["flip"]:   # below its flip: not a "pulled toward" name
             below.append(s); used.add(s["t"])
             continue
-        if s["sup"] and s["wall"] and not s["sup_thin"] and (s["wall"] - s["sup"]) / s["spot"] < 0.03:
+        if s["opex_net"] < 0:   # above its flip but net negative into opex: nothing is pulling it up
+            fl = f" its ${s['flip']:.0f} flip" if s["flip"] is not None else " its flip"
+            boxed.append(f"<b>{s['t']}</b> is above{fl} but net negative into opex ({fmt_k(s['opex_net'])}), "
+                         f"so rallies may struggle")
+        elif s["sup"] and s["wall"] and not s["sup_thin"] and (s["wall"] - s["sup"]) / s["spot"] < 0.03:
             boxed.append(f"<b>{s['t']}</b> is boxed between ${strike_s(s['sup'])} and ${strike_s(s['wall'])}")
         elif s["targets"]:
             pulled.append((s["t"], span(s["targets"])))
