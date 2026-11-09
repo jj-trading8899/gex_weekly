@@ -33,6 +33,10 @@ Change tickers by setting `window.TE_TICKERS = ['NVDA', ...]` before pasting the
 - Matrix: the 9 largest strikes per expiry within ±15% of spot, labelled resist / support / anchor / trigger.
 - Levels (from the opex expiry): pin = TradeEcho anchor; cap = largest positive strike above spot; support = largest positive strike below spot ("thin" if under 10% of the biggest strike); flip = TradeEcho flip point.
 - Regime pill: "on the flip" within 0.4% of it, "below flip" if spot is under it, otherwise "pinning". TradeEcho rating 3 or lower downgrades "pinning" to amber.
+- Key levels: positioning summed per strike across the matrix expiries (opex weighted 1.5). Resistance comes in two tiers: first (nearest level at least 25% of the biggest) and major cap (the biggest). Negative levels above spot are air pockets; negative levels below are "no support". A support is only called a buy zone when the board is positive, price is above the flip zone, and the measured hold rate is at least 50% and 5 points better than a plain strike; otherwise it is "weak support".
+- Odds are measured, not modelled: `calibrate()` replays every saved snapshot up to the build date and counts how often a later close went through a strike within 5 sessions, by side, distance (in the stock's typical daily move) and size of positioning. Small samples are pulled toward the rate for all strikes at that distance. Each level shows its rate next to the plain-strike rate.
+- Flip: the middle of the last 3 sessions' TradeEcho flip, shown as a zone (low to high of those sessions) and flagged when it moved more than 3% of price in a day.
+- Lean: net positioning into opex leads (negative = bigger swings), the flip zone refines it. The pin is shown for reference only.
 - The read paragraph is generated from these numbers. No hand-written text, so every run is reproducible.
 
 ## Notes

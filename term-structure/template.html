@@ -170,8 +170,9 @@ if(!(P.headlines||[]).length) document.getElementById("hl").hidden = true;
   const LEAN={
     down:{i:"↓",w:"Downside-prone",c:"#f87171"},
     edge:{i:"⇅",w:"On the edge",c:"#e0b23a"},
+    swing:{i:"↕",w:"Big swings likely",c:"#ff9a47"},
     shaky:{i:"↘",w:"Shaky",c:"#d08a4a"},
-    up:{i:"↗",w:"Pulled up",c:"#34d399"},
+    up:{i:"≈",w:"Steadier",c:"#34d399"},
     range:{i:"↔",w:"Range-bound",c:"#34d399"},
   };
   const px=(v)=>v==null?null:(v>=1000?v.toFixed(0):(v%1===0?v.toFixed(0):String(+v.toFixed(2))));
@@ -182,19 +183,21 @@ if(!(P.headlines||[]).length) document.getElementById("hl").hidden = true;
     h+='<div class="ag-row"><div class="ag-ic" style="color:'+L.c+dim+'">'+L.i+'</div>';
     h+='<div class="ag-hd"><span class="tk">'+g.t+'</span><span class="px">$'+g.spot.toFixed(2)+'</span><span class="ln" style="color:'+L.c+dim+'">'+L.w+'</span>'+(g.thin?'<span class="ag-thin">THIN</span>':'')+'</div>';
     h+='<div class="ag-lv">';
-    if(g.flip!=null) h+='<span>flip <b style="color:#7aa2ff">$'+px(g.flip)+'</b></span>';
-    h+='<span>up to '+(g.up!=null?'<b style="color:#f87171">$'+px(g.up)+' cap</b>':'<b style="color:#c3cad6">no cap</b>')+'</span>';
-    h+='<span>down to '+(g.down!=null?'<b style="color:#ff9a47">$'+px(g.down)+'</b>':'<b style="color:#c3cad6">no floor</b>')+'</span>';
+    if(g.flip!=null) h+='<span>flip '+(g.flipWide?'zone <b style="color:#7aa2ff">$'+px(Math.round(g.flipLo))+'–'+px(Math.round(g.flipHi))+'</b>':'<b style="color:#7aa2ff">$'+px(g.flip)+'</b>')+(g.flipJump?' <span style="color:#e0b23a">moved today</span>':'')+'</span>';
+    h+='<span>'+(g.up!=null?'first resistance <b style="color:#f87171">$'+px(g.up)+'</b>'+(g.cap!=null?' · cap <b style="color:#f87171">$'+px(g.cap)+'</b>':''):'<b style="color:#c3cad6">no resistance near</b>')+'</span>';
+    const dk=g.downKind==="buy"?["support","#34d399"]:g.downKind==="weak"?["weak support","#8fbfa8"]:["no support at","#ff9a47"];
+    h+='<span>'+(g.down!=null?dk[0]+' <b style="color:'+dk[1]+'">$'+px(g.down)+'</b>':'<b style="color:#c3cad6">no level below</b>')+'</span>';
     h+='<span>board <b style="color:'+(g.board>=0?'#34d399':'#f87171')+'">'+bd(g.board)+'</b></span>';
     h+='</div></div>';
   }
   document.getElementById("ag-list").innerHTML=h;
-  document.getElementById("ag-key").innerHTML='<b>Lean</b> is how the next move is likely to behave, not a forecast: '+
-    '<span style="color:#f87171">↓ downside-prone</span> (below flip, negative board: drops tend to run) · '+
-    '<span style="color:#e0b23a">⇅ on the edge</span> (within 0.4% of flip: the next close decides) · '+
-    '<span style="color:#d08a4a">↘ shaky</span> (above flip but little underneath, or below flip with a positive board) · '+
-    '<span style="color:#34d399">↗ pulled up / ↔ range-bound</span> (positive board above the flip: moves get absorbed). '+
-    '<b>Up to</b> = first cap overhead · <b>Down to</b> = solid support, or where selling speeds up · <b>Board</b> = net positioning into '+P.nextOpex+' opex · <b>thin</b> = board under ±2K, weak signal.';
+  document.getElementById("ag-key").innerHTML='<b>Lean</b> is how the next move is likely to behave, not a forecast. Net positioning into opex leads, because it has tracked the size of the next day\'s move best: '+
+    '<span style="color:#f87171">↓ downside-prone</span> (negative board and below the flip zone) · '+
+    '<span style="color:#ff9a47">↕ big swings likely</span> (negative board, on or above the flip zone) · '+
+    '<span style="color:#d08a4a">↘ shaky</span> (positive board but below the flip zone) · '+
+    '<span style="color:#e0b23a">⇅ on the edge</span> (positive board, inside the flip zone: the next close decides) · '+
+    '<span style="color:#34d399">≈ steadier / ↔ range-bound</span> (positive board above the flip zone: swings have been smaller). '+
+    '<b>Flip</b> = middle of the last 3 sessions; shown as a zone when it has been moving · <b>First resistance</b> = nearest level that matters; <b>cap</b> = biggest level overhead · <b>Board</b> = net positioning into '+P.nextOpex+' opex · <b>thin</b> = board under ±2K, weak signal.';
 })();
 
 const grid = document.getElementById("grid");
@@ -221,8 +224,8 @@ DATA.forEach(d=>{
     <div><span class="range">Range: ${d.range}</span></div>
     <div class="strip">${strip}</div>
     <div class="lv">
-      <span class="chip k-pin"><span class="k">Pin</span><b>${d.pin}</b></span>
-      <span class="chip k-wall"><span class="k">Cap</span><b>${d.wall}</b></span>
+      <span class="chip k-pin"><span class="k">Pin (ref)</span><b>${d.pin}</b></span>
+      <span class="chip k-wall"><span class="k">Resistance</span><b>${d.wall}</b></span>
       <span class="chip k-sup"><span class="k">Support</span><b>${d.sup}</b></span>
       <span class="chip k-flip"><span class="k">Flip</span><b>${d.flip}</b></span>
     </div>
@@ -236,7 +239,7 @@ DATA.forEach(d=>{
     ceiling:{c:"#f87171",bg:"rgba(248,113,113,.10)",g:"▼",w:"RESIST"},
     floor:{c:"#34d399",bg:"rgba(52,211,153,.10)",g:"▲",w:"SUPPORT"},
     anchor:{c:"#e0b23a",bg:"rgba(224,178,58,.12)",g:"◆",w:"ANCHOR"},
-    trap:{c:"#ff9a47",bg:"rgba(255,154,71,.10)",g:"▽",w:"VOL TRIG"},
+    trap:{c:"#ff9a47",bg:"rgba(255,154,71,.10)",g:"▽",w:"GAP"},
   };
   const STR={strong:{d:"●●●",o:1},mild:{d:"●●○",o:.85},weak:{d:"●○○",o:.6}};
   const md=(iso)=>{const p=iso.split("-");return (+p[1])+"/"+(+p[2]);};
@@ -280,8 +283,8 @@ DATA.forEach(d=>{
     h+='<div class="nv-h">'+D.t+' — Full Term Structure <span style="font-size:11px;color:#8a90a0;font-weight:400;">per-strike positioning</span></div>';
     h+='<div class="nv-sub">$'+SPOT.toFixed(2)+' <span style="color:#9aa0b0">EOD</span> · snapshot '+SNAPSHOT+' · net '+lean(opex.net)+' into '+opexLbl+' opex</div>';
     let intro='<b>'+D.t+'</b> at <b>$'+SPOT.toFixed(2)+'</b>. Front expiry ('+labels[0]+') is net '+lean(front.net)+' ('+money(front.net)+')';
-    if(nTrap) intro+=', with a trigger near <span style="color:#ff9a47">$'+kfmt(nTrap.k)+' ('+money(nTrap.g)+')</span> where moves can speed up';
-    intro+='. Into <b>'+opexLbl+' opex</b> net '+money(opex.net)+(anchor?', anchored by a <b>$'+kfmt(anchor.k)+' '+(anchor.role==="anchor"?"pin":"magnet")+' ('+money(anchor.g)+')</b>':'')+'.';
+    if(nTrap) intro+=', with a gap near <span style="color:#ff9a47">$'+kfmt(nTrap.k)+' ('+money(nTrap.g)+')</span> where nothing is holding price';
+    intro+='. Into <b>'+opexLbl+' opex</b> net '+money(opex.net)+(anchor?', with its biggest level at <b>$'+kfmt(anchor.k)+' ('+money(anchor.g)+')</b>':'')+'.';
     h+='<div class="nv-story">'+intro+'</div>';
     h+='<div class="nv-lgd">';
     for(const k of ["ceiling","floor","anchor","trap"]){const R=ROLE[k];h+='<span style="color:'+R.c+'">'+R.g+' <b>'+R.w+'</b></span>';}
@@ -289,44 +292,53 @@ DATA.forEach(d=>{
     h+='<span style="margin-left:auto;color:#7a8090;">●●● strong · ●●○ mild · ●○○ weak</span></div>';
     // ---- Key levels to trade (plain-language ladder with odds) ----
     const KIND={
-      sell:{c:"#f87171",bg:"rgba(248,113,113,.12)",w:"SELL ZONE",a:"Sell / trim into it. Rallies tend to stall here first."},
-      buy:{c:"#34d399",bg:"rgba(52,211,153,.12)",w:"BUY ZONE",a:"Buy dips into it. Expect a bounce on the first test."},
-      trigger:{c:"#ff9a47",bg:"rgba(255,154,71,.12)",w:"BREAK TRIGGER",a:"Not support. If lost, selling speeds up — stop below, don't buy above until reclaimed."},
-      pin:{c:"#e0b23a",bg:"rgba(224,178,58,.12)",w:"PIN",a:"Price gravitates here into expiry. Fade moves away from it while it holds."},
+      sell:{c:"#f87171",bg:"rgba(248,113,113,.12)",w:"SELL ZONE",a:"Sell / trim into it. Rallies have stalled at levels like this more often than at a plain strike."},
+      buy:{c:"#34d399",bg:"rgba(52,211,153,.12)",w:"BUY ZONE",a:"Buy dips into it. Levels like this have held more often than not in this setup."},
+      weak:{c:"#8fbfa8",bg:"rgba(143,191,168,.12)",w:"WEAK SUPPORT",a:"Not a buy level on its own. Supports like this have broken about as often as a plain strike; wait for a close back above it."},
+      pocket:{c:"#7aa2ff",bg:"rgba(122,162,255,.12)",w:"AIR POCKET",a:"Little resistance here. Don't lean on it as a sell level; a rally that gets here can keep going."},
+      trigger:{c:"#ff9a47",bg:"rgba(255,154,71,.12)",w:"NO SUPPORT",a:"Nothing holding price here. Don't rest buys at it; keep stops beyond the next real level."},
+      pin:{c:"#e0b23a",bg:"rgba(224,178,58,.12)",w:"PIN (REFERENCE)",a:"TradeEcho's pin. It moves a lot day to day, so use it as a reference, not a target."},
     };
     const L=D.ladder||[];
     if(L.length){
-      const sells=L.filter(r=>r.kind==="sell"), buys=L.filter(r=>r.kind==="buy"), trigs=L.filter(r=>r.kind==="trigger");
-      const best=(arr)=>arr.length?arr.reduce((a,b)=>(b.odds||0)>(a.odds||0)?b:a):null;
-      const bs=best(sells), bb=best(buys), bt=trigs.length?trigs.reduce((a,b)=>b.k>a.k?b:a):null;
-      const above=D.flip==null||SPOT>=D.flip;
+      const sells=L.filter(r=>r.kind==="sell"), sups=L.filter(r=>r.kind==="buy"||r.kind==="weak"), pockets=L.filter(r=>r.kind==="pocket");
+      const first=sells.find(r=>r.tier==="first"||r.tier==="both"), major=sells.find(r=>r.tier==="major");
+      const near=sups.length?sups.reduce((a,b)=>b.k>a.k?b:a):null;
+      const pk=pockets.length?pockets.reduce((a,b)=>b.k<a.k?b:a):null;
+      const sess=(P.cal&&P.cal.sessions)||0;
       let plan='<b style="color:#e0b23a">Plan:</b> ';
-      if(bb) plan+='buy toward <b style="color:#34d399">$'+kfmt(bb.k)+'</b> ('+bb.odds+'% holds), ';
-      else plan+='no real buy level below spot — ';
-      if(bs) plan+='sell / take profit into <b style="color:#f87171">$'+kfmt(bs.k)+'</b> ('+bs.odds+'% holds)';
-      if(bt) plan+='; invalid below <b style="color:#ff9a47">$'+kfmt(bt.k)+'</b> ('+bt.odds+'% accelerates)';
-      plan+='. '+(above?'Above the flip, so dips are more likely to get bought.':'<span style="color:#f87171">Below the flip</span>, so bounces are weaker and breaks run further — size down.');
-      h+='<div class="tl"><div class="tl-t">'+D.t+' <span>· key levels to trade · odds are positioning-based estimates, not forecasts</span></div>';
+      if(near&&near.kind==="buy") plan+='buy dips toward <b style="color:#34d399">$'+kfmt(near.k)+'</b> (held '+near.odds+'%); ';
+      else if(near) plan+='no reliable buy level: <b style="color:#8fbfa8">$'+kfmt(near.k)+'</b> is weak support (held '+near.odds+'%); ';
+      else plan+='no support level below spot; ';
+      if(first) plan+='trim into <b style="color:#f87171">$'+kfmt(first.k)+'</b> (held '+first.odds+'%)';
+      if(major) plan+=', major cap <b style="color:#f87171">$'+kfmt(major.k)+'</b> (held '+major.odds+'%)';
+      if(pk) plan+='; little resistance at <b style="color:#7aa2ff">$'+kfmt(pk.k)+'</b>';
+      plan+='. '+(D.board<0?'<span style="color:#f87171">Net negative into opex</span>: expect bigger swings and size down.':(D.pos==="below"?'Positive board but below the flip zone: wait for a close back above it.':(D.pos==="in"?'Positive board, inside the flip zone: the next close decides.':'Net positive into opex and above the flip zone: swings have been smaller.')));
+      h+='<div class="tl"><div class="tl-t">'+D.t+' <span>· key levels to trade · odds '+(sess?'measured over '+sess+' past sessions':'are starting estimates until history builds')+', not forecasts</span></div>';
       h+='<div class="tl-plan">'+plan+'</div>';
       h+='<table><tr><th>LEVEL</th><th>VS SPOT</th><th>ROLE</th><th>STRENGTH</th><th>WHAT TO DO</th><th style="text-align:right">ODDS</th></tr>';
       let spotDone=false, flipDone=D.flip==null;
       for(const r of L){
         if(!spotDone && r.k<=SPOT){ h+='<tr class="spot"><td colspan="6">◆ SPOT $'+SPOT.toFixed(2)+'</td></tr>'; spotDone=true; }
-        if(r.kind==="flip"){ h+='<tr class="flip"><td colspan="6">┆ FLIP $'+kfmt(r.k)+' — dampening above, amplifying below</td></tr>'; flipDone=true; continue; }
+        if(r.kind==="flip"){ h+='<tr class="flip"><td colspan="6">┆ FLIP ZONE '+(r.lo!=null?'$'+r.lo.toFixed(0)+'–'+r.hi.toFixed(0)+' · 3-session middle $'+kfmt(r.k):'$'+kfmt(r.k))+(r.jump?' · moved today, treat loosely':'')+' — swings a little smaller above, bigger below</td></tr>'; flipDone=true; continue; }
         const K=KIND[r.kind]; const d=(r.k-SPOT)/SPOT*100;
+        const holds=r.kind==="sell"||r.kind==="buy"||r.kind==="weak";
         const oddsLbl=r.odds==null?'—':r.odds+'%';
-        const oddsWhat=r.kind==="trigger"?"accelerates":"holds";
+        const edge=r.odds==null?0:r.odds-r.base;
+        const oddsWhat=r.odds==null?'':(holds?'held':'closed through')+'<br>'+(Math.abs(edge)<5?'same as plain strike':(edge>0?'+':'−')+Math.abs(edge)+' vs plain strike');
         const agree=r.n!=null?' · '+r.n+'/'+N+' expiries':'';
+        const tier=r.tier==="first"?' <span class="tag" style="color:#f87171;background:rgba(248,113,113,.12)">FIRST</span>':r.tier==="major"?' <span class="tag" style="color:#f87171;background:rgba(248,113,113,.12)">MAJOR CAP</span>':r.tier==="both"?' <span class="tag" style="color:#f87171;background:rgba(248,113,113,.12)">FIRST + CAP</span>':'';
         h+='<tr><td class="lv" style="color:'+K.c+'">$'+kfmt(r.k)+(r.pin?' <span class="tag" style="color:#e0b23a;background:rgba(224,178,58,.12)">PIN</span>':'')+'</td>';
-        h+='<td class="dist">'+(d>=0?'+':'')+d.toFixed(1)+'%</td>';
-        h+='<td><span class="tag" style="color:'+K.c+';background:'+K.bg+'">'+K.w+'</span></td>';
+        h+='<td class="dist">'+(d>=0?'+':'')+d.toFixed(1)+'%'+(r.dm!=null?'<div style="font-size:8px;color:#7a8090">'+r.dm.toFixed(1)+'× day move</div>':'')+'</td>';
+        h+='<td><span class="tag" style="color:'+K.c+';background:'+K.bg+'">'+K.w+'</span>'+tier+'</td>';
         h+='<td><div class="bar"><i style="width:'+Math.round((r.strength||0)*100)+'%;background:'+K.c+'"></i></div><div style="font-size:8px;color:#7a8090;margin-top:2px">'+Math.round((r.strength||0)*100)+'% of board'+agree+'</div></td>';
-        h+='<td class="act">'+K.a+'</td>';
-        h+='<td class="odds" style="color:'+K.c+'">'+oddsLbl+'<div style="font-size:8px;color:#7a8090;font-weight:400">'+(r.odds==null?'':oddsWhat)+'</div></td></tr>';
+        const act=(r.kind==="sell"&&edge<5)?"Sell / trim into it. At this distance it has held about as often as any strike, so distance is doing the work.":K.a;
+        h+='<td class="act">'+act+'</td>';
+        h+='<td class="odds" style="color:'+K.c+'">'+oddsLbl+'<div style="font-size:8px;color:#7a8090;font-weight:400">'+oddsWhat+'</div></td></tr>';
       }
       if(!spotDone) h+='<tr class="spot"><td colspan="6">◆ SPOT $'+SPOT.toFixed(2)+'</td></tr>';
       h+='</table>';
-      h+='<div class="tl-note">Odds = how likely the level holds on its first test (or, for a break trigger, that a break through it speeds up). Scored from the size of dealer positioning at the strike, how many expiries agree, distance from spot and which side of the flip price sits. A heuristic for sizing and placement, not a measured probability.</div></div>';
+      h+='<div class="tl-note">Odds are measured, not modelled. Across the saved snapshots for these six names, they show how often a level of this size, at this distance, <b>held</b> (no close beyond it in the next '+((P.cal&&P.cal.horizon)||5)+' sessions) or was <b>closed through</b>. “Plain strike” is the same measure for a strike with no meaningful positioning, so the gap between the two is what the level adds. Distance is also shown in typical daily moves for the stock ('+(D.dayMove!=null?D.dayMove.toFixed(1)+'% for '+D.t:'per stock')+'). Small sample from one period, and closes only, so intraday tests are not seen. A guide for sizing and placement, not a forecast.</div></div>';
     }
     h+='<div class="nv-mxt">'+D.t+' <span>· positioning by strike & expiry</span></div>';
     h+='<div class="nv-mx"><div class="nv-row nv-hd" style="'+gtc+'"><span>STRIKE</span>'+labels.map((c,i)=>'<span>'+c+(i===opexI?' ★':'')+'</span>').join("")+'</div>';
@@ -373,8 +385,8 @@ DATA.forEach(d=>{
     });
     h+='</div>';
     let edge='<b>THE EDGE</b> — '+D.t+' front expiry is net '+lean(front.net)+' ('+money(front.net)+')';
-    if(nTrap) edge+='; watch <span style="color:#ff9a47">$'+kfmt(nTrap.k)+'</span>, where a break can accelerate';
-    edge+='. Into <b>'+opexLbl+' opex</b> the board is '+regime(opex.net)[0].toLowerCase()+' ('+money(opex.net)+')'+(anchor?', with <b>$'+kfmt(anchor.k)+'</b> the '+(anchor.role==="anchor"?"main pin":"upside magnet"):'')+'. Structural positioning levels, not price targets — not investment advice.';
+    if(nTrap) edge+='; there is no support at <span style="color:#ff9a47">$'+kfmt(nTrap.k)+'</span>';
+    edge+='. Into <b>'+opexLbl+' opex</b> the board is '+regime(opex.net)[0].toLowerCase()+' ('+money(opex.net)+')'+(anchor?', with <b>$'+kfmt(anchor.k)+'</b> the '+"biggest level":'')+'. Structural positioning levels, not price targets — not investment advice.';
     h+='<div class="nv-edge">'+edge+'</div>';
     h+='</div>';
     return h;
@@ -386,6 +398,7 @@ document.getElementById("foot").innerHTML =
   "<b>Source:</b> TradeEcho Dealer Edge (dealer positioning and VEX summed per expiration), captured via the signed-in web app after the close. "+
   "Positioning in TradeEcho units (K = thousands of contracts); VEX in $M. Positions as of the prior session's open interest, spot at capture. "+
   "Columns run from the next expiry through the "+NEXT_OPEX+" monthly opex; the per-strike matrix adds the following Friday expiry, and the strip adds the next expiries after that. "+
+  "Odds on the key levels are measured from the saved snapshots (how often similar levels held over the next "+((P.cal&&P.cal.horizon)||5)+" closes) and are re-measured on every run. The flip is shown as the middle of the last 3 sessions. "+
   "Levels are structural, not price targets — no IV, earnings or liquidity overlay. Built "+P.capturedAt.slice(0,16).replace("T"," ")+" UTC. "+
   "Informational only, not investment advice.";
 </script>
