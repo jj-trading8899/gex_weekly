@@ -1,87 +1,87 @@
-# Options Flow Report (v1.3) — 2026-11-06
+# Options Flow Report (v1.3) — 2026-11-09
 
-**Run stats:** 52/52 tickers fetched · 0 failed · 37,886 contracts
+**Run stats:** 52/52 tickers fetched · 0 failed · 49,313 contracts
 
 ## Market Regime
 
-**risk-off · backwardation (VIX/VIX3M=1.04) · negative gamma (moves amplified) · high vol · choppy/rangebound — momentum tilted**
+**neutral risk · contango (VIX/VIX3M=0.96) · negative gamma (moves amplified) · elevated vol · choppy/rangebound — momentum tilted**
 
-`Vol: HIGH · Trend: CHOP · Risk: RISK_OFF · Gamma: NEGATIVE · SPY GEX: $-12,023M`
+`Vol: ELEVATED · Trend: CHOP · Risk: NEUTRAL · Gamma: NEGATIVE · SPY GEX: $-7,400M`
 
-_Pipeline knobs: mom×0.85 · conviction≥0.88_
+_Pipeline knobs: mom×0.85 · conviction≥0.80_
 
 ## Master Scoreboard (all tickers by composite)
 
 | Rank   | Ticker   | Composite   | Trend%   | Mom%   | Flow%   | Rot%   | Conviction   | ΔRank   |
 |:-------|:---------|:------------|:---------|:-------|:--------|:-------|:-------------|:--------|
-| 1      | XLV      | 100.0       | 100      | 94     | N/A     | 94     | CONFIRMED    | 0       |
-| 2      | XLP      | 98.4        | 98       | 88     | N/A     | 89     | CONFIRMED    | 0       |
-| 3      | XLE      | 95.1        | 95       | 83     | N/A     | 91     | NEUTRAL      | 0       |
-| 4      | XLB      | 90.2        | 90       | 79     | N/A     | 80     | NEUTRAL      | 0       |
-| 5      | XLRE     | 88.5        | 89       | 70     | N/A     | 79     | NEUTRAL      | +1      |
-| 6      | SNDK     | 86.9        | 87       | 70     | N/A     | 77     | NEUTRAL      | +14     |
-| 7      | AI       | 85.2        | 85       | 60     | N/A     | 87     | NEUTRAL      | 0       |
-| 8      | BIL      | 83.6        | 84       | 74     | N/A     | 73     | NEUTRAL      | -3      |
-| 9      | ETHA     | 78.7        | 79       | 58     | N/A     | 84     | NEUTRAL      | +8      |
-| 10     | IBIT     | 77.0        | 77       | 55     | N/A     | 86     | NEUTRAL      | +34     |
-| 11     | TLT      | 75.4        | 56       | 46     | 92      | 62     | NEUTRAL      | +4      |
-| 12     | CPER     | 73.8        | 74       | 68     | N/A     | 72     | NEUTRAL      | -3      |
-| 13     | UNH      | 73.2        | 92       | 74     | 57      | 84     | NEUTRAL      | -2      |
-| 14     | XLK      | 72.1        | 72       | 77     | N/A     | 62     | NEUTRAL      | -6      |
-| 15     | MRVL     | 72.1        | 82       | 74     | 64      | 71     | NEUTRAL      | -3      |
-| 16     | XLU      | 67.9        | 70       | 58     | 66      | 72     | NEUTRAL      | -6      |
-| 17     | AMZN     | 67.3        | 66       | 53     | 69      | 69     | NEUTRAL      | +21     |
-| 18     | SMCI     | 66.0        | 46       | 55     | 83      | 41     | NEUTRAL      | +8      |
-| 19     | IWM      | 63.9        | 64       | 61     | N/A     | 62     | NEUTRAL      | -6      |
-| 20     | MSTR     | 63.9        | 48       | 37     | 78      | 67     | NEUTRAL      | +16     |
-| 21     | HIVE     | 62.3        | 23       | 30     | 96      | 22     | CONFLICT     | +4      |
-| 22     | XLY      | 62.3        | 62       | 55     | N/A     | 64     | NEUTRAL      | -8      |
-| 23     | HYG      | 59.0        | 59       | 46     | N/A     | 64     | NEUTRAL      | -5      |
-| 24     | NVDA     | 58.0        | 57       | 63     | 59      | 46     | NEUTRAL      | +6      |
-| 25     | AAPL     | 57.1        | 97       | 80     | 23      | 94     | CONFLICT     | +3      |
-| 26     | NFLX     | 56.7        | 20       | 20     | 88      | 30     | CONFLICT     | -5      |
-| 27     | QCOM     | 55.7        | 61       | 48     | 52      | 71     | NEUTRAL      | +4      |
-| 28     | ARM      | 52.5        | 52       | 70     | N/A     | 36     | NEUTRAL      | +14     |
-| 29     | TSLA     | 51.8        | 54       | 47     | 50      | 60     | NEUTRAL      | +17     |
-| 30     | LQD      | 50.8        | 51       | 43     | N/A     | 63     | NEUTRAL      | -7      |
-| 31     | TSM      | 50.5        | 80       | 76     | 25      | 68     | CONFLICT     | +19     |
-| 32     | XLI      | 49.2        | 49       | 54     | N/A     | 50     | NEUTRAL      | +2      |
-| 33     | GOOGL    | 48.5        | 39       | 47     | 56      | 40     | NEUTRAL      | +16     |
-| 34     | SLV      | 46.7        | 36       | 47     | 56      | 33     | NEUTRAL      | -10     |
-| 35     | XLC      | 44.3        | 44       | 42     | N/A     | 52     | NEUTRAL      | +10     |
-| 36     | SPY      | 43.6        | 75       | 66     | 17      | 75     | CONFLICT     | +7      |
-| 37     | XLF      | 42.9        | 93       | 82     | 0       | 83     | CONFLICT     | +2      |
-| 38     | GLD      | 41.4        | 43       | 44     | 40      | 48     | NEUTRAL      | -16     |
-| 39     | QQQ      | 41.1        | 69       | 71     | 17      | 54     | CONFLICT     | -2      |
-| 40     | SMH      | 39.5        | 67       | 70     | 16      | 53     | CONFLICT     | +14     |
-| 41     | INTC     | 38.8        | 41       | 59     | 37      | 33     | NEUTRAL      | -1      |
-| 42     | GOOG     | 37.7        | 38       | 48     | N/A     | 38     | NEUTRAL      | +5      |
-| 43     | AVGO     | 35.3        | 28       | 33     | 42      | 27     | NEUTRAL      | +13     |
-| 44     | RIOT     | 34.4        | 34       | 44     | N/A     | 33     | NEUTRAL      | -28     |
-| 45     | RKLB     | 32.8        | 33       | 56     | N/A     | 20     | NEUTRAL      | +14     |
-| 46     | HIMS     | 31.1        | 31       | 39     | N/A     | 34     | NEUTRAL      | +2      |
-| 47     | WULF     | 30.0        | 26       | 35     | 33      | 25     | NEUTRAL      | +14     |
-| 48     | COIN     | 29.5        | 30       | 30     | N/A     | 35     | NEUTRAL      | +9      |
-| 49     | BABA     | 24.6        | 25       | 26     | N/A     | 32     | NEUTRAL      | -20     |
-| 50     | IONQ     | 21.3        | 21       | 32     | N/A     | 19     | NEUTRAL      | +2      |
-| 51     | MARA     | 18.0        | 18       | 20     | N/A     | 17     | NEUTRAL      | -18     |
-| 52     | RGTI     | 16.4        | 16       | 20     | N/A     | 14     | NEUTRAL      | -17     |
-| 53     | CLSK     | 14.8        | 15       | 21     | N/A     | 12     | NEUTRAL      | -34     |
-| 54     | CRWV     | 13.1        | 13       | 21     | N/A     | 11     | NEUTRAL      | +4      |
-| 55     | QBTS     | 11.5        | 11       | 16     | N/A     | 8      | NEUTRAL      | +5      |
-| 56     | IREN     | 9.8         | 10       | 16     | N/A     | 6      | NEUTRAL      | -1      |
-| 57     | CIFR     | 8.2         | 8        | 19     | N/A     | 2      | NEUTRAL      | -16     |
-| 58     | OPEN     | 6.6         | 7        | 4      | N/A     | 9      | NEUTRAL      | -26     |
-| 59     | EOSE     | 4.9         | 5        | 11     | N/A     | 2      | NEUTRAL      | -32     |
-| 60     | SMR      | 3.3         | 3        | 5      | N/A     | 5      | NEUTRAL      | -7      |
-| 61     | OKLO     | 1.6         | 2        | 4      | N/A     | 2      | NEUTRAL      | -10     |
+| 1      | XLV      | 100.0       | 100      | 93     | N/A     | 95     | CONFIRMED    | 0       |
+| 2      | XLP      | 96.7        | 97       | 88     | N/A     | 87     | CONFIRMED    | 0       |
+| 3      | XLE      | 95.1        | 95       | 84     | N/A     | 88     | CONFIRMED    | 0       |
+| 4      | XLB      | 90.2        | 90       | 75     | N/A     | 79     | NEUTRAL      | 0       |
+| 5      | AI       | 89.4        | 82       | 60     | 96      | 87     | NEUTRAL      | +2      |
+| 6      | XLRE     | 88.5        | 89       | 72     | N/A     | 80     | NEUTRAL      | -1      |
+| 7      | XLK      | 83.6        | 84       | 80     | N/A     | 68     | NEUTRAL      | +7      |
+| 8      | BIL      | 77.0        | 77       | 71     | N/A     | 68     | NEUTRAL      | 0       |
+| 9      | MRVL     | 75.5        | 85       | 76     | 67      | 74     | NEUTRAL      | +6      |
+| 10     | CPER     | 72.1        | 72       | 66     | N/A     | 69     | NEUTRAL      | +2      |
+| 11     | RIOT     | 69.8        | 43       | 48     | 93      | 45     | NEUTRAL      | +33     |
+| 12     | XLY      | 68.9        | 69       | 61     | N/A     | 72     | NEUTRAL      | +10     |
+| 13     | UNH      | 68.6        | 92       | 75     | 49      | 85     | NEUTRAL      | 0       |
+| 14     | IWM      | 67.2        | 67       | 64     | N/A     | 66     | NEUTRAL      | +5      |
+| 15     | SNDK     | 65.1        | 80       | 70     | 52      | 77     | NEUTRAL      | -9      |
+| 16     | AMZN     | 64.7        | 74       | 59     | 57      | 78     | NEUTRAL      | +1      |
+| 17     | HIVE     | 62.3        | 18       | 25     | 100     | 16     | CONFLICT     | +4      |
+| 18     | GLD      | 59.9        | 39       | 43     | 77      | 46     | NEUTRAL      | +20     |
+| 19     | TSM      | 59.2        | 87       | 79     | 36      | 71     | NEUTRAL      | +12     |
+| 20     | HYG      | 59.0        | 59       | 52     | N/A     | 61     | NEUTRAL      | +3      |
+| 21     | INTC     | 58.2        | 41       | 57     | 73      | 33     | CONFLICT     | +20     |
+| 22     | CLSK     | 57.0        | 16       | 23     | 91      | 13     | CONFLICT     | +31     |
+| 23     | NFLX     | 56.1        | 23       | 19     | 84      | 30     | CONFLICT     | +3      |
+| 24     | SMCI     | 55.5        | 44       | 55     | 65      | 38     | NEUTRAL      | -6      |
+| 25     | AAPL     | 55.2        | 98       | 80     | 19      | 95     | CONFLICT     | 0       |
+| 26     | XLI      | 54.1        | 54       | 56     | N/A     | 51     | NEUTRAL      | +6      |
+| 27     | SLV      | 53.9        | 34       | 47     | 71      | 31     | CONFLICT     | +7      |
+| 28     | ARM      | 53.9        | 62       | 73     | 47      | 46     | NEUTRAL      | 0       |
+| 29     | LQD      | 52.5        | 52       | 44     | N/A     | 61     | NEUTRAL      | +1      |
+| 30     | RKLB     | 50.6        | 33       | 50     | 66      | 28     | NEUTRAL      | +15     |
+| 31     | SMH      | 50.3        | 75       | 75     | 29      | 64     | CONFLICT     | +9      |
+| 32     | QCOM     | 50.2        | 61       | 46     | 41      | 72     | NEUTRAL      | -5      |
+| 33     | WULF     | 49.5        | 26       | 38     | 69      | 22     | CONFLICT     | +14     |
+| 34     | SMR      | 49.4        | 5        | 7      | 87      | 6      | CONFLICT     | +26     |
+| 35     | GOOGL    | 48.9        | 38       | 49     | 58      | 39     | NEUTRAL      | -2      |
+| 36     | XLU      | 48.6        | 64       | 57     | 35      | 65     | NEUTRAL      | -20     |
+| 37     | CIFR     | 48.6        | 8        | 18     | 83      | 3      | CONFLICT     | +20     |
+| 38     | XLC      | 47.5        | 48       | 46     | N/A     | 51     | NEUTRAL      | -3      |
+| 39     | OPEN     | 46.8        | 2        | 2      | 85      | 1      | CONFLICT     | +19     |
+| 40     | GOOG     | 46.5        | 36       | 46     | 55      | 37     | NEUTRAL      | +2      |
+| 41     | NVDA     | 46.5        | 46       | 56     | 47      | 38     | NEUTRAL      | -17     |
+| 42     | HIMS     | 46.0        | 30       | 32     | 60      | 31     | NEUTRAL      | +4      |
+| 43     | SPY      | 44.9        | 79       | 67     | 16      | 78     | CONFLICT     | -7      |
+| 44     | XLF      | 44.8        | 93       | 83     | 4       | 84     | CONFLICT     | -7      |
+| 45     | AVGO     | 44.6        | 31       | 39     | 56      | 32     | NEUTRAL      | -2      |
+| 46     | OKLO     | 43.8        | 7        | 6      | 75      | 8      | CONFLICT     | +15     |
+| 47     | QQQ      | 43.4        | 70       | 73     | 20      | 62     | CONFLICT     | -8      |
+| 48     | MSTR     | 42.7        | 49       | 37     | 37      | 62     | NEUTRAL      | -28     |
+| 49     | QBTS     | 42.7        | 11       | 19     | 69      | 11     | CONFLICT     | +6      |
+| 50     | ETHA     | 42.2        | 57       | 50     | 29      | 62     | NEUTRAL      | -41     |
+| 51     | RGTI     | 41.2        | 20       | 25     | 60      | 20     | NEUTRAL      | +1      |
+| 52     | TLT      | 41.1        | 51       | 45     | 33      | 59     | NEUTRAL      | -41     |
+| 53     | IBIT     | 38.7        | 66       | 50     | 16      | 73     | CONFLICT     | -43     |
+| 54     | TSLA     | 38.1        | 56       | 47     | 23      | 64     | NEUTRAL      | -25     |
+| 55     | COIN     | 32.8        | 25       | 27     | 40      | 31     | NEUTRAL      | -7      |
+| 56     | BABA     | 27.0        | 21       | 23     | 32      | 26     | NEUTRAL      | -7      |
+| 57     | IREN     | 25.3        | 10       | 16     | 38      | 7      | NEUTRAL      | -1      |
+| 58     | CRWV     | 25.2        | 13       | 23     | 35      | 9      | NEUTRAL      | -4      |
+| 59     | IONQ     | 24.2        | 28       | 33     | 21      | 28     | NEUTRAL      | -9      |
+| 60     | EOSE     | 19.9        | 3        | 4      | 34      | 1      | NEUTRAL      | -1      |
+| 61     | MARA     | 18.4        | 15       | 17     | 22      | 17     | NEUTRAL      | -10     |
 | N/A    | AAPX     | N/A         | N/A      | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 | N/A    | NVDU     | N/A         | N/A      | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 | N/A    | NVDX     | N/A         | N/A      | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 | N/A    | TSLL     | N/A         | N/A      | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 | N/A    | ^GSPC    | N/A         | N/A      | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 | N/A    | ^SKEW    | N/A         | N/A      | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
-| N/A    | ^VIX     | N/A         | N/A      | N/A    | 34      | N/A    | INSUFFICIENT | ·       |
+| N/A    | ^VIX     | N/A         | N/A      | N/A    | 0       | N/A    | INSUFFICIENT | ·       |
 | N/A    | ^VIX3M   | N/A         | N/A      | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 | N/A    | ^VVIX    | N/A         | N/A      | N/A    | N/A     | N/A    | INSUFFICIENT | ·       |
 
@@ -89,57 +89,57 @@ _Pipeline knobs: mom×0.85 · conviction≥0.88_
 
 | Ticker   |   RS Rating |   Rel Str 63d | RS New-High   | Dual-Mom   |
 |:---------|------------:|--------------:|:--------------|:-----------|
-| SNDK     |          99 |         -28.8 | No            | above cash |
-| XLV      |          97 |          14.8 | No            | above cash |
-| AAPL     |          96 |          15.7 | No            | above cash |
-| XLE      |          94 |           7.6 | No            | above cash |
-| UNH      |          92 |           1.7 | No            | above cash |
-| XLP      |          91 |          11.4 | No            | above cash |
-| MRVL     |          89 |         -27.6 | No            | above cash |
-| XLF      |          88 |           3.9 | No            | above cash |
-| AI       |          86 |          16   | No            | below cash |
-| XLB      |          84 |           2.8 | No            | above cash |
-| IBIT     |          83 |          21.6 | No            | below cash |
-| XLRE     |          81 |           4   | No            | above cash |
-| ETHA     |          79 |          21.6 | No            | below cash |
-| CPER     |          78 |          -1.6 | No            | above cash |
-| TSM      |          76 |          -5.4 | No            | above cash |
+| SNDK     |          99 |         -28.2 | No            | above cash |
+| XLV      |          97 |          14.6 | No            | above cash |
+| AAPL     |          96 |          17.1 | No            | above cash |
+| MRVL     |          94 |         -25.1 | No            | above cash |
+| UNH      |          92 |           1.5 | No            | above cash |
+| XLE      |          91 |           4.3 | No            | above cash |
+| XLP      |          89 |          10.1 | No            | above cash |
+| XLF      |          88 |           2.8 | No            | above cash |
+| AI       |          86 |          15   | No            | below cash |
+| AMZN     |          84 |           0.1 | No            | above cash |
+| XLB      |          83 |           2   | No            | above cash |
+| XLRE     |          81 |           4.2 | No            | above cash |
+| TSM      |          79 |          -5.6 | No            | above cash |
+| SPY      |          78 |           0   | Yes           | above cash |
+| XLK      |          76 |          -6   | No            | above cash |
 
 ## Option Skew — Extremes (top/bottom 8)
 
-| Ticker   | Group    | Tilt             |   Skew25 (vol pts) |   90-110 |   ATM IV % |   Skew/IV | Hedging            |    z | Flow        | Positioning   |
-|:---------|:---------|:-----------------|-------------------:|---------:|-----------:|----------:|:-------------------|-----:|:------------|:--------------|
-| SPY      | top 8    | put-skewed       |                8.8 |     16.4 |       19.8 |      0.45 | hedging building ↑ |  2   | Bull +24    |               |
-| QQQ      | top 8    | put-skewed       |                9.9 |     16.2 |       29.6 |      0.33 | hedging building ↑ |  1.5 | Bull +23    |               |
-| SMH      | top 8    | put-skewed       |               12.8 |     12.9 |       53.3 |      0.24 | hedging building ↑ |  3.9 | Neutral -8  |               |
-| AAPL     | top 8    | put-skewed       |                5.7 |      9.8 |       26   |      0.22 | hedging building ↑ |  1.6 | Neutral +6  |               |
-| NVDA     | top 8    | put-skewed       |               11.6 |     10.9 |       57.2 |      0.2  | hedging building ↑ |  2.9 | Neutral -8  |               |
-| TSLA     | top 8    | put-skewed       |                9.8 |     10.2 |       51.8 |      0.19 | hedging building ↑ |  2.7 | Neutral +12 |               |
-| AVGO     | top 8    | put-skewed       |               10.6 |     11   |       56.7 |      0.19 | hedging building ↑ |  3.7 | Neutral +12 |               |
-| TSLL     | top 8    | put-skewed       |               20.6 |     16.8 |      110.4 |      0.19 | hedging building ↑ |  4.3 | n/a         |               |
-| TLT      | bottom 8 | call-skewed      |               -0.2 |      0.7 |       12   |     -0.01 | steady →           | -0.3 | Neutral +12 |               |
-| BABA     | bottom 8 | least put-skewed |                0.3 |      0.3 |       48.3 |      0.01 | steady →           |  0.8 | n/a         |               |
-| OKLO     | bottom 8 | put-skewed       |                3.2 |      3.9 |       97.8 |      0.03 | hedging building ↑ |  1.2 | n/a         |               |
-| RIOT     | bottom 8 | put-skewed       |                4   |      8   |      111.9 |      0.04 | hedging building ↑ |  2.2 | n/a         |               |
-| NFLX     | bottom 8 | put-skewed       |                1.7 |      3.1 |       33.7 |      0.05 | hedging building ↑ |  1.2 | Bull +39    |               |
-| SLV      | bottom 8 | put-skewed       |                2.2 |      3.6 |       40.1 |      0.05 | steady →           |  0.6 | Neutral +6  |               |
-| GLD      | bottom 8 | put-skewed       |                1.5 |      3.7 |       23   |      0.06 | steady →           |  0.9 | Bear -22    |               |
-| WULF     | bottom 8 | put-skewed       |                8.9 |      2.1 |      109.5 |      0.08 | hedging building ↑ |  1.4 | Bear -29    | defensive     |
+| Ticker   | Group    | Tilt             |   Skew25 (vol pts) | 90-110   |   ATM IV % |   Skew/IV | Hedging            |    z | Flow        | Positioning   |
+|:---------|:---------|:-----------------|-------------------:|:---------|-----------:|----------:|:-------------------|-----:|:------------|:--------------|
+| SPY      | top 8    | put-skewed       |                5.7 | 12.0     |       15.7 |      0.36 | steady →           |  0.1 | Neutral +14 |               |
+| QQQ      | top 8    | put-skewed       |                7.2 | 13.4     |       24.7 |      0.29 | steady →           |  0.1 | Bull +47    |               |
+| AAPL     | top 8    | put-skewed       |                4.8 | 8.1      |       22.8 |      0.21 | hedging building ↑ |  1.3 | Bull +21    |               |
+| AMZN     | top 8    | put-skewed       |                4.9 | 7.3      |       32.8 |      0.15 | hedging building ↑ |  1.7 | Neutral +17 |               |
+| TSLA     | top 8    | put-skewed       |                6.5 | 7.6      |       45.3 |      0.14 | hedging building ↑ |  1.4 | Bull +44    |               |
+| AVGO     | top 8    | put-skewed       |                7.2 | 6.9      |       54   |      0.13 | hedging building ↑ |  1.6 | Bull +22    |               |
+| TSM      | top 8    | put-skewed       |                5.4 | 7.1      |       41.7 |      0.13 | hedging building ↑ |  1   | Bull +58    |               |
+| CRWV     | top 8    | put-skewed       |               14   | 6.7      |      119.4 |      0.12 | hedging building ↑ |  1.4 | Neutral +3  |               |
+| BABA     | bottom 8 | call-skewed      |               -0.6 | -0.6     |       47.9 |     -0.01 | steady →           |  0.1 | Neutral -7  |               |
+| TLT      | bottom 8 | call-skewed      |               -0.1 | N/A      |       11.5 |     -0.01 | steady →           | -0.1 | Bull +45    |               |
+| HIMS     | bottom 8 | call-skewed      |               -0.1 | 0.8      |      102.6 |     -0    | hedging building ↑ |  1.6 | Neutral +6  |               |
+| OKLO     | bottom 8 | least put-skewed |                1.6 | 1.0      |       99.2 |      0.02 | steady →           |  0.7 | Neutral +10 |               |
+| SLV      | bottom 8 | least put-skewed |                0.7 | 1.9      |       39.3 |      0.02 | steady →           | -0.4 | Neutral +1  |               |
+| WULF     | bottom 8 | put-skewed       |                2.8 | -1.4     |      108.3 |      0.03 | steady →           |  0.1 | Neutral +16 |               |
+| GLD      | bottom 8 | put-skewed       |                0.7 | 2.5      |       22.6 |      0.03 | steady →           | -0.1 | Bull +33    |               |
+| SMCI     | bottom 8 | put-skewed       |                3.6 | 1.0      |       79.9 |      0.05 | steady →           |  0.7 | Neutral +7  |               |
 
-_35 of 52 tickers had a fittable smile. Skew25 = how much more an out-of-the-money put costs than the matching out-of-the-money call, in vol points, at a constant 30-day tenor, re-derived from bid/ask mids (Yahoo's own IV field is not used). Positive = puts richer, the normal state — so read the *ranking*, not the level. Tilt is by sign: call-skewed = Skew/IV below 0; least put-skewed = 0 to 0.02; put-skewed above. Hedging = tonight's Skew/IV against the name's own previous 20 sessions: building when it is at least 1.0 standard deviations above that average (z), easing when as far below, else steady; n/a until 10 prior sessions exist. It describes protection demand, not a price forecast._
+_33 of 52 tickers had a fittable smile. Skew25 = how much more an out-of-the-money put costs than the matching out-of-the-money call, in vol points, at a constant 30-day tenor, re-derived from bid/ask mids (Yahoo's own IV field is not used). Positive = puts richer, the normal state — so read the *ranking*, not the level. Tilt is by sign: call-skewed = Skew/IV below 0; least put-skewed = 0 to 0.02; put-skewed above. Hedging = tonight's Skew/IV against the name's own previous 20 sessions: building when it is at least 1.0 standard deviations above that average (z), easing when as far below, else steady; n/a until 10 prior sessions exist. It describes protection demand, not a price forecast._
 
 ## Mega-Cap Tech Skew
 
-| Ticker   | Skew25 (vol pts)   |   90-110 |   ATM IV % | Skew/IV   | Rank     | Read                | Hedging              |   z | Flow        | Positioning   |
-|:---------|:-------------------|---------:|-----------:|:----------|:---------|:--------------------|:---------------------|----:|:------------|:--------------|
-| NVDA     | 11.6               |     10.9 |       57.2 | 0.20      | 5 of 35  | steep put skew      | hedging building ↑   | 2.9 | Neutral -8  |               |
-| AAPL     | 5.7                |      9.8 |       26   | 0.22      | 4 of 35  | steep put skew      | hedging building ↑   | 1.6 | Neutral +6  |               |
-| AMZN     | N/A                |      8.7 |       35.5 | N/A       | N/A      | put-skewed (90-110) | n/a (no fit tonight) |     | Neutral +10 |               |
-| GOOGL    | 4.1                |      6.8 |       33.6 | 0.12      | 18 of 35 | put-skewed          | hedging building ↑   | 2.2 | Neutral +9  |               |
-| TSLA     | 9.8                |     10.2 |       51.8 | 0.19      | 6 of 35  | steep put skew      | hedging building ↑   | 2.7 | Neutral +12 |               |
-| AVGO     | 10.6               |     11   |       56.7 | 0.19      | 7 of 35  | steep put skew      | hedging building ↑   | 3.7 | Neutral +12 |               |
+| Ticker   |   Skew25 (vol pts) |   90-110 |   ATM IV % |   Skew/IV | Rank     | Read           | Hedging            |    z | Flow        | Positioning   |
+|:---------|-------------------:|---------:|-----------:|----------:|:---------|:---------------|:-------------------|-----:|:------------|:--------------|
+| NVDA     |                6.5 |      6.2 |       57.6 |      0.11 | 9 of 33  | steep put skew | steady →           | -0.7 | Neutral +7  |               |
+| AAPL     |                4.8 |      8.1 |       22.8 |      0.21 | 3 of 33  | steep put skew | hedging building ↑ |  1.3 | Bull +21    |               |
+| AMZN     |                4.9 |      7.3 |       32.8 |      0.15 | 4 of 33  | steep put skew | hedging building ↑ |  1.7 | Neutral +17 |               |
+| GOOGL    |                2.6 |      3.9 |       32.7 |      0.08 | 20 of 33 | put-skewed     | steady →           |  0.9 | Neutral +3  |               |
+| TSLA     |                6.5 |      7.6 |       45.3 |      0.14 | 5 of 33  | steep put skew | hedging building ↑ |  1.4 | Bull +44    |               |
+| AVGO     |                7.2 |      6.9 |       54   |      0.13 | 6 of 33  | steep put skew | hedging building ↑ |  1.6 | Bull +22    |               |
 
-_Mega-cap tech: 5 of 6 fitted · median Skew/IV 0.19 vs 0.12 for the other names · richer downside protection than the rest of the board · steepest: NVDA, AAPL, TSLA, AVGO._
+_Mega-cap tech: 6 of 6 fitted · median Skew/IV 0.14 vs 0.09 for the other names · richer downside protection than the rest of the board · steepest: NVDA, AAPL, AMZN, TSLA, AVGO._
 
 _Flow = premium-weighted flow score: 100 × (bought calls + sold puts − sold calls − bought puts) ÷ total out-of-the-money premium, sides estimated from the last trade against bid/ask; Bull at +20 or more, Bear at −20 or less. Positioning: defensive = hedging building with Bear flow; speculative = hedging easing with Bull flow; blank otherwise. Positioning describes what is being hedged and flowed tonight. It is not a price forecast._
 
@@ -149,310 +149,361 @@ _Flow = premium-weighted flow score: 100 × (bought calls + sold puts − sold c
 
 ## T4 — OTM Flow Summary (ranked by OTM Call/Put premium ratio)
 
-|   Rank | Ticker   |   Premium Ratio |   Premium Ratio All |   Total Call Premium |   Total Put Premium |   Net Signed Premium |   Close Price | 1-Day Return   | 1-Week Return   | % Close to MA20   | % Close to MA50   | % Close to High   | % Close to Low   |   52 Week High |   52 Week Low |   MA20 |   MA50 |
-|-------:|:---------|----------------:|--------------------:|---------------------:|--------------------:|---------------------:|--------------:|:---------------|:----------------|:------------------|:------------------|:------------------|:-----------------|---------------:|--------------:|-------:|-------:|
-|      1 | NFLX     |            8.68 |                0.07 |           17,590,736 |           2,026,714 |            7,681,761 |         63.41 | -3.28%         | 2.29%           | -4.28%            | -10.73%           | -45.68%           | 3.29%            |         116.73 |         61.39 |  66.25 |  71.03 |
-|      2 | TLT      |            6.69 |                4.72 |            8,461,046 |           1,263,794 |            1,173,317 |         81.92 | -0.01%         | 1.15%           | 1.49%             | 1.92%             | -9.84%            | 7.18%            |          90.86 |         76.43 |  80.72 |  80.38 |
-|      3 | SMCI     |            5.68 |                0.83 |           10,416,790 |           1,833,140 |            3,021,923 |         28.76 | 6.20%          | -19.69%         | -13.71%           | -23.19%           | -44.05%           | 47.64%           |          51.4  |         19.48 |  33.33 |  37.44 |
-|      4 | MSTR     |            4.11 |                2.55 |           64,069,143 |          15,591,935 |           33,518,924 |        128.93 | -0.29%         | -11.18%         | -8.75%            | -10.73%           | -48.42%           | 57.60%           |         249.96 |         81.81 | 141.3  | 144.43 |
-|      5 | AMZN     |            2.34 |                2.52 |           39,271,462 |          16,771,869 |            5,666,356 |        259.3  | -0.35%         | 1.85%           | 1.97%             | 2.11%             | -9.71%            | 32.30%           |         287.2  |        196    | 254.28 | 253.95 |
-|      6 | MRVL     |            2.31 |                0.28 |           18,383,298 |           7,971,407 |           -6,512,089 |        141.2  | 5.73%          | -43.89%         | -35.00%           | -39.74%           | -57.20%           | 99.75%           |         329.88 |         70.69 | 217.24 | 234.31 |
-|      7 | NVDA     |            2.24 |                1.25 |          221,681,332 |          98,874,612 |          -26,984,208 |        186.64 | 2.78%          | -13.34%         | -11.77%           | -15.09%           | -23.31%           | 13.62%           |         243.37 |        164.27 | 211.55 | 219.81 |
-|      8 | UNH      |            2.18 |                4.19 |            7,618,683 |           3,492,101 |              744,468 |        394.15 | -0.40%         | -3.18%          | -2.64%            | 0.90%             | -14.62%           | 53.98%           |         461.62 |        255.97 | 404.82 | 390.65 |
-|      9 | SLV      |            1.84 |                0.11 |            3,334,439 |           1,810,279 |              297,640 |         46.87 | -0.13%         | -4.46%          | -4.89%            | -13.55%           | -57.32%           | 7.72%            |         109.83 |         43.51 |  49.28 |  54.21 |
-|     10 | GOOGL    |            1.79 |                0.11 |           23,105,798 |          12,938,314 |            3,238,584 |        284.78 | 0.78%          | -12.35%         | -10.29%           | -14.46%           | -30.31%           | 5.20%            |         408.61 |        270.7  | 317.44 | 332.93 |
-|     11 | TSLA     |            1.62 |                0.22 |          131,198,921 |          80,998,645 |           25,150,483 |        358.22 | 4.23%          | -11.38%         | -5.84%            | -3.74%            | -28.19%           | 20.46%           |         498.83 |        297.38 | 380.42 | 372.14 |
-|     12 | QCOM     |            1.59 |                0.29 |            5,894,748 |           3,697,403 |              931,169 |        165.41 | 5.52%          | -9.60%          | -4.64%            | -7.13%            | -36.36%           | 35.59%           |         259.92 |        121.99 | 173.46 | 178.11 |
-|     13 | AVGO     |            1.29 |                0.62 |           37,563,826 |          29,035,758 |            8,014,421 |        293.69 | 0.74%          | -16.52%         | -11.57%           | -15.58%           | -40.67%           | 1.35%            |         495    |        289.77 | 332.12 | 347.89 |
-|     14 | GLD      |            1.22 |                0.21 |           16,474,452 |          13,555,174 |           -6,695,977 |        372.52 | -0.79%         | -0.27%          | -0.07%            | -3.23%            | -26.91%           | 5.03%            |         509.7  |        354.67 | 372.79 | 384.96 |
-|     15 | ^VIX     |            1.19 |                2.03 |           27,790,036 |          33,156,935 |                    0 |         25.64 | -9.01%         | 51.63%          | 36.18%            | 51.52%            | -27.37%           | 91.63%           |          35.3  |         13.38 |  18.83 |  16.92 |
-|     16 | INTC     |            1.08 |                0.08 |           17,484,542 |          16,254,372 |            2,157,647 |         56.28 | 7.71%          | -41.09%         | -32.25%           | -42.54%           | -60.46%           | 71.12%           |         142.35 |         32.89 |  83.08 |  97.95 |
-|     17 | WULF     |            1.06 |                0.2  |            4,886,760 |           4,601,256 |           -2,761,327 |         11.37 | 12.80%         | -15.28%         | -5.66%            | -20.00%           | -61.90%           | 19.56%           |          29.84 |          9.51 |  12.05 |  14.21 |
-|     18 | TSM      |            1.01 |                0.2  |           18,291,749 |          18,110,753 |           -7,280,285 |        375.44 | 6.33%          | -14.58%         | -9.85%            | -13.02%           | -22.98%           | 40.71%           |         487.47 |        266.82 | 416.44 | 431.64 |
-|     19 | AAPL     |            0.71 |                1.25 |           26,195,152 |          36,851,193 |            3,933,952 |        342.37 | -0.52%         | -0.42%          | -0.30%            | 1.89%             | -3.66%            | 40.65%           |         355.38 |        243.42 | 343.38 | 336.01 |
-|     20 | SMH      |            0.7  |                0.08 |           40,574,013 |          57,768,337 |           -7,411,555 |        463.96 | 3.62%          | -18.27%         | -13.59%           | -17.98%           | -30.94%           | 47.27%           |         671.83 |        315.05 | 536.94 | 565.64 |
-|     21 | QQQ      |            0.65 |                0.27 |          273,657,938 |         420,060,540 |          161,888,669 |        656.1  | 1.40%          | -9.58%          | -7.28%            | -9.00%            | -13.99%           | 18.09%           |         762.86 |        555.6  | 707.64 | 720.97 |
-|     22 | SPY      |            0.27 |                0.08 |          199,308,261 |         747,628,415 |          229,134,827 |        735.29 | 0.31%          | -4.79%          | -3.68%            | -3.97%            | -5.93%            | 16.85%           |         781.62 |        629.28 | 763.36 | 765.68 |
-|     23 | XLF      |            0.17 |                0.25 |              440,725 |           2,565,080 |              243,004 |         57.16 | -0.59%         | 1.84%           | 1.65%             | 2.23%             | -4.80%            | 19.91%           |          60.04 |         47.67 |  56.23 |  55.92 |
+|   Rank | Ticker   |   Premium Ratio |   Premium Ratio All |   Total Call Premium |   Total Put Premium |   Net Signed Premium |   Close Price | 1-Day Return   | 1-Week Return   | % Close to MA20   | % Close to MA50   | % Close to High   | % Close to Low   |   52 Week High |   52 Week Low |    MA20 |    MA50 |
+|-------:|:---------|----------------:|--------------------:|---------------------:|--------------------:|---------------------:|--------------:|:---------------|:----------------|:------------------|:------------------|:------------------|:-----------------|---------------:|--------------:|--------:|--------:|
+|      1 | NFLX     |           16.58 |                0.07 |           18,696,048 |           1,127,733 |            5,723,844 |         63.95 | 0.85%          | 3.06%           | -2.98%            | -9.52%            | -45.22%           | 4.17%            |         116.73 |         61.39 |   65.91 |   70.68 |
+|      2 | RIOT     |            9.73 |               10.86 |            9,709,330 |             997,571 |            2,472,961 |         17.66 | 5.69%          | 28.53%          | 23.63%            | -2.67%            | -41.75%           | 53.57%           |          30.32 |         11.5  |   14.28 |   18.14 |
+|      3 | CIFR     |            7.55 |                1.2  |            1,674,605 |             221,776 |              618,738 |          6.81 | 4.05%          | -15.93%         | -17.13%           | -47.91%           | -77.41%           | 34.29%           |          30.14 |          5.07 |    8.22 |   13.07 |
+|      4 | GLD      |            4.32 |                0.28 |           28,327,946 |           6,558,349 |           11,547,237 |        379.53 | 1.88%          | 2.97%           | 1.84%             | -1.26%            | -25.54%           | 7.01%            |         509.7  |        354.67 |  372.66 |  384.37 |
+|      5 | MRVL     |            4.16 |                0.82 |           25,704,127 |           6,175,812 |           -7,005,458 |        154.6  | 9.49%          | -29.19%         | -26.97%           | -33.67%           | -53.13%           | 118.70%          |         329.88 |         70.69 |  211.68 |  233.06 |
+|      6 | OKLO     |            4.05 |                0.19 |            2,563,759 |             633,073 |              308,308 |         26.84 | 13.97%         | 0.11%           | 2.10%             | -19.39%           | -77.15%           | 44.81%           |         117.44 |         18.53 |   26.29 |   33.3  |
+|      7 | SLV      |            3.9  |                0.42 |           10,282,763 |           2,633,391 |               64,689 |         48.14 | 2.71%          | 1.82%           | -1.69%            | -10.81%           | -56.17%           | 9.14%            |         109.83 |         44.11 |   48.97 |   53.98 |
+|      8 | INTC     |            3.82 |                0.06 |           26,570,373 |           6,958,766 |            5,333,376 |         59.37 | 5.49%          | -35.52%         | -26.68%           | -39.01%           | -58.29%           | 80.51%           |         142.35 |         32.89 |   80.98 |   97.35 |
+|      9 | RKLB     |            3.27 |                2.66 |           16,448,416 |           5,037,736 |              521,442 |         58.86 | 10.91%         | -0.41%          | 7.94%             | -5.74%            | -61.02%           | 56.67%           |         151    |         37.57 |   54.53 |   62.45 |
+|     10 | WULF     |            3.03 |                0.26 |            3,687,024 |           1,217,864 |              790,937 |         12.38 | 8.88%          | -2.90%          | 3.14%             | -12.52%           | -58.51%           | 30.18%           |          29.84 |          9.51 |   12    |   14.15 |
+|     11 | SMCI     |            2.72 |                0.29 |            6,662,259 |           2,447,427 |              602,809 |         28.6  | -0.56%         | -16.93%         | -12.70%           | -23.27%           | -44.36%           | 46.82%           |          51.4  |         19.48 |   32.76 |   37.27 |
+|     12 | AMZN     |            2.56 |                3.57 |           50,492,117 |          19,689,239 |           11,968,132 |        266.93 | 2.94%          | 9.49%           | 4.82%             | 5.11%             | -7.06%            | 36.19%           |         287.2  |        196    |  254.65 |  253.96 |
+|     13 | AVGO     |            2.54 |                0.54 |           48,816,674 |          19,243,043 |           15,026,835 |        319.48 | 8.78%          | -7.40%          | -3.29%            | -7.90%            | -35.46%           | 10.25%           |         495    |        289.77 |  330.36 |  346.9  |
+|     14 | GOOGL    |            2.43 |                0.19 |           24,670,724 |          10,146,356 |            1,162,665 |        288.15 | 1.18%          | 1.53%           | -8.29%            | -13.14%           | -29.48%           | 6.45%            |         408.61 |        270.7  |  314.21 |  331.76 |
+|     15 | GOOG     |            2.39 |                0.08 |           13,614,673 |           5,697,968 |            2,575,064 |        286.01 | 0.73%          | 1.31%           | -8.17%            | -12.97%           | -29.29%           | 5.38%            |         404.47 |        271.41 |  311.46 |  328.65 |
+|     16 | UNH      |            2.19 |                3.55 |            6,961,530 |           3,176,233 |           -2,957,473 |        397.62 | 0.88%          | -3.23%          | -2.01%            | 1.76%             | -13.86%           | 55.34%           |         461.62 |        255.97 |  405.78 |  390.74 |
+|     17 | ARM      |            2.13 |                0.08 |            7,403,351 |           3,480,282 |            4,311,987 |        186.3  | 6.69%          | -18.56%         | -13.38%           | -25.99%           | -58.85%           | 86.26%           |         452.7  |        100.02 |  215.07 |  251.72 |
+|     18 | HIMS     |            2.05 |                1.02 |            6,002,611 |           2,930,760 |              504,793 |         22.94 | -11.77%        | -22.68%         | -16.74%           | -18.97%           | -46.28%           | 66.96%           |          42.7  |         13.74 |   27.55 |   28.31 |
+|     19 | QCOM     |            2    |                0.37 |            4,909,100 |           2,452,125 |            1,744,535 |        171.47 | 3.66%          | -7.52%          | -1.06%            | -3.80%            | -34.03%           | 40.56%           |         259.92 |        121.99 |  173.31 |  178.25 |
+|     20 | SNDK     |            1.82 |                0.34 |          119,288,287 |          65,645,047 |          -10,767,842 |        886.51 | 6.16%          | -33.35%         | -27.35%           | -40.60%           | -62.35%           | 384.43%          |        2354.39 |        183    | 1220.33 | 1492.47 |
+|     21 | XLU      |            1.78 |                4.93 |              612,016 |             343,736 |               11,904 |         43.79 | 1.53%          | 1.51%           | 2.61%             | 4.77%             | -8.39%            | 12.20%           |          47.8  |         39.03 |   42.67 |   41.79 |
+|     22 | NVDA     |            1.77 |                1.91 |          359,067,025 |         203,326,293 |           41,935,032 |        178.67 | -4.27%         | -16.38%         | -14.58%           | -18.43%           | -26.59%           | 8.77%            |         243.37 |        164.27 |  209.16 |  219.04 |
+|     23 | IREN     |            1.76 |                0.12 |            9,512,317 |           5,400,559 |             -843,611 |         21.41 | -1.06%         | -18.44%         | -17.10%           | -39.84%           | -69.72%           | 24.80%           |          70.71 |         17.16 |   25.83 |   35.59 |
+|     24 | TSM      |            1.7  |                0.15 |           17,443,566 |          10,283,658 |           15,954,794 |        388.62 | 3.51%          | -10.00%         | -6.05%            | -9.85%            | -20.28%           | 45.65%           |         487.47 |        266.82 |  413.65 |  431.07 |
+|     25 | MSTR     |            1.42 |                3.9  |           17,767,997 |          12,479,887 |            9,790,153 |        125.59 | -2.59%         | -11.32%         | -10.26%           | -13.02%           | -49.76%           | 53.51%           |         249.96 |         81.81 |  139.94 |  144.39 |
+|     26 | CRWV     |            1.36 |                0.37 |           31,279,584 |          22,948,511 |            1,579,960 |         48.98 | 5.56%          | -19.36%         | -15.20%           | -34.57%           | -64.57%           | 20.70%           |         138.25 |         40.58 |   57.76 |   74.86 |
+|     27 | COIN     |            1.26 |                1.84 |            7,485,868 |           5,919,798 |            3,789,360 |        136.1  | 0.99%          | -15.25%         | -14.70%           | -22.01%           | -58.10%           | 3.81%            |         324.8  |        131.1  |  159.56 |  174.5  |
+|     28 | TLT      |            1.25 |                2.24 |            3,169,025 |           2,527,839 |            2,542,356 |         81.96 | 0.05%          | 0.58%           | 1.30%             | 1.99%             | -9.80%            | 7.24%            |          90.86 |         76.43 |   80.91 |   80.36 |
+|     29 | IONQ     |            1.2  |                0.43 |            3,587,361 |           3,000,002 |            1,136,765 |         35.34 | 8.34%          | 11.41%          | 12.45%            | -4.09%            | -52.02%           | 41.84%           |          73.65 |         24.92 |   31.43 |   36.85 |
+|     30 | BABA     |            1.19 |                0.16 |            5,011,546 |           4,207,311 |             -640,987 |        105.38 | -3.72%         | 5.87%           | 0.63%             | -2.45%            | -41.81%           | 14.56%           |         181.1  |         91.99 |  104.72 |  108.02 |
+|     31 | MARA     |            1.12 |                1.5  |            1,306,091 |           1,161,885 |             -855,211 |          6.64 | 4.57%          | -7.39%          | -8.20%            | -32.24%           | -60.05%           | 16.70%           |          16.62 |          5.69 |    7.23 |    9.8  |
+|     32 | SMH      |            1.04 |                0.1  |           48,524,785 |          46,699,428 |           20,789,703 |        487.41 | 5.05%          | -13.22%         | -8.34%            | -13.63%           | -27.45%           | 54.71%           |         671.83 |        315.05 |  531.76 |  564.32 |
+|     33 | TSLA     |            0.99 |                0.18 |           82,966,234 |          83,990,059 |           72,923,098 |        378.05 | 5.54%          | -6.26%          | -0.62%            | 1.43%             | -24.21%           | 27.13%           |         498.83 |        297.38 |  380.42 |  372.72 |
+|     34 | IBIT     |            0.95 |                0.52 |            3,048,323 |           3,192,027 |              173,994 |         42.32 | -1.31%         | -7.42%          | -6.59%            | -7.55%            | -29.89%           | 28.87%           |          60.36 |         32.84 |   45.3  |   45.78 |
+|     35 | QQQ      |            0.81 |                0.45 |          324,902,731 |         401,320,525 |          338,635,020 |        679.35 | 3.54%          | -5.03%          | -3.54%            | -5.68%            | -10.95%           | 22.27%           |         762.86 |        555.6  |  704.3  |  720.23 |
+|     36 | AAPL     |            0.8  |                1.26 |           29,794,666 |          37,135,800 |           13,855,306 |        350.69 | 2.43%          | 0.51%           | 1.98%             | 4.18%             | -1.32%            | 44.07%           |         355.38 |        243.42 |  343.87 |  336.63 |
+|     37 | XLF      |            0.78 |                3.61 |            1,009,847 |           1,299,901 |              204,786 |         57.99 | 1.45%          | 1.84%           | 2.86%             | 3.71%             | -3.41%            | 21.65%           |          60.04 |         47.67 |   56.38 |   55.91 |
+|     38 | SPY      |            0.56 |                1.05 |          197,335,968 |         349,860,219 |           76,711,509 |        752.69 | 2.37%          | -2.17%          | -1.23%            | -1.65%            | -3.70%            | 19.61%           |         781.62 |        629.28 |  762.09 |  765.35 |
+|     39 | ^VIX     |            0.52 |                0.6  |           25,618,379 |          13,428,747 |              -95,419 |         19.92 | -22.31%        | 15.81%          | 4.49%             | 17.03%            | -43.57%           | 48.88%           |          35.3  |         13.38 |   19.06 |   17.02 |
 
 ## T2 — Premium Ratio Leaderboard (all strikes, call subtotal ≥ $1,000,000)
 
 |   Rank | Ticker   |   Premium Ratio |   Call Volume |   Call Premium |   Put Volume |   Put Premium |
 |-------:|:---------|----------------:|--------------:|---------------:|-------------:|--------------:|
-|      1 | AI       |           86.66 |        83,254 |      1,790,416 |          306 |        20,660 |
-|      2 | XLU      |           40.96 |        27,942 |      2,095,650 |           15 |        51,165 |
-|      3 | MARA     |            5.18 |       106,392 |      5,537,520 |       23,330 |     1,069,236 |
-|      4 | IONQ     |            4.95 |        17,057 |      3,247,758 |        4,781 |       656,087 |
-|      5 | TLT      |            4.72 |        67,777 |      6,920,289 |        8,915 |     1,467,039 |
-|      6 | UNH      |            4.19 |         1,731 |      6,992,705 |        1,847 |     1,668,318 |
-|      7 | ETHA     |            3.11 |         2,983 |      1,506,680 |          750 |       484,500 |
-|      8 | HIMS     |            3.05 |        20,615 |      3,260,531 |        1,378 |     1,070,698 |
-|      9 | MSTR     |            2.55 |       127,863 |     41,278,459 |        6,614 |    16,170,440 |
-|     10 | AMZN     |            2.52 |        35,833 |     15,413,345 |       14,541 |     6,124,108 |
-|     11 | RIOT     |            2.04 |        47,788 |      5,411,704 |        6,420 |     2,651,698 |
-|     12 | ^VIX     |            2.03 |        90,280 |     23,393,349 |      121,865 |    11,514,295 |
-|     13 | RKLB     |            1.43 |        11,050 |      2,793,953 |        1,760 |     1,954,089 |
-|     14 | CIFR     |            1.39 |        50,736 |      1,908,552 |       11,812 |     1,374,945 |
-|     15 | AAPL     |            1.25 |         1,667 |     18,650,063 |       36,640 |    14,871,145 |
-|     15 | NVDA     |            1.25 |       157,707 |     50,255,332 |       65,842 |    40,095,298 |
-|     17 | IBIT     |            0.97 |        78,426 |      3,541,625 |       18,366 |     3,663,967 |
-|     18 | SMCI     |            0.83 |        70,029 |      5,010,889 |          320 |     6,037,012 |
-|     19 | AVGO     |            0.62 |         4,416 |     24,269,485 |        2,819 |    39,061,486 |
-|     20 | COIN     |            0.57 |        23,263 |      8,898,854 |        1,252 |    15,596,920 |
-|     21 | SNDK     |            0.3  |         3,712 |     42,721,151 |        1,432 |   142,818,470 |
-|     22 | QCOM     |            0.29 |         8,692 |      4,059,585 |        6,213 |    13,846,614 |
-|     23 | MRVL     |            0.28 |        21,577 |     10,582,974 |        3,180 |    37,612,394 |
-|     24 | QQQ      |            0.27 |        20,384 |     94,688,898 |       41,391 |   350,193,740 |
-|     25 | CRWV     |            0.23 |        15,994 |      7,786,865 |       10,766 |    33,641,187 |
-|     26 | TSLA     |            0.22 |        32,423 |     33,446,676 |        6,038 |   149,594,180 |
-|     27 | GLD      |            0.21 |        10,763 |      6,100,300 |        4,353 |    29,369,590 |
-|     28 | TSM      |            0.2  |         6,510 |      7,988,425 |        3,471 |    40,963,265 |
-|     28 | WULF     |            0.2  |        26,510 |      2,534,251 |       24,671 |    12,625,268 |
-|     30 | BABA     |            0.19 |         7,851 |      2,697,736 |        1,906 |    13,954,055 |
-|     31 | OKLO     |            0.15 |         5,936 |      1,348,534 |        2,254 |     9,233,400 |
-|     32 | GOOG     |            0.13 |         3,505 |      6,443,067 |        4,914 |    48,121,220 |
-|     33 | GOOGL    |            0.11 |        14,903 |      7,668,688 |        8,372 |    72,265,660 |
-|     33 | SLV      |            0.11 |         3,340 |      1,762,842 |        5,299 |    15,723,330 |
-|     33 | IREN     |            0.11 |        17,534 |      3,537,097 |       13,721 |    32,520,813 |
-|     36 | SMH      |            0.08 |         7,157 |     15,728,857 |       18,480 |   190,737,600 |
-|     36 | SPY      |            0.08 |        57,006 |     32,488,443 |      478,961 |   410,684,842 |
-|     36 | INTC     |            0.08 |        39,687 |      8,742,747 |       17,136 |   112,226,615 |
-|     39 | NFLX     |            0.07 |        11,674 |      3,798,408 |       13,575 |    57,284,815 |
-|     40 | ARM      |            0.05 |         2,711 |      3,702,143 |        4,621 |    69,364,637 |
+|      1 | RIOT     |           10.86 |       146,185 |     24,815,945 |        4,329 |     2,285,435 |
+|      2 | XLU      |            4.93 |         7,747 |      1,325,974 |        7,525 |       268,903 |
+|      3 | MSTR     |            3.9  |        15,755 |     62,511,289 |        1,796 |    16,038,978 |
+|      4 | XLF      |            3.61 |         5,457 |      2,764,446 |       36,962 |       766,190 |
+|      5 | AMZN     |            3.57 |        34,817 |     28,949,339 |        9,357 |     8,102,174 |
+|      6 | UNH      |            3.55 |         1,822 |      6,787,323 |        3,445 |     1,912,457 |
+|      7 | ETHA     |            3.4  |         1,778 |      1,207,840 |          500 |       354,750 |
+|      8 | RKLB     |            2.66 |        21,376 |      6,515,369 |        5,253 |     2,448,144 |
+|      9 | TLT      |            2.24 |        14,988 |      5,719,916 |       29,150 |     2,552,240 |
+|     10 | NVDA     |            1.91 |       165,067 |    103,071,183 |       38,662 |    53,930,318 |
+|     11 | COIN     |            1.84 |        16,630 |     22,637,527 |        6,602 |    12,278,128 |
+|     12 | AAPL     |            1.26 |        68,509 |     17,833,601 |       26,877 |    14,169,360 |
+|     13 | SPY      |            1.05 |       140,704 |     75,155,362 |      335,024 |    71,752,709 |
+|     14 | HIMS     |            1.02 |        22,046 |      2,420,930 |       18,191 |     2,377,727 |
+|     15 | MRVL     |            0.82 |        16,410 |     10,309,948 |        1,273 |    12,580,059 |
+|     16 | ^VIX     |            0.6  |       106,366 |     11,091,248 |      118,759 |    18,437,554 |
+|     17 | AVGO     |            0.54 |         5,134 |     19,624,437 |        2,624 |    36,645,614 |
+|     18 | IBIT     |            0.52 |         4,237 |      1,451,373 |        6,470 |     2,773,413 |
+|     19 | QQQ      |            0.45 |        35,381 |    109,822,457 |       31,994 |   242,298,555 |
+|     20 | IONQ     |            0.43 |         9,853 |      3,183,701 |       10,234 |     7,413,593 |
+|     21 | SLV      |            0.42 |        53,378 |      6,537,938 |        5,299 |    15,723,330 |
+|     22 | CRWV     |            0.37 |        63,769 |     14,665,454 |       43,171 |    39,207,873 |
+|     22 | QCOM     |            0.37 |         4,981 |      3,473,706 |        1,370 |     9,457,880 |
+|     24 | SNDK     |            0.34 |         8,864 |     48,692,761 |        1,432 |   142,818,470 |
+|     25 | SMCI     |            0.29 |         7,308 |      1,779,675 |          320 |     6,037,012 |
+|     26 | GLD      |            0.28 |        21,139 |     12,363,050 |       12,913 |    44,745,887 |
+|     27 | WULF     |            0.26 |        27,123 |      2,825,848 |       17,476 |    11,064,289 |
+|     28 | GOOGL    |            0.19 |        10,227 |      7,123,220 |        4,207 |    36,879,550 |
+|     28 | OKLO     |            0.19 |         7,550 |      1,514,154 |        1,669 |     7,776,370 |
+|     30 | TSLA     |            0.18 |        16,072 |     26,928,888 |        6,038 |   149,594,180 |
+|     31 | BABA     |            0.16 |         9,010 |      2,215,563 |        1,906 |    13,954,055 |
+|     32 | TSM      |            0.15 |         4,147 |      5,966,046 |        3,361 |    39,962,855 |
+|     33 | IREN     |            0.12 |        37,835 |      3,965,838 |       10,080 |    33,126,790 |
+|     34 | SMH      |            0.1  |         6,882 |     18,027,339 |       26,224 |   181,151,705 |
+|     35 | ARM      |            0.08 |         6,546 |      3,976,050 |        3,084 |    49,109,997 |
+|     35 | GOOG     |            0.08 |         8,017 |      4,182,423 |        5,327 |    52,173,051 |
+|     37 | NFLX     |            0.07 |         3,587 |      3,947,659 |       12,156 |    56,632,900 |
+|     38 | INTC     |            0.06 |        53,402 |     14,676,606 |       57,299 |   238,201,983 |
 
 ## T1 — Top 4 Premiums per Ticker (rows ≥ $250,000)
 
 | Ticker   | Call Contract        |   Call Volume |   Call Premium | Put Contract         |   Put Volume |   Put Premium |
 |:---------|:---------------------|--------------:|---------------:|:---------------------|-------------:|--------------:|
-| AAPL     | AAPL261120C00230000  |           703 |      8,009,982 | AAPL261218P00320000  |       11,249 |     5,399,520 |
-| AAPL     | AAPL261218C00100000  |           215 |      5,247,505 | AAPL261113P00360000  |        2,279 |     4,079,410 |
-| AAPL     | AAPL261113C00255000  |           325 |      2,880,800 | AAPL261109P00342500  |        9,877 |     2,864,330 |
-| AAPL     | AAPL261120C00285000  |           424 |      2,511,776 | AAPL261109P00340000  |       13,235 |     2,527,885 |
-| AI       | AI261113C00012000    |        41,662 |      1,166,536 | AI261113P00012000    |          302 |        18,120 |
-| AI       | AI261113C00012500    |        41,592 |        623,880 | AI261113P00018000    |            4 |         2,540 |
-| AMZN     | AMZN261218C00280000  |        11,598 |      5,393,070 | AMZN261109P00260000  |        5,960 |     1,966,800 |
-| AMZN     | AMZN261218C00285000  |        11,204 |      3,932,604 | AMZN261218P00260000  |        1,366 |     1,654,226 |
-| AMZN     | AMZN261113C00265000  |        10,063 |      3,069,215 | AMZN261120P00262500  |        1,462 |     1,271,940 |
-| AMZN     | AMZN261218C00265000  |         2,968 |      3,018,456 | AMZN261109P00257500  |        5,753 |     1,231,142 |
-| ARM      | ARM261218C00190000   |         1,448 |      1,665,200 | ARM261218P00330000   |        2,501 |    40,005,996 |
-| ARM      | ARM261218C00170000   |           564 |      1,095,288 | ARM261218P00320000   |        1,415 |    21,706,100 |
-| ARM      | ARM261218C00115000   |            94 |        563,530 | ARM261120P00300000   |          363 |     4,663,461 |
-| ARM      | ARM261113C00180000   |           605 |        378,125 | ARM261120P00260000   |          342 |     2,989,080 |
-| AVGO     | AVGO261218C00098000  |           283 |     11,093,600 | AVGO261120P00420000  |          905 |    11,532,415 |
-| AVGO     | AVGO261218C00270000  |         2,334 |      8,787,510 | AVGO261120P00460000  |          548 |     9,261,200 |
-| AVGO     | AVGO261218C00125000  |           100 |      2,477,000 | AVGO261218P00450000  |          591 |     9,134,496 |
-| AVGO     | AVGO261120C00300000  |         1,699 |      1,911,375 | AVGO261120P00410000  |          775 |     9,133,375 |
-| BABA     | BABA261113C00110000  |         3,205 |        874,965 | BABA261120P00185000  |          986 |     7,636,570 |
-| BABA     | BABA261218C00110000  |           915 |        631,350 | BABA261218P00180000  |          336 |     2,412,480 |
-| BABA     | BABA261120C00115000  |         2,420 |        600,160 | BABA261218P00165000  |          405 |     2,293,110 |
-| BABA     | BABA261120C00110000  |         1,311 |        591,261 | BABA261120P00200000  |          179 |     1,611,895 |
-| CIFR     | CIFR261218C00010000  |        39,700 |      1,191,000 | CIFR261204P00015000  |          431 |       383,590 |
-| CIFR     | CIFR261120C00006000  |         3,102 |        325,710 | CIFR261120P00006500  |        5,368 |       375,760 |
-| CIFR     | CIFR261113C00007000  |         6,248 |        224,928 | CIFR261120P00023000  |          198 |       330,660 |
-| CIFR     | CIFR261218C00007000  |         1,686 |        166,914 | CIFR261120P00006000  |        5,815 |       284,935 |
-| CLSK     | CLSK261120C00001000  |         1,672 |        819,280 | CLSK261120P00007500  |          385 |        63,525 |
-| COIN     | COIN261113C00137000  |         7,602 |      3,458,910 | COIN261218P00290000  |          500 |     6,555,000 |
-| COIN     | COIN261113C00141000  |         8,422 |      2,467,646 | COIN261218P00250000  |          538 |     6,187,000 |
-| COIN     | COIN261113C00143000  |         7,179 |      1,737,318 | COIN261218P00260000  |          120 |     1,518,240 |
-| COIN     | COIN261218C00010000  |            60 |      1,234,980 | COIN261218P00280000  |           94 |     1,336,680 |
-| CRWV     | CRWV261218C00050000  |         5,996 |      3,597,600 | CRWV261120P00095000  |        4,519 |    23,024,305 |
-| CRWV     | CRWV261113C00050000  |         5,197 |      1,792,965 | CRWV261113P00078000  |        1,496 |     4,704,920 |
-| CRWV     | CRWV261218C00037500  |         1,259 |      1,510,800 | CRWV261120P00050000  |        4,446 |     3,432,312 |
-| CRWV     | CRWV261113C00053000  |         3,542 |        885,500 | CRWV261120P00125000  |          305 |     2,479,650 |
+| AAPL     | AAPL261218C00100000  |           215 |      5,247,505 | AAPL261120P00365000  |        3,042 |     4,563,000 |
+| AAPL     | AAPL261111C00355000  |        46,893 |      4,923,765 | AAPL261111P00350000  |       15,963 |     3,847,083 |
+| AAPL     | AAPL261111C00350000  |        12,571 |      3,909,581 | AAPL261113P00360000  |        3,287 |     3,191,677 |
+| AAPL     | AAPL261113C00350000  |         8,830 |      3,752,750 | AAPL261120P00350000  |        4,585 |     2,567,600 |
+| AMZN     | AMZN261120C00255000  |         9,695 |     14,765,485 | AMZN261111P00280000  |        2,258 |     2,885,724 |
+| AMZN     | AMZN261218C00285000  |        13,594 |      6,729,030 | AMZN261120P00270000  |        2,708 |     2,139,320 |
+| AMZN     | AMZN261120C00270000  |         7,560 |      4,089,960 | AMZN261218P00260000  |        2,098 |     1,678,400 |
+| AMZN     | AMZN261218C00275000  |         3,968 |      3,364,864 | AMZN261218P00255000  |        2,293 |     1,398,730 |
+| ARM      | ARM261120C00190000   |         1,495 |      1,390,350 | ARM261218P00330000   |        2,501 |    40,005,996 |
+| ARM      | ARM261113C00180000   |         1,073 |      1,174,935 | ARM261120P00300000   |          363 |     4,663,461 |
+| ARM      | ARM261113C00200000   |         2,875 |        715,875 | ARM261218P00370000   |          112 |     2,256,240 |
+| ARM      | ARM261218C00220000   |         1,103 |        694,890 | ARM261218P00410000   |          108 |     2,184,300 |
+| AVGO     | AVGO261218C00098000  |           283 |     11,093,600 | AVGO261120P00460000  |          749 |    10,629,808 |
+| AVGO     | AVGO261218C00350000  |         2,925 |      3,384,225 | AVGO261120P00420000  |        1,034 |    10,303,810 |
+| AVGO     | AVGO261218C00340000  |         1,826 |      2,669,612 | AVGO261218P00450000  |          591 |     9,134,496 |
+| AVGO     | AVGO261218C00125000  |           100 |      2,477,000 | AVGO261218P00620000  |          250 |     6,577,500 |
+| BABA     | BABA261120C00105000  |         1,732 |        779,400 | BABA261120P00185000  |          986 |     7,636,570 |
+| BABA     | BABA261218C00120000  |         3,183 |        630,234 | BABA261218P00180000  |          336 |     2,412,480 |
+| BABA     | BABA261120C00110000  |         1,668 |        410,328 | BABA261218P00165000  |          405 |     2,293,110 |
+| BABA     | BABA261113C00107000  |         2,427 |        395,601 | BABA261120P00200000  |          179 |     1,611,895 |
+| CIFR     | CIFR261113C00008000  |        28,282 |        395,948 | CIFR261120P00023000  |          198 |       330,660 |
+| COIN     | COIN261218C00130000  |        11,921 |     19,478,914 | COIN261218P00290000  |          500 |     6,555,000 |
+| COIN     | COIN261113C00140000  |         4,611 |      1,360,245 | COIN261218P00230000  |          300 |     2,782,500 |
+| COIN     | COIN261218C00010000  |            60 |      1,234,980 | COIN261218P00110000  |        5,708 |     1,603,948 |
+| COIN     | COIN261120C00030000  |            38 |        563,388 | COIN261218P00280000  |           94 |     1,336,680 |
+| CRWV     | CRWV261120C00060000  |        35,682 |      6,387,078 | CRWV261120P00095000  |        4,519 |    23,024,305 |
+| CRWV     | CRWV261113C00050000  |        11,647 |      4,623,859 | CRWV261120P00044000  |       31,372 |     9,631,204 |
+| CRWV     | CRWV261218C00070000  |        13,793 |      2,331,017 | CRWV261218P00055000  |        3,276 |     3,505,320 |
+| CRWV     | CRWV261120C00050000  |         2,647 |      1,323,500 | CRWV261218P00050000  |        4,004 |     3,047,044 |
 | ETHA     | ETHA261218C00015000  |         1,508 |        867,100 | ETHA261218P00059000  |          250 |       178,750 |
 | ETHA     | ETHA261218C00008000  |           270 |        340,740 | ETHA261204P00059500  |          250 |       176,000 |
-| ETHA     | ETHA261204C00052500  |         1,205 |        298,840 | ETHA261211P00055000  |          250 |       129,750 |
-| GLD      | GLD261218C00385000   |         2,264 |      1,639,136 | GLD261218P00470000   |        1,126 |    10,855,766 |
-| GLD      | GLD261218C00380000   |         1,747 |      1,572,300 | GLD261120P00420000   |        1,876 |     8,909,124 |
-| GLD      | GLD261218C00390000   |         2,618 |      1,479,170 | GLD261231P00438000   |          875 |     6,118,000 |
-| GLD      | GLD261218C00400000   |         4,134 |      1,409,694 | GLD261218P00445000   |          476 |     3,486,700 |
-| GOOG     | GOOG261218C00260000  |         1,008 |      3,079,440 | GOOG261218P00425000  |        1,832 |    18,970,360 |
-| GOOG     | GOOG261204C00220000  |           202 |      1,217,454 | GOOG261218P00420000  |        1,252 |    12,636,436 |
-| GOOG     | GOOG261113C00250000  |           309 |      1,083,663 | GOOG261120P00365000  |        1,242 |    10,321,020 |
-| GOOG     | GOOG261113C00285000  |         1,986 |      1,062,510 | GOOG261120P00390000  |          588 |     6,193,404 |
-| GOOGL    | GOOGL261218C00290000 |         2,641 |      2,984,330 | GOOGL261120P00365000 |        3,950 |    32,074,000 |
-| GOOGL    | GOOGL261113C00290000 |         4,874 |      1,852,120 | GOOGL261120P00355000 |        3,003 |    21,156,135 |
-| GOOGL    | GOOGL261113C00292500 |         5,091 |      1,435,662 | GOOGL261218P00475000 |          670 |    10,515,650 |
-| GOOGL    | GOOGL261120C00290000 |         2,297 |      1,396,576 | GOOGL261218P00400000 |          749 |     8,519,875 |
-| HIMS     | HIMS261113C00026000  |         6,451 |      1,335,357 | HIMS261218P00060000  |          197 |       716,095 |
-| HIMS     | HIMS261113C00028000  |         6,646 |        830,750 | HIMS261113P00025000  |          916 |       140,148 |
-| HIMS     | HIMS261113C00026500  |         3,519 |        654,534 | HIMS261204P00028000  |          224 |       118,720 |
-| HIMS     | HIMS261113C00028500  |         3,999 |        439,890 | HIMS261218P00047000  |           41 |        95,735 |
-| IBIT     | IBIT261113C00043500  |        28,688 |      1,778,656 | IBIT261111P00048000  |        2,397 |     1,222,470 |
-| IBIT     | IBIT261113C00045000  |        36,166 |        687,154 | IBIT261120P00047000  |        2,144 |       906,912 |
-| IBIT     | IBIT261218C00044000  |         3,537 |        654,345 | IBIT261113P00042500  |       11,185 |       816,505 |
-| IBIT     | IBIT261113C00044000  |        10,035 |        421,470 | IBIT261218P00044000  |        2,640 |       718,080 |
-| INTC     | INTC261113C00055000  |         7,571 |      2,634,708 | INTC261120P00125000  |        7,329 |    52,182,480 |
-| INTC     | INTC261113C00060000  |        17,394 |      2,209,038 | INTC261120P00115000  |        8,567 |    51,873,185 |
-| INTC     | INTC261120C00060000  |        10,247 |      2,131,376 | INTC261218P00120000  |          650 |     4,091,100 |
-| INTC     | INTC261218C00060000  |         4,475 |      1,767,625 | INTC261218P00125000  |          590 |     4,079,850 |
-| IONQ     | IONQ261120C00034000  |        11,378 |      1,774,968 | IONQ261113P00030000  |        2,328 |       186,240 |
-| IONQ     | IONQ261113C00032000  |         2,796 |        525,648 | IONQ261120P00045000  |          137 |       179,470 |
-| IONQ     | IONQ261113C00030000  |         1,725 |        514,050 | IONQ261113P00034000  |          557 |       153,175 |
-| IONQ     | IONQ261120C00030000  |         1,158 |        433,092 | IONQ261218P00025000  |        1,759 |       137,202 |
-| IREN     | IREN261113C00022000  |         6,983 |      1,089,348 | IREN261218P00060000  |        5,344 |    22,150,880 |
-| IREN     | IREN261218C00025000  |         4,221 |        882,189 | IREN261120P00065000  |        1,786 |     8,349,550 |
-| IREN     | IREN261120C00020000  |         2,485 |        792,715 | IREN261218P00030000  |        1,090 |     1,013,700 |
-| IREN     | IREN261120C00022000  |         3,845 |        772,845 | IREN261113P00022000  |        5,501 |     1,006,683 |
-| MARA     | MARA261113C00006000  |        46,110 |      3,089,370 | MARA261113P00006000  |       14,455 |       448,105 |
-| MARA     | MARA261113C00006500  |        54,210 |      2,114,190 | MARA261113P00006500  |        7,053 |       387,915 |
-| MARA     | MARA261120C00006500  |         6,072 |        333,960 | MARA261218P00007000  |        1,822 |       233,216 |
-| MRVL     | MRVL261113C00150000  |        13,955 |      5,972,740 | MRVL261120P00250000  |        1,532 |    17,104,780 |
-| MRVL     | MRVL261113C00140000  |         2,260 |      1,932,300 | MRVL261218P00300000  |          581 |     9,420,915 |
-| MRVL     | MRVL261113C00145000  |         2,404 |      1,497,692 | MRVL261218P00280000  |          400 |     5,686,000 |
-| MRVL     | MRVL261218C00180000  |         2,958 |      1,180,242 | MRVL261113P00217500  |          667 |     5,400,699 |
-| MSTR     | MSTR261113C00133000  |        43,370 |     17,781,700 | MSTR261120P00200000  |        1,000 |     7,215,000 |
-| MSTR     | MSTR261113C00139000  |        45,795 |     10,395,465 | MSTR261218P00510000  |          116 |     3,841,340 |
-| MSTR     | MSTR261113C00132000  |        17,040 |      7,838,400 | MSTR261218P00500000  |           66 |     2,669,700 |
-| MSTR     | MSTR261113C00138000  |        21,658 |      5,262,894 | MSTR261120P00120000  |        5,432 |     2,444,400 |
+| GLD      | GLD261218C00390000   |         6,371 |      4,650,830 | GLD261218P00470000   |        2,251 |    20,562,885 |
+| GLD      | GLD261218C00400000   |         7,748 |      3,447,860 | GLD261120P00390000   |        7,844 |     9,828,532 |
+| GLD      | GLD261120C00385000   |         5,704 |      2,224,560 | GLD261120P00420000   |        1,742 |     7,220,590 |
+| GLD      | GLD261116C00365000   |         1,316 |      2,039,800 | GLD261218P00445000   |        1,076 |     7,133,880 |
+| GOOG     | GOOG261204C00220000  |           202 |      1,217,454 | GOOG261218P00425000  |        1,832 |    18,970,360 |
+| GOOG     | GOOG261113C00290000  |         4,103 |      1,193,973 | GOOG261218P00420000  |        1,252 |    12,636,436 |
+| GOOG     | GOOG261120C00205000  |           130 |        936,390 | GOOG261120P00365000  |        1,242 |    10,321,020 |
+| GOOG     | GOOG261120C00300000  |         3,582 |        834,606 | GOOG261120P00390000  |        1,001 |    10,245,235 |
+| GOOGL    | GOOGL261218C00300000 |         3,710 |      2,878,960 | GOOGL261218P00475000 |          670 |    10,515,650 |
+| GOOGL    | GOOGL261120C00300000 |         5,961 |      1,669,080 | GOOGL261120P00350000 |        1,627 |    10,071,130 |
+| GOOGL    | GOOGL261218C00215000 |           200 |      1,541,000 | GOOGL261218P00400000 |          749 |     8,519,875 |
+| GOOGL    | GOOGL261218C00265000 |           356 |      1,034,180 | GOOGL261120P00355000 |        1,161 |     7,772,895 |
+| HIMS     | HIMS261113C00023000  |         4,846 |        804,436 | HIMS261218P00060000  |          197 |       716,095 |
+| HIMS     | HIMS261113C00025000  |         7,634 |        709,962 | HIMS261113P00020000  |       11,917 |       607,767 |
+| HIMS     | HIMS261113C00024000  |         4,492 |        561,500 | HIMS261113P00025000  |        1,855 |       547,225 |
+| HIMS     | HIMS261113C00026000  |         5,074 |        345,032 | HIMS261113P00022000  |        4,222 |       506,640 |
+| IBIT     | IBIT261218C00040000  |         1,423 |        526,510 | IBIT261111P00048000  |        2,397 |     1,222,470 |
+| IBIT     | IBIT261120C00025000  |           203 |        363,776 | IBIT261130P00065000  |          279 |       539,865 |
+| IBIT     | IBIT261218C00045000  |         2,461 |        287,937 | IBIT261116P00047000  |        1,217 |       511,140 |
+| IBIT     | IBIT261218C00026000  |           150 |        273,150 | IBIT261218P00042000  |        2,577 |       499,938 |
+| INTC     | INTC261113C00060000  |        26,355 |      4,902,030 | INTC261120P00090000  |       25,779 |    77,517,453 |
+| INTC     | INTC261113C00059000  |        14,412 |      3,357,996 | INTC261120P00125000  |        9,636 |    64,127,580 |
+| INTC     | INTC261113C00041000  |         1,730 |      3,254,130 | INTC261120P00105000  |       11,041 |    51,395,855 |
+| INTC     | INTC261113C00058000  |        10,905 |      3,162,450 | INTC261120P00100000  |       10,843 |    45,161,095 |
+| IONQ     | IONQ261218C00035000  |         3,518 |      1,329,804 | IONQ261218P00045000  |        3,091 |     3,094,091 |
+| IONQ     | IONQ261211C00037000  |         2,653 |        663,250 | IONQ261218P00055000  |        1,001 |     1,953,952 |
+| IONQ     | IONQ261218C00040000  |         3,127 |        612,892 | IONQ261218P00035000  |        5,098 |     1,707,830 |
+| IONQ     | IONQ261120C00025000  |           555 |        577,755 | IONQ261218P00040000  |        1,044 |       657,720 |
+| IREN     | IREN261113C00022000  |        11,881 |      1,318,791 | IREN261218P00060000  |        5,344 |    22,150,880 |
+| IREN     | IREN261113C00022500  |        11,129 |      1,057,255 | IREN261120P00065000  |        1,786 |     8,349,550 |
+| IREN     | IREN261113C00021000  |         5,513 |        882,080 | IREN261113P00030000  |        1,565 |     1,352,160 |
+| IREN     | IREN261113C00023000  |         9,312 |        707,712 | IREN261218P00030000  |        1,385 |     1,274,200 |
+| MARA     | MARA261113C00007000  |        15,510 |        418,770 | MARA261113P00006500  |        7,537 |       271,332 |
+| MARA     | MARA261113C00006500  |         7,142 |        357,100 | MARA261218P00004000  |       22,352 |       245,872 |
+| MRVL     | MRVL261113C00160000  |         7,526 |      3,160,920 | MRVL261113P00217500  |          667 |     5,400,699 |
+| MRVL     | MRVL261113C00155000  |         4,340 |      2,712,500 | MRVL261218P00300000  |          200 |     2,905,000 |
+| MRVL     | MRVL261120C00160000  |         3,415 |      2,424,650 | MRVL261120P00270000  |          200 |     2,305,000 |
+| MRVL     | MRVL261218C00150000  |         1,129 |      2,011,878 | MRVL261120P00250000  |          206 |     1,969,360 |
+| MSTR     | MSTR261113C00040000  |         6,238 |     55,150,158 | MSTR261120P00200000  |        1,000 |     7,215,000 |
+| MSTR     | MSTR261113C00070000  |           700 |      3,966,900 | MSTR261218P00510000  |          116 |     3,841,340 |
+| MSTR     | MSTR261113C00130000  |         5,702 |      1,727,706 | MSTR261218P00500000  |           66 |     2,669,700 |
+| MSTR     | MSTR261113C00125000  |         3,115 |      1,666,525 | MSTR261113P00165000  |          614 |     2,312,938 |
 | NFLX     | NFLX261218C00820000  |            30 |      1,148,880 | NFLX261218P00107000  |        8,462 |    37,825,140 |
 | NFLX     | NFLX261218C00830000  |            30 |      1,126,080 | NFLX261218P00116000  |        1,670 |     8,483,600 |
-| NFLX     | NFLX261218C00440000  |            10 |        804,000 | NFLX261218P00081000  |        3,003 |     5,720,715 |
-| NFLX     | NFLX261113C00065000  |        11,604 |        719,448 | NFLX261218P00230000  |          440 |     5,255,360 |
-| NVDA     | NVDA261120C00200000  |        50,150 |     24,072,000 | NVDA261109P00192500  |       17,697 |    12,210,930 |
-| NVDA     | NVDA261113C00190000  |        19,391 |      9,152,552 | NVDA261109P00222500  |        2,766 |     9,631,212 |
-| NVDA     | NVDA261113C00200000  |        58,890 |      8,833,500 | NVDA261113P00190000  |       11,605 |     9,167,950 |
-| NVDA     | NVDA261113C00195000  |        29,276 |      8,197,280 | NVDA261109P00185000  |       33,774 |     9,085,206 |
-| NVDX     | NVDX261120C00010000  |           186 |         63,426 | NVDX261120P00019500  |          546 |       347,802 |
-| OKLO     | OKLO261218C00025000  |         2,537 |        583,510 | OKLO261218P00075000  |          634 |     3,566,250 |
-| OKLO     | OKLO261204C00025000  |         1,829 |        340,194 | OKLO261120P00075000  |          611 |     2,462,330 |
-| OKLO     | OKLO261218C00022500  |           660 |        231,000 | OKLO261120P00050000  |          635 |     1,948,180 |
-| OKLO     | OKLO261120C00023000  |           910 |        193,830 | OKLO261120P00060000  |          374 |     1,256,640 |
-| QCOM     | QCOM261113C00170000  |         3,848 |      1,454,544 | QCOM261113P00172500  |        4,873 |     4,814,524 |
-| QCOM     | QCOM261218C00165000  |         1,059 |      1,164,900 | QCOM261120P00220000  |          765 |     4,632,840 |
-| QCOM     | QCOM261113C00172500  |         3,489 |        994,365 | QCOM261120P00240000  |          350 |     2,817,500 |
-| QCOM     | QCOM261113C00152500  |           296 |        445,776 | QCOM261120P00230000  |          225 |     1,581,750 |
-| QQQ      | QQQ261231C00415000   |         1,393 |     39,030,467 | QQQ261120P00730000   |       15,347 |   112,033,100 |
-| QQQ      | QQQ261218C00660000   |         7,955 |     20,054,555 | QQQ261120P00750000   |       10,421 |    95,737,727 |
-| QQQ      | QQQ261218C00645000   |         5,356 |     18,376,436 | QQQ261120P00760000   |        7,380 |    75,069,360 |
-| QQQ      | QQQ261120C00640000   |         5,680 |     17,227,440 | QQQ261120P00740000   |        8,243 |    67,353,553 |
-| RIOT     | RIOT261113C00017000  |        34,825 |      3,621,800 | RIOT261218P00040000  |          627 |     1,432,695 |
-| RIOT     | RIOT261120C00017000  |         7,002 |      1,022,292 | RIOT261218P00027000  |          415 |       491,775 |
-| RIOT     | RIOT261218C00017000  |         1,828 |        420,440 | RIOT261120P00019000  |        1,387 |       411,939 |
-| RIOT     | RIOT261218C00022000  |         4,133 |        347,172 | RIOT261113P00016000  |        3,991 |       315,289 |
-| RKLB     | RKLB261113C00055000  |         2,754 |        839,970 | RKLB261218P00145000  |          135 |     1,012,500 |
-| RKLB     | RKLB261113C00060000  |         5,127 |        738,288 | RKLB261218P00100000  |           69 |       341,481 |
-| RKLB     | RKLB261120C00055000  |         1,803 |        676,125 | RKLB261113P00054000  |          678 |       305,100 |
-| RKLB     | RKLB261113C00053000  |         1,366 |        539,570 | RKLB261113P00052000  |          878 |       295,008 |
-| SLV      | SLV261113C00025000   |           300 |        657,300 | SLV261231P00075000   |        2,596 |     7,476,480 |
-| SLV      | SLV261113C00030000   |           304 |        514,368 | SLV261231P00087000   |        1,000 |     3,190,000 |
-| SLV      | SLV261218C00050000   |         2,574 |        365,508 | SLV261231P00072500   |          969 |     2,616,300 |
-| SLV      | SLV261120C00033000   |           162 |        225,666 | SLV261231P00086000   |          734 |     2,440,550 |
-| SMCI     | SMCI261113C00030000  |        25,248 |      2,272,320 | SMCI261218P00620000  |          110 |     2,818,200 |
-| SMCI     | SMCI261113C00030500  |        15,868 |      1,126,628 | SMCI261218P00500000  |           67 |     1,418,457 |
-| SMCI     | SMCI261113C00032000  |        24,395 |        902,615 | SMCI261218P00600000  |           35 |       932,575 |
-| SMCI     | SMCI261113C00028500  |         4,518 |        709,326 | SMCI261218P00110000  |          108 |       867,780 |
-| SMH      | SMH261218C00500000   |         3,826 |      6,542,460 | SMH261120P00630000   |        7,203 |   119,173,635 |
-| SMH      | SMH261218C00505000   |         2,211 |      3,287,757 | SMH261218P00645000   |        2,125 |    40,513,125 |
-| SMH      | SMH261218C00470000   |         1,028 |      3,048,020 | SMH261218P00500000   |        4,690 |    24,134,740 |
-| SMH      | SMH261218C00310000   |            92 |      2,850,620 | SMH261120P00450000   |        4,462 |     6,916,100 |
-| SNDK     | SNDK261120C00800000  |         2,374 |     21,790,946 | SNDK261120P02300000  |          750 |    78,720,000 |
+| NFLX     | NFLX261218C00065000  |         3,517 |        868,699 | NFLX261218P00230000  |          440 |     5,255,360 |
+| NFLX     | NFLX261218C00440000  |            10 |        804,000 | NFLX261218P00095000  |        1,584 |     5,068,800 |
+| NVDA     | NVDA261218C00185000  |        47,599 |     47,979,792 | NVDA261120P00175000  |       21,255 |    16,281,330 |
+| NVDA     | NVDA261120C00180000  |        23,773 |     20,920,240 | NVDA261113P00220000  |        3,173 |    13,082,279 |
+| NVDA     | NVDA261111C00180000  |        55,346 |     17,489,336 | NVDA261120P00200000  |        5,353 |    12,488,549 |
+| NVDA     | NVDA261113C00180000  |        38,349 |     16,681,815 | NVDA261127P00185000  |        8,881 |    12,078,160 |
+| OKLO     | OKLO261218C00030000  |         2,475 |        480,150 | OKLO261218P00075000  |          634 |     3,566,250 |
+| OKLO     | OKLO261113C00025000  |         1,511 |        386,816 | OKLO261120P00075000  |          611 |     2,462,330 |
+| OKLO     | OKLO261113C00024500  |         1,295 |        370,370 | OKLO261120P00060000  |          374 |     1,256,640 |
+| OKLO     | OKLO261113C00027000  |         2,269 |        276,818 | OKLO261218P00160000  |           50 |       491,150 |
+| QBTS     | QBTS261120C00009000  |         1,819 |        514,777 | QBTS261120P00055000  |           34 |       127,194 |
+| QCOM     | QCOM261218C00155000  |           639 |      1,380,240 | QCOM261120P00220000  |          765 |     4,632,840 |
+| QCOM     | QCOM261113C00175000  |         3,282 |        978,036 | QCOM261120P00240000  |          350 |     2,817,500 |
+| QCOM     | QCOM261218C00180000  |           858 |        630,630 | QCOM261120P00230000  |          225 |     1,581,750 |
+| QCOM     | QCOM261120C00150000  |           202 |        484,800 | QCOM261120P00290000  |           30 |       425,790 |
+| QQQ      | QQQ261231C00415000   |         1,393 |     39,030,467 | QQQ261120P00760000   |       10,161 |    82,781,667 |
+| QQQ      | QQQ261218C00655000   |         6,286 |     25,225,718 | QQQ261120P00750000   |        8,207 |    58,745,706 |
+| QQQ      | QQQ261218C00705000   |        21,404 |     22,880,876 | QQQ261120P00770000   |        5,728 |    52,222,176 |
+| QQQ      | QQQ261218C00660000   |         6,298 |     22,685,396 | QQQ261120P00740000   |        7,898 |    48,549,006 |
+| RIOT     | RIOT261120C00017000  |        56,721 |      9,756,012 | RIOT261218P00040000  |          627 |     1,432,695 |
+| RIOT     | RIOT261120C00015500  |        30,019 |      8,165,168 | RIOT261218P00027000  |          415 |       491,775 |
+| RIOT     | RIOT261120C00017500  |        30,699 |      4,451,355 | RIOT261120P00016000  |        3,190 |       216,920 |
+| RIOT     | RIOT261127C00020000  |        28,746 |      2,443,410 | RIOT261218P00029000  |           97 |       144,045 |
+| RKLB     | RKLB261113C00060000  |         9,169 |      2,998,263 | RKLB261218P00145000  |          135 |     1,012,500 |
+| RKLB     | RKLB261113C00065000  |         8,754 |      1,391,886 | RKLB261113P00058000  |        1,652 |       550,116 |
+| RKLB     | RKLB261218C00060000  |         1,723 |      1,085,490 | RKLB261113P00055000  |        2,452 |       500,208 |
+| RKLB     | RKLB261113C00055000  |         1,730 |      1,039,730 | RKLB261113P00059000  |        1,014 |       385,320 |
+| SLV      | SLV261204C00050000   |        39,241 |      4,865,884 | SLV261231P00075000   |        2,596 |     7,476,480 |
+| SLV      | SLV261218C00050000   |         4,579 |        792,167 | SLV261231P00087000   |        1,000 |     3,190,000 |
+| SLV      | SLV261120C00048500   |         4,007 |        496,868 | SLV261231P00072500   |          969 |     2,616,300 |
+| SLV      | SLV261120C00050000   |         5,551 |        383,019 | SLV261231P00086000   |          734 |     2,440,550 |
+| SMCI     | SMCI261113C00028000  |         3,030 |        463,590 | SMCI261218P00620000  |          110 |     2,818,200 |
+| SMCI     | SMCI261218C00030000  |         1,915 |        453,855 | SMCI261218P00500000  |           67 |     1,418,457 |
+| SMCI     | SMCI261218C00620000  |            35 |        431,550 | SMCI261218P00600000  |           35 |       932,575 |
+| SMCI     | SMCI261204C00030000  |         2,328 |        430,680 | SMCI261218P00110000  |          108 |       867,780 |
+| SMH      | SMH261218C00450000   |         1,011 |      5,530,170 | SMH261120P00630000   |        7,343 |   103,242,580 |
+| SMH      | SMH261218C00500000   |         2,193 |      5,182,059 | SMH261218P00645000   |        2,125 |    40,513,125 |
+| SMH      | SMH261218C00470000   |           950 |      3,918,750 | SMH261120P00500000   |       10,216 |    24,773,800 |
+| SMH      | SMH261120C00500000   |         2,728 |      3,396,360 | SMH261120P00490000   |        6,540 |    12,622,200 |
+| SNDK     | SNDK261113C00900000  |         5,042 |     19,527,666 | SNDK261120P02300000  |          750 |    78,720,000 |
 | SNDK     | SNDK261218C00120000  |           151 |     10,600,955 | SNDK261120P02450000  |          220 |    24,217,820 |
-| SNDK     | SNDK261218C00080000  |            50 |      5,212,750 | SNDK261120P01900000  |          258 |    22,406,010 |
-| SNDK     | SNDK261120C00900000  |         1,137 |      5,116,500 | SNDK261120P01680000  |          204 |    17,474,640 |
-| SPY      | SPY261109C00740000   |        39,251 |     10,597,770 | SPY261120P00725000   |      198,874 |   170,037,270 |
-| SPY      | SPY261218C00738000   |         4,306 |      8,500,044 | SPY261120P00740000   |       95,911 |   131,589,892 |
-| SPY      | SPY261113C00740000   |         9,061 |      6,786,689 | SPY261120P00710000   |      121,440 |    65,456,160 |
-| SPY      | SPY261120C00733000   |         4,388 |      6,603,940 | SPY261113P00730000   |       62,736 |    43,601,520 |
-| TLT      | TLT261113C00082000   |        42,600 |      2,087,400 | TLT261218P00135000   |          100 |       499,000 |
-| TLT      | TLT261113C00078500   |         5,886 |      1,912,950 | TLT261120P00125000   |          100 |       377,900 |
-| TLT      | TLT261218C00045000   |           470 |      1,809,500 | TLT261218P00082000   |        2,019 |       308,907 |
-| TLT      | TLT261218C00084000   |        18,821 |      1,110,439 | TLT261218P00079000   |        6,696 |       281,232 |
-| TSLA     | TSLA261109C00360000  |        16,177 |      8,897,350 | TSLA261218P00630000  |        2,046 |    63,640,830 |
-| TSLA     | TSLA261113C00362500  |         9,054 |      8,628,462 | TSLA261218P00610000  |        1,075 |    30,943,875 |
-| TSLA     | TSLA261120C00175000  |           400 |      8,164,400 | TSLA261120P00475000  |        2,063 |    27,860,815 |
-| TSLA     | TSLA261109C00350000  |         6,792 |      7,756,464 | TSLA261218P00640000  |          854 |    27,148,660 |
-| TSLL     | TSLL261113C00009000  |         6,582 |        315,936 | TSLL261120P00010500  |        1,268 |       234,580 |
-| TSM      | TSM261204C00410000   |         3,999 |      2,699,325 | TSM261218P00500000   |        1,556 |    21,885,140 |
-| TSM      | TSM261218C00210000   |           150 |      2,400,000 | TSM261113P00450000   |          762 |     6,907,530 |
-| TSM      | TSM261113C00380000   |         1,570 |      1,607,680 | TSM261120P00520000   |          611 |     6,119,165 |
-| TSM      | TSM261218C00390000   |           791 |      1,281,420 | TSM261120P00530000   |          542 |     6,051,430 |
-| UNH      | UNH261120C00200000   |           210 |      3,721,200 | UNH261120P00400000   |          472 |       641,920 |
-| UNH      | UNH261218C00180000   |            75 |      1,482,375 | UNH261218P00360000   |          629 |       397,528 |
-| UNH      | UNH261218C00420000   |         1,406 |      1,061,530 | UNH261113P00395000   |          398 |       324,370 |
-| UNH      | UNH261120C00195000   |            40 |        727,600 | UNH261120P00390000   |          348 |       304,500 |
-| WULF     | WULF261120C00011000  |         6,051 |        744,273 | WULF261218P00029000  |        6,262 |     9,987,890 |
-| WULF     | WULF261113C00012000  |        11,746 |        681,268 | WULF261218P00011000  |        7,315 |     1,097,250 |
-| WULF     | WULF261218C00010000  |         2,759 |        662,160 | WULF261120P00011000  |       10,345 |       920,705 |
-| WULF     | WULF261120C00012000  |         5,954 |        446,550 | WULF261218P00019000  |          749 |       619,423 |
-| XLF      | XLF261218C00035000   |            72 |        159,120 | XLF261120P00056000   |       17,471 |       733,782 |
-| XLF      | XLF261218C00034000   |            64 |        150,784 | XLF261218P00055000   |        7,466 |       492,756 |
-| XLU      | XLU261120C00043000   |        27,942 |      2,095,650 | XLU261218P00110000   |           15 |        51,165 |
-| ^VIX     | VIX261216C00025000   |        31,045 |      7,419,755 | VIX261118P00090000   |          561 |     3,938,220 |
-| ^VIX     | VIX261216C00021000   |        18,744 |      6,485,424 | VIX261216P00017000   |       81,237 |     3,087,006 |
-| ^VIX     | VIX261118C00020000   |        11,386 |      5,180,630 | VIX261118P00060000   |          654 |     2,400,180 |
-| ^VIX     | VIX261118C00030000   |        29,105 |      4,307,540 | VIX261216P00017500   |       39,413 |     2,088,889 |
+| SNDK     | SNDK261113C00890000  |         2,194 |      9,598,750 | SNDK261120P01900000  |          258 |    22,406,010 |
+| SNDK     | SNDK261120C00900000  |         1,477 |      8,965,390 | SNDK261120P01680000  |          204 |    17,474,640 |
+| SPY      | SPY261110C00750000   |        44,332 |     22,387,660 | SPY261120P00725000   |      128,103 |    28,566,969 |
+| SPY      | SPY261218C00775000   |        30,078 |     18,618,282 | SPY261120P00750000   |       23,665 |    16,944,140 |
+| SPY      | SPY261110C00753000   |        55,812 |     17,524,968 | SPY261120P00710000   |      123,438 |    14,935,998 |
+| SPY      | SPY261218C00755000   |        10,482 |     16,624,452 | SPY261110P00750000   |       59,818 |    11,305,602 |
+| TLT      | TLT261113C00078500   |         5,886 |      1,912,950 | TLT261231P00079000   |       25,028 |     1,126,260 |
+| TLT      | TLT261218C00045000   |           470 |      1,809,500 | TLT261218P00082000   |        3,922 |       549,080 |
+| TLT      | TLT261218C00078000   |         3,169 |      1,330,980 | TLT261218P00135000   |          100 |       499,000 |
+| TLT      | TLT261218C00082000   |         5,463 |        666,486 | TLT261120P00125000   |          100 |       377,900 |
+| TSLA     | TSLA261120C00175000  |           400 |      8,164,400 | TSLA261218P00630000  |        2,046 |    63,640,830 |
+| TSLA     | TSLA261204C00150000  |           296 |      6,770,408 | TSLA261218P00610000  |        1,075 |    30,943,875 |
+| TSLA     | TSLA261120C00370000  |         3,520 |      6,184,640 | TSLA261120P00475000  |        2,063 |    27,860,815 |
+| TSLA     | TSLA261111C00380000  |        11,856 |      5,809,440 | TSLA261218P00640000  |          854 |    27,148,660 |
+| TSLL     | TSLL261113C00009000  |         5,561 |        517,173 | TSLL261127P00011000  |          597 |        87,162 |
+| TSLL     | TSLL261113C00010000  |        11,432 |        342,960 | TSLL261120P00009000  |        2,753 |        85,343 |
+| TSM      | TSM261218C00210000   |           150 |      2,400,000 | TSM261218P00500000   |        1,556 |    21,885,140 |
+| TSM      | TSM261218C00390000   |           614 |      1,264,840 | TSM261120P00520000   |          611 |     6,119,165 |
+| TSM      | TSM261113C00400000   |         2,511 |      1,230,390 | TSM261120P00530000   |          542 |     6,051,430 |
+| TSM      | TSM261218C00410000   |           872 |      1,070,816 | TSM261113P00445000   |          652 |     5,907,120 |
+| UNH      | UNH261120C00200000   |           210 |      3,721,200 | UNH261211P00350000   |        2,444 |       613,444 |
+| UNH      | UNH261218C00180000   |            75 |      1,482,375 | UNH261218P00400000   |          259 |       485,625 |
+| UNH      | UNH261218C00400000   |           551 |        826,500 | UNH261120P00395000   |          536 |       465,248 |
+| UNH      | UNH261218C00420000   |           986 |        757,248 | UNH261120P00410000   |          206 |       348,140 |
+| WULF     | WULF261120C00012000  |         8,262 |      1,057,536 | WULF261218P00029000  |        6,262 |     9,987,890 |
+| WULF     | WULF261113C00012000  |         7,265 |        668,380 | WULF261218P00019000  |          749 |       619,423 |
+| WULF     | WULF261218C00013000  |         4,430 |        655,640 | WULF261218P00011000  |        2,907 |       290,700 |
+| WULF     | WULF261127C00014000  |         7,166 |        444,292 | WULF261127P00009500  |        7,558 |       166,276 |
+| XLF      | XLF261218C00050000   |         1,815 |      1,550,010 | XLF261120P00058000   |        5,104 |       347,072 |
+| XLF      | XLF261218C00055000   |         2,534 |        962,920 | XLF261120P00055000   |       28,849 |       259,641 |
+| XLF      | XLF261120C00056000   |         1,108 |        251,516 | XLF261218P00056000   |        3,009 |       159,477 |
+| XLU      | XLU261218C00043000   |         2,921 |        461,518 | XLU261218P00043000   |        2,275 |       116,025 |
+| XLU      | XLU261120C00042000   |         1,608 |        321,600 | XLU261120P00043500   |        1,691 |        59,185 |
+| XLU      | XLU261218C00038000   |           456 |        277,704 | XLU261218P00110000   |           15 |        51,165 |
+| XLU      | XLU261218C00044000   |         2,762 |        265,152 | XLU261120P00042500   |        3,544 |        42,528 |
+| ^VIX     | VIX261216C00020000   |        18,980 |      3,739,060 | VIX261118P00022500   |       19,837 |     6,447,025 |
+| ^VIX     | VIX261118C00021000   |        26,114 |      2,872,540 | VIX261216P00017000   |       80,037 |     4,882,257 |
+| ^VIX     | VIX261118C00022000   |        26,200 |      2,410,400 | VIX261118P00090000   |          561 |     3,938,220 |
+| ^VIX     | VIX261118C00025000   |        35,072 |      2,069,248 | VIX261216P00019000   |       18,324 |     3,170,052 |
 
 ## T3 — Top 3 OTM Premiums per Ticker (rows ≥ $250,000)
 
 | Ticker   | Call Contract        |   Call Volume |   Call Premium | Put Contract         |   Put Volume |   Put Premium |
 |:---------|:---------------------|--------------:|---------------:|:---------------------|-------------:|--------------:|
-| AAPL     | AAPL261109C00345000  |        12,864 |      2,058,240 | AAPL261218P00320000  |       11,249 |     5,399,520 |
-| AAPL     | AAPL261113C00345000  |         4,602 |      1,909,830 | AAPL261109P00340000  |       13,235 |     2,527,885 |
-| AAPL     | AAPL261120C00345000  |         3,000 |      1,887,000 | AAPL261113P00340000  |        4,989 |     2,195,160 |
-| AMZN     | AMZN261218C00280000  |        11,598 |      5,393,070 | AMZN261109P00257500  |        5,753 |     1,231,142 |
-| AMZN     | AMZN261218C00285000  |        11,204 |      3,932,604 | AMZN261120P00247500  |        3,245 |     1,168,200 |
-| AMZN     | AMZN261113C00265000  |        10,063 |      3,069,215 | AMZN261218P00255000  |        1,087 |     1,065,260 |
-| AVGO     | AVGO261120C00300000  |         1,699 |      1,911,375 | AVGO261218P00290000  |        1,189 |     2,520,680 |
-| AVGO     | AVGO261218C00350000  |         3,288 |      1,824,840 | AVGO261120P00280000  |        2,329 |     1,991,295 |
-| AVGO     | AVGO261113C00300000  |         1,935 |      1,524,780 | AVGO261218P00220000  |        5,295 |     1,948,560 |
-| GLD      | GLD261218C00385000   |         2,264 |      1,639,136 | GLD261120P00370000   |        5,726 |     3,206,560 |
-| GLD      | GLD261218C00380000   |         1,747 |      1,572,300 | GLD261120P00350000   |       12,669 |     1,558,287 |
-| GLD      | GLD261218C00390000   |         2,618 |      1,479,170 | GLD261218P00360000   |        2,391 |     1,494,375 |
-| GOOGL    | GOOGL261218C00290000 |         2,641 |      2,984,330 | GOOGL261218P00275000 |        2,133 |     1,855,710 |
-| GOOGL    | GOOGL261113C00290000 |         4,874 |      1,852,120 | GOOGL261218P00280000 |        1,255 |     1,300,180 |
-| GOOGL    | GOOGL261113C00292500 |         5,091 |      1,435,662 | GOOGL261127P00275000 |        2,410 |     1,248,380 |
-| INTC     | INTC261113C00060000  |        17,394 |      2,209,038 | INTC261120P00055000  |        9,646 |     2,990,260 |
-| INTC     | INTC261120C00060000  |        10,247 |      2,131,376 | INTC261218P00052500  |        8,106 |     2,853,312 |
-| INTC     | INTC261218C00060000  |         4,475 |      1,767,625 | INTC261113P00055000  |       12,091 |     2,490,746 |
-| MRVL     | MRVL261113C00150000  |        13,955 |      5,972,740 | MRVL261218P00140000  |          907 |     1,365,035 |
-| MRVL     | MRVL261113C00145000  |         2,404 |      1,497,692 | MRVL261120P00135000  |        1,147 |       938,246 |
-| MRVL     | MRVL261218C00180000  |         2,958 |      1,180,242 | MRVL261113P00140000  |        1,050 |       777,000 |
-| MSTR     | MSTR261113C00133000  |        43,370 |     17,781,700 | MSTR261120P00120000  |        5,432 |     2,444,400 |
-| MSTR     | MSTR261113C00139000  |        45,795 |     10,395,465 | MSTR261113P00125000  |        4,211 |     1,755,987 |
-| MSTR     | MSTR261113C00132000  |        17,040 |      7,838,400 | MSTR261113P00128000  |        2,654 |     1,433,160 |
-| NFLX     | NFLX261218C00820000  |            30 |      1,148,880 | NFLX261218P00060000  |        1,755 |       257,985 |
-| NFLX     | NFLX261218C00830000  |            30 |      1,126,080 | NFLX261113P00063000  |        2,317 |       234,017 |
-| NFLX     | NFLX261218C00440000  |            10 |        804,000 | NFLX261120P00063000  |        1,339 |       212,901 |
-| NVDA     | NVDA261120C00200000  |        50,150 |     24,072,000 | NVDA261109P00185000  |       33,774 |     9,085,206 |
-| NVDA     | NVDA261113C00190000  |        19,391 |      9,152,552 | NVDA261113P00180000  |       17,842 |     6,779,960 |
-| NVDA     | NVDA261113C00200000  |        58,890 |      8,833,500 | NVDA261120P00185000  |        5,843 |     5,550,850 |
-| QCOM     | QCOM261113C00170000  |         3,848 |      1,454,544 | QCOM261120P00165000  |          646 |       481,270 |
-| QCOM     | QCOM261113C00172500  |         3,489 |        994,365 | QCOM261113P00155000  |        1,970 |       405,820 |
-| QCOM     | QCOM261113C00177500  |         3,034 |        418,692 | QCOM261218P00165000  |          327 |       374,415 |
-| QQQ      | QQQ261218C00660000   |         7,955 |     20,054,555 | QQQ261218P00640000   |       15,367 |    28,244,546 |
-| QQQ      | QQQ261109C00660000   |        37,346 |     16,805,700 | QQQ261120P00640000   |       21,216 |    23,380,032 |
-| QQQ      | QQQ261218C00680000   |        10,124 |     15,337,860 | QQQ261120P00650000   |       16,771 |    23,311,690 |
-| SLV      | SLV261218C00050000   |         2,574 |        365,508 | SLV261218P00045000   |        2,287 |       375,068 |
-| SMCI     | SMCI261113C00030000  |        25,248 |      2,272,320 | SMCI261218P00027000  |        1,991 |       422,092 |
-| SMCI     | SMCI261113C00030500  |        15,868 |      1,126,628 | SMCI261113P00027000  |        1,918 |       140,014 |
-| SMCI     | SMCI261113C00032000  |        24,395 |        902,615 | SMCI261113P00028000  |        1,309 |       138,754 |
-| SMH      | SMH261218C00500000   |         3,826 |      6,542,460 | SMH261120P00450000   |        4,462 |     6,916,100 |
-| SMH      | SMH261218C00505000   |         2,211 |      3,287,757 | SMH261218P00450000   |        2,245 |     5,556,375 |
-| SMH      | SMH261218C00470000   |         1,028 |      3,048,020 | SMH261218P00400000   |        2,808 |     3,100,032 |
-| SPY      | SPY261109C00740000   |        39,251 |     10,597,770 | SPY261120P00725000   |      198,874 |   170,037,270 |
-| SPY      | SPY261218C00738000   |         4,306 |      8,500,044 | SPY261120P00710000   |      121,440 |    65,456,160 |
-| SPY      | SPY261113C00740000   |         9,061 |      6,786,689 | SPY261113P00730000   |       62,736 |    43,601,520 |
-| TLT      | TLT261113C00082000   |        42,600 |      2,087,400 | TLT261218P00079000   |        6,696 |       281,232 |
-| TLT      | TLT261218C00084000   |        18,821 |      1,110,439 | TLT261218P00080000   |        2,915 |       195,305 |
-| TLT      | TLT261120C00082000   |        14,294 |      1,043,462 | TLT261218P00081000   |        1,215 |       127,575 |
-| TSLA     | TSLA261109C00360000  |        16,177 |      8,897,350 | TSLA261109P00357500  |        6,686 |     4,038,344 |
-| TSLA     | TSLA261113C00362500  |         9,054 |      8,628,462 | TSLA261109P00350000  |       11,827 |     3,962,045 |
-| TSLA     | TSLA261120C00360000  |         5,134 |      7,736,938 | TSLA261109P00355000  |        7,608 |     3,765,960 |
-| TSM      | TSM261204C00410000   |         3,999 |      2,699,325 | TSM261218P00320000   |        3,108 |     1,858,584 |
-| TSM      | TSM261113C00380000   |         1,570 |      1,607,680 | TSM261218P00370000   |          709 |     1,419,418 |
-| TSM      | TSM261218C00390000   |           791 |      1,281,420 | TSM261120P00360000   |        1,318 |     1,265,280 |
-| UNH      | UNH261218C00420000   |         1,406 |      1,061,530 | UNH261218P00360000   |          629 |       397,528 |
-| UNH      | UNH261120C00395000   |           573 |        607,380 | UNH261120P00390000   |          348 |       304,500 |
-| UNH      | UNH261120C00407500   |         1,132 |        605,620 | UNH261113P00392500   |          300 |       208,500 |
-| WULF     | WULF261113C00012000  |        11,746 |        681,268 | WULF261218P00011000  |        7,315 |     1,097,250 |
-| WULF     | WULF261120C00012000  |         5,954 |        446,550 | WULF261120P00011000  |       10,345 |       920,705 |
-| WULF     | WULF261218C00014000  |         6,079 |        437,688 | WULF261120P00010000  |       11,561 |       601,172 |
-| XLF      | XLF261218C00059000   |           904 |         75,936 | XLF261120P00056000   |       17,471 |       733,782 |
-| XLF      | XLF261113C00058000   |         1,628 |         58,608 | XLF261218P00055000   |        7,466 |       492,756 |
-| ^VIX     | VIX261118C00030000   |        29,105 |      4,307,540 | VIX261216P00017000   |       81,237 |     3,087,006 |
-| ^VIX     | VIX261216C00045000   |        36,615 |      2,782,740 | VIX261216P00017500   |       39,413 |     2,088,889 |
-| ^VIX     | VIX261118C00031000   |        12,391 |      1,747,131 | VIX261216P00022000   |        6,781 |     1,980,052 |
+| AAPL     | AAPL261111C00355000  |        46,893 |      4,923,765 | AAPL261111P00350000  |       15,963 |     3,847,083 |
+| AAPL     | AAPL261113C00355000  |        16,826 |      3,382,026 | AAPL261120P00350000  |        4,585 |     2,567,600 |
+| AAPL     | AAPL261111C00352500  |        11,075 |      2,059,950 | AAPL261218P00345000  |        2,874 |     2,256,090 |
+| AMZN     | AMZN261218C00285000  |        13,594 |      6,729,030 | AMZN261218P00260000  |        2,098 |     1,678,400 |
+| AMZN     | AMZN261120C00270000  |         7,560 |      4,089,960 | AMZN261218P00255000  |        2,293 |     1,398,730 |
+| AMZN     | AMZN261218C00275000  |         3,968 |      3,364,864 | AMZN261113P00265000  |        3,973 |     1,390,550 |
+| ARM      | ARM261120C00190000   |         1,495 |      1,390,350 | ARM261113P00177500   |        1,471 |       544,270 |
+| ARM      | ARM261113C00200000   |         2,875 |        715,875 | ARM261218P00160000   |          569 |       395,455 |
+| ARM      | ARM261218C00220000   |         1,103 |        694,890 | ARM261218P00150000   |          703 |       323,380 |
+| AVGO     | AVGO261218C00350000  |         2,925 |      3,384,225 | AVGO261218P00310000  |        1,181 |     2,037,225 |
+| AVGO     | AVGO261218C00340000  |         1,826 |      2,669,612 | AVGO261120P00300000  |        3,960 |     1,881,000 |
+| AVGO     | AVGO261113C00330000  |         5,423 |      2,331,890 | AVGO261218P00290000  |        1,557 |     1,650,420 |
+| BABA     | BABA261218C00120000  |         3,183 |        630,234 | BABA261218P00100000  |        2,683 |       965,880 |
+| BABA     | BABA261120C00110000  |         1,668 |        410,328 | BABA261120P00105000  |        1,858 |       743,200 |
+| BABA     | BABA261113C00107000  |         2,427 |        395,601 | BABA261113P00105000  |        3,390 |       708,510 |
+| CIFR     | CIFR261113C00008000  |        28,282 |        395,948 | CIFR261113P00006000  |        3,180 |        50,880 |
+| COIN     | COIN261113C00140000  |         4,611 |      1,360,245 | COIN261218P00110000  |        5,708 |     1,603,948 |
+| COIN     | COIN261120C00170000  |        12,214 |        476,346 | COIN261218P00130000  |        1,280 |     1,126,400 |
+| COIN     | COIN261204C00140000  |           423 |        376,893 | COIN261113P00135000  |        1,887 |       743,478 |
+| CRWV     | CRWV261120C00060000  |        35,682 |      6,387,078 | CRWV261120P00044000  |       31,372 |     9,631,204 |
+| CRWV     | CRWV261113C00050000  |        11,647 |      4,623,859 | CRWV261113P00045000  |        6,758 |     1,804,386 |
+| CRWV     | CRWV261218C00070000  |        13,793 |      2,331,017 | CRWV261120P00047500  |        1,949 |       882,897 |
+| GLD      | GLD261218C00390000   |         6,371 |      4,650,830 | GLD261120P00370000   |        2,884 |       758,492 |
+| GLD      | GLD261218C00400000   |         7,748 |      3,447,860 | GLD261120P00365000   |        3,079 |       511,114 |
+| GLD      | GLD261120C00385000   |         5,704 |      2,224,560 | GLD261120P00375000   |        1,207 |       499,698 |
+| GOOG     | GOOG261113C00290000  |         4,103 |      1,193,973 | GOOG261218P00270000  |        1,057 |       578,179 |
+| GOOG     | GOOG261120C00300000  |         3,582 |        834,606 | GOOG261113P00285000  |        1,222 |       464,360 |
+| GOOG     | GOOG261113C00300000  |        11,116 |        778,120 | GOOG261218P00280000  |          512 |       434,176 |
+| GOOGL    | GOOGL261218C00300000 |         3,710 |      2,878,960 | GOOGL261218P00280000 |        1,497 |     1,235,025 |
+| GOOGL    | GOOGL261120C00300000 |         5,961 |      1,669,080 | GOOGL261120P00285000 |        1,508 |       806,780 |
+| GOOGL    | GOOGL261113C00300000 |        10,229 |      1,033,129 | GOOGL261120P00275000 |        2,626 |       630,240 |
+| HIMS     | HIMS261113C00023000  |         4,846 |        804,436 | HIMS261113P00020000  |       11,917 |       607,767 |
+| HIMS     | HIMS261113C00025000  |         7,634 |        709,962 | HIMS261113P00022000  |        4,222 |       506,640 |
+| HIMS     | HIMS261113C00024000  |         4,492 |        561,500 | HIMS261113P00022500  |        2,474 |       351,308 |
+| IBIT     | IBIT261218C00045000  |         2,461 |        287,937 | IBIT261218P00042000  |        2,577 |       499,938 |
+| IBIT     | IBIT261110C00043000  |        12,663 |        189,945 | IBIT261120P00041000  |        3,825 |       252,450 |
+| INTC     | INTC261113C00060000  |        26,355 |      4,902,030 | INTC261113P00058000  |        6,100 |       939,400 |
+| INTC     | INTC261211C00075000  |        31,869 |      2,358,306 | INTC261113P00059000  |        4,103 |       808,291 |
+| INTC     | INTC261218C00060000  |         4,743 |      2,324,070 | INTC261218P00057500  |        1,863 |       720,981 |
+| IONQ     | IONQ261211C00037000  |         2,653 |        663,250 | IONQ261218P00035000  |        5,098 |     1,707,830 |
+| IONQ     | IONQ261218C00040000  |         3,127 |        612,892 | IONQ261120P00035000  |        1,119 |       218,205 |
+| IREN     | IREN261113C00022000  |        11,881 |      1,318,791 | IREN261120P00020000  |        5,976 |       806,760 |
+| IREN     | IREN261113C00022500  |        11,129 |      1,057,255 | IREN261113P00020000  |        8,437 |       717,145 |
+| IREN     | IREN261113C00023000  |         9,312 |        707,712 | IREN261120P00021000  |        2,936 |       507,928 |
+| MARA     | MARA261113C00007000  |        15,510 |        418,770 | MARA261113P00006500  |        7,537 |       271,332 |
+| MRVL     | MRVL261113C00160000  |         7,526 |      3,160,920 | MRVL261218P00150000  |          592 |       771,968 |
+| MRVL     | MRVL261113C00155000  |         4,340 |      2,712,500 | MRVL261113P00150000  |        1,234 |       561,470 |
+| MRVL     | MRVL261120C00160000  |         3,415 |      2,424,650 | MRVL261113P00145000  |        1,603 |       504,945 |
+| MSTR     | MSTR261113C00130000  |         5,702 |      1,727,706 | MSTR261113P00125000  |        3,400 |     1,519,800 |
+| MSTR     | MSTR261113C00135000  |         9,353 |      1,468,421 | MSTR261218P00125000  |          926 |     1,051,010 |
+| MSTR     | MSTR261113C00126000  |         2,521 |      1,205,038 | MSTR261127P00120000  |        1,815 |     1,034,550 |
+| NFLX     | NFLX261218C00820000  |            30 |      1,148,880 | NFLX261113P00063000  |        3,159 |       199,017 |
+| NFLX     | NFLX261218C00830000  |            30 |      1,126,080 | NFLX261218P00063000  |          386 |        86,850 |
+| NFLX     | NFLX261218C00065000  |         3,517 |        868,699 | NFLX261120P00063000  |          755 |        83,050 |
+| NVDA     | NVDA261218C00185000  |        47,599 |     47,979,792 | NVDA261120P00175000  |       21,255 |    16,281,330 |
+| NVDA     | NVDA261120C00180000  |        23,773 |     20,920,240 | NVDA261113P00175000  |       29,562 |    10,228,452 |
+| NVDA     | NVDA261111C00180000  |        55,346 |     17,489,336 | NVDA261111P00175000  |       39,746 |     9,737,770 |
+| OKLO     | OKLO261218C00030000  |         2,475 |        480,150 | OKLO261113P00026000  |        1,146 |       101,994 |
+| OKLO     | OKLO261113C00027000  |         2,269 |        276,818 | OKLO261218P00025000  |          413 |        84,665 |
+| QCOM     | QCOM261113C00175000  |         3,282 |        978,036 | QCOM261120P00170000  |          551 |       305,805 |
+| QCOM     | QCOM261218C00180000  |           858 |        630,630 | QCOM261218P00160000  |          440 |       272,800 |
+| QCOM     | QCOM261120C00185000  |         2,285 |        461,570 | QCOM261218P00170000  |          249 |       247,755 |
+| QQQ      | QQQ261218C00705000   |        21,404 |     22,880,876 | QQQ261130P00675000   |       14,734 |    20,111,910 |
+| QQQ      | QQQ261218C00690000   |        12,382 |     21,606,590 | QQQ261120P00670000   |       16,882 |    15,818,434 |
+| QQQ      | QQQ261120C00680000   |        12,447 |     16,131,312 | QQQ261218P00645000   |       14,441 |    15,278,578 |
+| RIOT     | RIOT261127C00020000  |        28,746 |      2,443,410 | RIOT261120P00016000  |        3,190 |       216,920 |
+| RIOT     | RIOT261120C00021000  |        51,182 |      2,149,644 | RIOT261120P00014000  |        7,279 |       131,022 |
+| RIOT     | RIOT261120C00018000  |        13,438 |      1,720,064 | RIOT261113P00017000  |        1,480 |       100,640 |
+| RKLB     | RKLB261113C00060000  |         9,169 |      2,998,263 | RKLB261113P00058000  |        1,652 |       550,116 |
+| RKLB     | RKLB261113C00065000  |         8,754 |      1,391,886 | RKLB261113P00055000  |        2,452 |       500,208 |
+| RKLB     | RKLB261218C00060000  |         1,723 |      1,085,490 | RKLB261113P00050000  |        4,676 |       360,052 |
+| SLV      | SLV261204C00050000   |        39,241 |      4,865,884 | SLV261211P00048000   |        2,315 |       483,835 |
+| SLV      | SLV261218C00050000   |         4,579 |        792,167 | SLV261218P00048000   |        1,476 |       338,004 |
+| SLV      | SLV261120C00048500   |         4,007 |        496,868 | SLV261120P00047500   |        1,589 |       173,201 |
+| SMCI     | SMCI261218C00030000  |         1,915 |        453,855 | SMCI261218P00028000  |        3,394 |       848,500 |
+| SMCI     | SMCI261218C00620000  |            35 |        431,550 | SMCI261218P00025000  |        2,956 |       399,060 |
+| SMCI     | SMCI261204C00030000  |         2,328 |        430,680 | SMCI261113P00028000  |        1,398 |       123,024 |
+| SMH      | SMH261218C00500000   |         2,193 |      5,182,059 | SMH261218P00450000   |        5,300 |     7,552,500 |
+| SMH      | SMH261120C00500000   |         2,728 |      3,396,360 | SMH261120P00465000   |        5,420 |     5,121,900 |
+| SMH      | SMH261218C00525000   |         2,119 |      3,040,765 | SMH261120P00480000   |        2,379 |     3,520,920 |
+| SNDK     | SNDK261113C00900000  |         5,042 |     19,527,666 | SNDK261113P00880000  |        1,745 |     7,253,965 |
+| SNDK     | SNDK261113C00890000  |         2,194 |      9,598,750 | SNDK261113P00885000  |        1,190 |     5,188,400 |
+| SNDK     | SNDK261120C00900000  |         1,477 |      8,965,390 | SNDK261113P00850000  |        1,387 |     4,018,139 |
+| SPY      | SPY261218C00775000   |        30,078 |     18,618,282 | SPY261120P00725000   |      128,103 |    28,566,969 |
+| SPY      | SPY261110C00753000   |        55,812 |     17,524,968 | SPY261120P00750000   |       23,665 |    16,944,140 |
+| SPY      | SPY261218C00755000   |        10,482 |     16,624,452 | SPY261120P00710000   |      123,438 |    14,935,998 |
+| TLT      | TLT261218C00082000   |         5,463 |        666,486 | TLT261231P00079000   |       25,028 |     1,126,260 |
+| TLT      | TLT261130C00083000   |        12,158 |        547,110 | TLT261231P00075000   |       32,512 |       260,096 |
+| TSLA     | TSLA261111C00380000  |        11,856 |      5,809,440 | TSLA261211P00375000  |        5,639 |    10,037,420 |
+| TSLA     | TSLA261113C00380000  |         7,057 |      5,151,610 | TSLA261218P00350000  |        5,502 |     5,887,140 |
+| TSLA     | TSLA261218C00400000  |         3,655 |      4,879,425 | TSLA261111P00375000  |        9,873 |     4,492,215 |
+| TSLL     | TSLL261113C00010000  |        11,432 |        342,960 | TSLL261120P00009000  |        2,753 |        85,343 |
+| TSM      | TSM261218C00390000   |           614 |      1,264,840 | TSM261218P00380000   |          923 |     1,375,270 |
+| TSM      | TSM261113C00400000   |         2,511 |      1,230,390 | TSM261224P00375000   |          795 |     1,212,375 |
+| TSM      | TSM261218C00410000   |           872 |      1,070,816 | TSM261218P00360000   |          946 |       866,536 |
+| UNH      | UNH261218C00400000   |           551 |        826,500 | UNH261211P00350000   |        2,444 |       613,444 |
+| UNH      | UNH261218C00420000   |           986 |        757,248 | UNH261120P00395000   |          536 |       465,248 |
+| UNH      | UNH261120C00410000   |         1,399 |        597,373 | UNH261113P00395000   |          358 |       193,320 |
+| WULF     | WULF261218C00013000  |         4,430 |        655,640 | WULF261218P00011000  |        2,907 |       290,700 |
+| WULF     | WULF261127C00014000  |         7,166 |        444,292 | WULF261127P00009500  |        7,558 |       166,276 |
+| WULF     | WULF261120C00013500  |         6,442 |        399,404 | WULF261120P00012000  |        1,657 |       142,502 |
+| XLF      | XLF261218C00060000   |         3,306 |        185,136 | XLF261120P00055000   |       28,849 |       259,641 |
+| XLU      | XLU261218C00044000   |         2,762 |        265,152 | XLU261218P00043000   |        2,275 |       116,025 |
+| ^VIX     | VIX261216C00020000   |        18,980 |      3,739,060 | VIX261216P00017000   |       80,037 |     4,882,257 |
+| ^VIX     | VIX261118C00021000   |        26,114 |      2,872,540 | VIX261216P00019000   |       18,324 |     3,170,052 |
+| ^VIX     | VIX261118C00022000   |        26,200 |      2,410,400 | VIX261118P00019500   |       17,118 |     1,694,682 |
 
 *premium = volume × lastPrice × 100 · OTM = calls strike>spot, puts strike<spot · T4 uses the cleaned chain: ≥2 DTE, OTM only, leveraged ETFs folded into their underlying, ^VIX ratio inverted · Net Signed Premium = bought calls/sold puts minus sold calls/bought puts, side from lastPrice vs bid/ask · generated by options-flow-pipeline*
 
@@ -460,4 +511,4 @@ _Flow = premium-weighted flow score: 100 × (bought calls + sold puts − sold c
 
 **Data quality:** requested: 52 · fetched: 52 · failed: 0 · gated: 9
 
-_Signal check (next-day rank correlation, last 20 sessions): composite IC -0.037 (t -0.7, n=20) · flow_pct IC -0.056 (t -1.3, n=20) · trend_pct IC +0.039 (t +0.6, n=20)_
+_Signal check (next-day rank correlation, last 20 sessions): composite IC -0.053 (t -1.0, n=20) · flow_pct IC -0.076 (t -1.7, n=20) · trend_pct IC +0.034 (t +0.5, n=20)_
