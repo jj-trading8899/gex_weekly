@@ -1,0 +1,364 @@
+{
+ "date": "2026-11-11",
+ "next_session": "2026-11-12",
+ "source": "mac",
+ "top10": [
+  {
+   "rank": 1,
+   "tk": "RIOT",
+   "dir": "Bullish",
+   "strength": "moderate",
+   "setup": "aligned bull"
+  },
+  {
+   "rank": 2,
+   "tk": "IREN",
+   "dir": "Bullish",
+   "strength": "moderate",
+   "setup": "aligned bull"
+  },
+  {
+   "rank": 3,
+   "tk": "GLD",
+   "dir": "Bearish",
+   "strength": "mild",
+   "setup": "aligned bear"
+  },
+  {
+   "rank": 4,
+   "tk": "AAOI",
+   "dir": "Bullish",
+   "strength": "mild",
+   "setup": "aligned bull"
+  },
+  {
+   "rank": 5,
+   "tk": "AVGO",
+   "dir": "Mixed",
+   "strength": "mild",
+   "setup": "range"
+  },
+  {
+   "rank": 6,
+   "tk": "HIMS",
+   "dir": "Bearish",
+   "strength": "moderate",
+   "setup": "aligned bear"
+  },
+  {
+   "rank": 7,
+   "tk": "IBIT",
+   "dir": "Bullish",
+   "strength": "moderate",
+   "setup": "momentum bull"
+  },
+  {
+   "rank": 8,
+   "tk": "WULF",
+   "dir": "Bearish",
+   "strength": "moderate",
+   "setup": "conflict bear"
+  },
+  {
+   "rank": 9,
+   "tk": "SNDK",
+   "dir": "Mixed",
+   "strength": "mild",
+   "setup": "range"
+  },
+  {
+   "rank": 10,
+   "tk": "NVDA",
+   "dir": "Mixed",
+   "strength": "mild",
+   "setup": "range"
+  }
+ ],
+ "levels": [
+  {
+   "tk": "RIOT",
+   "support": 18,
+   "pivot": 14.31,
+   "resistance": 18.5,
+   "side": "above pivot"
+  },
+  {
+   "tk": "IREN",
+   "support": 19.5,
+   "pivot": 20.78,
+   "resistance": 21,
+   "side": "above pivot"
+  },
+  {
+   "tk": "GLD",
+   "support": 354,
+   "pivot": 367.89,
+   "resistance": 368,
+   "side": "below pivot"
+  },
+  {
+   "tk": "AAOI",
+   "support": 56,
+   "pivot": 50.92,
+   "resistance": 57,
+   "side": "above pivot"
+  },
+  {
+   "tk": "AVGO",
+   "support": 345,
+   "pivot": 331.43,
+   "resistance": 348,
+   "side": "above pivot"
+  },
+  {
+   "tk": "IBIT",
+   "support": null,
+   "pivot": 43.18,
+   "resistance": 43,
+   "side": "below pivot"
+  },
+  {
+   "tk": "WULF",
+   "support": 13,
+   "pivot": 11.69,
+   "resistance": 13.5,
+   "side": "above pivot"
+  },
+  {
+   "tk": "SNDK",
+   "support": 980,
+   "pivot": 989.34,
+   "resistance": 985,
+   "side": "below pivot"
+  },
+  {
+   "tk": "NVDA",
+   "support": 172,
+   "pivot": 174.01,
+   "resistance": 175,
+   "side": "below pivot"
+  },
+  {
+   "tk": "SPY",
+   "support": 760,
+   "pivot": 753.36,
+   "resistance": 761,
+   "side": "above pivot"
+  },
+  {
+   "tk": "QQQ",
+   "support": 690,
+   "pivot": 686,
+   "resistance": 691,
+   "side": "above pivot"
+  }
+ ],
+ "changes": [
+  {
+   "tk": "AAOI",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "ASTS",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "COIN",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "HUT",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "MU",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "QQQ",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "SMCI",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "SPX",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "SPY",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "TSM",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "SPCX",
+   "type": "Pivot crossed up"
+  },
+  {
+   "tk": "AAOI",
+   "type": "Call wall cleared"
+  },
+  {
+   "tk": "AAPL",
+   "type": "Call wall cleared"
+  },
+  {
+   "tk": "AMD",
+   "type": "Call wall cleared"
+  },
+  {
+   "tk": "ARM",
+   "type": "Call wall cleared"
+  },
+  {
+   "tk": "AVGO",
+   "type": "Call wall cleared"
+  },
+  {
+   "tk": "COHR",
+   "type": "Call wall cleared"
+  },
+  {
+   "tk": "GOOGL",
+   "type": "Call wall cleared"
+  },
+  {
+   "tk": "HUT",
+   "type": "Call wall cleared"
+  },
+  {
+   "tk": "INTC",
+   "type": "Call wall cleared"
+  }
+ ],
+ "trends": [
+  {
+   "tk": "RIOT",
+   "state": "Up",
+   "conf": 3
+  },
+  {
+   "tk": "AMD",
+   "state": "Up",
+   "conf": 2
+  },
+  {
+   "tk": "AVGO",
+   "state": "Up",
+   "conf": 2
+  },
+  {
+   "tk": "COHR",
+   "state": "Up",
+   "conf": 2
+  },
+  {
+   "tk": "ETHA",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "HUT",
+   "state": "Up",
+   "conf": 2
+  },
+  {
+   "tk": "IBIT",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "MARA",
+   "state": "Up",
+   "conf": 2
+  },
+  {
+   "tk": "NVDA",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "RKLB",
+   "state": "Up",
+   "conf": 2
+  }
+ ],
+ "movers": [
+  {
+   "tk": "ARM",
+   "day_pct": 11.8,
+   "z": 1.6,
+   "tag": ""
+  },
+  {
+   "tk": "AAOI",
+   "day_pct": 16.0,
+   "z": 1.5,
+   "tag": "flow chased"
+  },
+  {
+   "tk": "EOSE",
+   "day_pct": 13.5,
+   "z": 1.5,
+   "tag": ""
+  },
+  {
+   "tk": "MU",
+   "day_pct": 12.1,
+   "z": 1.4,
+   "tag": ""
+  },
+  {
+   "tk": "SMCI",
+   "day_pct": 9.9,
+   "z": 1.4,
+   "tag": ""
+  },
+  {
+   "tk": "SNDK",
+   "day_pct": 14.3,
+   "z": 1.4,
+   "tag": ""
+  },
+  {
+   "tk": "NBIS",
+   "day_pct": 11.7,
+   "z": 1.2,
+   "tag": ""
+  },
+  {
+   "tk": "ASTS",
+   "day_pct": 9.3,
+   "z": 1.2,
+   "tag": ""
+  }
+ ],
+ "radar": [
+  {
+   "tk": "META",
+   "dir": "up"
+  },
+  {
+   "tk": "INTC",
+   "dir": "up"
+  },
+  {
+   "tk": "IREN",
+   "dir": "up"
+  },
+  {
+   "tk": "CIFR",
+   "dir": "up"
+  },
+  {
+   "tk": "NBIS",
+   "dir": "up"
+  }
+ ],
+ "scorecard": "1-day direction right 384 of 805 (48%)",
+ "generated": "2026-11-12T02:09Z"
+}
