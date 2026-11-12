@@ -1,0 +1,2019 @@
+{
+ "snapshot": "2026-11-12",
+ "nextOpex": "2026-11-20",
+ "nextOpex2": "2026-12-18",
+ "dataUpdatedAt": "2026-11-12T21:05:18.772Z",
+ "capturedAt": "2026-11-12T21:23:18.114Z",
+ "cal": {
+  "sessions": 20,
+  "horizon": 5
+ },
+ "headlines": [
+  "<b>NVDA</b> is the one to watch. It's inside a flip zone that has been moving ($163\u2013174), under its largest $185 level (+21.3K). There's almost no support below it, and none at all around $165. It's also the most negative board (\u2212299K into opex), so swings are likely to be big.",
+  "<b>AMZN</b> has the most positioning into opex (+382K), centred on $270\u2013275. It's also sitting on its $263 flip.",
+  "<b>TSLA</b> is boxed between $392.5 and $400. <b>AAPL</b> faces resistance at $357.5\u2013365, and <b>AVGO</b> at $367.5\u2013380.",
+  "Looking to the 12/18 opex, <b>AMZN</b> has the most positioning (+176K); <b>NVDA</b> stays net negative into both opex dates; <b>GOOGL</b> flips from negative this month to positive.",
+  "<b>GOOGL</b> is the next-weakest board, at only \u22121.2K into opex. It's above its $291 flip."
+ ],
+ "glance": [
+  {
+   "t": "NVDA",
+   "spot": 166.2762,
+   "lean": "swing",
+   "flip": 164.15,
+   "flipLo": 163.5,
+   "flipHi": 174.0,
+   "flipWide": true,
+   "flipJump": true,
+   "up": 177.5,
+   "cap": 185.0,
+   "down": 165.0,
+   "downKind": "trigger",
+   "board": -298.8,
+   "thin": false,
+   "board2": -82.0
+  },
+  {
+   "t": "TSLA",
+   "spot": 398.75,
+   "lean": "range",
+   "flip": 374.74,
+   "flipLo": 360.9,
+   "flipHi": 387.7,
+   "flipWide": true,
+   "flipJump": true,
+   "up": 400.0,
+   "cap": null,
+   "down": 395.0,
+   "downKind": "weak",
+   "board": 59.7,
+   "thin": false,
+   "board2": 20.3
+  },
+  {
+   "t": "AAPL",
+   "spot": 354.85,
+   "lean": "range",
+   "flip": 347.71,
+   "flipLo": 346.3,
+   "flipHi": 352.8,
+   "flipWide": false,
+   "flipJump": false,
+   "up": 357.5,
+   "cap": 365.0,
+   "down": 350.0,
+   "downKind": "weak",
+   "board": 335.2,
+   "thin": false,
+   "board2": 156.6
+  },
+  {
+   "t": "AMZN",
+   "spot": 267.3,
+   "lean": "edge",
+   "flip": 262.9,
+   "flipLo": 261.9,
+   "flipHi": 267.4,
+   "flipWide": false,
+   "flipJump": false,
+   "up": 270.0,
+   "cap": null,
+   "down": 265.0,
+   "downKind": "weak",
+   "board": 382.3,
+   "thin": false,
+   "board2": 175.7
+  },
+  {
+   "t": "GOOGL",
+   "spot": 299.17,
+   "lean": "swing",
+   "flip": 290.85,
+   "flipLo": 287.3,
+   "flipHi": 292.0,
+   "flipWide": false,
+   "flipJump": false,
+   "up": 305.0,
+   "cap": null,
+   "down": 297.5,
+   "downKind": "weak",
+   "board": -1.2,
+   "thin": true,
+   "board2": 11.7
+  },
+  {
+   "t": "AVGO",
+   "spot": 365.8995,
+   "lean": "range",
+   "flip": 331.43,
+   "flipLo": 322.2,
+   "flipHi": 351.1,
+   "flipWide": true,
+   "flipJump": true,
+   "up": 367.5,
+   "cap": 380.0,
+   "down": 365.0,
+   "downKind": "weak",
+   "board": 36.7,
+   "thin": false,
+   "board2": 14.5
+  }
+ ],
+ "cards": [
+  {
+   "t": "NVDA",
+   "spot": 166.2762,
+   "chg": null,
+   "cols": [
+    "11/13",
+    "11/20",
+    "11/27",
+    "12/4",
+    "12/18"
+   ],
+   "opexIdx": 1,
+   "opex2Idx": 4,
+   "regime": "net negative into opex \u00b7 bigger swings",
+   "tone": "neg",
+   "term": [
+    [
+     -292.7,
+     532
+    ],
+    [
+     -298.8,
+     43
+    ],
+    [
+     -59.7,
+     138
+    ],
+    [
+     -32.5,
+     57
+    ],
+    [
+     -82.0,
+     1237
+    ]
+   ],
+   "pin": "$165",
+   "wall": "$177.5 first \u00b7 $185 cap",
+   "sup": "none",
+   "flip": "~$164",
+   "range": "$143-185 \u00b7 flip $164",
+   "read": "Closed $166.28. Into 11/20 opex dealers net \u2212299K, heaviest at $185 (+21.3K). Net negative into opex has gone with the biggest day-to-day swings. The flip moved from $174 to $164 today, so treat $163\u2013174 as a zone, not a line. Inside the flip zone ($163\u2013174), so the next close decides which side it trades on. First resistance $177.5 (held 80% of the time), major cap $185 (held 90%). $170 above is an air pocket: rallies closed through levels like it 72% of the time. No real support below spot. There's no support at $165. The 11/13 front expiry is net negative (\u2212293K), so near-term swings can overshoot before opex takes over. Into the 12/18 opex dealers net \u221282.0K, biggest level overhead $185. TradeEcho's own read: Neutral."
+  },
+  {
+   "t": "TSLA",
+   "spot": 398.75,
+   "chg": null,
+   "cols": [
+    "11/13",
+    "11/20",
+    "11/27",
+    "12/4",
+    "12/18"
+   ],
+   "opexIdx": 1,
+   "opex2Idx": 4,
+   "regime": "steadier \u00b7 $400 cap",
+   "tone": "pos",
+   "term": [
+    [
+     189.8,
+     662
+    ],
+    [
+     59.7,
+     1733
+    ],
+    [
+     22.0,
+     647
+    ],
+    [
+     10.4,
+     413
+    ],
+    [
+     20.3,
+     1482
+    ]
+   ],
+   "pin": "$400",
+   "wall": "$400",
+   "sup": "$395 (weak)",
+   "flip": "~$375",
+   "range": "$392.5-400 \u00b7 flip $375",
+   "read": "Closed $398.75. Into 11/20 opex dealers net +59.7K, heaviest at $400 (+22.3K). Net positive into opex has gone with smaller day-to-day swings. The flip moved from $375 to $388 today, so treat $361\u2013388 as a zone, not a line. Above the flip zone (about $375), where moves have tended to be a little smaller. Resistance $400 (held 55% of the time). Support at $395 is weak: levels like it held only 27% of the time. There's no support at $380. Into the 12/18 opex dealers net +20.3K, biggest level overhead $400. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "AAPL",
+   "spot": 354.85,
+   "chg": null,
+   "cols": [
+    "11/13",
+    "11/20",
+    "11/27",
+    "12/4",
+    "12/18"
+   ],
+   "opexIdx": 1,
+   "opex2Idx": 4,
+   "regime": "steadier \u00b7 $365 cap",
+   "tone": "pos",
+   "term": [
+    [
+     156.0,
+     1807
+    ],
+    [
+     335.2,
+     5561
+    ],
+    [
+     24.0,
+     1046
+    ],
+    [
+     18.9,
+     769
+    ],
+    [
+     156.6,
+     5755
+    ]
+   ],
+   "pin": "$355",
+   "wall": "$357.5 first \u00b7 $365 cap",
+   "sup": "$350 (weak)",
+   "flip": "~$348",
+   "range": "$350-365 \u00b7 flip $348",
+   "read": "Closed $354.85. Into 11/20 opex dealers net +335K, heaviest at $365 (+107K). Net positive into opex has gone with smaller day-to-day swings. Above the flip zone (about $348), where moves have tended to be a little smaller. First resistance $357.5 (held 56% of the time), major cap $365 (held 80%). Support at $350 is weak: levels like it held only 44% of the time. There's no support at $352.5. Into the 12/18 opex dealers net +157K, biggest level overhead $360. TradeEcho's own read: Neutral."
+  },
+  {
+   "t": "AMZN",
+   "spot": 267.3,
+   "chg": null,
+   "cols": [
+    "11/13",
+    "11/20",
+    "11/27",
+    "12/4",
+    "12/18"
+   ],
+   "opexIdx": 1,
+   "opex2Idx": 4,
+   "regime": "on the flip $263",
+   "tone": "mix",
+   "term": [
+    [
+     198.3,
+     523
+    ],
+    [
+     382.3,
+     3296
+    ],
+    [
+     33.7,
+     400
+    ],
+    [
+     23.8,
+     289
+    ],
+    [
+     175.7,
+     3869
+    ]
+   ],
+   "pin": "$270",
+   "wall": "$270",
+   "sup": "$265 (weak)",
+   "flip": "~$263",
+   "range": "$265-275 \u00b7 flip $263",
+   "read": "Closed $267.30. Into 11/20 opex dealers net +382K, heaviest at $275 (+96.1K). Net positive into opex has gone with smaller day-to-day swings. Inside the flip zone ($262\u2013267), so the next close decides which side it trades on. Resistance $270 (held 55% of the time). Support at $265 is weak: levels like it held only 20% of the time. There's no support at $262.5. Into the 12/18 opex dealers net +176K, biggest level overhead $300. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "GOOGL",
+   "spot": 299.17,
+   "chg": null,
+   "cols": [
+    "11/13",
+    "11/20",
+    "11/27",
+    "12/4",
+    "12/18"
+   ],
+   "opexIdx": 1,
+   "opex2Idx": 4,
+   "regime": "net negative into opex \u00b7 bigger swings",
+   "tone": "neg",
+   "term": [
+    [
+     179.9,
+     187
+    ],
+    [
+     -1.2,
+     1875
+    ],
+    [
+     10.8,
+     370
+    ],
+    [
+     11.0,
+     324
+    ],
+    [
+     11.7,
+     1996
+    ]
+   ],
+   "pin": "$300",
+   "wall": "$305",
+   "sup": "$297.5 (weak)",
+   "flip": "~$291",
+   "range": "$295-305 \u00b7 flip $291",
+   "read": "Closed $299.17. Into 11/20 opex dealers net \u22121.2K, heaviest at $300 (+9.3K). Net negative into opex has gone with the biggest day-to-day swings. Above the flip zone (about $291), where moves have tended to be a little smaller. Resistance $305 (held 68% of the time). Support at $297.5 is weak: levels like it held only 20% of the time. There's no support at $290. Into the 12/18 opex dealers net +11.7K, biggest level overhead $310. TradeEcho's own read: Neutral."
+  },
+  {
+   "t": "AVGO",
+   "spot": 365.8995,
+   "chg": null,
+   "cols": [
+    "11/13",
+    "11/20",
+    "11/27",
+    "12/4",
+    "12/18"
+   ],
+   "opexIdx": 1,
+   "opex2Idx": 4,
+   "regime": "steadier \u00b7 $400 cap",
+   "tone": "pos",
+   "term": [
+    [
+     68.4,
+     92
+    ],
+    [
+     36.7,
+     1193
+    ],
+    [
+     8.2,
+     183
+    ],
+    [
+     13.8,
+     -57
+    ],
+    [
+     14.5,
+     1000
+    ]
+   ],
+   "pin": "$362.5",
+   "wall": "$367.5 first \u00b7 $380 cap",
+   "sup": "$365 (weak)",
+   "flip": "~$331",
+   "range": "$355-400 \u00b7 flip $331",
+   "read": "Closed $365.90. Into 11/20 opex dealers net +36.7K, heaviest at $400 (+10.0K). Net positive into opex has gone with smaller day-to-day swings. The flip moved from $331 to $351 today, so treat $322\u2013351 as a zone, not a line. Above the flip zone (about $331), where moves have tended to be a little smaller. First resistance $367.5 (held 55% of the time), major cap $380 (held 71%). Support at $365 is weak: levels like it held only 20% of the time. There's no support at $350. Into the 12/18 opex dealers net +14.5K, biggest level overhead $400. TradeEcho's own read: Bullish."
+  }
+ ],
+ "ts": [
+  {
+   "t": "NVDA",
+   "spot": 166.2762,
+   "chg": null,
+   "flip": 164.15,
+   "perCol": [
+    {
+     "code": "2026-11-13",
+     "net": -292.7,
+     "opex": false,
+     "strikes": [
+      [
+       185.0,
+       26.5
+      ],
+      [
+       182.5,
+       15.5
+      ],
+      [
+       180.0,
+       30.8
+      ],
+      [
+       170.0,
+       -42.9
+      ],
+      [
+       167.5,
+       -37.9
+      ],
+      [
+       165.0,
+       -97.5
+      ],
+      [
+       162.5,
+       -51.2
+      ],
+      [
+       160.0,
+       -82.6
+      ],
+      [
+       157.5,
+       -33.2
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": -298.8,
+     "opex": true,
+     "strikes": [
+      [
+       190.0,
+       -72.9
+      ],
+      [
+       185.0,
+       21.3
+      ],
+      [
+       182.5,
+       20.9
+      ],
+      [
+       180.0,
+       -23.1
+      ],
+      [
+       175.0,
+       -20.4
+      ],
+      [
+       170.0,
+       -48.6
+      ],
+      [
+       165.0,
+       -32.3
+      ],
+      [
+       160.0,
+       -57.1
+      ],
+      [
+       150.0,
+       -33.3
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -82.0,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       190.0,
+       24.7
+      ],
+      [
+       185.0,
+       142.5
+      ],
+      [
+       180.0,
+       -16.5
+      ],
+      [
+       170.0,
+       -29.3
+      ],
+      [
+       165.0,
+       -35.7
+      ],
+      [
+       164.0,
+       23.9
+      ],
+      [
+       160.0,
+       -54.0
+      ],
+      [
+       155.0,
+       -19.0
+      ],
+      [
+       150.0,
+       -16.9
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 185.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 5.0,
+     "odds": 90,
+     "base": 95,
+     "obs": 120,
+     "tier": "major"
+    },
+    {
+     "k": 182.5,
+     "kind": "sell",
+     "strength": 0.8,
+     "n": 2,
+     "dm": 4.3,
+     "odds": 90,
+     "base": 95,
+     "obs": 120,
+     "tier": null
+    },
+    {
+     "k": 177.5,
+     "kind": "sell",
+     "strength": 0.57,
+     "n": 2,
+     "dm": 3.0,
+     "odds": 80,
+     "base": 85,
+     "obs": 148,
+     "tier": "first"
+    },
+    {
+     "k": 170.0,
+     "kind": "pocket",
+     "strength": 0.69,
+     "n": 2,
+     "dm": 1.0,
+     "odds": 72,
+     "base": 61,
+     "obs": 37
+    },
+    {
+     "k": 165.0,
+     "kind": "trigger",
+     "strength": 0.87,
+     "n": 2,
+     "dm": 0.3,
+     "odds": 79,
+     "base": 78,
+     "obs": 69,
+     "pin": true
+    },
+    {
+     "k": 164.1,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 163.5,
+     "hi": 174.0,
+     "jump": true
+    },
+    {
+     "k": 160.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 1.7,
+     "odds": 59,
+     "base": 62,
+     "obs": 105
+    }
+   ],
+   "board": -298.8,
+   "pos": "in",
+   "dayMove": 2.27,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": -298.8,
+     "vex": 43,
+     "hasRows": true,
+     "first": [
+      177.5,
+      13.1
+     ],
+     "cap": [
+      185.0,
+      21.3
+     ],
+     "sup": null,
+     "gap": [
+      165.0,
+      -32.3
+     ],
+     "pocket": [
+      170.0,
+      -48.6
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -82.0,
+     "vex": 1237,
+     "hasRows": true,
+     "first": [
+      185.0,
+      142.5
+     ],
+     "cap": null,
+     "sup": [
+      164.0,
+      23.9
+     ],
+     "gap": [
+      165.0,
+      -35.7
+     ],
+     "pocket": [
+      170.0,
+      -29.3
+     ]
+    }
+   ]
+  },
+  {
+   "t": "TSLA",
+   "spot": 398.75,
+   "chg": null,
+   "flip": 374.74,
+   "perCol": [
+    {
+     "code": "2026-11-13",
+     "net": 189.8,
+     "opex": false,
+     "strikes": [
+      [
+       410.0,
+       15.1
+      ],
+      [
+       407.5,
+       13.1
+      ],
+      [
+       405.0,
+       22.7
+      ],
+      [
+       402.5,
+       8.8
+      ],
+      [
+       400.0,
+       67.8
+      ],
+      [
+       397.5,
+       7.6
+      ],
+      [
+       395.0,
+       17.6
+      ],
+      [
+       392.5,
+       17.9
+      ],
+      [
+       390.0,
+       11.1
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": 59.7,
+     "opex": true,
+     "strikes": [
+      [
+       435.0,
+       4.1
+      ],
+      [
+       420.0,
+       9.2
+      ],
+      [
+       415.0,
+       6.0
+      ],
+      [
+       410.0,
+       7.4
+      ],
+      [
+       405.0,
+       5.1
+      ],
+      [
+       400.0,
+       22.3
+      ],
+      [
+       392.5,
+       3.7
+      ],
+      [
+       360.0,
+       -4.3
+      ],
+      [
+       350.0,
+       -4.0
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 20.3,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       450.0,
+       4.6
+      ],
+      [
+       440.0,
+       3.2
+      ],
+      [
+       435.0,
+       4.6
+      ],
+      [
+       425.0,
+       1.9
+      ],
+      [
+       420.0,
+       4.2
+      ],
+      [
+       400.0,
+       5.3
+      ],
+      [
+       390.0,
+       -2.9
+      ],
+      [
+       360.0,
+       -2.1
+      ],
+      [
+       350.0,
+       -3.3
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 410.0,
+     "kind": "sell",
+     "strength": 0.26,
+     "n": 2,
+     "dm": 1.4,
+     "odds": 68,
+     "base": 55,
+     "obs": 89,
+     "tier": null
+    },
+    {
+     "k": 405.0,
+     "kind": "sell",
+     "strength": 0.3,
+     "n": 2,
+     "dm": 0.8,
+     "odds": 56,
+     "base": 39,
+     "obs": 48,
+     "tier": null
+    },
+    {
+     "k": 400.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 0.2,
+     "odds": 55,
+     "base": 39,
+     "obs": 58,
+     "tier": "both",
+     "pin": true
+    },
+    {
+     "k": 395.0,
+     "kind": "weak",
+     "strength": 0.18,
+     "n": 2,
+     "dm": 0.5,
+     "odds": 27,
+     "base": 22,
+     "obs": 35
+    },
+    {
+     "k": 392.5,
+     "kind": "weak",
+     "strength": 0.23,
+     "n": 2,
+     "dm": 0.8,
+     "odds": 27,
+     "base": 22,
+     "obs": 35
+    },
+    {
+     "k": 380.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 2.3,
+     "odds": 40,
+     "base": 37,
+     "obs": 182
+    },
+    {
+     "k": 374.7,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 360.9,
+     "hi": 387.7,
+     "jump": true
+    },
+    {
+     "k": 360.0,
+     "kind": "trigger",
+     "strength": 0.9,
+     "n": 2,
+     "dm": 4.8,
+     "odds": 17,
+     "base": 14,
+     "obs": 218
+    }
+   ],
+   "board": 59.7,
+   "pos": "above",
+   "dayMove": 2.03,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": 59.7,
+     "vex": 1733,
+     "hasRows": true,
+     "first": [
+      400.0,
+      22.3
+     ],
+     "cap": null,
+     "sup": [
+      392.5,
+      3.7
+     ],
+     "gap": [
+      390.0,
+      -2.4
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2026-12-18",
+     "net": 20.3,
+     "vex": 1482,
+     "hasRows": true,
+     "first": [
+      400.0,
+      5.3
+     ],
+     "cap": null,
+     "sup": [
+      395.0,
+      1.0
+     ],
+     "gap": [
+      390.0,
+      -2.9
+     ],
+     "pocket": null
+    }
+   ]
+  },
+  {
+   "t": "AAPL",
+   "spot": 354.85,
+   "chg": null,
+   "flip": 347.71,
+   "perCol": [
+    {
+     "code": "2026-11-13",
+     "net": 156.0,
+     "opex": false,
+     "strikes": [
+      [
+       365.0,
+       14.0
+      ],
+      [
+       362.5,
+       21.4
+      ],
+      [
+       360.0,
+       62.3
+      ],
+      [
+       357.5,
+       38.9
+      ],
+      [
+       355.0,
+       92.5
+      ],
+      [
+       352.5,
+       -29.4
+      ],
+      [
+       350.0,
+       -15.8
+      ],
+      [
+       345.0,
+       -8.4
+      ],
+      [
+       340.0,
+       -9.6
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": 335.2,
+     "opex": true,
+     "strikes": [
+      [
+       375.0,
+       11.0
+      ],
+      [
+       370.0,
+       27.9
+      ],
+      [
+       365.0,
+       107.3
+      ],
+      [
+       362.5,
+       41.9
+      ],
+      [
+       360.0,
+       69.7
+      ],
+      [
+       355.0,
+       46.6
+      ],
+      [
+       350.0,
+       29.7
+      ],
+      [
+       345.0,
+       8.5
+      ],
+      [
+       330.0,
+       -9.0
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 156.6,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       400.0,
+       7.2
+      ],
+      [
+       390.0,
+       6.2
+      ],
+      [
+       380.0,
+       26.1
+      ],
+      [
+       375.0,
+       23.9
+      ],
+      [
+       370.0,
+       26.4
+      ],
+      [
+       365.0,
+       10.8
+      ],
+      [
+       360.0,
+       41.7
+      ],
+      [
+       350.0,
+       27.7
+      ],
+      [
+       320.0,
+       -11.4
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 365.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 3.0,
+     "odds": 80,
+     "base": 85,
+     "obs": 148,
+     "tier": "major"
+    },
+    {
+     "k": 360.0,
+     "kind": "sell",
+     "strength": 0.95,
+     "n": 2,
+     "dm": 1.5,
+     "odds": 71,
+     "base": 55,
+     "obs": 107,
+     "tier": null
+    },
+    {
+     "k": 357.5,
+     "kind": "sell",
+     "strength": 0.26,
+     "n": 2,
+     "dm": 0.8,
+     "odds": 56,
+     "base": 39,
+     "obs": 48,
+     "tier": "first"
+    },
+    {
+     "k": 355,
+     "kind": "pin",
+     "strength": 0.93,
+     "n": 2,
+     "dm": 0.0,
+     "odds": null
+    },
+    {
+     "k": 352.5,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 1,
+     "dm": 0.7,
+     "odds": 79,
+     "base": 78,
+     "obs": 69
+    },
+    {
+     "k": 350.0,
+     "kind": "weak",
+     "strength": 0.16,
+     "n": 1,
+     "dm": 1.4,
+     "odds": 44,
+     "base": 38,
+     "obs": 24
+    },
+    {
+     "k": 347.7,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 346.3,
+     "hi": 352.8,
+     "jump": false
+    },
+    {
+     "k": 340.0,
+     "kind": "trigger",
+     "strength": 0.86,
+     "n": 2,
+     "dm": 4.4,
+     "odds": 17,
+     "base": 14,
+     "obs": 218
+    }
+   ],
+   "board": 335.2,
+   "pos": "above",
+   "dayMove": 0.96,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": 335.2,
+     "vex": 5561,
+     "hasRows": true,
+     "first": [
+      360.0,
+      69.7
+     ],
+     "cap": [
+      365.0,
+      107.3
+     ],
+     "sup": [
+      350.0,
+      29.7
+     ],
+     "gap": [
+      340.0,
+      -5.9
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2026-12-18",
+     "net": 156.6,
+     "vex": 5755,
+     "hasRows": true,
+     "first": [
+      360.0,
+      41.7
+     ],
+     "cap": null,
+     "sup": [
+      350.0,
+      27.7
+     ],
+     "gap": [
+      320.0,
+      -11.4
+     ],
+     "pocket": null
+    }
+   ]
+  },
+  {
+   "t": "AMZN",
+   "spot": 267.3,
+   "chg": null,
+   "flip": 262.9,
+   "perCol": [
+    {
+     "code": "2026-11-13",
+     "net": 198.3,
+     "opex": false,
+     "strikes": [
+      [
+       280.0,
+       8.4
+      ],
+      [
+       277.5,
+       7.7
+      ],
+      [
+       275.0,
+       25.9
+      ],
+      [
+       272.5,
+       21.4
+      ],
+      [
+       270.0,
+       69.5
+      ],
+      [
+       267.5,
+       39.8
+      ],
+      [
+       265.0,
+       12.0
+      ],
+      [
+       260.0,
+       18.4
+      ],
+      [
+       255.0,
+       -6.4
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": 382.3,
+     "opex": true,
+     "strikes": [
+      [
+       295.0,
+       13.7
+      ],
+      [
+       290.0,
+       36.7
+      ],
+      [
+       285.0,
+       24.1
+      ],
+      [
+       280.0,
+       48.3
+      ],
+      [
+       275.0,
+       96.1
+      ],
+      [
+       272.5,
+       11.7
+      ],
+      [
+       270.0,
+       79.1
+      ],
+      [
+       265.0,
+       55.9
+      ],
+      [
+       255.0,
+       7.5
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 175.7,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       300.0,
+       35.0
+      ],
+      [
+       295.0,
+       10.2
+      ],
+      [
+       290.0,
+       15.4
+      ],
+      [
+       285.0,
+       30.1
+      ],
+      [
+       280.0,
+       31.9
+      ],
+      [
+       275.0,
+       28.1
+      ],
+      [
+       270.0,
+       15.8
+      ],
+      [
+       260.0,
+       8.3
+      ],
+      [
+       240.0,
+       -11.1
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 280.0,
+     "kind": "sell",
+     "strength": 0.43,
+     "n": 2,
+     "dm": 3.0,
+     "odds": 80,
+     "base": 85,
+     "obs": 148,
+     "tier": null
+    },
+    {
+     "k": 275.0,
+     "kind": "sell",
+     "strength": 0.9,
+     "n": 2,
+     "dm": 1.8,
+     "odds": 71,
+     "base": 55,
+     "obs": 107,
+     "tier": null
+    },
+    {
+     "k": 270.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 0.6,
+     "odds": 55,
+     "base": 39,
+     "obs": 58,
+     "tier": "both",
+     "pin": true
+    },
+    {
+     "k": 265.0,
+     "kind": "weak",
+     "strength": 0.51,
+     "n": 2,
+     "dm": 0.5,
+     "odds": 20,
+     "base": 22,
+     "obs": 16
+    },
+    {
+     "k": 262.9,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 261.9,
+     "hi": 267.4,
+     "jump": false
+    },
+    {
+     "k": 262.5,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 1.1,
+     "odds": 59,
+     "base": 62,
+     "obs": 105
+    },
+    {
+     "k": 260.0,
+     "kind": "weak",
+     "strength": 0.14,
+     "n": 2,
+     "dm": 1.7,
+     "odds": 44,
+     "base": 38,
+     "obs": 24
+    },
+    {
+     "k": 240.0,
+     "kind": "trigger",
+     "strength": 0.55,
+     "n": 1,
+     "dm": 6.4,
+     "odds": 17,
+     "base": 14,
+     "obs": 218
+    }
+   ],
+   "board": 382.3,
+   "pos": "in",
+   "dayMove": 1.61,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": 382.3,
+     "vex": 3296,
+     "hasRows": true,
+     "first": [
+      270.0,
+      79.1
+     ],
+     "cap": [
+      275.0,
+      96.1
+     ],
+     "sup": [
+      265.0,
+      55.9
+     ],
+     "gap": [
+      262.5,
+      -6.0
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2026-12-18",
+     "net": 175.7,
+     "vex": 3869,
+     "hasRows": true,
+     "first": [
+      270.0,
+      15.8
+     ],
+     "cap": [
+      300.0,
+      35.0
+     ],
+     "sup": [
+      260.0,
+      8.3
+     ],
+     "gap": [
+      240.0,
+      -11.1
+     ],
+     "pocket": null
+    }
+   ]
+  },
+  {
+   "t": "GOOGL",
+   "spot": 299.17,
+   "chg": null,
+   "flip": 290.85,
+   "perCol": [
+    {
+     "code": "2026-11-13",
+     "net": 179.9,
+     "opex": false,
+     "strikes": [
+      [
+       310.0,
+       4.6
+      ],
+      [
+       307.5,
+       5.6
+      ],
+      [
+       305.0,
+       16.3
+      ],
+      [
+       302.5,
+       13.1
+      ],
+      [
+       300.0,
+       70.4
+      ],
+      [
+       297.5,
+       47.1
+      ],
+      [
+       295.0,
+       19.5
+      ],
+      [
+       292.5,
+       15.1
+      ],
+      [
+       290.0,
+       -9.5
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": -1.2,
+     "opex": true,
+     "strikes": [
+      [
+       340.0,
+       3.6
+      ],
+      [
+       305.0,
+       5.0
+      ],
+      [
+       300.0,
+       9.3
+      ],
+      [
+       295.0,
+       7.6
+      ],
+      [
+       290.0,
+       -26.8
+      ],
+      [
+       282.5,
+       -2.9
+      ],
+      [
+       280.0,
+       -10.9
+      ],
+      [
+       275.0,
+       -11.2
+      ],
+      [
+       270.0,
+       -3.3
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 11.7,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       340.0,
+       4.0
+      ],
+      [
+       310.0,
+       19.7
+      ],
+      [
+       300.0,
+       14.5
+      ],
+      [
+       290.0,
+       -5.7
+      ],
+      [
+       280.0,
+       -4.7
+      ],
+      [
+       275.0,
+       -5.2
+      ],
+      [
+       270.0,
+       -4.9
+      ],
+      [
+       265.0,
+       -3.9
+      ],
+      [
+       260.0,
+       -4.3
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 307.5,
+     "kind": "sell",
+     "strength": 0.09,
+     "n": 2,
+     "dm": 2.2,
+     "odds": 85,
+     "base": 85,
+     "obs": 201,
+     "tier": null
+    },
+    {
+     "k": 305.0,
+     "kind": "sell",
+     "strength": 0.28,
+     "n": 2,
+     "dm": 1.5,
+     "odds": 68,
+     "base": 55,
+     "obs": 89,
+     "tier": "both"
+    },
+    {
+     "k": 302.5,
+     "kind": "sell",
+     "strength": 0.2,
+     "n": 2,
+     "dm": 0.9,
+     "odds": 56,
+     "base": 39,
+     "obs": 48,
+     "tier": null
+    },
+    {
+     "k": 300,
+     "kind": "pin",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 0.2,
+     "odds": null
+    },
+    {
+     "k": 297.5,
+     "kind": "weak",
+     "strength": 0.56,
+     "n": 2,
+     "dm": 0.4,
+     "odds": 20,
+     "base": 22,
+     "obs": 16
+    },
+    {
+     "k": 295.0,
+     "kind": "weak",
+     "strength": 0.37,
+     "n": 2,
+     "dm": 1.1,
+     "odds": 44,
+     "base": 38,
+     "obs": 24
+    },
+    {
+     "k": 290.8,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 287.3,
+     "hi": 292.0,
+     "jump": false
+    },
+    {
+     "k": 290.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 2.4,
+     "odds": 40,
+     "base": 37,
+     "obs": 182
+    },
+    {
+     "k": 280.0,
+     "kind": "trigger",
+     "strength": 0.37,
+     "n": 2,
+     "dm": 5.0,
+     "odds": 17,
+     "base": 14,
+     "obs": 218
+    }
+   ],
+   "board": -1.2,
+   "pos": "above",
+   "dayMove": 1.29,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": -1.2,
+     "vex": 1875,
+     "hasRows": true,
+     "first": [
+      302.5,
+      2.8
+     ],
+     "cap": [
+      305.0,
+      5.0
+     ],
+     "sup": [
+      295.0,
+      7.6
+     ],
+     "gap": [
+      290.0,
+      -26.8
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2026-12-18",
+     "net": 11.7,
+     "vex": 1996,
+     "hasRows": true,
+     "first": [
+      310.0,
+      19.7
+     ],
+     "cap": null,
+     "sup": null,
+     "gap": [
+      295.0,
+      -2.6
+     ],
+     "pocket": null
+    }
+   ]
+  },
+  {
+   "t": "AVGO",
+   "spot": 365.8995,
+   "chg": null,
+   "flip": 331.43,
+   "perCol": [
+    {
+     "code": "2026-11-13",
+     "net": 68.4,
+     "opex": false,
+     "strikes": [
+      [
+       380.0,
+       5.9
+      ],
+      [
+       375.0,
+       5.3
+      ],
+      [
+       370.0,
+       7.6
+      ],
+      [
+       367.5,
+       8.9
+      ],
+      [
+       365.0,
+       9.2
+      ],
+      [
+       362.5,
+       12.1
+      ],
+      [
+       360.0,
+       10.1
+      ],
+      [
+       357.5,
+       2.5
+      ],
+      [
+       355.0,
+       3.2
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-20",
+     "net": 36.7,
+     "opex": true,
+     "strikes": [
+      [
+       420.0,
+       4.5
+      ],
+      [
+       400.0,
+       10.0
+      ],
+      [
+       390.0,
+       9.0
+      ],
+      [
+       380.0,
+       8.1
+      ],
+      [
+       375.0,
+       3.7
+      ],
+      [
+       370.0,
+       4.7
+      ],
+      [
+       350.0,
+       -3.5
+      ],
+      [
+       330.0,
+       -3.9
+      ],
+      [
+       320.0,
+       -5.4
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 14.5,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       420.0,
+       3.6
+      ],
+      [
+       410.0,
+       2.1
+      ],
+      [
+       400.0,
+       3.9
+      ],
+      [
+       390.0,
+       3.0
+      ],
+      [
+       380.0,
+       3.4
+      ],
+      [
+       370.0,
+       2.1
+      ],
+      [
+       360.0,
+       1.9
+      ],
+      [
+       330.0,
+       -1.8
+      ],
+      [
+       320.0,
+       -4.8
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 390.0,
+     "kind": "sell",
+     "strength": 0.86,
+     "n": 2,
+     "dm": 2.1,
+     "odds": 80,
+     "base": 85,
+     "obs": 148,
+     "tier": null
+    },
+    {
+     "k": 380.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 1.3,
+     "odds": 71,
+     "base": 55,
+     "obs": 107,
+     "tier": "major"
+    },
+    {
+     "k": 367.5,
+     "kind": "sell",
+     "strength": 0.49,
+     "n": 1,
+     "dm": 0.1,
+     "odds": 55,
+     "base": 39,
+     "obs": 58,
+     "tier": "first"
+    },
+    {
+     "k": 365.0,
+     "kind": "weak",
+     "strength": 0.74,
+     "n": 2,
+     "dm": 0.1,
+     "odds": 20,
+     "base": 22,
+     "obs": 16
+    },
+    {
+     "k": 362.5,
+     "kind": "weak",
+     "strength": 0.67,
+     "n": 1,
+     "dm": 0.3,
+     "odds": 20,
+     "base": 22,
+     "obs": 16,
+     "pin": true
+    },
+    {
+     "k": 350.0,
+     "kind": "trigger",
+     "strength": 0.83,
+     "n": 2,
+     "dm": 1.4,
+     "odds": 59,
+     "base": 62,
+     "obs": 105
+    },
+    {
+     "k": 331.4,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 322.2,
+     "hi": 351.1,
+     "jump": true
+    },
+    {
+     "k": 320.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 4.1,
+     "odds": 17,
+     "base": 14,
+     "obs": 218
+    }
+   ],
+   "board": 36.7,
+   "pos": "above",
+   "dayMove": 3.07,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": 36.7,
+     "vex": 1193,
+     "hasRows": true,
+     "first": [
+      370.0,
+      4.7
+     ],
+     "cap": [
+      400.0,
+      10.0
+     ],
+     "sup": [
+      355.0,
+      3.2
+     ],
+     "gap": [
+      350.0,
+      -3.5
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2026-12-18",
+     "net": 14.5,
+     "vex": 1000,
+     "hasRows": true,
+     "first": [
+      370.0,
+      2.1
+     ],
+     "cap": [
+      400.0,
+      3.9
+     ],
+     "sup": [
+      360.0,
+      1.9
+     ],
+     "gap": [
+      330.0,
+      -1.8
+     ],
+     "pocket": null
+    }
+   ]
+  }
+ ]
+}
