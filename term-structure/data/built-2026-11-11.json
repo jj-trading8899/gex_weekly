@@ -1,6 +1,7 @@
 {
  "snapshot": "2026-11-11",
  "nextOpex": "2026-11-20",
+ "nextOpex2": "2026-12-18",
  "dataUpdatedAt": "2026-11-11T21:05:16.845Z",
  "capturedAt": "2026-11-12T08:53:27.754Z",
  "cal": {
@@ -11,6 +12,7 @@
   "<b>NVDA</b> is the one to watch. It's inside a flip zone that has been moving ($164\u2013177), under its largest $185 level (+21.4K). Support at $172.5 is weak; below that there's none around $165. It's also the most negative board (\u2212307K into opex), so swings are likely to be big.",
   "<b>AAPL</b> has the most positioning into opex (+346K), centred on $360\u2013365.",
   "<b>TSLA</b> faces resistance at $395\u2013400 (with little support underneath), <b>AMZN</b> at $270 (and it's sitting on its $263 flip), and <b>AVGO</b> at $347.5\u2013380.",
+  "Looking to the 12/18 opex, <b>AMZN</b> has the most positioning (+175K); <b>NVDA</b> and <b>GOOGL</b> stay net negative into both opex dates; <b>AVGO</b> flips from positive this month to negative.",
   "<b>GOOGL</b> is the next-weakest board, at only \u221249.0K into opex. It's just above its $288 flip."
  ],
  "glance": [
@@ -28,7 +30,8 @@
    "down": 172.5,
    "downKind": "weak",
    "board": -307.2,
-   "thin": false
+   "thin": false,
+   "board2": -61.5
   },
   {
    "t": "TSLA",
@@ -44,7 +47,8 @@
    "down": 390.0,
    "downKind": "weak",
    "board": 37.7,
-   "thin": false
+   "thin": false,
+   "board2": 13.5
   },
   {
    "t": "AAPL",
@@ -60,7 +64,8 @@
    "down": 355.0,
    "downKind": "weak",
    "board": 345.9,
-   "thin": false
+   "thin": false,
+   "board2": 151.3
   },
   {
    "t": "AMZN",
@@ -76,7 +81,8 @@
    "down": 265.0,
    "downKind": "weak",
    "board": 345.8,
-   "thin": false
+   "thin": false,
+   "board2": 175.3
   },
   {
    "t": "GOOGL",
@@ -92,7 +98,8 @@
    "down": 292.5,
    "downKind": "weak",
    "board": -49.0,
-   "thin": false
+   "thin": false,
+   "board2": -6.3
   },
   {
    "t": "AVGO",
@@ -108,7 +115,8 @@
    "down": 345.0,
    "downKind": "weak",
    "board": 2.2,
-   "thin": false
+   "thin": false,
+   "board2": -4.3
   }
  ],
  "cards": [
@@ -120,9 +128,11 @@
     "11/13",
     "11/20",
     "11/27",
-    "12/4"
+    "12/4",
+    "12/18"
    ],
    "opexIdx": 1,
+   "opex2Idx": 4,
    "regime": "net negative into opex \u00b7 bigger swings",
    "tone": "neg",
    "term": [
@@ -141,6 +151,10 @@
     [
      -17.4,
      158
+    ],
+    [
+     -61.5,
+     1078
     ]
    ],
    "pin": "$175",
@@ -148,7 +162,7 @@
    "sup": "$172.5 (weak)",
    "flip": "~$174",
    "range": "$160-185 \u00b7 flip $174",
-   "read": "Closed $173.68. Into 11/20 opex dealers net \u2212307K, heaviest at $185 (+21.4K). Net negative into opex has gone with the biggest day-to-day swings. The flip moved from $164 to $174 today, so treat $164\u2013177 as a zone, not a line. Inside the flip zone ($164\u2013177), so the next close decides which side it trades on. First resistance $177.5 (held 74% of the time), major cap $185 (held 82%). Support at $172.5 is weak: levels like it held only 26% of the time. There's no support at $165. TradeEcho's own read: Bullish."
+   "read": "Closed $173.68. Into 11/20 opex dealers net \u2212307K, heaviest at $185 (+21.4K). Net negative into opex has gone with the biggest day-to-day swings. The flip moved from $164 to $174 today, so treat $164\u2013177 as a zone, not a line. Inside the flip zone ($164\u2013177), so the next close decides which side it trades on. First resistance $177.5 (held 74% of the time), major cap $185 (held 82%). Support at $172.5 is weak: levels like it held only 26% of the time. There's no support at $165. Into the 12/18 opex dealers net \u221261.5K, biggest level overhead $185. TradeEcho's own read: Bullish."
   },
   {
    "t": "TSLA",
@@ -158,9 +172,11 @@
     "11/13",
     "11/20",
     "11/27",
-    "12/4"
+    "12/4",
+    "12/18"
    ],
    "opexIdx": 1,
+   "opex2Idx": 4,
    "regime": "steadier \u00b7 $400 cap",
    "tone": "pos",
    "term": [
@@ -179,6 +195,10 @@
     [
      9.3,
      449
+    ],
+    [
+     13.5,
+     1661
     ]
    ],
    "pin": "$392.5",
@@ -186,7 +206,7 @@
    "sup": "$390 (weak)",
    "flip": "~$375",
    "range": "$370-400 \u00b7 flip $375",
-   "read": "Closed $391.35. Into 11/20 opex dealers net +37.7K, heaviest at $400 (+21.0K). Net positive into opex has gone with smaller day-to-day swings. The flip moved from $361 to $375 today, so treat $361\u2013377 as a zone, not a line. Above the flip zone (about $375), where moves have tended to be a little smaller. First resistance $395 (held 56% of the time), major cap $400 (held 74%). Support at $390 is weak: levels like it held only 26% of the time. There's no support at $372.5. TradeEcho's own read: Neutral."
+   "read": "Closed $391.35. Into 11/20 opex dealers net +37.7K, heaviest at $400 (+21.0K). Net positive into opex has gone with smaller day-to-day swings. The flip moved from $361 to $375 today, so treat $361\u2013377 as a zone, not a line. Above the flip zone (about $375), where moves have tended to be a little smaller. First resistance $395 (held 56% of the time), major cap $400 (held 74%). Support at $390 is weak: levels like it held only 26% of the time. There's no support at $372.5. Into the 12/18 opex dealers net +13.5K, biggest level overhead $400. TradeEcho's own read: Neutral."
   },
   {
    "t": "AAPL",
@@ -196,9 +216,11 @@
     "11/13",
     "11/20",
     "11/27",
-    "12/4"
+    "12/4",
+    "12/18"
    ],
    "opexIdx": 1,
+   "opex2Idx": 4,
    "regime": "steadier \u00b7 $365 cap",
    "tone": "pos",
    "term": [
@@ -217,6 +239,10 @@
     [
      23.5,
      639
+    ],
+    [
+     151.3,
+     5003
     ]
    ],
    "pin": "$355",
@@ -224,7 +250,7 @@
    "sup": "$355 (weak)",
    "flip": "~$348",
    "range": "$355-365 \u00b7 flip $348",
-   "read": "Closed $355.50. Into 11/20 opex dealers net +346K, heaviest at $365 (+101K). Net positive into opex has gone with smaller day-to-day swings. Above the flip zone (about $348), where moves have tended to be a little smaller. First resistance $360 (held 74% of the time), major cap $365 (held 82%). Support at $355 is weak: levels like it held only 19% of the time. There's no support at $340. TradeEcho's own read: Neutral."
+   "read": "Closed $355.50. Into 11/20 opex dealers net +346K, heaviest at $365 (+101K). Net positive into opex has gone with smaller day-to-day swings. Above the flip zone (about $348), where moves have tended to be a little smaller. First resistance $360 (held 74% of the time), major cap $365 (held 82%). Support at $355 is weak: levels like it held only 19% of the time. There's no support at $340. Into the 12/18 opex dealers net +151K, biggest level overhead $360. TradeEcho's own read: Neutral."
   },
   {
    "t": "AMZN",
@@ -234,9 +260,11 @@
     "11/13",
     "11/20",
     "11/27",
-    "12/4"
+    "12/4",
+    "12/18"
    ],
    "opexIdx": 1,
+   "opex2Idx": 4,
    "regime": "on the flip $263",
    "tone": "mix",
    "term": [
@@ -255,6 +283,10 @@
     [
      15.6,
      262
+    ],
+    [
+     175.3,
+     4236
     ]
    ],
    "pin": "$265",
@@ -262,7 +294,7 @@
    "sup": "$265 (weak)",
    "flip": "~$263",
    "range": "$265-275 \u00b7 flip $263",
-   "read": "Closed $266.16. Into 11/20 opex dealers net +346K, heaviest at $275 (+83.0K). Net positive into opex has gone with smaller day-to-day swings. Inside the flip zone ($262\u2013267), so the next close decides which side it trades on. Resistance $270 (held 56% of the time). Support at $265 is weak: levels like it held only 19% of the time. There's no support at $245. TradeEcho's own read: Neutral."
+   "read": "Closed $266.16. Into 11/20 opex dealers net +346K, heaviest at $275 (+83.0K). Net positive into opex has gone with smaller day-to-day swings. Inside the flip zone ($262\u2013267), so the next close decides which side it trades on. Resistance $270 (held 56% of the time). Support at $265 is weak: levels like it held only 19% of the time. There's no support at $245. Into the 12/18 opex dealers net +175K, biggest level overhead $280. TradeEcho's own read: Neutral."
   },
   {
    "t": "GOOGL",
@@ -272,9 +304,11 @@
     "11/13",
     "11/20",
     "11/27",
-    "12/4"
+    "12/4",
+    "12/18"
    ],
    "opexIdx": 1,
+   "opex2Idx": 4,
    "regime": "net negative into opex \u00b7 bigger swings",
    "tone": "neg",
    "term": [
@@ -293,6 +327,10 @@
     [
      7.5,
      367
+    ],
+    [
+     -6.3,
+     1907
     ]
    ],
    "pin": "$295",
@@ -300,7 +338,7 @@
    "sup": "$292.5 (weak)",
    "flip": "~$288",
    "range": "$292.5-295 \u00b7 flip $288",
-   "read": "Closed $293.40. Into 11/20 opex dealers net \u221249.0K, heaviest at $295 (+4.2K). Net negative into opex has gone with the biggest day-to-day swings. Above the flip zone (about $288), where moves have tended to be a little smaller. First resistance $295 (held 56% of the time), major cap $300 (held 74%). Support at $292.5 is weak: levels like it held only 19% of the time. There's no support at $290. TradeEcho's own read: Bullish."
+   "read": "Closed $293.40. Into 11/20 opex dealers net \u221249.0K, heaviest at $295 (+4.2K). Net negative into opex has gone with the biggest day-to-day swings. Above the flip zone (about $288), where moves have tended to be a little smaller. First resistance $295 (held 56% of the time), major cap $300 (held 74%). Support at $292.5 is weak: levels like it held only 19% of the time. There's no support at $290. Into the 12/18 opex dealers net \u22126.3K, biggest level overhead $310. TradeEcho's own read: Bullish."
   },
   {
    "t": "AVGO",
@@ -310,9 +348,11 @@
     "11/13",
     "11/20",
     "11/27",
-    "12/4"
+    "12/4",
+    "12/18"
    ],
    "opexIdx": 1,
+   "opex2Idx": 4,
    "regime": "steadier \u00b7 $380 cap",
    "tone": "pos",
    "term": [
@@ -331,6 +371,10 @@
     [
      13.6,
      113
+    ],
+    [
+     -4.3,
+     1120
     ]
    ],
    "pin": "$347.5",
@@ -338,7 +382,7 @@
    "sup": "$345 (weak)",
    "flip": "~$322",
    "range": "$342.5-380 \u00b7 flip $322",
-   "read": "Closed $345.80. Into 11/20 opex dealers net +2.2K, heaviest at $380 (+5.3K). Net positive into opex has gone with smaller day-to-day swings. Above the flip zone (about $322), where moves have tended to be a little smaller. First resistance $347.5 (held 56% of the time), major cap $380 (held 82%). Support at $345 is weak: levels like it held only 19% of the time. There's no support at $320. TradeEcho's own read: Neutral."
+   "read": "Closed $345.80. Into 11/20 opex dealers net +2.2K, heaviest at $380 (+5.3K). Net positive into opex has gone with smaller day-to-day swings. Above the flip zone (about $322), where moves have tended to be a little smaller. First resistance $347.5 (held 56% of the time), major cap $380 (held 82%). Support at $345 is weak: levels like it held only 19% of the time. There's no support at $320. Into the 12/18 opex dealers net \u22124.3K, biggest level overhead $380. TradeEcho's own read: Neutral."
   }
  ],
  "ts": [
@@ -433,6 +477,50 @@
        -26.4
       ]
      ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -61.5,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       195.0,
+       -19.0
+      ],
+      [
+       190.0,
+       28.0
+      ],
+      [
+       185.0,
+       169.2
+      ],
+      [
+       180.0,
+       -21.4
+      ],
+      [
+       170.0,
+       -29.7
+      ],
+      [
+       165.0,
+       -33.3
+      ],
+      [
+       164.0,
+       21.6
+      ],
+      [
+       160.0,
+       -47.6
+      ],
+      [
+       155.0,
+       -16.0
+      ]
+     ]
     }
    ],
    "ladder": [
@@ -520,7 +608,55 @@
    ],
    "board": -307.2,
    "pos": "in",
-   "dayMove": 2.16
+   "dayMove": 2.16,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": -307.2,
+     "vex": 70,
+     "hasRows": true,
+     "first": [
+      182.5,
+      5.9
+     ],
+     "cap": [
+      185.0,
+      21.4
+     ],
+     "sup": null,
+     "gap": [
+      170.0,
+      -38.7
+     ],
+     "pocket": [
+      175.0,
+      -34.4
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -61.5,
+     "vex": 1078,
+     "hasRows": true,
+     "first": [
+      185.0,
+      169.2
+     ],
+     "cap": null,
+     "sup": [
+      164.0,
+      21.6
+     ],
+     "gap": [
+      170.0,
+      -29.7
+     ],
+     "pocket": [
+      180.0,
+      -21.4
+     ]
+    }
+   ]
   },
   {
    "t": "TSLA",
@@ -611,6 +747,50 @@
       [
        350.0,
        -3.0
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 13.5,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       450.0,
+       4.0
+      ],
+      [
+       440.0,
+       2.6
+      ],
+      [
+       435.0,
+       4.3
+      ],
+      [
+       420.0,
+       4.1
+      ],
+      [
+       400.0,
+       5.5
+      ],
+      [
+       390.0,
+       -2.8
+      ],
+      [
+       360.0,
+       -2.4
+      ],
+      [
+       350.0,
+       -3.8
+      ],
+      [
+       340.0,
+       -1.7
       ]
      ]
     }
@@ -710,7 +890,49 @@
    ],
    "board": 37.7,
    "pos": "above",
-   "dayMove": 2.16
+   "dayMove": 2.16,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": 37.7,
+     "vex": 1637,
+     "hasRows": true,
+     "first": [
+      400.0,
+      21.0
+     ],
+     "cap": null,
+     "sup": [
+      370.0,
+      2.0
+     ],
+     "gap": [
+      372.5,
+      -6.2
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2026-12-18",
+     "net": 13.5,
+     "vex": 1661,
+     "hasRows": true,
+     "first": [
+      400.0,
+      5.5
+     ],
+     "cap": null,
+     "sup": [
+      385.0,
+      0.6
+     ],
+     "gap": [
+      390.0,
+      -2.8
+     ],
+     "pocket": null
+    }
+   ]
   },
   {
    "t": "AAPL",
@@ -803,6 +1025,50 @@
        -8.0
       ]
      ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 151.3,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       400.0,
+       7.6
+      ],
+      [
+       390.0,
+       6.2
+      ],
+      [
+       380.0,
+       23.7
+      ],
+      [
+       375.0,
+       17.9
+      ],
+      [
+       370.0,
+       23.2
+      ],
+      [
+       365.0,
+       10.5
+      ],
+      [
+       360.0,
+       41.8
+      ],
+      [
+       350.0,
+       31.9
+      ],
+      [
+       320.0,
+       -10.0
+      ]
+     ]
     }
    ],
    "ladder": [
@@ -893,7 +1159,52 @@
    ],
    "board": 345.9,
    "pos": "above",
-   "dayMove": 1.01
+   "dayMove": 1.01,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": 345.9,
+     "vex": 5096,
+     "hasRows": true,
+     "first": [
+      360.0,
+      65.7
+     ],
+     "cap": [
+      365.0,
+      100.7
+     ],
+     "sup": [
+      355.0,
+      50.1
+     ],
+     "gap": [
+      330.0,
+      -8.0
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2026-12-18",
+     "net": 151.3,
+     "vex": 5003,
+     "hasRows": true,
+     "first": [
+      360.0,
+      41.8
+     ],
+     "cap": null,
+     "sup": [
+      350.0,
+      31.9
+     ],
+     "gap": [
+      320.0,
+      -10.0
+     ],
+     "pocket": null
+    }
+   ]
   },
   {
    "t": "AMZN",
@@ -986,6 +1297,50 @@
        -7.7
       ]
      ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 175.3,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       300.0,
+       32.6
+      ],
+      [
+       295.0,
+       13.8
+      ],
+      [
+       290.0,
+       15.0
+      ],
+      [
+       285.0,
+       29.8
+      ],
+      [
+       280.0,
+       35.1
+      ],
+      [
+       275.0,
+       28.3
+      ],
+      [
+       270.0,
+       15.8
+      ],
+      [
+       260.0,
+       8.5
+      ],
+      [
+       240.0,
+       -11.3
+      ]
+     ]
     }
    ],
    "ladder": [
@@ -1076,7 +1431,55 @@
    ],
    "board": 345.8,
    "pos": "in",
-   "dayMove": 1.63
+   "dayMove": 1.63,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": 345.8,
+     "vex": 3432,
+     "hasRows": true,
+     "first": [
+      270.0,
+      77.8
+     ],
+     "cap": [
+      275.0,
+      83.0
+     ],
+     "sup": [
+      265.0,
+      62.5
+     ],
+     "gap": [
+      262.5,
+      -6.4
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2026-12-18",
+     "net": 175.3,
+     "vex": 4236,
+     "hasRows": true,
+     "first": [
+      270.0,
+      15.8
+     ],
+     "cap": [
+      280.0,
+      35.1
+     ],
+     "sup": [
+      260.0,
+      8.5
+     ],
+     "gap": [
+      240.0,
+      -11.3
+     ],
+     "pocket": null
+    }
+   ]
   },
   {
    "t": "GOOGL",
@@ -1169,6 +1572,50 @@
        -2.7
       ]
      ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -6.3,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       310.0,
+       19.0
+      ],
+      [
+       300.0,
+       14.1
+      ],
+      [
+       290.0,
+       -6.5
+      ],
+      [
+       285.0,
+       -3.4
+      ],
+      [
+       280.0,
+       -5.8
+      ],
+      [
+       275.0,
+       -6.1
+      ],
+      [
+       270.0,
+       -5.9
+      ],
+      [
+       265.0,
+       -4.6
+      ],
+      [
+       260.0,
+       -5.4
+      ]
+     ]
     }
    ],
    "ladder": [
@@ -1249,7 +1696,52 @@
    ],
    "board": -49.0,
    "pos": "above",
-   "dayMove": 1.26
+   "dayMove": 1.26,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": -49.0,
+     "vex": 1684,
+     "hasRows": true,
+     "first": [
+      295.0,
+      4.2
+     ],
+     "cap": null,
+     "sup": [
+      292.5,
+      0.4
+     ],
+     "gap": [
+      290.0,
+      -32.6
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2026-12-18",
+     "net": -6.3,
+     "vex": 1907,
+     "hasRows": true,
+     "first": [
+      300.0,
+      14.1
+     ],
+     "cap": [
+      310.0,
+      19.0
+     ],
+     "sup": null,
+     "gap": [
+      290.0,
+      -6.5
+     ],
+     "pocket": [
+      295.0,
+      -2.9
+     ]
+    }
+   ]
   },
   {
    "t": "AVGO",
@@ -1342,6 +1834,50 @@
        -5.6
       ]
      ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -4.3,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       390.0,
+       2.5
+      ],
+      [
+       380.0,
+       3.0
+      ],
+      [
+       370.0,
+       2.1
+      ],
+      [
+       360.0,
+       2.1
+      ],
+      [
+       340.0,
+       -0.7
+      ],
+      [
+       330.0,
+       -2.4
+      ],
+      [
+       320.0,
+       -6.7
+      ],
+      [
+       310.0,
+       -2.2
+      ],
+      [
+       300.0,
+       -4.7
+      ]
+     ]
     }
    ],
    "ladder": [
@@ -1432,7 +1968,55 @@
    ],
    "board": 2.2,
    "pos": "above",
-   "dayMove": 3.06
+   "dayMove": 3.06,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": 2.2,
+     "vex": 1263,
+     "hasRows": true,
+     "first": [
+      347.5,
+      2.1
+     ],
+     "cap": [
+      380.0,
+      5.3
+     ],
+     "sup": [
+      342.5,
+      2.3
+     ],
+     "gap": [
+      330.0,
+      -4.4
+     ],
+     "pocket": [
+      350.0,
+      -4.2
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -4.3,
+     "vex": 1120,
+     "hasRows": true,
+     "first": [
+      360.0,
+      2.1
+     ],
+     "cap": [
+      380.0,
+      3.0
+     ],
+     "sup": null,
+     "gap": [
+      330.0,
+      -2.4
+     ],
+     "pocket": null
+    }
+   ]
   }
  ]
 }

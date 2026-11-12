@@ -19,7 +19,7 @@ _REPO_DATA = os.path.join(ROOT, "..", "data", "term-structure")
 DATA = os.path.normpath(_REPO_DATA) if os.path.isdir(_REPO_DATA) else os.path.join(ROOT, "data")
 TOP_PER_COL = 9          # strikes kept per expiry column
 WINDOW = 0.15            # only strikes within +/-15% of spot
-STRIP_MAX = 4            # cells in the per-expiry strip
+STRIP_MAX = 5            # cells in the per-expiry strip (includes both opex dates)
 HORIZON = 5              # sessions a level is tested over when measuring odds
 FLIP_DAYS = 3            # sessions used to smooth the flip into a zone
 # chance of a close through a plain strike within HORIZON sessions, by distance bucket, before any history exists
@@ -85,7 +85,9 @@ def matrix_cols(by_exp, snap_date):
         cols = [cols[0]] + fri[:1] + [opex]
     cols = cols[-4:] if len(cols) > 4 else cols
     if len(cols) < 3:   # opex is near: add the following Friday expiry to the matrix
-        nxt = [e for e in future if e > cols[-1] and dt.date.fromisoformat(e).weekday() == 4]
+        opex2 = next_monthly_opex(dt.date.fromisoformat(opex)).isoformat()
+        # a following Friday weekly only; next month's opex is shown separately, never mixed into the key levels
+        nxt = [e for e in future if e > cols[-1] and e != opex2 and dt.date.fromisoformat(e).weekday() == 4]
         if nxt:
             cols.append(nxt[0])
     return cols, opex, future
@@ -199,6 +201,29 @@ def through_rate(cal, side, db, cls):
     return (b + 8 * p0) / (n + 8), n
 
 
+def opex_view(spot, by_exp, sums, e):
+    """Levels for one opex expiry on its own: board, first resistance, cap, support, no-support level, air pocket."""
+    net = k(sums[e][0]) if e in sums else None
+    view = {"code": e, "net": net, "vex": round(sums[e][1]) if e in sums else None, "hasRows": False}
+    rows = [r for r in by_exp.get(e, []) if abs(r[0] - spot) <= spot * WINDOW]
+    if not rows:
+        return view
+    max_pos = max((r[1] for r in rows if r[1] > 0), default=0)
+    max_neg = max((-r[1] for r in rows if r[1] < 0), default=0)
+    above = [r for r in rows if r[0] > spot * 1.003 and r[1] > 0]
+    first = min((r for r in above if r[1] >= 0.25 * max_pos), key=lambda r: r[0], default=None)
+    cap = max(above, key=lambda r: r[1], default=None)
+    sups = [r for r in rows if r[0] <= spot and r[1] > 0 and (spot - r[0]) / spot <= 0.08 and r[1] >= 0.05 * max_pos]
+    sup = max(sups, key=lambda r: r[1], default=None)
+    gap = min((r for r in rows if r[0] < spot and r[1] < 0 and -r[1] >= 0.3 * max_neg), key=lambda r: spot - r[0], default=None)
+    pocket = min((r for r in rows if spot * 1.003 < r[0] <= spot * 1.08 and r[1] < 0 and -r[1] >= 0.3 * max_neg),
+                 key=lambda r: r[0], default=None)
+    pair = lambda r: [r[0], k(r[1])] if r else None
+    view.update(hasRows=True, first=pair(first), cap=pair(cap if cap is not first else None), sup=pair(sup),
+                gap=pair(gap), pocket=pair(pocket))
+    return view
+
+
 def build_ticker(t, v, snap_date, hist=None, cal=None):
     spot = float(v["spot"])
     kl = v.get("kl") or {}
@@ -208,9 +233,11 @@ def build_ticker(t, v, snap_date, hist=None, cal=None):
     cal = cal or {"counts": {}, "sessions": 0, "units": {}}
     unit = cal["units"].get(t, 0.015)
 
-    # strip: matrix cols + following expiries from sums
-    strip = list(cols)
-    later = [e for e in sorted(sums) if e > cols[-1]]
+    opex2 = next_monthly_opex(dt.date.fromisoformat(opex)).isoformat()   # the monthly opex after that
+
+    # strip: matrix cols + the second opex + Friday weeklies in between
+    strip = list(cols) + ([opex2] if opex2 in sums and opex2 not in cols else [])
+    later = [e for e in sorted(sums) if cols[-1] < e < opex2]
     fridays = [e for e in later if dt.date.fromisoformat(e).weekday() == 4]
     for e in fridays + [e for e in later if e not in fridays]:   # prefer Friday weeklies
         if len(strip) >= STRIP_MAX:
@@ -224,6 +251,11 @@ def build_ticker(t, v, snap_date, hist=None, cal=None):
         rows = [r for r in by_exp[e] if abs(r[0] - spot) <= spot * WINDOW]
         top = sorted(rows, key=lambda r: -abs(r[1]))[:TOP_PER_COL]
         per_col.append({"code": e, "net": k(sums[e][0]), "opex": e == opex,
+                        "strikes": [[r[0], k(r[1])] for r in sorted(top, key=lambda r: -r[0])]})
+    if opex2 in by_exp and opex2 not in cols:   # second opex: shown in the matrix, not used for the key levels
+        rows = [r for r in by_exp[opex2] if abs(r[0] - spot) <= spot * WINDOW]
+        top = sorted(rows, key=lambda r: -abs(r[1]))[:TOP_PER_COL]
+        per_col.append({"code": opex2, "net": k(sums[opex2][0]), "opex": False, "opex2": True,
                         "strikes": [[r[0], k(r[1])] for r in sorted(top, key=lambda r: -r[0])]})
 
     # ---- levels from the opex (or last) column, full strike set ----
@@ -318,12 +350,21 @@ def build_ticker(t, v, snap_date, hist=None, cal=None):
     if k(front_net) < 0:  # ignore nets that round to 0.0K
         parts.append(f"The {md(cols[0])} front expiry is net negative ({fmt_k(k(front_net))}), "
                      "so near-term swings can overshoot before opex takes over.")
+    o2 = opex_view(spot, by_exp, sums, opex2)
+    if o2["net"] is not None:
+        line = f"Into the {md(opex2)} opex dealers net {fmt_k(o2['net'])}"
+        if o2.get("cap"):
+            line += f", biggest level overhead ${strike_s(o2['cap'][0])}"
+        elif o2.get("first"):
+            line += f", biggest level overhead ${strike_s(o2['first'][0])}"
+        parts.append(line + ".")
     if v.get("outlook"):
         parts.append(f"TradeEcho's own read: {v['outlook'].split(',')[0].split(' ')[0].rstrip('.:;')}.")
 
     card = {
         "t": t, "spot": spot, "chg": None, "cols": [md(e) for e in strip],
         "opexIdx": strip.index(lv_exp) if lv_exp in strip else -1,
+        "opex2Idx": strip.index(opex2) if opex2 in strip else -1,
         "regime": regime, "tone": tone, "term": term,
         "pin": f"${strike_s(anchor)}" if anchor else "—",
         "wall": (f"${strike_s(first_r['k'])} first · ${strike_s(major_r['k'])} cap" if first_r and major_r and first_r is not major_r
@@ -333,7 +374,8 @@ def build_ticker(t, v, snap_date, hist=None, cal=None):
         "range": rng, "read": " ".join(parts),
     }
     ts = {"t": t, "spot": spot, "chg": None, "flip": round(flip, 2) if flip is not None else None, "perCol": per_col,
-          "ladder": ladder, "board": k(opex_net), "pos": pos, "dayMove": round(unit * 100, 2)}
+          "ladder": ladder, "board": k(opex_net), "pos": pos, "dayMove": round(unit * 100, 2),
+          "opexViews": [opex_view(spot, by_exp, sums, lv_exp), o2]}
     card["_stats"] = {
         "t": t, "spot": spot, "flip": flip, "tone": tone, "rating": v.get("rating"), "pos": pos, "band": band,
         "first": first_r["k"] if first_r else None,
@@ -341,6 +383,7 @@ def build_ticker(t, v, snap_date, hist=None, cal=None):
         "down": down_r["k"] if down_r else None, "down_kind": down_r["kind"] if down_r else None,
         "gap": gaps[0]["k"] if gaps else None,
         "opex_net": k(opex_net), "front_net": k(front_net), "front": md(cols[0]),
+        "opex1": lv_exp, "opex2": opex2, "o2": o2,
         "biggest": (biggest[0], k(biggest[1])) if biggest else None,
         "wall": wall[0] if wall else None, "sup": sup[0] if sup else None, "sup_thin": sup_thin,
         "neg": neg[0] if neg else None, "targets": sorted({r["k"] for r in (first_r, major_r) if r}),
@@ -441,7 +484,7 @@ def glance(stats):
                     "flipLo": round(b["lo"], 1) if b else None, "flipHi": round(b["hi"], 1) if b else None,
                     "flipWide": bool(b and b["wide"]), "flipJump": bool(b and b["jump"]),
                     "up": s["first"], "cap": s["major"], "down": s["down"], "downKind": s["down_kind"],
-                    "board": net, "thin": abs(net) < 2})
+                    "board": net, "thin": abs(net) < 2, "board2": s["o2"]["net"]})
     return out
 
 
@@ -545,7 +588,27 @@ def headlines(stats):
             line += f", with net negative positioning into opex"
         out.append(line + (", so moves can run until it gets back above." if len(below) == 1
                            else ", so moves can run until they get back above."))
-    # 4) weakest
+    # 4) the second opex
+    two = [s for s in stats if s["o2"]["net"] is not None]
+    if two:
+        e2 = two[0]["opex2"]
+        lbl = f"{int(e2[5:7])}/{int(e2[8:10])}"
+        top2 = max(two, key=lambda s: s["o2"]["net"])
+        line = f"Looking to the {lbl} opex, <b>{top2['t']}</b> has the most positioning ({fmt_k(top2['o2']['net'])})"
+        both = [s["t"] for s in two if s["opex_net"] < 0 and s["o2"]["net"] < 0]
+        turns = [s["t"] for s in two if s["opex_net"] < 0 < s["o2"]["net"]]
+        fades = [s["t"] for s in two if s["opex_net"] > 0 > s["o2"]["net"]]
+        joinb = lambda ts: " and ".join(f"<b>{x}</b>" for x in ts) if len(ts) <= 2 else \
+            ", ".join(f"<b>{x}</b>" for x in ts[:-1]) + f", and <b>{ts[-1]}</b>"
+        extra = []
+        if both:
+            extra.append(f"{joinb(both)} {'stays' if len(both) == 1 else 'stay'} net negative into both opex dates")
+        if turns:
+            extra.append(f"{joinb(turns)} {'flips' if len(turns) == 1 else 'flip'} from negative this month to positive")
+        if fades:
+            extra.append(f"{joinb(fades)} {'flips' if len(fades) == 1 else 'flip'} from positive this month to negative")
+        out.append(line + ("; " + "; ".join(extra) if extra else "") + ".")
+    # 5) weakest
     if weakest:
         rank = "the weakest board" if weakest is min(stats, key=lambda s: s["opex_net"]) else "the next-weakest board"
         line = f"<b>{weakest['t']}</b> is {rank}, at only {fmt_k(weakest['opex_net'])} into opex."
@@ -575,7 +638,8 @@ def main():
         ts.append(s)
     updated = max(v.get("updated", "") for v in snap["tickers"].values() if "error" not in v)
     stats = [c.pop("_stats") for c in cards]
-    payload = {"snapshot": snap_date.isoformat(), "nextOpex": opex, "dataUpdatedAt": updated,
+    opex2 = next_monthly_opex(dt.date.fromisoformat(opex)).isoformat() if opex else None
+    payload = {"snapshot": snap_date.isoformat(), "nextOpex": opex, "nextOpex2": opex2, "dataUpdatedAt": updated,
                "capturedAt": snap["capturedAt"],
                "cal": {"sessions": cal["sessions"], "horizon": HORIZON}, "headlines": headlines(stats), "glance": glance(stats), "cards": cards, "ts": ts}
     tpl = open(os.path.join(ROOT, "template.html")).read()
@@ -583,7 +647,7 @@ def main():
     out = os.path.join(ROOT, "index.html")
     open(out, "w").write(html)
     json.dump(payload, open(os.path.join(DATA, f"built-{snap_date.isoformat()}.json"), "w"), indent=1)
-    print(f"built {out} from {os.path.basename(src)} · {len(cards)} tickers · opex {opex}")
+    print(f"built {out} from {os.path.basename(src)} · {len(cards)} tickers · opex {opex} and {opex2}")
 
 
 if __name__ == "__main__":

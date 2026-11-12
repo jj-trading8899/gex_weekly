@@ -27,7 +27,8 @@ h1{ font-size:19px; margin:0 0 3px; letter-spacing:.02em; }
   padding:3px 9px; border-radius:20px; white-space:nowrap; }
 .range{ display:inline-block; margin-top:8px; font-size:10.5px; color:#e0b23a; letter-spacing:.03em;
   padding:2px 8px; border:1px solid #5a4a1c; background:#231d0e; border-radius:5px; }
-.strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:12px 0 10px; }
+.strip{ display:grid; grid-template-columns:repeat(var(--n,4),minmax(0,1fr)); gap:6px; margin:12px 0 10px; }
+@media (max-width:480px){ .strip{ gap:4px; } .exp{ padding:5px 2px 6px; } .exp .g{ font-size:11.5px; } .exp .v{ font-size:8px; } }
 .strip3{ grid-template-columns:repeat(3,1fr); margin:4px 0 10px; }
 .opexlbl{ font-size:9.5px; color:#8a90a0; letter-spacing:.06em; margin:2px 0 0; text-transform:uppercase; }
 .exp{ border:1px solid #2a323f; border-radius:7px; padding:6px 6px 7px; text-align:center; background:#1b2230; }
@@ -187,7 +188,7 @@ if(!(P.headlines||[]).length) document.getElementById("hl").hidden = true;
     h+='<span>'+(g.up!=null?'first resistance <b style="color:#f87171">$'+px(g.up)+'</b>'+(g.cap!=null?' · cap <b style="color:#f87171">$'+px(g.cap)+'</b>':''):'<b style="color:#c3cad6">no resistance near</b>')+'</span>';
     const dk=g.downKind==="buy"?["support","#34d399"]:g.downKind==="weak"?["weak support","#8fbfa8"]:["no support at","#ff9a47"];
     h+='<span>'+(g.down!=null?dk[0]+' <b style="color:'+dk[1]+'">$'+px(g.down)+'</b>':'<b style="color:#c3cad6">no level below</b>')+'</span>';
-    h+='<span>board <b style="color:'+(g.board>=0?'#34d399':'#f87171')+'">'+bd(g.board)+'</b></span>';
+    h+='<span>board <b style="color:'+(g.board>=0?'#34d399':'#f87171')+'">'+bd(g.board)+'</b>'+(g.board2!=null?' · then <b style="color:'+(g.board2>=0?'#34d399':'#f87171')+'">'+bd(g.board2)+'</b>':'')+'</span>';
     h+='</div></div>';
   }
   document.getElementById("ag-list").innerHTML=h;
@@ -197,14 +198,14 @@ if(!(P.headlines||[]).length) document.getElementById("hl").hidden = true;
     '<span style="color:#d08a4a">↘ shaky</span> (positive board but below the flip zone) · '+
     '<span style="color:#e0b23a">⇅ on the edge</span> (positive board, inside the flip zone: the next close decides) · '+
     '<span style="color:#34d399">≈ steadier / ↔ range-bound</span> (positive board above the flip zone: swings have been smaller). '+
-    '<b>Flip</b> = middle of the last 3 sessions; shown as a zone when it has been moving · <b>First resistance</b> = nearest level that matters; <b>cap</b> = biggest level overhead · <b>Board</b> = net positioning into '+P.nextOpex+' opex · <b>thin</b> = board under ±2K, weak signal.';
+    '<b>Flip</b> = middle of the last 3 sessions; shown as a zone when it has been moving · <b>First resistance</b> = nearest level that matters; <b>cap</b> = biggest level overhead · <b>Board</b> = net positioning into the '+P.nextOpex+' opex; <b>then</b> = into the '+(P.nextOpex2||'next')+' opex · <b>thin</b> = board under ±2K, weak signal.';
 })();
 
 const grid = document.getElementById("grid");
 DATA.forEach(d=>{
   const ts = toneStyle[d.tone];
   const strip = d.term.map((row,i)=>{
-    const [g,v]=row; const isOpex = i===d.opexIdx;
+    const [g,v]=row; const isOpex = i===d.opexIdx || i===d.opex2Idx;
     const gCls = g>0?"pos":(g<0?"neg":"flat");
     return `<div class="exp ${isOpex?'opex':''}">
       <div class="e">${d.cols[i]}${isOpex?' ★':''}</div>
@@ -222,7 +223,7 @@ DATA.forEach(d=>{
       <span class="pill" style="background:${ts.bg};color:${ts.c};border:1px solid ${ts.bd};">${d.regime}</span>
     </div>
     <div><span class="range">Range: ${d.range}</span></div>
-    <div class="strip">${strip}</div>
+    <div class="strip" style="--n:${d.term.length}">${strip}</div>
     <div class="lv">
       <span class="chip k-pin"><span class="k">Pin (ref)</span><b>${d.pin}</b></span>
       <span class="chip k-wall"><span class="k">Resistance</span><b>${d.wall}</b></span>
@@ -340,8 +341,23 @@ DATA.forEach(d=>{
       h+='</table>';
       h+='<div class="tl-note">Odds are measured, not modelled. Across the saved snapshots for these six names, they show how often a level of this size, at this distance, <b>held</b> (no close beyond it in the next '+((P.cal&&P.cal.horizon)||5)+' sessions) or was <b>closed through</b>. “Plain strike” is the same measure for a strike with no meaningful positioning, so the gap between the two is what the level adds. Distance is also shown in typical daily moves for the stock ('+(D.dayMove!=null?D.dayMove.toFixed(1)+'% for '+D.t:'per stock')+'). Small sample from one period, and closes only, so intraday tests are not seen. A guide for sizing and placement, not a forecast.</div></div>';
     }
+    // ---- Next two opex side by side ----
+    const OV=D.opexViews||[];
+    if(OV.length){
+      const lv=(x,c)=>x?'<b style="color:'+c+'">$'+kfmt(x[0])+'</b> <span style="color:#7a8090;font-size:9px">'+money(x[1])+'</span>':'<span style="color:#5a6070">—</span>';
+      h+='<div class="tl"><div class="tl-t">'+D.t+' <span>· next two opex dates, each on its own</span></div>';
+      h+='<table><tr><th>OPEX</th><th>BOARD</th><th>FIRST RESISTANCE</th><th>CAP</th><th>SUPPORT</th><th>NO SUPPORT AT</th><th>AIR POCKET</th></tr>';
+      OV.forEach((o,i)=>{
+        h+='<tr><td class="lv" style="color:#e0b23a">'+md(o.code)+' ★<div style="font-size:8px;color:#7a8090;font-weight:400">'+(i===0?'this month':'next month')+'</div></td>';
+        h+='<td style="font-weight:700;color:'+(o.net==null?'#7a8090':o.net>=0?'#34d399':'#f87171')+'">'+(o.net==null?'—':money(o.net))+'<div style="font-size:8px;color:#7a8090;font-weight:400">'+(o.net==null?'':o.net>=0?'steadier':'bigger swings')+'</div></td>';
+        if(!o.hasRows){ h+='<td colspan="5" style="color:#7a8090">strike detail not captured for this date</td></tr>'; return; }
+        h+='<td>'+lv(o.first,'#f87171')+'</td><td>'+lv(o.cap,'#f87171')+'</td><td>'+lv(o.sup,'#8fbfa8')+'</td><td>'+lv(o.gap,'#ff9a47')+'</td><td>'+lv(o.pocket,'#7aa2ff')+'</td></tr>';
+      });
+      h+='</table>';
+      h+='<div class="tl-note">Each row reads one opex expiry on its own (the key-levels table above combines the expiries through this month\'s opex). Positioning can still change a lot before next month\'s date, so treat its levels as where size is building now, not fixed lines.</div></div>';
+    }
     h+='<div class="nv-mxt">'+D.t+' <span>· positioning by strike & expiry</span></div>';
-    h+='<div class="nv-mx"><div class="nv-row nv-hd" style="'+gtc+'"><span>STRIKE</span>'+labels.map((c,i)=>'<span>'+c+(i===opexI?' ★':'')+'</span>').join("")+'</div>';
+    h+='<div class="nv-mx"><div class="nv-row nv-hd" style="'+gtc+'"><span>STRIKE</span>'+labels.map((c,i)=>'<span>'+c+(i===opexI||D.perCol[i].opex2?' ★':'')+'</span>').join("")+'</div>';
     const MFLIP=(D.flip!=null&&isFinite(D.flip))?D.flip:null;
     const flipRow='<div class="nv-fliprow"><span>flip $'+(MFLIP!=null?MFLIP.toFixed(1):'')+'</span></div>';
     let flipDone=MFLIP==null;
@@ -367,8 +383,8 @@ DATA.forEach(d=>{
       let lo=Math.min(...ks),hi=Math.max(...ks);const pad=(hi-lo)*0.06||SPOT*0.01;const bmin=lo-pad,bmax=hi+pad;
       const arr=Object.values(cls[j]).sort((a,b)=>Math.abs(b.g)-Math.abs(a.g));
       const maxA=Math.max(...arr.map(a=>Math.abs(a.g)),0.01);
-      const clab=c.opex?"MONTHLY OPEX":"WEEKLY";
-      h+='<div class="nv-card"><div class="nv-ct"><div><div class="nv-cl">'+clab+(c.opex?' ★':'')+'</div><div class="nv-cc">'+c.code+'</div></div><div class="nv-vd" style="color:'+rc+';border:1px solid '+rc+'55;background:'+rc+'11">'+rg+' '+money(c.net)+'</div></div>';
+      const clab=c.opex?"MONTHLY OPEX":c.opex2?"NEXT MONTHLY OPEX":"WEEKLY";
+      h+='<div class="nv-card"><div class="nv-ct"><div><div class="nv-cl">'+clab+(c.opex||c.opex2?' ★':'')+'</div><div class="nv-cc">'+c.code+'</div></div><div class="nv-vd" style="color:'+rc+';border:1px solid '+rc+'55;background:'+rc+'11">'+rg+' '+money(c.net)+'</div></div>';
       h+='<div class="nv-bar'+(FLIP!=null?' hasflip':'')+'">';
       h+='<div class="nv-spot" style="left:'+pos(SPOT,bmin,bmax)+'%">$'+SPOT.toFixed(2)+'</div>';
       h+='<div class="nv-tick" style="left:'+pos(SPOT,bmin,bmax)+'%;top:-4px;height:14px;background:#e0b23a"></div>';
@@ -397,7 +413,7 @@ DATA.forEach(d=>{
 document.getElementById("foot").innerHTML =
   "<b>Source:</b> TradeEcho Dealer Edge (dealer positioning and VEX summed per expiration), captured via the signed-in web app after the close. "+
   "Positioning in TradeEcho units (K = thousands of contracts); VEX in $M. Positions as of the prior session's open interest, spot at capture. "+
-  "Columns run from the next expiry through the "+NEXT_OPEX+" monthly opex; the per-strike matrix adds the following Friday expiry, and the strip adds the next expiries after that. "+
+  "Columns run from the next expiry through the "+NEXT_OPEX+" monthly opex, plus the following monthly opex ("+(P.nextOpex2||"next month")+", marked ★). The key levels and odds use the expiries through "+NEXT_OPEX+"; next month's opex is shown alongside, not mixed in. "+
   "Odds on the key levels are measured from the saved snapshots (how often similar levels held over the next "+((P.cal&&P.cal.horizon)||5)+" closes) and are re-measured on every run. The flip is shown as the middle of the last 3 sessions. "+
   "Levels are structural, not price targets — no IV, earnings or liquidity overlay. Built "+P.capturedAt.slice(0,16).replace("T"," ")+" UTC. "+
   "Informational only, not investment advice.";
