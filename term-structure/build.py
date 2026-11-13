@@ -611,7 +611,8 @@ def headlines(stats):
     # 5) weakest
     if weakest:
         rank = "the weakest board" if weakest is min(stats, key=lambda s: s["opex_net"]) else "the next-weakest board"
-        line = f"<b>{weakest['t']}</b> is {rank}, at only {fmt_k(weakest['opex_net'])} into opex."
+        only = "only " if abs(weakest["opex_net"]) < 50 else ""
+        line = f"<b>{weakest['t']}</b> is {rank}, at {only}{fmt_k(weakest['opex_net'])} into opex."
         if weakest["flip"] is not None:
             rel = "inside" if weakest["pos"] == "in" and weakest["band"]["wide"] else "on" if weakest["pos"] == "in" else \
                 "below" if weakest["pos"] == "below" else \
