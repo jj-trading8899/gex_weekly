@@ -24,7 +24,8 @@ h1{ font-size:19px; margin:0 0 3px; letter-spacing:.02em; }
 .chg{ font-size:12px; font-weight:600; }
 .pos{ color:#34d399; } .neg{ color:#f87171; } .flat{ color:#9aa0b0; }
 .pill{ margin-left:auto; font-size:10px; font-weight:600; letter-spacing:.04em;
-  padding:3px 9px; border-radius:20px; white-space:nowrap; }
+  padding:3px 9px; border-radius:20px; white-space:nowrap; max-width:100%; }
+@media (max-width:480px){ .pill{ white-space:normal; text-align:right; line-height:1.35; border-radius:9px; } }
 .range{ display:inline-block; margin-top:8px; font-size:10.5px; color:#e0b23a; letter-spacing:.03em;
   padding:2px 8px; border:1px solid #5a4a1c; background:#231d0e; border-radius:5px; }
 .strip{ display:grid; grid-template-columns:repeat(var(--n,4),minmax(0,1fr)); gap:6px; margin:12px 0 10px; }
