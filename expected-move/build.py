@@ -170,7 +170,9 @@ def project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, opex_friday=True,
             hi, lo = min(c + h, lv["callwall"] + 0.0012 * spot), max(c - h, lv["putwall"])
         days.append(dict(d=["MON", "TUE", "WED", "THU", "FRI"][i],
                          lo=round(lo, dp), hi=round(hi, dp),
-                         bodyLo=round(c - 0.25 * h, dp), bodyHi=round(c + 0.25 * h, dp),
+                         # the settlement band cannot sit outside the day's own range
+                         bodyLo=round(min(max(c - 0.25 * h, lo), hi), dp),
+                         bodyHi=round(max(min(c + 0.25 * h, hi), lo), dp),
                          dir=dirs[i], carry=round(carry, dp)))
         carry = c
     meta = dict(C=round(C, 2), dampf=round(dampf, 3), sigma=round(sig, 2),
