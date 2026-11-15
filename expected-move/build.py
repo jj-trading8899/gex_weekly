@@ -54,6 +54,31 @@ def sigma(ser):
     return st.mean([abs(sp[i + 1] - sp[i]) for i in range(len(sp) - 1)]) if len(sp) > 1 else 0.0
 
 
+Z_RANGE = 1.28      # whisker: about 3 closes in 4 landed inside when tested
+Z_BODY = 0.50       # filled box: the middle of that range
+
+
+def vol_pct(ser):
+    """Typical one-session move, in percent of price.
+
+    The larger of the 4-session and 10-session mean absolute close-to-close move,
+    times 1.25 (mean absolute -> standard deviation). A gap of several sessions
+    between captures is scaled back to one session by the square root of the gap.
+    Tested over every capture from 18 Sep to 13 Nov 2026 (273 cases, 1 to 5
+    sessions ahead) this beat the corridor-based width on every measure; the
+    corridor between the walls had no relation to the size of the next move.
+    """
+    moves = []
+    for (d0, r0), (d1, r1) in zip(ser[:-1], ser[1:]):
+        a, b = dt.date.fromisoformat(d0), dt.date.fromisoformat(d1)
+        gap = max(1, sum(1 for i in range(1, (b - a).days + 1)
+                         if (a + dt.timedelta(days=i)).weekday() < 5))
+        moves.append(abs(r1["spot"] / r0["spot"] - 1) * 100 / gap ** 0.5)
+    if not moves:
+        return 0.0
+    return 1.25 * max(st.mean(moves[-4:]), st.mean(moves[-10:]))
+
+
 def vex_weight(ser):
     """Week-level amplitude from the |VEX| ratio.
 
@@ -85,22 +110,18 @@ def damping(r):
 
 
 def directions(ser, gexstr, pin, spot):
-    """gexstr>=4 mean-reverts (alternate); <=2 follows pin migration.
+    """Only one direction call survived testing, so only that one is made.
 
-    The midweek day is turned toward the pin when it sits on the far side of
-    spot; that is the mean-reversion component, not a directional call. The
-    band centre itself only pulls toward the pin when pin_pull() allows it.
+    With positioning strength 4 or 5 the next session reversed the last move
+    21 times in 28 (18 Sep to 13 Nov 2026). Nothing else beat a coin flip: the
+    old rules scored 38 of 93, moving toward the pin 46 of 102, the bias label
+    47 of 102. So the first projected day gets a call only at strength 4+, and
+    every other day is left neutral.
     """
-    pins = [r["pin"] for _, r in ser][-4:]
-    falling = len(pins) >= 2 and pins[-1] < pins[0]
-    if gexstr >= 4:
-        base = ["up", "down", "up", "down", "up"]
-    elif gexstr <= 2:
-        base = ["down"] * 5 if falling else ["up"] * 5
-        if (pin > spot) == falling:
-            base[2] = "up" if falling else "down"
-    else:
-        base = ["down", "up", "down", "up", "down"] if falling else ["up", "down", "up", "down", "up"]
+    base = ["flat"] * 5
+    sp = [r["spot"] for _, r in ser]
+    if gexstr >= 4 and len(sp) >= 2 and sp[-1] != sp[-2]:
+        base[0] = "down" if sp[-1] > sp[-2] else "up"
     return base
 
 
@@ -143,42 +164,32 @@ def pin_pull(row):
     return row["bias"] != "short" and row["gexstr"] >= 3
 
 
-def project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, opex_friday=True, pull=True):
-    C = lv["callwall"] - lv["putwall"]
-    Ceff = C * dampf
-    h_struct = 0.40 * Ceff
-    h_real = 0.50 * sig
-    floored = h_real > h_struct          # walls thinner than a normal session
-    h0 = max(h_struct, h_real) * vw
-    # The lower clip assumes dealers defend the put wall. With no bid near spot
-    # and spot already sitting on that wall, there is no evidence of a defence.
-    onfloor = nobid and (spot - lv["putwall"]) <= 0.10 * C
+def project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, opex_friday=True, pull=True,
+            vol=None):
+    """Ranges centred on the last close, widening with the square root of time.
 
-    ramp = [1.00, 1.04, 1.08, 1.12, 1.00]
-    opex = [1, 1, 1, 1, 1.8 if opex_friday else 1.0]
-    w = [0.2, 0.3, 0.5, 0.45, 0.1] if pull else [0.0] * 5
-    # Mid-week: compress the remaining weights so the path still lands on Friday.
-    days, carry = [], spot
-    for i in range(n_done, 5):
-        h = h0 * ramp[i] * opex[i]
-        c = spot + (lv["pin"] - spot) * w[i]
-        if floored:
-            hi, lo = min(c + h, lv["callwall"] + 0.5 * h), max(c - h, lv["putwall"] - 0.5 * h)
-        elif onfloor:
-            hi, lo = min(c + h, lv["callwall"] + 0.0012 * spot), max(c - h, lv["putwall"] - 0.5 * h)
-        else:
-            hi, lo = min(c + h, lv["callwall"] + 0.0012 * spot), max(c - h, lv["putwall"])
+    vol is the typical one-session move in percent (vol_pct). The walls are
+    drawn on the chart but no longer cut the range: clipping at them took the
+    share of closes landing inside from about 70% to 33% in testing.
+    dampf, vw, nobid and pull are kept for the callers and no longer used.
+    """
+    C = lv["callwall"] - lv["putwall"]
+    if vol is None:
+        vol = (sig * 1.25 / spot * 100) if spot else 0.0
+    one_day = vol / 100 * spot
+    days = []
+    for k, i in enumerate(range(n_done, 5), start=1):
+        h = Z_RANGE * one_day * k ** 0.5
+        b = Z_BODY * one_day * k ** 0.5
         days.append(dict(d=["MON", "TUE", "WED", "THU", "FRI"][i],
-                         lo=round(lo, dp), hi=round(hi, dp),
-                         # the settlement band cannot sit outside the day's own range
-                         bodyLo=round(min(max(c - 0.25 * h, lo), hi), dp),
-                         bodyHi=round(max(min(c + 0.25 * h, hi), lo), dp),
-                         dir=dirs[i], carry=round(carry, dp)))
-        carry = c
-    meta = dict(C=round(C, 2), dampf=round(dampf, 3), sigma=round(sig, 2),
-                h_struct=round(h_struct, 2), h_real=round(h_real, 2), floored=floored,
-                onfloor=onfloor, vexw=round(vw, 3), cont=round(C / sig, 2) if sig else None,
-                pull=pull)
+                         lo=round(spot - h, dp), hi=round(spot + h, dp),
+                         bodyLo=round(spot - b, dp), bodyHi=round(spot + b, dp),
+                         dir=dirs[k - 1], carry=round(spot, dp)))
+    meta = dict(C=round(C, 2), sigma=round(sig, 2), vol_pct=round(vol, 3),
+                one_day=round(one_day, 2), floored=False, onfloor=False,
+                cont=round(C / sig, 2) if sig else None, pull=False,
+                floor_inside=bool(days) and lv["putwall"] > days[0]["lo"],
+                ceil_inside=bool(days) and lv["callwall"] < days[0]["hi"])
     return days, meta
 
 # ------------------------------------------------------------------ renderer
@@ -246,7 +257,8 @@ def svg(d):
                       'font-weight="700" letter-spacing="2">%s</text>' % (x, DAYY, p["d"]))
             continue
         up = p["dir"] == "up"
-        c = G if up else RD
+        flat = p["dir"] == "flat"
+        c = "#7d8794" if flat else (G if up else RD)
         hv, hp = Y(p["hi"]) - 38, Y(p["hi"]) - 16
         lv_, lp = Y(p["lo"]) + 34, Y(p["lo"]) + 56
         for s_, yy, fs in ((f(p["hi"]), hv, 24), (sg(p["hi"]), hp, 19),
@@ -267,10 +279,10 @@ def svg(d):
         bh = max(Y(p["bodyLo"]) - by, 18)
         dm.append('<rect x="%.1f" y="%.1f" width="80" height="%.1f" rx="7" fill="%s" fill-opacity=".72" '
                   'stroke="%s" stroke-width="2.5"/>'
-                  '<circle cx="%.1f" cy="%.1f" r="6" fill="none" stroke="#8a8a94" stroke-width="2"/>'
-                  % (x - 40, by, bh, c, c, x - 46, Y(p["carry"])))
-        dm.append('<path d="M%.1f %.1f l9 -12 l9 12 z" fill="#0b0b0d"/>' % (x + 18, by + bh / 2 + 6) if up
-                  else '<path d="M%.1f %.1f l9 12 l9 -12 z" fill="#0b0b0d"/>' % (x + 18, by + bh / 2 - 6))
+                  % (x - 40, by, bh, c, c))
+        dm.append("" if flat else
+                  ('<path d="M%.1f %.1f l9 -12 l9 12 z" fill="#0b0b0d"/>' % (x - 9, by + bh / 2 + 6) if up
+                   else '<path d="M%.1f %.1f l9 12 l9 -12 z" fill="#0b0b0d"/>' % (x - 9, by + bh / 2 - 6)))
         dm.append('<text x="%.1f" y="%d" text-anchor="middle" fill="#c8c8d0" font-size="24" '
                   'font-weight="700" letter-spacing="2">%s</text>' % (x, DAYY, p["d"]))
     o += dm
@@ -379,7 +391,7 @@ def fmt(v, dp):
 
 
 def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_date,
-        blend=None, extra="", pull=None):
+        blend=None, extra="", pull=None, vol=None):
     """Assemble one chart's data object, rail and note."""
     if pull is None:
         pull = pin_pull(ser[-1][1])
@@ -401,7 +413,9 @@ def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_da
     n_done = len(actuals)
     gexstr = ser[-1][1]["gexstr"]
     dirs = directions(ser, gexstr, lv["pin"], spot)
-    days, meta = project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, pull=pull)
+    if vol is None:
+        vol = vol_pct(ser)
+    days, meta = project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, pull=pull, vol=vol)
     cont = meta["cont"]
     d = dict(ticker=tag, dp=dp, spot=round(spot, dp), pin=round(lv["pin"], dp),
              callwall=round(lv["callwall"], dp), putwall=round(lv["putwall"], dp),
@@ -414,7 +428,7 @@ def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_da
               ("FLOOR", fmt(lv["putwall"], dp), tight(spot, lv["putwall"])),
               ("BREAKDOWN", fmt(lv["brk"], dp), tight(spot, lv["brk"])),
               ("BIAS", fmt(lv["flip"], dp), "warn" if spot < lv["flip"] else ""),
-              ("CORRIDOR", "%s vs %s daily" % (fmt(meta["C"], dp), fmt(meta["sigma"], dp)), ""),
+              ("TYPICAL DAY", "&#177;%.2f%% (%s)" % (meta["vol_pct"], fmt(meta["one_day"], dp)), ""),
               ("SETUP SCORE", "%d &#8594; %d" % (scores[0], scores[-1]),
                "bad" if scores[-1] < scores[0] - 20 else "")])
     bits = []
@@ -423,18 +437,24 @@ def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_da
                     "the live %.4f basis." % (blend[0] * 100, blend[1] * 100, blend[2]))
     else:
         bits.append("Standalone, no blend.")
-    if meta["floored"]:
-        bits.append("The corridor is narrower than a normal session, so bands are floored to "
-                    "realised movement and the wall clip is released.")
+    bits.append("Ranges are centred on the close and sized from recent movement: a typical "
+                "session is %.2f%% (%s), widening with each day further out."
+                % (meta["vol_pct"], fmt(meta["one_day"], dp)))
+    if meta["floor_inside"] and meta["ceil_inside"]:
+        bits.append("Both the floor and the ceiling sit inside the first day's range, so neither "
+                    "is far enough away to rely on.")
+    elif meta["floor_inside"]:
+        bits.append("The floor sits inside the first day's range. In testing, price closed below "
+                    "the floor the very next session about one time in three.")
+    elif meta["ceil_inside"]:
+        bits.append("The ceiling sits inside the first day's range, so a close above it is well "
+                    "within a normal session.")
+    if days and days[0]["dir"] != "flat":
+        bits.append("Positioning strength is %d, where the next session has reversed the last "
+                    "move 21 times in 28, so the first day is marked %s."
+                    % (gexstr, days[0]["dir"]))
     else:
-        bits.append("Structural width governs: %s of corridor against %s of average daily movement."
-                    % (fmt(meta["C"], dp), fmt(meta["sigma"], dp)))
-    if not pull:
-        bits.append("Positioning is short or weak, so the bands are centred on the close and the "
-                    "pin is treated as a ceiling, not a target.")
-    if meta["onfloor"]:
-        bits.append("No bid near spot and spot already on the put wall, so the lower clip is "
-                    "released rather than printing identical lows.")
+        bits.append("No direction is marked: at this positioning strength no rule beat a coin flip.")
     if spot < lv["flip"]:
         bits.append("Spot sits %s under the bias boundary." % fmt(lv["flip"] - spot, dp))
     if vexflip:
@@ -469,7 +489,8 @@ def main():
                          wS * sigma(spx) + wY * (sigma(spy) * k), wS * vS + wY * vY,
                          fS or fY, S["buydip"] is None and Y["buydip"] is None,
                          wk_start, cap_date, blend=(wS, wY, k),
-                         pull=pin_pull(S) and pin_pull(Y))
+                         pull=pin_pull(S) and pin_pull(Y),
+                         vol=wS * vol_pct(spx) + wY * vol_pct(spy))
     lvY = dict(pin=Y["pin"], callwall=Y["callwall"], putwall=Y["putwall"],
                brk=Y["brk"], flip=Y["flip"])
     dY, rY, nY, mY = one("SPY", spy, lvY, Y["spot"], 2, damping(Y), sigma(spy), vY, fY,
@@ -514,13 +535,15 @@ def main():
 <b>SPX and SPY.</b> The first chart blends both books at the live basis and prints in index points;
 the second is SPY alone in dollars. One underlying, two order books &#8212; read the blend for the
 level and SPY for the cash instrument. QQQ is standalone.<br>
-<b>Reading the chart.</b> The whisker is the projected daily high and low; percentages are against
-the capture&#8217;s close. The filled box is the expected settlement band, green for an up-biased day
-and red for a down-biased one, with the hollow circle carrying in the previous day&#8217;s projected
-close. Days already closed show the actual close against a lighter column &#8212; the captures carry
-no intraday range, so no high or low is drawn for those. Friday widens for its expiry.<br>
-<b>Where the bands come from.</b> 40%% of the corridor between ceiling and floor, damped for regime,
-floored to realised movement when the walls are narrower than a normal session.<br>
+<b>Reading the chart.</b> The whisker is the range each day&#8217;s close is expected to land in;
+percentages are against the capture&#8217;s close. The filled box is the middle of that range. A box is
+green or red only where a tested direction rule applies; otherwise it is grey. Ceiling, floor and
+breakdown lines are shown for reference and do not limit the range. Days already closed show the
+actual close against a lighter column.<br>
+<b>Where the ranges come from.</b> The typical one-session move (the larger of the 4-session and
+10-session average, as a percentage) times 1.28, growing with the square root of the number of
+sessions ahead. Tested on every capture from 18 Sep to 13 Nov 2026, 1 to 5 sessions ahead: the close
+landed inside about 3 times in 4 (207 of 273). The earlier wall-based ranges managed 95 of the same 273.<br>
 <b>Built</b> %s from dealer-edge-%s.json. Rebuilt automatically whenever a new capture lands.
 </footer></div></body></html>""" % (monday.strftime("%-d %b"), CSS, stamp, "\n".join(secs),
                                     dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%MZ"),
