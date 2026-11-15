@@ -125,6 +125,14 @@ h1{ font-size:19px; margin:0 0 3px; letter-spacing:.02em; }
 .ag-lv b{ font-weight:600; }
 .ag-key{ font-size:10.5px; color:#8a90a0; line-height:1.55; margin-top:8px; border-top:1px solid #2a323f; padding-top:10px; }
 .ag-key b{ color:#c3cad6; }
+.em-bar{ grid-column:2; position:relative; height:26px; margin:6px 0 2px; }
+.em-bar .st{ position:absolute; top:9px; height:8px; border-radius:4px; background:#2a3342; }
+.em-bar .lk{ position:absolute; top:9px; height:8px; border-radius:4px; background:#8a6d1c; }
+.em-bar .sp{ position:absolute; top:4px; width:2px; height:18px; background:#e6e9ef; }
+.em-bar .lvl{ position:absolute; top:6px; width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:7px solid; transform:translateX(-4px); }
+.em-ends{ grid-column:2; display:flex; justify-content:space-between; font-size:9.5px; color:#7a8090; font-variant-numeric:tabular-nums; }
+.em-flag{ grid-column:2; font-size:11px; color:#e0b23a; margin-top:3px; }
+@media (min-width:760px){ #em-list{ display:grid; grid-template-columns:1fr 1fr; column-gap:28px; } #em-list .ag-row:nth-of-type(2){ border-top:0; } }
 @media (min-width:760px){ .ag-list{ display:grid; grid-template-columns:1fr 1fr; column-gap:28px; } .ag-row:nth-of-type(2){ border-top:0; } }
 </style>
 </head>
@@ -140,6 +148,7 @@ h1{ font-size:19px; margin:0 0 3px; letter-spacing:.02em; }
   </div>
   <div class="ag" id="ag"><div class="ag-t">At a glance · into opex</div><div class="ag-list" id="ag-list"></div><div class="ag-key" id="ag-key"></div></div>
   <div class="hl" id="hl"><div class="hl-t">Key Headline</div><ul id="hl-list"></ul></div>
+  <div class="ag" id="em"><div class="ag-t">Expected move · next session and next 5</div><div id="em-list"></div><div class="ag-key" id="em-key"></div></div>
   <div class="grid" id="grid"></div>
   <div id="ts-more"></div>
   <div class="foot" id="foot"></div>
@@ -167,6 +176,36 @@ document.getElementById("hl-list").innerHTML = (P.headlines||[]).map(x=>"<li>"+x
 if(!(P.headlines||[]).length) document.getElementById("hl").hidden = true;
 
 // ---- At a glance ----
+(function(){
+  // ---- Expected move ----
+  const M=(P.ts||[]).filter(d=>d.move); if(!M.length){ document.getElementById("em").hidden=true; return; }
+  const f0=(v)=>v>=100?v.toFixed(0):v.toFixed(1);
+  const md=(iso)=>{const p=iso.split("-");return (+p[1])+"/"+(+p[2]);};
+  const KC={sell:"#f87171",buy:"#34d399",weak:"#8fbfa8",trigger:"#ff9a47",pocket:"#7aa2ff"};
+  const KN=(r)=>r.kind==="sell"?(r.tier==="first"?"first resistance":r.tier==="major"||r.tier==="both"?"cap":"resistance"):r.kind==="buy"?"support":r.kind==="weak"?"weak support":r.kind==="trigger"?"no support":"air pocket";
+  let h="";
+  for(const d of M){
+    const m=d.move, lo=m.d5_90[0], hi=m.d5_90[1], W=hi-lo, pc=(v)=>Math.max(0,Math.min(100,(v-lo)/W*100));
+    h+='<div class="ag-row"><div class="ag-ic" style="color:#e0b23a">±</div>';
+    h+='<div class="ag-hd"><span class="tk">'+d.t+'</span><span class="px">$'+d.spot.toFixed(2)+'</span><span style="font-size:11.5px;color:#8a90a0">recent typical day ±'+m.unit.toFixed(1)+'%</span></div>';
+    h+='<div class="ag-lv"><span>next session <b style="color:#e0b23a">$'+f0(m.d1_70[0])+'–'+f0(m.d1_70[1])+'</b> (±'+m.d1_70[2].toFixed(1)+'%) · stretch <b style="color:#c3cad6">$'+f0(m.d1_90[0])+'–'+f0(m.d1_90[1])+'</b></span></div>';
+    h+='<div class="ag-lv"><span>next 5 sessions <b style="color:#e0b23a">$'+f0(m.d5_70[0])+'–'+f0(m.d5_70[1])+'</b> (±'+m.d5_70[2].toFixed(1)+'%) · stretch <b style="color:#c3cad6">$'+f0(m.d5_90[0])+'–'+f0(m.d5_90[1])+'</b></span></div>';
+    h+='<div class="em-bar"><div class="st" style="left:0;width:100%"></div><div class="lk" style="left:'+pc(m.d5_70[0])+'%;width:'+(pc(m.d5_70[1])-pc(m.d5_70[0]))+'%"></div>';
+    for(const r of (d.ladder||[])){ if(KC[r.kind]&&r.k>lo&&r.k<hi) h+='<div class="lvl" style="left:'+pc(r.k)+'%;border-top-color:'+KC[r.kind]+'" title="$'+r.k+' '+KN(r)+'"></div>'; }
+    h+='<div class="sp" style="left:'+pc(d.spot)+'%"></div></div>';
+    h+='<div class="em-ends"><span>$'+f0(lo)+'</span><span>5-session range · ▾ key levels</span><span>$'+f0(hi)+'</span></div>';
+    const ins=(m.inside||[]).slice().sort((a,b)=>b.k-a.k);
+    h+='<div class="ag-lv"><span>'+(ins.length?'inside the likely range: '+ins.map(r=>KN(r)+' <b style="color:'+KC[r.kind]+'">$'+f0(r.k)+'</b>').join(' · '):'no key level inside the likely range')+'</span></div>';
+    if(m.event) h+='<div class="em-flag">⚠ '+m.event.what.charAt(0).toUpperCase()+m.event.what.slice(1)+' on '+md(m.event.date)+': these ranges come from recent trading and will understate the move around it.</div>';
+    h+='</div>';
+  }
+  document.getElementById("em-list").innerHTML=h;
+  const R=P.rangeModel||{}, H=R.hit||{}, n=R.n||{};
+  const hr=(k)=>H[k]&&H[k]["70"]!=null?('likely '+H[k]["70"]+'%, stretch '+H[k]["90"]+'% ('+n[k]+' tests)'):null;
+  document.getElementById("em-key").innerHTML='<b>Likely</b> and <b>stretch</b> are ranges for the closing price, sized from how much each stock has been moving lately (recent sessions count most) and how far past moves ran in those terms. '+
+    (hr("1")?'<b>Track record</b>, replaying the saved history with only what was known on each date: the next-session close landed inside '+hr("1")+'; the close 5 sessions on landed inside '+hr("5")+'. ':'Not enough history yet for a track record. ')+
+    'On the bar, the bright band is the likely 5-session range, the dark band the stretch range, the white line the last close, and ▾ marks key levels (red resistance, green support, orange no support, blue air pocket). The ranges are symmetric: splitting them by positioning or by the flip did not predict better in testing. Closes only; intraday highs and lows can go further.';
+})();
 (function(){
   const G=P.glance||[]; if(!G.length){ document.getElementById("ag").hidden=true; return; }
   const LEAN={
@@ -416,6 +455,7 @@ document.getElementById("foot").innerHTML =
   "Positioning in TradeEcho units (K = thousands of contracts); VEX in $M. Positions as of the prior session's open interest, spot at capture. "+
   "Columns run from the next expiry through the "+NEXT_OPEX+" monthly opex, plus the following monthly opex ("+(P.nextOpex2||"next month")+", marked ★). The key levels and odds use the expiries through "+NEXT_OPEX+"; next month's opex is shown alongside, not mixed in. "+
   "Odds on the key levels are measured from the saved snapshots (how often similar levels held over the next "+((P.cal&&P.cal.horizon)||5)+" closes) and are re-measured on every run. The flip is shown as the middle of the last 3 sessions. "+
+  "Expected-move ranges are sized from recent closing moves and re-measured on every run; they are a guide to how far price usually travels, not a forecast of direction. "+
   "Levels are structural, not price targets — no IV, earnings or liquidity overlay. Built "+P.capturedAt.slice(0,16).replace("T"," ")+" UTC. "+
   "Informational only, not investment advice.";
 </script>

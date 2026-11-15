@@ -8,6 +8,22 @@
   "sessions": 21,
   "horizon": 5
  },
+ "rangeModel": {
+  "hit": {
+   "1": {
+    "70": 75,
+    "90": 89
+   },
+   "5": {
+    "70": 65,
+    "90": 83
+   }
+  },
+  "n": {
+   "1": 102,
+   "5": 78
+  }
+ },
  "headlines": [
   "<b>AVGO</b> is the one to watch. It's inside a flip zone that has been moving ($331\u2013351), under its largest $380 level (+7.7K). Support at $342.5 is weak; below that there's none around $340. It's net negative into opex (\u221225.6K), so swings are likely to be bigger.",
   "<b>AAPL</b> has the most positioning into opex (+313K), centred on $360\u2013365.",
@@ -161,7 +177,7 @@
    "wall": "$172.5 first \u00b7 $177.5 cap",
    "sup": "none",
    "flip": "~$164",
-   "range": "$149-177.5 \u00b7 flip $164",
+   "range": "$144\u2013180 likely over 5 sessions \u00b7 flip $164",
    "read": "Closed $161.95. Into 11/20 opex dealers net \u2212156K, heaviest at $177.5 (+43.2K). Net negative into opex has gone with the biggest day-to-day swings. Below the flip zone (about $164), where moves have tended to be bigger. First resistance $172.5 (held 77% of the time), major cap $177.5 (held 90%). No real support below spot. There's no support at $160. The 11/16 front expiry is net negative (\u221278.7K), so near-term swings can overshoot before opex takes over. Into the 12/18 opex dealers net \u2212140K, biggest level overhead $185. TradeEcho's own read: Neutral."
   },
   {
@@ -205,7 +221,7 @@
    "wall": "$400",
    "sup": "$377.5 (weak)",
    "flip": "~$388",
-   "range": "$377.5-400 \u00b7 flip $388",
+   "range": "$349\u2013427 likely over 5 sessions \u00b7 flip $388",
    "read": "Closed $388.36. Into 11/20 opex dealers net +38.3K, heaviest at $400 (+18.0K). Net positive into opex has gone with smaller day-to-day swings. Inside the flip zone ($375\u2013389), so the next close decides which side it trades on. Resistance $400 (held 70% of the time). $390 above is an air pocket: rallies closed through levels like it 71% of the time. Support at $377.5 is weak: levels like it held only 39% of the time. There's no support at $380. Into the 12/18 opex dealers net +6.2K, biggest level overhead $420. TradeEcho's own read: Bullish."
   },
   {
@@ -249,7 +265,7 @@
    "wall": "$360 first \u00b7 $365 cap",
    "sup": "$355 (weak)",
    "flip": "~$353",
-   "range": "$355-365 \u00b7 flip $353",
+   "range": "$340\u2013371 likely over 5 sessions \u00b7 flip $353",
    "read": "Closed $355.55. Into 11/20 opex dealers net +313K, heaviest at $365 (+118K). Net positive into opex has gone with smaller day-to-day swings. Above the flip zone (about $353), where moves have tended to be a little smaller. First resistance $360 (held 70% of the time), major cap $365 (held 77%). Support at $355 is weak: levels like it held only 27% of the time. There's no support at $350. Into the 12/18 opex dealers net +156K, biggest level overhead $360. TradeEcho's own read: Bullish."
   },
   {
@@ -293,7 +309,7 @@
    "wall": "$270 first \u00b7 $275 cap",
    "sup": "$265 (weak)",
    "flip": "~$267",
-   "range": "$265-275 \u00b7 flip $267",
+   "range": "$245\u2013286 likely over 5 sessions \u00b7 flip $267",
    "read": "Closed $265.55. Into 11/20 opex dealers net +298K, heaviest at $275 (+87.1K). Net positive into opex has gone with smaller day-to-day swings. Inside the flip zone ($263\u2013268), so the next close decides which side it trades on. First resistance $270 (held 70% of the time), major cap $275 (held 77%). Support at $265 is weak: levels like it held only 27% of the time. There's no support at $262.5. Into the 12/18 opex dealers net +148K, biggest level overhead $300. TradeEcho's own read: Neutral."
   },
   {
@@ -337,7 +353,7 @@
    "wall": "$300 first \u00b7 $310 cap",
    "sup": "none",
    "flip": "~$292",
-   "range": "$290-310 \u00b7 flip $292",
+   "range": "$277\u2013312 likely over 5 sessions \u00b7 flip $292",
    "read": "Closed $294.59. Into 11/20 opex dealers net \u22128.1K, heaviest at $310 (+19.0K). Net negative into opex has gone with the biggest day-to-day swings. Above the flip zone (about $292), where moves have tended to be a little smaller. First resistance $300 (held 67% of the time), major cap $310 (held 77%). No real support below spot. There's no support at $290. Into the 12/18 opex dealers net +2.2K, biggest level overhead $310. TradeEcho's own read: Bullish."
   },
   {
@@ -381,7 +397,7 @@
    "wall": "$355 first \u00b7 $380 cap",
    "sup": "$342.5 (weak)",
    "flip": "~$345",
-   "range": "$342.5-380 \u00b7 flip $345",
+   "range": "$294\u2013392 likely over 5 sessions \u00b7 flip $345",
    "read": "Closed $342.86. Into 11/20 opex dealers net \u221225.6K, heaviest at $380 (+7.7K). Net negative into opex has gone with the biggest day-to-day swings. Inside the flip zone ($331\u2013351), so the next close decides which side it trades on. First resistance $355 (held 70% of the time), major cap $380 (held 77%). $345 above is an air pocket: rallies closed through levels like it 71% of the time. Support at $342.5 is weak: levels like it held only 27% of the time. There's no support at $340. The 11/16 front expiry is net negative (\u221210.0K), so near-term swings can overshoot before opex takes over. Into the 12/18 opex dealers net \u221218.7K, biggest level overhead $380. TradeEcho's own read: Bearish."
   }
  ],
@@ -686,7 +702,51 @@
       -33.0
      ]
     }
-   ]
+   ],
+   "move": {
+    "unit": 3.26,
+    "d1_70": [
+     153.65,
+     170.25,
+     5.1
+    ],
+    "d1_90": [
+     147.24,
+     176.66,
+     9.1
+    ],
+    "d5_70": [
+     144.17,
+     179.73,
+     11.0
+    ],
+    "d5_90": [
+     127.46,
+     196.44,
+     21.3
+    ],
+    "inside": [
+     {
+      "k": 177.5,
+      "kind": "sell",
+      "tier": "major"
+     },
+     {
+      "k": 172.5,
+      "kind": "sell",
+      "tier": "first"
+     },
+     {
+      "k": 160.0,
+      "kind": "trigger",
+      "tier": null
+     }
+    ],
+    "event": {
+     "date": "2026-11-17",
+     "what": "earnings after the close"
+    }
+   }
   },
   {
    "t": "TSLA",
@@ -1014,7 +1074,42 @@
       -4.1
      ]
     }
-   ]
+   ],
+   "move": {
+    "unit": 2.97,
+    "d1_70": [
+     370.21,
+     406.51,
+     4.7
+    ],
+    "d1_90": [
+     356.2,
+     420.52,
+     8.3
+    ],
+    "d5_70": [
+     349.46,
+     427.26,
+     10.0
+    ],
+    "d5_90": [
+     312.93,
+     463.79,
+     19.4
+    ],
+    "inside": [
+     {
+      "k": 400.0,
+      "kind": "sell",
+      "tier": "both"
+     },
+     {
+      "k": 380.0,
+      "kind": "trigger",
+      "tier": null
+     }
+    ]
+   }
   },
   {
    "t": "AAPL",
@@ -1326,7 +1421,47 @@
      ],
      "pocket": null
     }
-   ]
+   ],
+   "move": {
+    "unit": 1.3,
+    "d1_70": [
+     348.28,
+     362.82,
+     2.0
+    ],
+    "d1_90": [
+     342.66,
+     368.44,
+     3.6
+    ],
+    "d5_70": [
+     339.96,
+     371.14,
+     4.4
+    ],
+    "d5_90": [
+     325.31,
+     385.79,
+     8.5
+    ],
+    "inside": [
+     {
+      "k": 365.0,
+      "kind": "sell",
+      "tier": "major"
+     },
+     {
+      "k": 360.0,
+      "kind": "sell",
+      "tier": "first"
+     },
+     {
+      "k": 355.0,
+      "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
   },
   {
    "t": "AMZN",
@@ -1634,7 +1769,47 @@
      ],
      "pocket": null
     }
-   ]
+   ],
+   "move": {
+    "unit": 2.33,
+    "d1_70": [
+     255.83,
+     275.27,
+     3.7
+    ],
+    "d1_90": [
+     248.32,
+     282.78,
+     6.5
+    ],
+    "d5_70": [
+     244.71,
+     286.39,
+     7.8
+    ],
+    "d5_90": [
+     225.14,
+     305.96,
+     15.2
+    ],
+    "inside": [
+     {
+      "k": 275.0,
+      "kind": "sell",
+      "tier": "major"
+     },
+     {
+      "k": 270.0,
+      "kind": "sell",
+      "tier": "first"
+     },
+     {
+      "k": 265.0,
+      "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
   },
   {
    "t": "GOOGL",
@@ -1933,7 +2108,47 @@
      ],
      "pocket": null
     }
-   ]
+   ],
+   "move": {
+    "unit": 1.79,
+    "d1_70": [
+     286.32,
+     302.86,
+     2.8
+    ],
+    "d1_90": [
+     279.92,
+     309.26,
+     5.0
+    ],
+    "d5_70": [
+     276.85,
+     312.33,
+     6.0
+    ],
+    "d5_90": [
+     260.19,
+     328.99,
+     11.7
+    ],
+    "inside": [
+     {
+      "k": 310.0,
+      "kind": "sell",
+      "tier": "major"
+     },
+     {
+      "k": 300.0,
+      "kind": "sell",
+      "tier": "first"
+     },
+     {
+      "k": 290.0,
+      "kind": "trigger",
+      "tier": null
+     }
+    ]
+   }
   },
   {
    "t": "AVGO",
@@ -2271,7 +2486,47 @@
      ],
      "pocket": null
     }
-   ]
+   ],
+   "move": {
+    "unit": 4.26,
+    "d1_70": [
+     319.9,
+     365.81,
+     6.7
+    ],
+    "d1_90": [
+     302.17,
+     383.54,
+     11.9
+    ],
+    "d5_70": [
+     293.65,
+     392.06,
+     14.4
+    ],
+    "d5_90": [
+     247.44,
+     438.28,
+     27.8
+    ],
+    "inside": [
+     {
+      "k": 380.0,
+      "kind": "sell",
+      "tier": "major"
+     },
+     {
+      "k": 355.0,
+      "kind": "sell",
+      "tier": "first"
+     },
+     {
+      "k": 342.5,
+      "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
   }
  ]
 }

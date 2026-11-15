@@ -9,6 +9,7 @@ import calendar
 import datetime as dt
 import glob
 import json
+import math
 import os
 import statistics
 import sys
@@ -224,7 +225,92 @@ def opex_view(spot, by_exp, sums, e):
     return view
 
 
-def build_ticker(t, v, snap_date, hist=None, cal=None):
+RANGE_HORIZONS = (1, 5)                 # sessions ahead the expected range is given for
+RANGE_PRIOR = {70: 1.3, 90: 2.2}        # range half-width in recent typical moves, before history exists
+
+
+def recent_move(px, lam=0.9):
+    """Recency-weighted average absolute close-to-close move (fraction). Recent sessions count most,
+    so the range widens quickly when a stock starts moving more."""
+    ch = [abs(px[i + 1] / px[i] - 1) for i in range(len(px) - 1)]
+    if len(ch) < 3:
+        return 0.02
+    w = [lam ** (len(ch) - 1 - j) for j in range(len(ch))]
+    return max(0.005, sum(a * b for a, b in zip(w, ch)) / sum(w))
+
+
+def range_model(hist):
+    """Expected-range model, measured walk-forward on the saved snapshots.
+
+    Half-width = k x recent typical move x sqrt(sessions). k is the 70th ('likely') or 90th ('stretch')
+    percentile of past moves in those units, pooled across tickers and pulled toward RANGE_PRIOR while the
+    sample is small. `hit` replays history using only what was known at each date, so it is an honest
+    record of how often the close landed inside each range."""
+    tick = [t for t in (hist[-1][1] if hist else {}) if _ok(hist[-1], t)]
+    obs = []
+    px = {t: [float(h[1][t]["spot"]) for h in hist if _ok(h, t)] for t in tick}
+    for t in tick:
+        for i in range(len(px[t])):
+            u = recent_move(px[t][: i + 1])
+            for h in RANGE_HORIZONS:
+                r = px[t][i + h] / px[t][i] - 1 if i + h < len(px[t]) else None
+                obs.append((i, h, u, r))
+
+    def k_at(now, h, p):
+        z = sorted(abs(r) / (u * math.sqrt(hh)) for i, hh, u, r in obs
+                   if hh == h and r is not None and i + hh <= now and i >= 3)
+        if not z:
+            return RANGE_PRIOR[p]
+        pos = (len(z) - 1) * p / 100
+        f = int(pos)
+        qv = z[f] + (z[min(f + 1, len(z) - 1)] - z[f]) * (pos - f)
+        return (qv * len(z) + RANGE_PRIOR[p] * 6) / (len(z) + 6)
+
+    n_now = max((len(v) for v in px.values()), default=0) - 1
+    hit, n = {}, {}
+    for h in RANGE_HORIZONS:
+        tests = [(i, u, r) for i, hh, u, r in obs if hh == h and r is not None and i >= 8]
+        n[h] = len(tests)
+        ks = {}
+        for p in (70, 90):
+            inside = 0
+            for i, u, r in tests:
+                kk = ks.setdefault((i, p), k_at(i, h, p))
+                inside += abs(r) <= kk * u * math.sqrt(h)
+            hit.setdefault(h, {})[p] = round(100 * inside / len(tests)) if tests else None
+    return {"k": {h: {p: k_at(n_now, h, p) for p in (70, 90)} for h in RANGE_HORIZONS},
+            "hit": hit, "n": n, "units": {t: recent_move(px[t]) for t in tick}}
+
+
+def load_events(snap_date):
+    """Known events from data/events.json ({"NVDA": [{"date": "2026-11-17", "what": "earnings after the close"}]})
+    that fall inside the next 5 sessions (7 calendar days)."""
+    f = os.path.join(DATA, "events.json")
+    out = {}
+    if os.path.exists(f):
+        for t, evs in json.load(open(f)).items():
+            for e in evs:
+                d = dt.date.fromisoformat(e["date"])
+                if snap_date <= d <= snap_date + dt.timedelta(days=7):
+                    out[t] = {"date": e["date"], "what": e["what"]}
+    return out
+
+
+def expected_move(spot, unit, rm, ladder):
+    """Likely and stretch ranges for the next session and the next 5, plus the key levels inside the 5-session likely range."""
+    mv = {"unit": round(unit * 100, 2)}
+    for h in RANGE_HORIZONS:
+        for p in (70, 90):
+            hw = rm["k"][h][p] * unit * math.sqrt(h)
+            mv[f"d{h}_{p}"] = [round(spot * (1 - hw), 2), round(spot * (1 + hw), 2), round(hw * 100, 1)]
+    lo, hi = mv["d5_70"][0], mv["d5_70"][1]
+    below = [r for r in ladder if r["kind"] in ("buy", "weak", "trigger") and r["k"] < spot]
+    keep = [r for r in ladder if r["kind"] == "sell" and r.get("tier")] + sorted(below, key=lambda r: -r["k"])[:1]
+    mv["inside"] = [{"k": r["k"], "kind": r["kind"], "tier": r.get("tier")} for r in keep if lo <= r["k"] <= hi]
+    return mv
+
+
+def build_ticker(t, v, snap_date, hist=None, cal=None, rm=None, events=None):
     spot = float(v["spot"])
     kl = v.get("kl") or {}
     sums = {e: tuple(x) for e, x in v["sums"].items()}
@@ -306,9 +392,11 @@ def build_ticker(t, v, snap_date, hist=None, cal=None):
     pockets = sorted([r for r in ladder if r["kind"] == "pocket"], key=lambda r: r["k"])
     down_r = sups[0] if sups else (gaps[0] if gaps else None)
 
-    lo = sup[0] if sup else (neg[0] if neg else spot)
-    hi = wall[0] if wall else (anchor or spot)
-    rng = f"${strike_s(lo)}-{strike_s(hi)}"
+    rm = rm or {"k": {h: dict(RANGE_PRIOR) for h in RANGE_HORIZONS}, "hit": {}, "n": {}, "units": {}}
+    move = expected_move(spot, rm["units"].get(t, 0.02), rm, ladder)
+    if events and t in events:
+        move["event"] = events[t]
+    rng = f"${move['d5_70'][0]:.0f}–{move['d5_70'][1]:.0f} likely over 5 sessions"
     if flip is not None:
         rng += f" · flip ${flip:.0f}"
 
@@ -375,7 +463,7 @@ def build_ticker(t, v, snap_date, hist=None, cal=None):
     }
     ts = {"t": t, "spot": spot, "chg": None, "flip": round(flip, 2) if flip is not None else None, "perCol": per_col,
           "ladder": ladder, "board": k(opex_net), "pos": pos, "dayMove": round(unit * 100, 2),
-          "opexViews": [opex_view(spot, by_exp, sums, lv_exp), o2]}
+          "opexViews": [opex_view(spot, by_exp, sums, lv_exp), o2], "move": move}
     card["_stats"] = {
         "t": t, "spot": spot, "flip": flip, "tone": tone, "rating": v.get("rating"), "pos": pos, "band": band,
         "first": first_r["k"] if first_r else None,
@@ -629,12 +717,14 @@ def main():
     snap_date = dt.date.fromisoformat(os.path.basename(src)[:10])
     hist = load_history(snap_date)
     cal = calibrate(hist)
+    rm = range_model(hist)
+    events = load_events(snap_date)
     cards, ts, opex = [], [], None
     for t, v in snap["tickers"].items():
         if "error" in v:
             print(f"skip {t}: {v['error']}")
             continue
-        c, s, opex = build_ticker(t, v, snap_date, hist, cal)
+        c, s, opex = build_ticker(t, v, snap_date, hist, cal, rm, events)
         cards.append(c)
         ts.append(s)
     updated = max(v.get("updated", "") for v in snap["tickers"].values() if "error" not in v)
@@ -642,7 +732,8 @@ def main():
     opex2 = next_monthly_opex(dt.date.fromisoformat(opex)).isoformat() if opex else None
     payload = {"snapshot": snap_date.isoformat(), "nextOpex": opex, "nextOpex2": opex2, "dataUpdatedAt": updated,
                "capturedAt": snap["capturedAt"],
-               "cal": {"sessions": cal["sessions"], "horizon": HORIZON}, "headlines": headlines(stats), "glance": glance(stats), "cards": cards, "ts": ts}
+               "cal": {"sessions": cal["sessions"], "horizon": HORIZON},
+               "rangeModel": {"hit": rm["hit"], "n": rm["n"]}, "headlines": headlines(stats), "glance": glance(stats), "cards": cards, "ts": ts}
     tpl = open(os.path.join(ROOT, "template.html")).read()
     html = tpl.replace("/*__PAYLOAD__*/null", json.dumps(payload, separators=(",", ":")))
     out = os.path.join(ROOT, "index.html")
