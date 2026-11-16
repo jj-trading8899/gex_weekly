@@ -684,8 +684,8 @@ def headlines(stats):
         top2 = max(two, key=lambda s: s["o2"]["net"])
         line = f"Looking to the {lbl} opex, <b>{top2['t']}</b> has the most positioning ({fmt_k(top2['o2']['net'])})"
         both = [s["t"] for s in two if s["opex_net"] < 0 and s["o2"]["net"] < 0]
-        turns = [s["t"] for s in two if s["opex_net"] < 0 < s["o2"]["net"]]
-        fades = [s["t"] for s in two if s["opex_net"] > 0 > s["o2"]["net"]]
+        turns = [s["t"] for s in two if s["opex_net"] <= -2 and s["o2"]["net"] >= 2]   # ignore thin (<2K) boards
+        fades = [s["t"] for s in two if s["opex_net"] >= 2 and s["o2"]["net"] <= -2]
         joinb = lambda ts: " and ".join(f"<b>{x}</b>" for x in ts) if len(ts) <= 2 else \
             ", ".join(f"<b>{x}</b>" for x in ts[:-1]) + f", and <b>{ts[-1]}</b>"
         extra = []
