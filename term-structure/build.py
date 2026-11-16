@@ -314,6 +314,21 @@ def table_rows(rows, spot, win):
     return sel
 
 
+def table_edges(rows, spot, win):
+    """The nearest strike just outside each band edge, so the column visibly brackets the band,
+    plus everything beyond those two strikes pooled into one figure per side."""
+    lo, hi = spot * (1 - win), spot * (1 + win)
+    below = sorted((r for r in rows if r[0] < lo), key=lambda r: -r[0])
+    above = sorted((r for r in rows if r[0] > hi), key=lambda r: r[0])
+    edge = [r for r in (below[0] if below else None, above[0] if above else None) if r]
+    tails = {}
+    if below[1:]:
+        tails["below"] = [below[0][0], k(sum(r[1] for r in below[1:])), len(below) - 1]
+    if above[1:]:
+        tails["above"] = [above[0][0], k(sum(r[1] for r in above[1:])), len(above) - 1]
+    return edge, tails
+
+
 def expected_move(spot, unit, rm, ladder):
     """Likely and stretch ranges for the next session and the next 5, plus the key levels inside the 5-session likely range."""
     mv = {"unit": round(unit * 100, 2)}
@@ -355,13 +370,17 @@ def build_ticker(t, v, snap_date, hist=None, cal=None, rm=None, events=None):
     for e in cols:
         rows = table_rows(by_exp[e], spot, tbl_win)
         top = sorted(rows, key=lambda r: -abs(r[1]))[:TOP_PER_COL]
+        edge, tails = table_edges(by_exp[e], spot, tbl_win)
         per_col.append({"code": e, "net": k(sums[e][0]), "opex": e == opex,
-                        "strikes": [[r[0], k(r[1])] for r in sorted(top, key=lambda r: -r[0])]})
+                        "edge": [r[0] for r in edge], "tails": tails,
+                        "strikes": [[r[0], k(r[1])] for r in sorted(top + edge, key=lambda r: -r[0])]})
     if opex2 in by_exp and opex2 not in cols:   # second opex: shown in the matrix, not used for the key levels
         rows = table_rows(by_exp[opex2], spot, tbl_win)
         top = sorted(rows, key=lambda r: -abs(r[1]))[:TOP_PER_COL]
+        edge, tails = table_edges(by_exp[opex2], spot, tbl_win)
         per_col.append({"code": opex2, "net": k(sums[opex2][0]), "opex": False, "opex2": True,
-                        "strikes": [[r[0], k(r[1])] for r in sorted(top, key=lambda r: -r[0])]})
+                        "edge": [r[0] for r in edge], "tails": tails,
+                        "strikes": [[r[0], k(r[1])] for r in sorted(top + edge, key=lambda r: -r[0])]})
 
     # ---- levels from the opex (or last) column, full strike set ----
     lv_exp = opex if opex in by_exp else cols[-1]
