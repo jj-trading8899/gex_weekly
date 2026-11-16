@@ -19,7 +19,9 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 _REPO_DATA = os.path.join(ROOT, "..", "data", "term-structure")
 DATA = os.path.normpath(_REPO_DATA) if os.path.isdir(_REPO_DATA) else os.path.join(ROOT, "data")
 TOP_PER_COL = 9          # strikes kept per expiry column
-WINDOW = 0.15            # only strikes within +/-15% of spot
+WINDOW = 0.15            # only strikes within +/-15% of spot (key levels, ladder, opex views)
+TABLE_BAND = (5, 70)     # price-by-expiry columns span this expected-move band: (sessions, confidence)
+TABLE_MIN_ROWS = 6       # if the band holds fewer strikes than this, fall back to WINDOW
 STRIP_MAX = 5            # cells in the per-expiry strip (includes both opex dates)
 HORIZON = 5              # sessions a level is tested over when measuring odds
 FLIP_DAYS = 3            # sessions used to smooth the flip into a zone
@@ -296,6 +298,22 @@ def load_events(snap_date):
     return out
 
 
+def band_halfwidth(t, rm):
+    """Half-width of the expected-move band used for the price-by-expiry columns, as a fraction of spot.
+    Same model and unit as expected_move's d5_70, so the table spans the band shown on the card."""
+    h, p = TABLE_BAND
+    return rm["k"][h][p] * rm["units"].get(t, 0.02) * math.sqrt(h)
+
+
+def table_rows(rows, spot, win):
+    """Strikes for one price-by-expiry column: those inside the expected-move band, widening
+    to WINDOW when the band is too thin to fill a column."""
+    sel = [r for r in rows if abs(r[0] - spot) <= spot * win]
+    if len(sel) < TABLE_MIN_ROWS:
+        sel = [r for r in rows if abs(r[0] - spot) <= spot * max(win, WINDOW)]
+    return sel
+
+
 def expected_move(spot, unit, rm, ladder):
     """Likely and stretch ranges for the next session and the next 5, plus the key levels inside the 5-session likely range."""
     mv = {"unit": round(unit * 100, 2)}
@@ -333,13 +351,14 @@ def build_ticker(t, v, snap_date, hist=None, cal=None, rm=None, events=None):
     term = [[k(sums[e][0]), round(sums[e][1])] for e in strip]
 
     per_col = []
+    tbl_win = band_halfwidth(t, rm) if rm else WINDOW
     for e in cols:
-        rows = [r for r in by_exp[e] if abs(r[0] - spot) <= spot * WINDOW]
+        rows = table_rows(by_exp[e], spot, tbl_win)
         top = sorted(rows, key=lambda r: -abs(r[1]))[:TOP_PER_COL]
         per_col.append({"code": e, "net": k(sums[e][0]), "opex": e == opex,
                         "strikes": [[r[0], k(r[1])] for r in sorted(top, key=lambda r: -r[0])]})
     if opex2 in by_exp and opex2 not in cols:   # second opex: shown in the matrix, not used for the key levels
-        rows = [r for r in by_exp[opex2] if abs(r[0] - spot) <= spot * WINDOW]
+        rows = table_rows(by_exp[opex2], spot, tbl_win)
         top = sorted(rows, key=lambda r: -abs(r[1]))[:TOP_PER_COL]
         per_col.append({"code": opex2, "net": k(sums[opex2][0]), "opex": False, "opex2": True,
                         "strikes": [[r[0], k(r[1])] for r in sorted(top, key=lambda r: -r[0])]})
