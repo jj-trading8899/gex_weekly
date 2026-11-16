@@ -8,7 +8,7 @@
 // Units kept raw-ish: gamma in contracts (build.py shows K), vex in $M (2dp).
 
 (async () => {
-  const TICKERS = (window.TE_TICKERS || ['NVDA', 'TSLA', 'AAPL', 'AMZN', 'GOOGL', 'AVGO']);
+  const TICKERS = (window.TE_TICKERS || ['NVDA', 'TSLA', 'AAPL', 'AMZN', 'GOOGL', 'AVGO', 'TSM']);
   const KEEP_EXPIRIES = window.TE_KEEP || 6;          // per-strike rows kept for the next N expiries
   const tok = localStorage.getItem('access_token');
   if (!tok) throw new Error('Not signed in to TradeEcho (no access_token in this tab)');

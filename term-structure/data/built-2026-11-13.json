@@ -2,7 +2,7 @@
  "snapshot": "2026-11-13",
  "nextOpex": "2026-11-20",
  "nextOpex2": "2026-12-18",
- "dataUpdatedAt": "2026-11-13T21:05:18.342Z",
+ "dataUpdatedAt": "2026-11-14T09:00:15.174Z",
  "capturedAt": "2026-11-13T22:03:25.816Z",
  "cal": {
   "sessions": 21,
@@ -28,7 +28,8 @@
   "<b>AVGO</b> is the one to watch. It's inside a flip zone that has been moving ($331\u2013351), under its largest $380 level (+7.7K). Support at $342.5 is weak; below that there's none around $340. It's net negative into opex (\u221225.6K), so swings are likely to be bigger.",
   "<b>AAPL</b> has the most positioning into opex (+313K), centred on $360\u2013365.",
   "<b>GOOGL</b> is above its $292 flip but net negative into opex (\u22128.1K), so swings are likely to be bigger. <b>TSLA</b> faces resistance at $400 (and it's sitting on its $375\u2013389 flip zone), and <b>AMZN</b> at $270\u2013275 (and it's sitting on its $267 flip).",
-  "Looking to the 12/18 opex, <b>AAPL</b> has the most positioning (+156K); <b>NVDA</b> and <b>AVGO</b> stay net negative into both opex dates; <b>GOOGL</b> flips from negative this month to positive.",
+  "<b>TSM</b> closed below its flip ($397), with net negative positioning into opex, so moves can run until it gets back above.",
+  "Looking to the 12/18 opex, <b>AAPL</b> has the most positioning (+156K); <b>NVDA</b>, <b>AVGO</b>, and <b>TSM</b> stay net negative into both opex dates; <b>GOOGL</b> flips from negative this month to positive.",
   "<b>NVDA</b> is the weakest board, at \u2212156K into opex. It's below its $162\u2013174 flip zone, and TradeEcho rates it 3/5."
  ],
  "glance": [
@@ -133,6 +134,23 @@
    "board": -25.6,
    "thin": false,
    "board2": -18.7
+  },
+  {
+   "t": "TSM",
+   "spot": 394.5,
+   "lean": "down",
+   "flip": 397.41,
+   "flipLo": 395.8,
+   "flipHi": 399.0,
+   "flipWide": false,
+   "flipJump": false,
+   "up": 412.5,
+   "cap": 430.0,
+   "down": 390.0,
+   "downKind": "trigger",
+   "board": -34.3,
+   "thin": false,
+   "board2": -28.3
   }
  ],
  "cards": [
@@ -399,6 +417,50 @@
    "flip": "~$345",
    "range": "$294\u2013392 likely over 5 sessions \u00b7 flip $345",
    "read": "Closed $342.86. Into 11/20 opex dealers net \u221225.6K, heaviest at $380 (+7.7K). Net negative into opex has gone with the biggest day-to-day swings. Inside the flip zone ($331\u2013351), so the next close decides which side it trades on. First resistance $355 (held 70% of the time), major cap $380 (held 77%). $345 above is an air pocket: rallies closed through levels like it 71% of the time. Support at $342.5 is weak: levels like it held only 27% of the time. There's no support at $340. The 11/16 front expiry is net negative (\u221210.0K), so near-term swings can overshoot before opex takes over. Into the 12/18 opex dealers net \u221218.7K, biggest level overhead $380. TradeEcho's own read: Bearish."
+  },
+  {
+   "t": "TSM",
+   "spot": 394.5,
+   "chg": null,
+   "cols": [
+    "11/20",
+    "11/27",
+    "12/4",
+    "12/11",
+    "12/18"
+   ],
+   "opexIdx": 0,
+   "opex2Idx": 4,
+   "regime": "net negative into opex \u00b7 bigger swings \u00b7 below flip $397",
+   "tone": "neg",
+   "term": [
+    [
+     -34.3,
+     876
+    ],
+    [
+     -2.1,
+     233
+    ],
+    [
+     8.6,
+     276
+    ],
+    [
+     -0.5,
+     66
+    ],
+    [
+     -28.3,
+     1572
+    ]
+   ],
+   "pin": "$390",
+   "wall": "$412.5 first \u00b7 $430 cap",
+   "sup": "none",
+   "flip": "~$397",
+   "range": "$368\u2013421 likely over 5 sessions \u00b7 flip $397",
+   "read": "Closed $394.50. Into 11/20 opex dealers net \u221234.3K, heaviest at $420 (+3.7K). Net negative into opex has gone with the biggest day-to-day swings. Below the flip zone (about $397), where moves have tended to be bigger. First resistance $412.5 (held 85% of the time), major cap $430 (held 90%). $400 above is an air pocket: rallies closed through levels like it 71% of the time. No real support below spot. There's no support at $390. The 11/20 front expiry is net negative (\u221234.3K), so near-term swings can overshoot before opex takes over. Into the 12/18 opex dealers net \u221228.3K, biggest level overhead $440. TradeEcho's own read: Neutral."
   }
  ],
  "ts": [
@@ -2523,6 +2585,313 @@
      {
       "k": 342.5,
       "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
+  },
+  {
+   "t": "TSM",
+   "spot": 394.5,
+   "chg": null,
+   "flip": 397.41,
+   "perCol": [
+    {
+     "code": "2026-11-20",
+     "net": -34.3,
+     "opex": true,
+     "strikes": [
+      [
+       430.0,
+       3.7
+      ],
+      [
+       420.0,
+       3.7
+      ],
+      [
+       410.0,
+       -6.0
+      ],
+      [
+       405.0,
+       -2.8
+      ],
+      [
+       400.0,
+       -7.4
+      ],
+      [
+       390.0,
+       -11.6
+      ],
+      [
+       380.0,
+       -5.5
+      ],
+      [
+       370.0,
+       -5.5
+      ],
+      [
+       360.0,
+       -3.6
+      ]
+     ]
+    },
+    {
+     "code": "2026-11-27",
+     "net": -2.1,
+     "opex": false,
+     "strikes": [
+      [
+       450.0,
+       1.4
+      ],
+      [
+       430.0,
+       1.1
+      ],
+      [
+       420.0,
+       1.0
+      ],
+      [
+       410.0,
+       -0.4
+      ],
+      [
+       400.0,
+       -1.5
+      ],
+      [
+       390.0,
+       -0.7
+      ],
+      [
+       385.0,
+       -0.4
+      ],
+      [
+       375.0,
+       -0.6
+      ],
+      [
+       350.0,
+       -0.7
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -28.3,
+     "opex": false,
+     "opex2": true,
+     "strikes": [
+      [
+       450.0,
+       4.3
+      ],
+      [
+       440.0,
+       5.5
+      ],
+      [
+       410.0,
+       -1.9
+      ],
+      [
+       400.0,
+       -11.6
+      ],
+      [
+       380.0,
+       -3.4
+      ],
+      [
+       370.0,
+       -4.4
+      ],
+      [
+       360.0,
+       -8.3
+      ],
+      [
+       350.0,
+       -4.0
+      ],
+      [
+       340.0,
+       -1.9
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 430.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 6.0,
+     "odds": 90,
+     "base": 95,
+     "obs": 126,
+     "tier": "major"
+    },
+    {
+     "k": 420.0,
+     "kind": "sell",
+     "strength": 0.99,
+     "n": 2,
+     "dm": 4.3,
+     "odds": 90,
+     "base": 95,
+     "obs": 126,
+     "tier": null
+    },
+    {
+     "k": 412.5,
+     "kind": "sell",
+     "strength": 0.25,
+     "n": 2,
+     "dm": 3.0,
+     "odds": 85,
+     "base": 83,
+     "obs": 203,
+     "tier": "first"
+    },
+    {
+     "k": 410.0,
+     "kind": "pocket",
+     "strength": 0.52,
+     "n": 2,
+     "dm": 2.6,
+     "odds": 48,
+     "base": 17,
+     "obs": 14
+    },
+    {
+     "k": 400.0,
+     "kind": "pocket",
+     "strength": 0.69,
+     "n": 2,
+     "dm": 0.9,
+     "odds": 71,
+     "base": 64,
+     "obs": 39
+    },
+    {
+     "k": 397.4,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 395.8,
+     "hi": 399.0,
+     "jump": false
+    },
+    {
+     "k": 390.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 0.8,
+     "odds": 77,
+     "base": 73,
+     "obs": 74,
+     "pin": true
+    },
+    {
+     "k": 380.0,
+     "kind": "trigger",
+     "strength": 0.47,
+     "n": 2,
+     "dm": 2.5,
+     "odds": 38,
+     "base": 36,
+     "obs": 193
+    }
+   ],
+   "board": -34.3,
+   "pos": "below",
+   "dayMove": 1.5,
+   "opexViews": [
+    {
+     "code": "2026-11-20",
+     "net": -34.3,
+     "vex": 876,
+     "hasRows": true,
+     "first": [
+      412.5,
+      1.1
+     ],
+     "cap": [
+      420.0,
+      3.7
+     ],
+     "sup": null,
+     "gap": [
+      390.0,
+      -11.6
+     ],
+     "pocket": [
+      400.0,
+      -7.4
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -28.3,
+     "vex": 1572,
+     "hasRows": true,
+     "first": [
+      440.0,
+      5.5
+     ],
+     "cap": null,
+     "sup": null,
+     "gap": [
+      370.0,
+      -4.4
+     ],
+     "pocket": [
+      400.0,
+      -11.6
+     ]
+    }
+   ],
+   "move": {
+    "unit": 2.0,
+    "d1_70": [
+     382.1,
+     406.9,
+     3.1
+    ],
+    "d1_90": [
+     372.52,
+     416.48,
+     5.6
+    ],
+    "d5_70": [
+     367.91,
+     421.09,
+     6.7
+    ],
+    "d5_90": [
+     342.94,
+     446.06,
+     13.1
+    ],
+    "inside": [
+     {
+      "k": 412.5,
+      "kind": "sell",
+      "tier": "first"
+     },
+     {
+      "k": 390.0,
+      "kind": "trigger",
       "tier": null
      }
     ]

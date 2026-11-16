@@ -1,6 +1,6 @@
 # TradeEcho single-stock term structure
 
-Builds the "TradeEcho Single Stocks Term Structure" page (NVDA, TSLA, AAPL, AMZN, GOOGL, AVGO) from TradeEcho Dealer Edge data.
+Builds the "TradeEcho Single Stocks Term Structure" page (NVDA, TSLA, AAPL, AMZN, GOOGL, AVGO, TSM) from TradeEcho Dealer Edge data.
 
 ## Layout
 
