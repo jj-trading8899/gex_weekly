@@ -14,14 +14,15 @@
   if (!tok) throw new Error('Not signed in to TradeEcho (no access_token in this tab)');
 
   const today = new Date().toISOString().slice(0, 10);
-  const OPEX = (() => {                                // next third-Friday expiry after today
-    let y = +today.slice(0, 4), m = +today.slice(5, 7) - 1;
+  const nextOpex = (after) => {                        // next third-Friday expiry after a date
+    let y = +after.slice(0, 4), m = +after.slice(5, 7) - 1;
     for (let i = 0; i < 3; i++, m++) {
       const first = new Date(Date.UTC(y, m, 1));
       const tf = new Date(Date.UTC(y, m, 1 + (5 - first.getUTCDay() + 7) % 7 + 14)).toISOString().slice(0, 10);
-      if (tf > today) return tf;
+      if (tf > after) return tf;
     }
-  })();
+  };
+  const OPEX = nextOpex(today), OPEX2 = nextOpex(OPEX);   // the next two monthly opex dates
   const out = { capturedAt: new Date().toISOString(), source: 'tradeecho gamma-analysis', tickers: {} };
 
   for (const t of TICKERS) {
@@ -32,8 +33,8 @@
     if (!j || !j.data) { out.tickers[t] = { error: (j && j.message) || ('HTTP ' + res.status) }; continue; }
     const d = j.data, m = d.metadata;
     const exps = [...new Set(d.data.map(r => r.expiration.slice(0, 10)))].sort();
-    // keep the next N expiries AND everything through the next monthly opex (third Friday)
-    const keep = exps.filter(e => e > today).filter((e, i) => i < KEEP_EXPIRIES || e <= OPEX);
+    // keep the next N expiries, everything through the next monthly opex, and the following monthly opex
+    const keep = exps.filter(e => e > today).filter((e, i) => i < KEEP_EXPIRIES || e <= OPEX || e === OPEX2);
     const sums = {};
     for (const r of d.data) {
       const e = r.expiration.slice(0, 10);
