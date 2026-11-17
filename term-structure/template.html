@@ -314,7 +314,9 @@ DATA.forEach(d=>{
     const regime=(net)=>net>2?["DAMPENING","#34d399"]:(net<-2?["AMPLIFYING","#f87171"]:["MIXED / THIN","#7a8090"]);
     let allK=[...new Set(D.perCol.flatMap(c=>c.strikes.map(s=>s[0])))];
     allK.sort((a,b)=>Math.abs(a-SPOT)-Math.abs(b-SPOT));
-    const rows=allK.slice(0,12).sort((a,b)=>b-a);
+    // the opex column's band-edge strikes always show, so the matrix visibly brackets the expected-move band
+    const edgeK=(D.perCol[opexI]&&D.perCol[opexI].edge)||[];
+    const rows=[...new Set(allK.slice(0,12).concat(edgeK))].sort((a,b)=>b-a);
     const opex=D.perCol[opexI], opexCls=cls[opexI];
     let anchor=null,anchorV=0;Object.values(opexCls).forEach(o=>{if(o.g>anchorV){anchorV=o.g;anchor=o;}});
     const front=D.perCol[0];
@@ -401,6 +403,19 @@ DATA.forEach(d=>{
     const MFLIP=(D.flip!=null&&isFinite(D.flip))?D.flip:null;
     const flipRow='<div class="nv-fliprow"><span>flip $'+(MFLIP!=null?MFLIP.toFixed(1):'')+'</span></div>';
     let flipDone=MFLIP==null;
+    // everything beyond the band-edge strikes, pooled into one row per side
+    const tailRow=(side)=>{
+      if(!D.perCol.some(c=>c.tails&&c.tails[side])) return '';
+      let r='<div class="nv-row" style="'+gtc+'opacity:.75"><span class="nv-rk" style="color:#7a8090;font-style:italic">'+(side==='above'?'above band':'below band')+'</span>';
+      for(let j=0;j<N;j++){
+        const t=D.perCol[j].tails&&D.perCol[j].tails[side];
+        if(!t){ r+='<span class="nv-empty">·</span>'; continue; }
+        const sn=t[2]+' strike'+(t[2]===1?'':'s');
+        r+='<span class="nv-cell" title="'+sn+' '+side+' $'+kfmt(t[0])+', pooled" style="background:#1b2230;border:1px dashed #2a323f"><div class="g" style="color:'+(t[1]>=0?'#34d399':'#f87171')+'">'+money(t[1])+'</div><div class="w" style="color:#7a8090">'+sn+'</div></span>';
+      }
+      return r+'</div>';
+    };
+    h+=tailRow('above');
     for(const k of rows){
       if(!flipDone && k<=MFLIP){ h+=flipRow; flipDone=true; }
       const nearSpot=Math.abs(k-SPOT)<=SPOT*0.006;
@@ -414,6 +429,7 @@ DATA.forEach(d=>{
       h+='</div>';
     }
     if(!flipDone) h+=flipRow;
+    h+=tailRow('below');
     h+='</div>';
     h+='<div class="nv-cards">';
     D.perCol.forEach((c,j)=>{
