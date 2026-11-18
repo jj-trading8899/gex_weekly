@@ -1,0 +1,28 @@
+{
+ "pulled_at": "2026-11-18T03:10:09Z",
+ "staleness_reference": "2026-11-18T03:10:09Z",
+ "mode": "eod",
+ "source": "https://terrashade.onrender.com",
+ "thresholds": {
+  "stale_minutes": 60,
+  "wide_corridor_pct": 12.0
+ },
+ "note": "Next monthly expiries, per-strike positioning ($M) within the configured window. TerraShade only.",
+ "tickers": {
+  "SPY": {
+   "status": "transport:HTTPError"
+  },
+  "QQQ": {
+   "status": "transport:HTTPError"
+  },
+  "SPX": {
+   "status": "transport:HTTPError"
+  },
+  "IWM": {
+   "status": "transport:HTTPError"
+  },
+  "NDX": {
+   "status": "transport:HTTPError"
+  }
+ }
+}
