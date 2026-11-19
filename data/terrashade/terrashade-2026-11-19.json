@@ -1,0 +1,563 @@
+{
+ "pulled_at": "2026-11-19T02:50:34Z",
+ "staleness_reference": "2026-11-19T02:50:34Z",
+ "mode": "eod",
+ "source": "https://terrashade.onrender.com",
+ "thresholds": {
+  "stale_minutes": 60,
+  "wide_corridor_pct": 12.0
+ },
+ "note": "TerraShade only. No other provider is mixed into this file.",
+ "summary": {
+  "requested": 60,
+  "returned": 0,
+  "usable": 0,
+  "no_data": [
+   "SPY",
+   "QQQ",
+   "SPX",
+   "SPXW",
+   "IWM",
+   "NDX",
+   "NDXP",
+   "DIA",
+   "SMH",
+   "TLT",
+   "GLD",
+   "SLV",
+   "XLE",
+   "TQQQ",
+   "SOXL",
+   "IBIT",
+   "NVDA",
+   "AAPL",
+   "TSLA",
+   "MSFT",
+   "AMZN",
+   "META",
+   "GOOGL",
+   "AVGO",
+   "NFLX",
+   "ORCL",
+   "AMD",
+   "MU",
+   "INTC",
+   "TSM",
+   "ARM",
+   "PLTR",
+   "COIN",
+   "MSTR",
+   "HOOD",
+   "SOFI",
+   "SMCI",
+   "CRWD",
+   "UBER",
+   "SHOP",
+   "RBLX",
+   "JPM",
+   "BAC",
+   "WMT",
+   "COST",
+   "XOM",
+   "BA",
+   "LLY",
+   "GME",
+   "RIVN",
+   "MARA",
+   "BABA",
+   "SPCX",
+   "NBIS",
+   "ASTS",
+   "AAOI",
+   "RKLB",
+   "SNDK",
+   "IREN",
+   "LITE"
+  ],
+  "stale": [],
+  "wide": [],
+  "band_excludes": []
+ },
+ "rows": [
+  {
+   "ticker": "SPY",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "QQQ",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SPX",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SPXW",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "IWM",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "NDX",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "NDXP",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "DIA",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SMH",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "TLT",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "GLD",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SLV",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "XLE",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "TQQQ",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SOXL",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "IBIT",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "NVDA",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "AAPL",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "TSLA",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "MSFT",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "AMZN",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "META",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "GOOGL",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "AVGO",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "NFLX",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "ORCL",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "AMD",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "MU",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "INTC",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "TSM",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "ARM",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "PLTR",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "COIN",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "MSTR",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "HOOD",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SOFI",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SMCI",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "CRWD",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "UBER",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SHOP",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "RBLX",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "JPM",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "BAC",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "WMT",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "COST",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "XOM",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "BA",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "LLY",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "GME",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "RIVN",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "MARA",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "BABA",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SPCX",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "NBIS",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "ASTS",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "AAOI",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "RKLB",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "SNDK",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "IREN",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  },
+  {
+   "ticker": "LITE",
+   "status": "http_403",
+   "usable": false,
+   "flags": [
+    "no_data"
+   ]
+  }
+ ]
+}
