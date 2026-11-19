@@ -1,0 +1,355 @@
+{
+ "date": "2026-11-18",
+ "next_session": "2026-11-19",
+ "source": "mac",
+ "top10": [
+  {
+   "rank": 1,
+   "tk": "SNDK",
+   "dir": "Bearish",
+   "strength": "mild",
+   "setup": "aligned bear"
+  },
+  {
+   "rank": 2,
+   "tk": "AAOI",
+   "dir": "Bearish",
+   "strength": "moderate",
+   "setup": "aligned bear"
+  },
+  {
+   "rank": 3,
+   "tk": "AVGO",
+   "dir": "Bullish",
+   "strength": "mild",
+   "setup": "aligned bull"
+  },
+  {
+   "rank": 4,
+   "tk": "RIOT",
+   "dir": "Bearish",
+   "strength": "moderate",
+   "setup": "conflict bear"
+  },
+  {
+   "rank": 5,
+   "tk": "CLSK",
+   "dir": "Bullish",
+   "strength": "strong",
+   "setup": "momentum bull"
+  },
+  {
+   "rank": 6,
+   "tk": "XLF",
+   "dir": "Bearish",
+   "strength": "moderate",
+   "setup": "aligned bear"
+  },
+  {
+   "rank": 7,
+   "tk": "RKLB",
+   "dir": "Bullish",
+   "strength": "moderate",
+   "setup": "momentum bull"
+  },
+  {
+   "rank": 8,
+   "tk": "IREN",
+   "dir": "Mixed",
+   "strength": "mild",
+   "setup": "range"
+  },
+  {
+   "rank": 9,
+   "tk": "NVDA",
+   "dir": "Mixed",
+   "strength": "mild",
+   "setup": "range"
+  },
+  {
+   "rank": 10,
+   "tk": "MRVL",
+   "dir": "Mixed",
+   "strength": "mild",
+   "setup": "range"
+  }
+ ],
+ "levels": [
+  {
+   "tk": "SNDK",
+   "support": null,
+   "pivot": 776.82,
+   "resistance": 780,
+   "side": "below pivot"
+  },
+  {
+   "tk": "AAOI",
+   "support": null,
+   "pivot": 43.82,
+   "resistance": 46,
+   "side": "below pivot"
+  },
+  {
+   "tk": "AVGO",
+   "support": 352,
+   "pivot": 350.23,
+   "resistance": 355,
+   "side": "above pivot"
+  },
+  {
+   "tk": "RIOT",
+   "support": 18,
+   "pivot": 15.51,
+   "resistance": 18.5,
+   "side": "above pivot"
+  },
+  {
+   "tk": "CLSK",
+   "support": 6,
+   "pivot": 6.47,
+   "resistance": 6.5,
+   "side": "below pivot"
+  },
+  {
+   "tk": "RKLB",
+   "support": 48,
+   "pivot": 57.89,
+   "resistance": 54,
+   "side": "below pivot"
+  },
+  {
+   "tk": "IREN",
+   "support": null,
+   "pivot": 16.38,
+   "resistance": 16.5,
+   "side": "below pivot"
+  },
+  {
+   "tk": "NVDA",
+   "support": null,
+   "pivot": 153.97,
+   "resistance": 158,
+   "side": "below pivot"
+  },
+  {
+   "tk": "MRVL",
+   "support": 115,
+   "pivot": 152.41,
+   "resistance": 152,
+   "side": "below pivot"
+  },
+  {
+   "tk": "SPY",
+   "support": null,
+   "pivot": 746.33,
+   "resistance": 734,
+   "side": "below pivot"
+  },
+  {
+   "tk": "QQQ",
+   "support": 654,
+   "pivot": 659.04,
+   "resistance": 662,
+   "side": "below pivot"
+  }
+ ],
+ "changes": [],
+ "trends": [
+  {
+   "tk": "AAOI",
+   "state": "Down",
+   "conf": 3
+  },
+  {
+   "tk": "ARM",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "ASTS",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "COIN",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "EOSE",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "ETHA",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "GLD",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "HIMS",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "IBIT",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "INTC",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "IREN",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "LITE",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "MARA",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "MRVL",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "MU",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "NVDA",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "OKLO",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "QQQ",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "RKLB",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "SLV",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "SMCI",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "SNDK",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "SPX",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "SPY",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "TSM",
+   "state": "Down",
+   "conf": 2
+  },
+  {
+   "tk": "XOM",
+   "state": "Down",
+   "conf": 2
+  }
+ ],
+ "movers": [
+  {
+   "tk": "GLD",
+   "day_pct": -3.2,
+   "z": -2.1,
+   "tag": "against flow"
+  },
+  {
+   "tk": "SLV",
+   "day_pct": -4.6,
+   "z": -2.0,
+   "tag": "against flow"
+  },
+  {
+   "tk": "XOM",
+   "day_pct": -3.9,
+   "z": -1.8,
+   "tag": ""
+  },
+  {
+   "tk": "COIN",
+   "day_pct": -7.4,
+   "z": -1.4,
+   "tag": ""
+  },
+  {
+   "tk": "RIOT",
+   "day_pct": 7.0,
+   "z": 1.4,
+   "tag": ""
+  },
+  {
+   "tk": "AMZN",
+   "day_pct": 3.6,
+   "z": 1.3,
+   "tag": ""
+  },
+  {
+   "tk": "ASTS",
+   "day_pct": -10.9,
+   "z": -1.2,
+   "tag": ""
+  },
+  {
+   "tk": "IBIT",
+   "day_pct": -2.4,
+   "z": -1.1,
+   "tag": "flow led"
+  }
+ ],
+ "radar": [
+  {
+   "tk": "GLD",
+   "dir": "down"
+  },
+  {
+   "tk": "AMDL",
+   "dir": "up"
+  },
+  {
+   "tk": "NVO",
+   "dir": "up"
+  }
+ ],
+ "scorecard": "1-day direction right 402 of 832 (48%)",
+ "generated": "2026-11-19T02:09Z"
+}
