@@ -406,7 +406,7 @@ DATA.forEach(d=>{
     // everything beyond the band-edge strikes, pooled into one row per side
     const tailRow=(side)=>{
       if(!D.perCol.some(c=>c.tails&&c.tails[side])) return '';
-      let r='<div class="nv-row" style="'+gtc+'opacity:.75"><span class="nv-rk" style="color:#7a8090;font-style:italic">'+(side==='above'?'above band':'below band')+'</span>';
+      let r='<div class="nv-row" style="'+gtc+';opacity:.75"><span class="nv-rk" style="color:#7a8090;font-style:italic">'+(side==='above'?'above band':'below band')+'</span>';
       for(let j=0;j<N;j++){
         const t=D.perCol[j].tails&&D.perCol[j].tails[side];
         if(!t){ r+='<span class="nv-empty">·</span>'; continue; }
@@ -415,7 +415,6 @@ DATA.forEach(d=>{
       }
       return r+'</div>';
     };
-    h+=tailRow('above');
     for(const k of rows){
       if(!flipDone && k<=MFLIP){ h+=flipRow; flipDone=true; }
       const nearSpot=Math.abs(k-SPOT)<=SPOT*0.006;
