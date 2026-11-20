@@ -54,6 +54,12 @@ def sigma(ser):
     return st.mean([abs(sp[i + 1] - sp[i]) for i in range(len(sp) - 1)]) if len(sp) > 1 else 0.0
 
 
+# NYSE closures and early closes (1 pm ET). An early close counts as half a
+# session of movement. Extend this list each year.
+HOLIDAYS = {"2026-11-26", "2026-12-25", "2027-01-01", "2027-01-18", "2027-02-15",
+            "2027-03-26", "2027-05-31", "2027-06-18", "2027-07-05", "2027-09-06",
+            "2027-11-25", "2027-12-24"}
+HALF_DAYS = {"2026-11-27", "2026-12-24", "2027-11-26"}
 Z_RANGE = 1.28      # whisker: about 3 closes in 4 landed inside when tested
 Z_BODY = 0.50       # filled box: the middle of that range
 
@@ -165,7 +171,7 @@ def pin_pull(row):
 
 
 def project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, opex_friday=True, pull=True,
-            vol=None):
+            vol=None, monday=None, centre=None):
     """Ranges centred on the last close, widening with the square root of time.
 
     vol is the typical one-session move in percent (vol_pct). The walls are
@@ -177,19 +183,31 @@ def project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, opex_friday=True,
     if vol is None:
         vol = (sig * 1.25 / spot * 100) if spot else 0.0
     one_day = vol / 100 * spot
-    days = []
-    for k, i in enumerate(range(n_done, 5), start=1):
+    c0 = spot if centre is None else centre
+    days, k, n = [], 0.0, 0
+    for i in range(n_done, 5):
+        name = ["MON", "TUE", "WED", "THU", "FRI"][i]
+        iso = (monday + dt.timedelta(days=i)).isoformat() if monday else ""
+        if iso in HOLIDAYS:
+            days.append(dict(d=name, holiday=1))
+            continue
+        half = iso in HALF_DAYS
+        k += 0.5 if half else 1.0
         h = Z_RANGE * one_day * k ** 0.5
         b = Z_BODY * one_day * k ** 0.5
-        days.append(dict(d=["MON", "TUE", "WED", "THU", "FRI"][i],
-                         lo=round(spot - h, dp), hi=round(spot + h, dp),
-                         bodyLo=round(spot - b, dp), bodyHi=round(spot + b, dp),
-                         dir=dirs[k - 1], carry=round(spot, dp)))
+        days.append(dict(d=name, half=1 if half else 0,
+                         lo=round(c0 - h, dp), hi=round(c0 + h, dp),
+                         bodyLo=round(c0 - b, dp), bodyHi=round(c0 + b, dp),
+                         dir=dirs[n], carry=round(c0, dp)))
+        n += 1
+    live = [x for x in days if not x.get("holiday")]
     meta = dict(C=round(C, 2), sigma=round(sig, 2), vol_pct=round(vol, 3),
                 one_day=round(one_day, 2), floored=False, onfloor=False,
                 cont=round(C / sig, 2) if sig else None, pull=False,
-                floor_inside=bool(days) and lv["putwall"] > days[0]["lo"],
-                ceil_inside=bool(days) and lv["callwall"] < days[0]["hi"])
+                floor_inside=bool(live) and lv["putwall"] > live[0]["lo"],
+                ceil_inside=bool(live) and lv["callwall"] < live[0]["hi"],
+                holidays=[x["d"] for x in days if x.get("holiday")],
+                half_days=[x["d"] for x in live if x.get("half")])
     return days, meta
 
 # ------------------------------------------------------------------ renderer
@@ -211,7 +229,7 @@ def tw(s, fs, ls=0):
 def svg(d):
     dp = d["dp"]
     f = lambda v: ("%%.%df" % dp) % v if dp else str(round(v))
-    proj = [x for x in d["days"] if not x.get("actual")]
+    proj = [x for x in d["days"] if not x.get("actual") and not x.get("holiday")]
     acts = [x["close"] for x in d["days"] if x.get("actual")]
     lo0 = min([x["lo"] for x in proj] + acts + [d["putwall"], d["brk"]])
     hi0 = max([x["hi"] for x in proj] + acts + [d["callwall"]])
@@ -239,6 +257,14 @@ def svg(d):
     boxes, dm = [], []
     for i, p in enumerate(d["days"]):
         x = CX(i)
+        if p.get("holiday"):
+            dm.append('<rect x="%.1f" y="52" width="%.1f" height="%.1f" fill="#ffffff" opacity=".022"/>'
+                      '<text x="%.1f" y="%d" text-anchor="middle" fill="#5d5d66" font-size="15" '
+                      'letter-spacing="1">CLOSED</text>'
+                      % (CL + cw * i, cw, DAYY - 30, x, DAYY + 22))
+            dm.append('<text x="%.1f" y="%d" text-anchor="middle" fill="#5d5d66" font-size="24" '
+                      'font-weight="700" letter-spacing="2">%s</text>' % (x, DAYY, p["d"]))
+            continue
         if p.get("actual"):
             cy, pc = Y(p["close"]), p["pct"]
             col = G if pc >= 0 else RD
@@ -285,6 +311,9 @@ def svg(d):
                    else '<path d="M%.1f %.1f l9 12 l9 -12 z" fill="#0b0b0d"/>' % (x - 9, by + bh / 2 - 6)))
         dm.append('<text x="%.1f" y="%d" text-anchor="middle" fill="#c8c8d0" font-size="24" '
                   'font-weight="700" letter-spacing="2">%s</text>' % (x, DAYY, p["d"]))
+        if p.get("half"):
+            dm.append('<text x="%.1f" y="%d" text-anchor="middle" fill="#8a8a94" font-size="15" '
+                      'letter-spacing="1">1PM CLOSE</text>' % (x, DAYY + 22))
     o += dm
 
     # level labels: de-collide vertically, then dodge the day text
@@ -391,7 +420,7 @@ def fmt(v, dp):
 
 
 def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_date,
-        blend=None, extra="", pull=None, vol=None):
+        blend=None, extra="", pull=None, vol=None, centre=None):
     """Assemble one chart's data object, rail and note."""
     if pull is None:
         pull = pin_pull(ser[-1][1])
@@ -415,13 +444,15 @@ def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_da
     dirs = directions(ser, gexstr, lv["pin"], spot)
     if vol is None:
         vol = vol_pct(ser)
-    days, meta = project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, pull=pull, vol=vol)
+    days, meta = project(lv, spot, sig, vw, dirs, dp, dampf, nobid, n_done, pull=pull, vol=vol,
+                         centre=centre,
+                         monday=monday)
     cont = meta["cont"]
     d = dict(ticker=tag, dp=dp, spot=round(spot, dp), pin=round(lv["pin"], dp),
              callwall=round(lv["callwall"], dp), putwall=round(lv["putwall"], dp),
              brk=round(lv["brk"], dp), ceilLabel="CALL WALL / PIN",
              floorLabel="PUT WALL / FLOOR", days=actuals + days,
-             headline=headline(tag, lv, spot, cont or 99, nobid, ser, vexflip))
+             headline=headline(tag, lv, spot if centre is None else centre, cont or 99, nobid, ser, vexflip))
     scores = [r["score"] for _, r in ser][-5:]
     tight = lambda a, b: "bad" if abs(a - b) <= 0.0015 * spot else ""
     r = rail([("CEILING / PIN", fmt(lv["callwall"], dp), ""),
@@ -449,10 +480,16 @@ def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_da
     elif meta["ceil_inside"]:
         bits.append("The ceiling sits inside the first day's range, so a close above it is well "
                     "within a normal session.")
-    if days and days[0]["dir"] != "flat":
+    live = [x for x in days if not x.get("holiday")]
+    if meta["holidays"] or meta["half_days"]:
+        bits.append("%s%s" % (
+            ("Market closed %s; " % ", ".join(meta["holidays"])) if meta["holidays"] else "",
+            ("%s closes at 1 pm ET and counts as half a session." % ", ".join(meta["half_days"]))
+            if meta["half_days"] else "ranges skip the closed day."))
+    if live and live[0]["dir"] != "flat":
         bits.append("Positioning strength is %d, where the next session has reversed the last "
                     "move 21 times in 28, so the first day is marked %s."
-                    % (gexstr, days[0]["dir"]))
+                    % (gexstr, live[0]["dir"]))
     else:
         bits.append("No direction is marked: at this positioning strength no rule beat a coin flip.")
     if spot < lv["flip"]:
@@ -476,7 +513,16 @@ def main():
     S, Y, Q = spx[-1][1], spy[-1][1], qqq[-1][1]
 
     # SPX / SPY blended, at the live basis and weighted by positioning strength
-    k = S["spot"] / Y["spot"]
+    # The SPY price in a capture is TradeEcho's quote at capture time, which can be
+    # after hours; SPX stops at the 4 pm close. Use the basis from earlier
+    # captures, and when SPY's latest price implies an SPX more than 0.25% away
+    # from the close, centre the SPX ranges there. Tested 18 Sep - 20 Nov 2026:
+    # in all 4 such cases the next SPX close moved toward the SPY-implied level.
+    k = st.median([a[1]["spot"] / b[1]["spot"] for a, b in zip(spx[-6:-1], spy[-6:-1])
+                   if a[0] == b[0]] or [S["spot"] / Y["spot"]])
+    implied = Y["spot"] * k
+    gapS = implied / S["spot"] - 1
+    centreS = implied if abs(gapS) > 0.0025 else None
     wS = S["gexstr"] / (S["gexstr"] + Y["gexstr"])
     wY = 1 - wS
     bl = lambda fld: wS * S[fld] + wY * (Y[fld] * k)
@@ -490,7 +536,11 @@ def main():
                          fS or fY, S["buydip"] is None and Y["buydip"] is None,
                          wk_start, cap_date, blend=(wS, wY, k),
                          pull=pin_pull(S) and pin_pull(Y),
-                         vol=wS * vol_pct(spx) + wY * vol_pct(spy))
+                         vol=wS * vol_pct(spx) + wY * vol_pct(spy), centre=centreS,
+                         extra=("SPY's latest price (%.2f, after the close) implies SPX %s, %+.2f%% from "
+                                "the 4 pm close, so the ranges are centred there; the percentages "
+                                "are still against the close." % (Y["spot"], fmt(implied, 0), gapS * 100))
+                         if centreS else "")
     lvY = dict(pin=Y["pin"], callwall=Y["callwall"], putwall=Y["putwall"],
                brk=Y["brk"], flip=Y["flip"])
     dY, rY, nY, mY = one("SPY", spy, lvY, Y["spot"], 2, damping(Y), sigma(spy), vY, fY,
@@ -511,8 +561,11 @@ def main():
              % (monday.strftime("%d").lstrip("0"), wk_end.strftime("%d").lstrip("0"),
                 wk_end.strftime("%b %Y").upper(), cap_date.isoformat(), S["exp"],
                 " &#183; <b>MID-WEEK REBUILD</b>" if mid else "",
-                "DAYS CLOSED SHOW ACTUALS &#183; REMAINDER PROJECTED" if mid
-                else "ALL FIVE DAYS PROJECTED"))
+                ("DAYS CLOSED SHOW ACTUALS &#183; REMAINDER PROJECTED" if mid
+                 else "ALL FIVE DAYS PROJECTED" if not mS["holidays"]
+                 else "%d SESSIONS PROJECTED" % (5 - len(mS["holidays"])))
+                + ("".join(" &#183; %s MARKET CLOSED" % x for x in mS["holidays"]))
+                + ("".join(" &#183; %s 1 PM CLOSE" % x for x in mS["half_days"]))))
 
     secs = []
     for d, r, note in ((dS, rS, nS), (dY, rY, nY), (dQ, rQ, nQ)):
