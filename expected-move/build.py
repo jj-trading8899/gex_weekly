@@ -131,6 +131,39 @@ def directions(ser, gexstr, pin, spot):
     return base
 
 
+def lean_directions(ser, gexstr, pin, spot):
+    """The pre-15 Nov candle-colour rules, kept for the second (lean) chart only.
+
+    Strength 4+ alternates from up; strength 2 or less follows the pin's move over
+    the last 4 captures, with the midweek day turned toward the pin when it sits
+    on the far side of price; strength 3 alternates, tilted to the pin's move.
+    Tested 18 Sep - 13 Nov 2026 these called the next session 38 times in 93.
+    """
+    pins = [r["pin"] for _, r in ser][-4:]
+    falling = len(pins) >= 2 and pins[-1] < pins[0]
+    if gexstr >= 4:
+        base = ["up", "down", "up", "down", "up"]
+    elif gexstr <= 2:
+        base = ["down"] * 5 if falling else ["up"] * 5
+        if (pin > spot) == falling:
+            base[2] = "up" if falling else "down"
+    else:
+        base = ["down", "up", "down", "up", "down"] if falling else ["up", "down", "up", "down", "up"]
+    return base
+
+
+def lean_copy(d):
+    """The same chart object with the old candle colours on the projected days."""
+    lean, n, days = d["lean"], 0, []
+    for x in d["days"]:
+        x = dict(x)
+        if not x.get("actual") and not x.get("holiday"):
+            x["dir"] = lean[n]
+            n += 1
+        days.append(x)
+    return dict(d, days=days)
+
+
 def headline(tick, lv, spot, cont, buydip_null, ser, vexflip):
     pins = [r["pin"] for _, r in ser][-4:]
     ceils = [r["callwall"] for _, r in ser][-4:]
@@ -392,7 +425,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--mono);margin:0}
 .stamp b{color:var(--dn);font-weight:700}
 section{display:flex;flex-direction:column;gap:10px}
 h2{font-size:26px;font-weight:700;letter-spacing:-.6px;margin:0;text-wrap:balance;line-height:1.2}
-h2.dn{color:var(--dn)} h2.up{color:var(--up)}
+h2.dn{color:var(--dn)} h2.up{color:var(--up)} h3.lean{font-size:17px;font-weight:700;margin:26px 0 0;color:#c8c8d0;letter-spacing:.2px}
 .ssub{font-size:12px;color:var(--dim);margin:0}
 .rail{font-size:11px;color:var(--ink);margin:2px 0 4px;line-height:2.1}
 .rail em{font-style:normal;color:var(--dim);letter-spacing:.6px}
@@ -452,7 +485,10 @@ def one(tag, ser, lv, spot, dp, dampf, sig, vw, vexflip, nobid, wk_start, cap_da
              callwall=round(lv["callwall"], dp), putwall=round(lv["putwall"], dp),
              brk=round(lv["brk"], dp), ceilLabel="CALL WALL / PIN",
              floorLabel="PUT WALL / FLOOR", days=actuals + days,
-             headline=headline(tag, lv, spot if centre is None else centre, cont or 99, nobid, ser, vexflip))
+             headline=headline(tag, lv, spot if centre is None else centre, cont or 99, nobid, ser, vexflip),
+             lean=lean_directions(ser, gexstr, lv["pin"], spot if centre is None else centre),
+             gexstr=gexstr,
+             pinFalling=len(ser) >= 2 and [r["pin"] for _, r in ser][-4:][-1] < [r["pin"] for _, r in ser][-4:][0])
     scores = [r["score"] for _, r in ser][-5:]
     tight = lambda a, b: "bad" if abs(a - b) <= 0.0015 * spot else ""
     r = rail([("CEILING / PIN", fmt(lv["callwall"], dp), ""),
@@ -570,11 +606,27 @@ def main():
     secs = []
     for d, r, note in ((dS, rS, nS), (dY, rY, nY), (dQ, rQ, nQ)):
         cls = "dn" if d["headline"] not in ("The corridor is lifting.", "The pin's still in charge.") else "up"
+        lean = ""
+        if d["ticker"] in ("SPX", "SPY"):
+            lean = ('<h3 class="lean">%s &#183; old candle colours</h3>'
+                    '<p class="ssub">Same ranges &#183; colours from the pre-15 Nov rules &#183; '
+                    '<b>untested lean, not a forecast</b></p>'
+                    '<div class="plot">%s</div>'
+                    '<p class="note">Same ranges as the chart above; only the colours differ. With '
+                    'positioning strength %d these rules %s. Tested 18 Sep &#8211; 13 Nov 2026 they '
+                    'called the next session 38 times in 93, below a coin flip, so read the colours as '
+                    'a lean only.</p>'
+                    % (d["ticker"], svg(lean_copy(d)), d["gexstr"],
+                       "alternate from up" if d["gexstr"] >= 4 else
+                       "alternate, tilted to the pin's move" if d["gexstr"] == 3 else
+                       "follow the pin's move over the last four captures (%s), with the midweek day "
+                       "turned toward the pin when it sits on the other side of price"
+                       % ("falling" if d["pinFalling"] else "rising")))
         secs.append('<section><h2 class="%s">%s</h2>'
                     '<p class="ssub">%s &#183; spot %s at the %s close</p>%s'
-                    '<div class="plot">%s</div><p class="note">%s</p></section>'
+                    '<div class="plot">%s</div><p class="note">%s</p>%s</section>'
                     % (cls, d["headline"], d["ticker"], fmt(d["spot"], d["dp"]),
-                       cap_date.strftime("%A"), r, svg(d), note))
+                       cap_date.strftime("%A"), r, svg(d), note, lean))
 
     html = ("""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
