@@ -1,0 +1,25 @@
+{
+ "pulled_at": "2026-11-27T03:49:23Z",
+ "staleness_reference": "2026-11-27T03:49:23Z",
+ "mode": "eod",
+ "source": "https://terrashade.onrender.com",
+ "thresholds": {
+  "stale_minutes": 60,
+  "wide_corridor_pct": 12.0
+ },
+ "note": "TerraShade only. No other provider is mixed into this file.",
+ "tickers": {
+  "SPY": {
+   "status": "transport:HTTPError"
+  },
+  "QQQ": {
+   "status": "transport:HTTPError"
+  },
+  "SPX": {
+   "status": "transport:HTTPError"
+  },
+  "IWM": {
+   "status": "transport:HTTPError"
+  }
+ }
+}
