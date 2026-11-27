@@ -1,0 +1,3613 @@
+{
+ "snapshot": "2026-11-27",
+ "nextOpex": "2026-12-18",
+ "nextOpex2": "2027-01-15",
+ "dataUpdatedAt": "2026-11-27T21:05:18.164Z",
+ "capturedAt": "2026-11-27T22:36:17.315Z",
+ "cal": {
+  "sessions": 30,
+  "horizon": 5
+ },
+ "rangeModel": {
+  "hit": {
+   "1": {
+    "70": 75,
+    "90": 91
+   },
+   "5": {
+    "70": 73,
+    "90": 89
+   }
+  },
+  "n": {
+   "1": 157,
+   "5": 132
+  }
+ },
+ "headlines": [
+  "<b>GOOGL</b> is the one to watch. It's inside a flip zone that has been moving ($268\u2013283), under its largest $300 level (+22.5K). Support at $275 is weak; below that there's none around $265. It's net negative into opex (\u221229.6K), so swings are likely to be bigger.",
+  "<b>AAPL</b> has the most positioning into opex (+291K), centred on $360\u2013365.",
+  "<b>AVGO</b> is on its $316 flip but net negative into opex (\u221240.1K), so swings are likely to be bigger. <b>TSM</b> is above its $348 flip but net negative into opex (\u221239.9K), so swings are likely to be bigger. <b>TSLA</b> faces resistance at $400, and <b>AMZN</b> at $257.5\u2013260.",
+  "Looking to the 1/15 opex, <b>AAPL</b> has the most positioning (+395K); <b>NVDA</b> and <b>AVGO</b> stay net negative into both opex dates; <b>GOOGL</b> and <b>TSM</b> flip from negative this month to positive.",
+  "<b>NVDA</b> is the weakest board, at \u2212134K into opex. It's inside its $149\u2013155 flip zone."
+ ],
+ "glance": [
+  {
+   "t": "NVDA",
+   "spot": 149.9,
+   "lean": "swing",
+   "flip": 153.91,
+   "flipLo": 149.1,
+   "flipHi": 154.5,
+   "flipWide": true,
+   "flipJump": true,
+   "up": 170.0,
+   "cap": null,
+   "down": 148.0,
+   "downKind": "weak",
+   "board": -133.5,
+   "thin": false,
+   "board2": -248.1
+  },
+  {
+   "t": "TSLA",
+   "spot": 398.7,
+   "lean": "range",
+   "flip": 372.42,
+   "flipLo": 365.3,
+   "flipHi": 377.9,
+   "flipWide": true,
+   "flipJump": true,
+   "up": 400.0,
+   "cap": null,
+   "down": 392.5,
+   "downKind": "weak",
+   "board": 32.2,
+   "thin": false,
+   "board2": 48.5
+  },
+  {
+   "t": "AAPL",
+   "spot": 359.14,
+   "lean": "range",
+   "flip": 352.9,
+   "flipLo": 347.6,
+   "flipHi": 356.2,
+   "flipWide": false,
+   "flipJump": false,
+   "up": 365.0,
+   "cap": null,
+   "down": 355.0,
+   "downKind": "weak",
+   "board": 290.6,
+   "thin": false,
+   "board2": 395.2
+  },
+  {
+   "t": "AMZN",
+   "spot": 254.7124,
+   "lean": "range",
+   "flip": 247.53,
+   "flipLo": 246.5,
+   "flipHi": 248.5,
+   "flipWide": false,
+   "flipJump": false,
+   "up": 257.5,
+   "cap": 260.0,
+   "down": 252.5,
+   "downKind": "weak",
+   "board": 122.4,
+   "thin": false,
+   "board2": 237.4
+  },
+  {
+   "t": "GOOGL",
+   "spot": 275.9801,
+   "lean": "swing",
+   "flip": 277.35,
+   "flipLo": 267.6,
+   "flipHi": 283.4,
+   "flipWide": true,
+   "flipJump": true,
+   "up": 300.0,
+   "cap": null,
+   "down": 275.0,
+   "downKind": "weak",
+   "board": -29.6,
+   "thin": false,
+   "board2": 11.1
+  },
+  {
+   "t": "AVGO",
+   "spot": 311.89,
+   "lean": "swing",
+   "flip": 315.51,
+   "flipLo": 310.8,
+   "flipHi": 316.8,
+   "flipWide": false,
+   "flipJump": false,
+   "up": 335.0,
+   "cap": null,
+   "down": 305.0,
+   "downKind": "weak",
+   "board": -40.1,
+   "thin": false,
+   "board2": -24.8
+  },
+  {
+   "t": "TSM",
+   "spot": 353.35,
+   "lean": "swing",
+   "flip": 347.71,
+   "flipLo": 342.3,
+   "flipHi": 350.6,
+   "flipWide": false,
+   "flipJump": false,
+   "up": 385.0,
+   "cap": 390.0,
+   "down": 347.5,
+   "downKind": "weak",
+   "board": -39.9,
+   "thin": false,
+   "board2": 13.9
+  }
+ ],
+ "cards": [
+  {
+   "t": "NVDA",
+   "spot": 149.9,
+   "chg": null,
+   "cols": [
+    "11/30",
+    "12/4",
+    "12/18",
+    "1/8",
+    "1/15"
+   ],
+   "opexIdx": 2,
+   "opex2Idx": 4,
+   "regime": "net negative into opex \u00b7 bigger swings",
+   "tone": "neg",
+   "term": [
+    [
+     31.1,
+     327
+    ],
+    [
+     217.7,
+     544
+    ],
+    [
+     -133.5,
+     1211
+    ],
+    [
+     2.4,
+     11
+    ],
+    [
+     -248.1,
+     1666
+    ]
+   ],
+   "pin": "$150",
+   "wall": "$170",
+   "sup": "$148 (weak)",
+   "flip": "~$154",
+   "range": "$124\u2013176 likely over 5 sessions \u00b7 flip $154",
+   "read": "Closed $149.90. Into 12/18 opex dealers net \u2212134K, heaviest at $170 (+126K). Net negative into opex has gone with the biggest day-to-day swings. The flip moved from $154 to $149 today, so treat $149\u2013155 as a zone, not a line. Inside the flip zone ($149\u2013155), so the next close decides which side it trades on. Resistance $170 (held 92% of the time). Support at $148 is weak: levels like it held only 30% of the time. There's no support at $140. Into the 1/15 opex dealers net \u2212248K, biggest level overhead $170. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "TSLA",
+   "spot": 398.7,
+   "chg": null,
+   "cols": [
+    "11/30",
+    "12/4",
+    "12/18",
+    "1/8",
+    "1/15"
+   ],
+   "opexIdx": 2,
+   "opex2Idx": 4,
+   "regime": "steadier \u00b7 $450 cap",
+   "tone": "pos",
+   "term": [
+    [
+     27.2,
+     292
+    ],
+    [
+     47.9,
+     494
+    ],
+    [
+     32.2,
+     1872
+    ],
+    [
+     0.2,
+     5
+    ],
+    [
+     48.5,
+     2399
+    ]
+   ],
+   "pin": "$400",
+   "wall": "$400",
+   "sup": "$392.5 (weak)",
+   "flip": "~$372",
+   "range": "$358\u2013440 likely over 5 sessions \u00b7 flip $372",
+   "read": "Closed $398.70. Into 12/18 opex dealers net +32.2K, heaviest at $450 (+5.5K). Net positive into opex has gone with smaller day-to-day swings. The flip moved from $378 to $365 today, so treat $365\u2013378 as a zone, not a line. Above the flip zone (about $372), where moves have tended to be a little smaller. Resistance $400 (held 56% of the time). Support at $392.5 is weak: levels like it held only 30% of the time. There's no support at $360. Into the 1/15 opex dealers net +48.5K, biggest level overhead $440. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "AAPL",
+   "spot": 359.14,
+   "chg": null,
+   "cols": [
+    "11/30",
+    "12/4",
+    "12/18",
+    "1/8",
+    "1/15"
+   ],
+   "opexIdx": 2,
+   "opex2Idx": 4,
+   "regime": "steadier \u00b7 $365 cap",
+   "tone": "pos",
+   "term": [
+    [
+     34.5,
+     509
+    ],
+    [
+     73.2,
+     1432
+    ],
+    [
+     290.6,
+     8049
+    ],
+    [
+     2.0,
+     65
+    ],
+    [
+     395.2,
+     7382
+    ]
+   ],
+   "pin": "$360",
+   "wall": "$365",
+   "sup": "$355 (weak)",
+   "flip": "~$353",
+   "range": "$347\u2013371 likely over 5 sessions \u00b7 flip $353",
+   "read": "Closed $359.14. Into 12/18 opex dealers net +291K, heaviest at $360 (+83.8K). Net positive into opex has gone with smaller day-to-day swings. Above the flip zone (about $353), where moves have tended to be a little smaller. Resistance $365 (held 69% of the time). Support at $355 is weak: levels like it held only 45% of the time. There's no support at $330. Into the 1/15 opex dealers net +395K, biggest level overhead $380. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "AMZN",
+   "spot": 254.7124,
+   "chg": null,
+   "cols": [
+    "11/30",
+    "12/4",
+    "12/18",
+    "1/8",
+    "1/15"
+   ],
+   "opexIdx": 2,
+   "opex2Idx": 4,
+   "regime": "steadier \u00b7 $275 cap",
+   "tone": "pos",
+   "term": [
+    [
+     38.2,
+     256
+    ],
+    [
+     60.2,
+     672
+    ],
+    [
+     122.4,
+     3907
+    ],
+    [
+     -0.1,
+     -2
+    ],
+    [
+     237.4,
+     5648
+    ]
+   ],
+   "pin": "$255",
+   "wall": "$257.5 first \u00b7 $260 cap",
+   "sup": "$252.5 (weak)",
+   "flip": "~$248",
+   "range": "$234\u2013276 likely over 5 sessions \u00b7 flip $248",
+   "read": "Closed $254.71. Into 12/18 opex dealers net +122K, heaviest at $275 (+32.8K). Net positive into opex has gone with smaller day-to-day swings. Above the flip zone (about $248), where moves have tended to be a little smaller. First resistance $257.5 (held 54% of the time), major cap $260 (held 69%). Support at $252.5 is weak: levels like it held only 30% of the time. There's no support at $240. Into the 1/15 opex dealers net +237K, biggest level overhead $275. TradeEcho's own read: Bullish."
+  },
+  {
+   "t": "GOOGL",
+   "spot": 275.9801,
+   "chg": null,
+   "cols": [
+    "11/30",
+    "12/4",
+    "12/18",
+    "1/8",
+    "1/15"
+   ],
+   "opexIdx": 2,
+   "opex2Idx": 4,
+   "regime": "net negative into opex \u00b7 bigger swings",
+   "tone": "neg",
+   "term": [
+    [
+     14.9,
+     140
+    ],
+    [
+     34.5,
+     528
+    ],
+    [
+     -29.6,
+     1915
+    ],
+    [
+     1.1,
+     19
+    ],
+    [
+     11.1,
+     2691
+    ]
+   ],
+   "pin": "$275",
+   "wall": "$300",
+   "sup": "$275 (weak)",
+   "flip": "~$277",
+   "range": "$258\u2013294 likely over 5 sessions \u00b7 flip $277",
+   "read": "Closed $275.98. Into 12/18 opex dealers net \u221229.6K, heaviest at $300 (+22.5K). Net negative into opex has gone with the biggest day-to-day swings. The flip moved from $268 to $277 today, so treat $268\u2013283 as a zone, not a line. Inside the flip zone ($268\u2013283), so the next close decides which side it trades on. Resistance $300 (held 92% of the time). Support at $275 is weak: levels like it held only 30% of the time. There's no support at $265. Into the 1/15 opex dealers net +11.1K, biggest level overhead $300. TradeEcho's own read: Bearish."
+  },
+  {
+   "t": "AVGO",
+   "spot": 311.89,
+   "chg": null,
+   "cols": [
+    "11/30",
+    "12/4",
+    "12/18",
+    "1/8",
+    "1/15"
+   ],
+   "opexIdx": 2,
+   "opex2Idx": 4,
+   "regime": "net negative into opex \u00b7 bigger swings",
+   "tone": "neg",
+   "term": [
+    [
+     4.8,
+     55
+    ],
+    [
+     15.1,
+     261
+    ],
+    [
+     -40.1,
+     523
+    ],
+    [
+     0.0,
+     3
+    ],
+    [
+     -24.8,
+     490
+    ]
+   ],
+   "pin": "$312.5",
+   "wall": "$335",
+   "sup": "$305 (weak)",
+   "flip": "~$316",
+   "range": "$276\u2013348 likely over 5 sessions \u00b7 flip $316",
+   "read": "Closed $311.89. Into 12/18 opex dealers net \u221240.1K, heaviest at $355 (+1.0K). Net negative into opex has gone with the biggest day-to-day swings. Inside the flip zone ($311\u2013317), so the next close decides which side it trades on. Resistance $335 (held 81% of the time). $320 above is an air pocket: rallies closed through levels like it 64% of the time. Support at $305 is weak: levels like it held only 30% of the time. There's no support at $300. Into the 1/15 opex dealers net \u221224.8K, biggest level overhead $350. TradeEcho's own read: Neutral."
+  },
+  {
+   "t": "TSM",
+   "spot": 353.35,
+   "chg": null,
+   "cols": [
+    "12/4",
+    "12/11",
+    "12/18",
+    "1/8",
+    "1/15"
+   ],
+   "opexIdx": 2,
+   "opex2Idx": 4,
+   "regime": "net negative into opex \u00b7 bigger swings",
+   "tone": "neg",
+   "term": [
+    [
+     5.7,
+     216
+    ],
+    [
+     0.4,
+     86
+    ],
+    [
+     -39.9,
+     239
+    ],
+    [
+     0.0,
+     3
+    ],
+    [
+     13.9,
+     1125
+    ]
+   ],
+   "pin": "$355",
+   "wall": "$385 first \u00b7 $390 cap",
+   "sup": "$347.5 (weak)",
+   "flip": "~$348",
+   "range": "$301\u2013405 likely over 5 sessions \u00b7 flip $348",
+   "read": "Closed $353.35. Into 12/18 opex dealers net \u221239.9K, heaviest at $390 (+1.6K). Net negative into opex has gone with the biggest day-to-day swings. Above the flip zone (about $348), where moves have tended to be a little smaller. First resistance $385 (held 81% of the time), major cap $390 (held 81%). $360 above is an air pocket: rallies closed through levels like it 64% of the time. Support at $347.5 is weak: levels like it held only 19% of the time. There's no support at $350. Into the 1/15 opex dealers net +13.9K, biggest level overhead $360. TradeEcho's own read: Bullish."
+  }
+ ],
+ "ts": [
+  {
+   "t": "NVDA",
+   "spot": 149.9,
+   "chg": null,
+   "flip": 153.91,
+   "perCol": [
+    {
+     "code": "2026-11-30",
+     "net": 31.1,
+     "opex": false,
+     "edge": [
+      123.0,
+      177.5
+     ],
+     "tails": {
+      "below": [
+       123.0,
+       -0.7,
+       3
+      ]
+     },
+     "strikes": [
+      [
+       177.5,
+       1.3
+      ],
+      [
+       170.0,
+       6.9
+      ],
+      [
+       165.0,
+       11.5
+      ],
+      [
+       162.5,
+       6.7
+      ],
+      [
+       160.0,
+       27.3
+      ],
+      [
+       157.5,
+       5.7
+      ],
+      [
+       155.0,
+       8.4
+      ],
+      [
+       145.0,
+       -10.2
+      ],
+      [
+       140.0,
+       -11.7
+      ],
+      [
+       135.0,
+       -6.8
+      ],
+      [
+       123.0,
+       -0.0
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-04",
+     "net": 217.7,
+     "opex": false,
+     "edge": [
+      123.0,
+      177.5
+     ],
+     "tails": {
+      "below": [
+       123.0,
+       -4.6,
+       3
+      ]
+     },
+     "strikes": [
+      [
+       177.5,
+       2.2
+      ],
+      [
+       175.0,
+       10.6
+      ],
+      [
+       170.0,
+       24.2
+      ],
+      [
+       165.0,
+       20.9
+      ],
+      [
+       160.0,
+       57.5
+      ],
+      [
+       155.0,
+       33.1
+      ],
+      [
+       152.5,
+       54.3
+      ],
+      [
+       149.0,
+       9.5
+      ],
+      [
+       148.0,
+       31.2
+      ],
+      [
+       135.0,
+       -9.5
+      ],
+      [
+       123.0,
+       -0.3
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -133.5,
+     "opex": true,
+     "edge": [
+      123.0,
+      177.0
+     ],
+     "tails": {
+      "below": [
+       123.0,
+       -40.5,
+       3
+      ],
+      "above": [
+       177.0,
+       -4.6,
+       2
+      ]
+     },
+     "strikes": [
+      [
+       177.0,
+       0.0
+      ],
+      [
+       170.0,
+       126.5
+      ],
+      [
+       164.0,
+       30.0
+      ],
+      [
+       160.0,
+       -25.0
+      ],
+      [
+       155.0,
+       -18.5
+      ],
+      [
+       150.0,
+       -28.5
+      ],
+      [
+       145.0,
+       -25.7
+      ],
+      [
+       140.0,
+       -35.2
+      ],
+      [
+       135.0,
+       -28.2
+      ],
+      [
+       125.0,
+       -21.7
+      ],
+      [
+       123.0,
+       -0.8
+      ]
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": -248.1,
+     "opex": false,
+     "opex2": true,
+     "edge": [
+      120.0
+     ],
+     "tails": {},
+     "strikes": [
+      [
+       175.0,
+       32.3
+      ],
+      [
+       170.0,
+       118.5
+      ],
+      [
+       160.0,
+       20.4
+      ],
+      [
+       150.0,
+       -160.6
+      ],
+      [
+       145.0,
+       -27.4
+      ],
+      [
+       140.0,
+       -55.3
+      ],
+      [
+       135.0,
+       -26.9
+      ],
+      [
+       130.0,
+       -77.0
+      ],
+      [
+       125.0,
+       -19.0
+      ],
+      [
+       120.0,
+       -41.5
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 170.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 5.3,
+     "odds": 92,
+     "base": 95,
+     "obs": 163,
+     "tier": "both"
+    },
+    {
+     "k": 160.0,
+     "kind": "sell",
+     "strength": 0.21,
+     "n": 2,
+     "dm": 2.7,
+     "odds": 88,
+     "base": 86,
+     "obs": 292,
+     "tier": null
+    },
+    {
+     "k": 153.9,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 149.1,
+     "hi": 154.5,
+     "jump": true
+    },
+    {
+     "k": 152.5,
+     "kind": "sell",
+     "strength": 0.23,
+     "n": 1,
+     "dm": 0.7,
+     "odds": 54,
+     "base": 44,
+     "obs": 83,
+     "tier": null
+    },
+    {
+     "k": 150,
+     "kind": "pin",
+     "strength": 0.0,
+     "n": 1,
+     "dm": 0.0,
+     "odds": null
+    },
+    {
+     "k": 148.0,
+     "kind": "weak",
+     "strength": 0.12,
+     "n": 2,
+     "dm": 0.5,
+     "odds": 30,
+     "base": 19,
+     "obs": 68
+    },
+    {
+     "k": 140.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 2.6,
+     "odds": 40,
+     "base": 44,
+     "obs": 281
+    },
+    {
+     "k": 135.0,
+     "kind": "trigger",
+     "strength": 0.84,
+     "n": 3,
+     "dm": 4.0,
+     "odds": 40,
+     "base": 44,
+     "obs": 281
+    }
+   ],
+   "board": -133.5,
+   "pos": "in",
+   "dayMove": 2.51,
+   "opexViews": [
+    {
+     "code": "2026-12-18",
+     "net": -133.5,
+     "vex": 1211,
+     "hasRows": true,
+     "first": [
+      170.0,
+      126.5
+     ],
+     "cap": null,
+     "sup": null,
+     "gap": [
+      145.0,
+      -25.7
+     ],
+     "pocket": [
+      155.0,
+      -18.5
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": -248.1,
+     "vex": 1666,
+     "hasRows": true,
+     "first": [
+      170.0,
+      118.5
+     ],
+     "cap": null,
+     "sup": null,
+     "gap": [
+      140.0,
+      -55.3
+     ],
+     "pocket": null
+    }
+   ],
+   "move": {
+    "unit": 5.7,
+    "d1_70": [
+     136.65,
+     163.15,
+     8.8
+    ],
+    "d1_90": [
+     125.71,
+     174.09,
+     16.1
+    ],
+    "d5_70": [
+     123.52,
+     176.28,
+     17.6
+    ],
+    "d5_90": [
+     99.6,
+     200.2,
+     33.6
+    ],
+    "inside": [
+     {
+      "k": 170.0,
+      "kind": "sell",
+      "tier": "both"
+     },
+     {
+      "k": 148.0,
+      "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
+  },
+  {
+   "t": "TSLA",
+   "spot": 398.7,
+   "chg": null,
+   "flip": 372.42,
+   "perCol": [
+    {
+     "code": "2026-11-30",
+     "net": 27.2,
+     "opex": false,
+     "edge": [
+      357.5,
+      440.0
+     ],
+     "tails": {
+      "below": [
+       357.5,
+       -0.3,
+       13
+      ],
+      "above": [
+       440.0,
+       0.1,
+       9
+      ]
+     },
+     "strikes": [
+      [
+       440.0,
+       0.0
+      ],
+      [
+       420.0,
+       5.2
+      ],
+      [
+       415.0,
+       1.6
+      ],
+      [
+       410.0,
+       6.7
+      ],
+      [
+       405.0,
+       1.3
+      ],
+      [
+       402.5,
+       2.2
+      ],
+      [
+       400.0,
+       7.4
+      ],
+      [
+       392.5,
+       -3.6
+      ],
+      [
+       390.0,
+       1.9
+      ],
+      [
+       385.0,
+       1.7
+      ],
+      [
+       357.5,
+       -0.1
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-04",
+     "net": 47.9,
+     "opex": false,
+     "edge": [
+      357.5,
+      440.0
+     ],
+     "tails": {
+      "below": [
+       357.5,
+       -3.1,
+       13
+      ],
+      "above": [
+       440.0,
+       2.8,
+       11
+      ]
+     },
+     "strikes": [
+      [
+       440.0,
+       1.0
+      ],
+      [
+       430.0,
+       2.1
+      ],
+      [
+       420.0,
+       3.0
+      ],
+      [
+       410.0,
+       2.8
+      ],
+      [
+       407.5,
+       5.7
+      ],
+      [
+       405.0,
+       4.1
+      ],
+      [
+       400.0,
+       7.9
+      ],
+      [
+       392.5,
+       5.9
+      ],
+      [
+       390.0,
+       3.0
+      ],
+      [
+       385.0,
+       3.1
+      ],
+      [
+       357.5,
+       -0.3
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 32.2,
+     "opex": true,
+     "edge": [
+      357.5,
+      440.0
+     ],
+     "tails": {
+      "below": [
+       357.5,
+       -10.3,
+       10
+      ],
+      "above": [
+       440.0,
+       16.2,
+       9
+      ]
+     },
+     "strikes": [
+      [
+       440.0,
+       4.8
+      ],
+      [
+       435.0,
+       4.7
+      ],
+      [
+       430.0,
+       3.8
+      ],
+      [
+       425.0,
+       2.6
+      ],
+      [
+       420.0,
+       5.4
+      ],
+      [
+       410.0,
+       2.4
+      ],
+      [
+       405.0,
+       1.8
+      ],
+      [
+       400.0,
+       5.2
+      ],
+      [
+       390.0,
+       -2.4
+      ],
+      [
+       360.0,
+       -2.5
+      ],
+      [
+       357.5,
+       0.0
+      ]
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": 48.5,
+     "opex": false,
+     "opex2": true,
+     "edge": [
+      355.0,
+      440.0
+     ],
+     "tails": {
+      "below": [
+       355.0,
+       -7.7,
+       6
+      ],
+      "above": [
+       440.0,
+       20.7,
+       9
+      ]
+     },
+     "strikes": [
+      [
+       440.0,
+       14.6
+      ],
+      [
+       430.0,
+       3.5
+      ],
+      [
+       425.0,
+       0.4
+      ],
+      [
+       420.0,
+       5.5
+      ],
+      [
+       410.0,
+       1.7
+      ],
+      [
+       400.0,
+       12.9
+      ],
+      [
+       390.0,
+       1.0
+      ],
+      [
+       380.0,
+       -0.9
+      ],
+      [
+       370.0,
+       -0.7
+      ],
+      [
+       360.0,
+       -2.9
+      ],
+      [
+       355.0,
+       -0.1
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 420.0,
+     "kind": "sell",
+     "strength": 0.7,
+     "n": 3,
+     "dm": 2.5,
+     "odds": 81,
+     "base": 86,
+     "obs": 251,
+     "tier": null
+    },
+    {
+     "k": 410.0,
+     "kind": "sell",
+     "strength": 0.56,
+     "n": 3,
+     "dm": 1.3,
+     "odds": 69,
+     "base": 60,
+     "obs": 147,
+     "tier": null
+    },
+    {
+     "k": 400.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 0.2,
+     "odds": 56,
+     "base": 44,
+     "obs": 92,
+     "tier": "both",
+     "pin": true
+    },
+    {
+     "k": 392.5,
+     "kind": "weak",
+     "strength": 0.1,
+     "n": 1,
+     "dm": 0.7,
+     "odds": 30,
+     "base": 19,
+     "obs": 68
+    },
+    {
+     "k": 385.0,
+     "kind": "weak",
+     "strength": 0.16,
+     "n": 2,
+     "dm": 1.6,
+     "odds": 45,
+     "base": 32,
+     "obs": 45
+    },
+    {
+     "k": 372.4,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 365.3,
+     "hi": 377.9,
+     "jump": true
+    },
+    {
+     "k": 360.0,
+     "kind": "trigger",
+     "strength": 0.47,
+     "n": 2,
+     "dm": 4.5,
+     "odds": 15,
+     "base": 13,
+     "obs": 307
+    },
+    {
+     "k": 350.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 5.6,
+     "odds": 15,
+     "base": 13,
+     "obs": 307
+    }
+   ],
+   "board": 32.2,
+   "pos": "above",
+   "dayMove": 2.16,
+   "opexViews": [
+    {
+     "code": "2026-12-18",
+     "net": 32.2,
+     "vex": 1872,
+     "hasRows": true,
+     "first": [
+      400.0,
+      5.2
+     ],
+     "cap": [
+      450.0,
+      5.5
+     ],
+     "sup": [
+      395.0,
+      1.5
+     ],
+     "gap": [
+      390.0,
+      -2.4
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2027-01-15",
+     "net": 48.5,
+     "vex": 2399,
+     "hasRows": true,
+     "first": [
+      400.0,
+      12.9
+     ],
+     "cap": [
+      440.0,
+      14.6
+     ],
+     "sup": [
+      390.0,
+      1.0
+     ],
+     "gap": [
+      380.0,
+      -0.9
+     ],
+     "pocket": null
+    }
+   ],
+   "move": {
+    "unit": 3.33,
+    "d1_70": [
+     378.1,
+     419.3,
+     5.2
+    ],
+    "d1_90": [
+     361.08,
+     436.32,
+     9.4
+    ],
+    "d5_70": [
+     357.69,
+     439.71,
+     10.3
+    ],
+    "d5_90": [
+     320.49,
+     476.91,
+     19.6
+    ],
+    "inside": [
+     {
+      "k": 400.0,
+      "kind": "sell",
+      "tier": "both"
+     },
+     {
+      "k": 392.5,
+      "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
+  },
+  {
+   "t": "AAPL",
+   "spot": 359.14,
+   "chg": null,
+   "flip": 352.9,
+   "perCol": [
+    {
+     "code": "2026-11-30",
+     "net": 34.5,
+     "opex": false,
+     "edge": [
+      345.0,
+      372.5
+     ],
+     "tails": {
+      "below": [
+       345.0,
+       -6.1,
+       21
+      ],
+      "above": [
+       372.5,
+       -0.4,
+       15
+      ]
+     },
+     "strikes": [
+      [
+       372.5,
+       -0.0
+      ],
+      [
+       370.0,
+       0.9
+      ],
+      [
+       367.5,
+       1.9
+      ],
+      [
+       365.0,
+       8.9
+      ],
+      [
+       362.5,
+       7.4
+      ],
+      [
+       360.0,
+       21.0
+      ],
+      [
+       357.5,
+       13.4
+      ],
+      [
+       352.5,
+       -4.3
+      ],
+      [
+       350.0,
+       -4.4
+      ],
+      [
+       347.5,
+       -2.1
+      ],
+      [
+       345.0,
+       -1.1
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-04",
+     "net": 73.2,
+     "opex": false,
+     "edge": [
+      345.0,
+      372.5
+     ],
+     "tails": {
+      "below": [
+       345.0,
+       -26.0,
+       23
+      ],
+      "above": [
+       372.5,
+       12.6,
+       13
+      ]
+     },
+     "strikes": [
+      [
+       372.5,
+       1.1
+      ],
+      [
+       370.0,
+       10.5
+      ],
+      [
+       365.0,
+       17.7
+      ],
+      [
+       362.5,
+       8.7
+      ],
+      [
+       360.0,
+       26.9
+      ],
+      [
+       357.5,
+       2.9
+      ],
+      [
+       355.0,
+       16.7
+      ],
+      [
+       352.5,
+       -1.1
+      ],
+      [
+       350.0,
+       6.7
+      ],
+      [
+       347.5,
+       -1.5
+      ],
+      [
+       345.0,
+       -2.8
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 290.6,
+     "opex": true,
+     "edge": [
+      345.0,
+      375.0
+     ],
+     "tails": {
+      "below": [
+       345.0,
+       -72.2,
+       19
+      ],
+      "above": [
+       375.0,
+       55.5,
+       14
+      ]
+     },
+     "strikes": [
+      [
+       375.0,
+       30.8
+      ],
+      [
+       370.0,
+       50.2
+      ],
+      [
+       367.5,
+       44.5
+      ],
+      [
+       365.0,
+       61.5
+      ],
+      [
+       362.5,
+       0.8
+      ],
+      [
+       360.0,
+       83.8
+      ],
+      [
+       357.5,
+       0.3
+      ],
+      [
+       355.0,
+       8.6
+      ],
+      [
+       352.5,
+       -0.5
+      ],
+      [
+       350.0,
+       33.4
+      ],
+      [
+       345.0,
+       -5.9
+      ]
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": 395.2,
+     "opex": false,
+     "opex2": true,
+     "edge": [
+      345.0,
+      375.0
+     ],
+     "tails": {
+      "below": [
+       345.0,
+       -16.5,
+       14
+      ],
+      "above": [
+       375.0,
+       159.4,
+       10
+      ]
+     },
+     "strikes": [
+      [
+       400.0,
+       11.0
+      ],
+      [
+       385.0,
+       12.5
+      ],
+      [
+       380.0,
+       118.7
+      ],
+      [
+       375.0,
+       27.4
+      ],
+      [
+       375.0,
+       27.4
+      ],
+      [
+       370.0,
+       30.0
+      ],
+      [
+       365.0,
+       22.3
+      ],
+      [
+       360.0,
+       85.7
+      ],
+      [
+       355.0,
+       37.8
+      ],
+      [
+       350.0,
+       45.1
+      ],
+      [
+       345.0,
+       4.1
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 370.0,
+     "kind": "sell",
+     "strength": 0.5,
+     "n": 3,
+     "dm": 3.2,
+     "odds": 81,
+     "base": 86,
+     "obs": 251,
+     "tier": null
+    },
+    {
+     "k": 367.5,
+     "kind": "sell",
+     "strength": 0.4,
+     "n": 3,
+     "dm": 2.4,
+     "odds": 88,
+     "base": 86,
+     "obs": 292,
+     "tier": null
+    },
+    {
+     "k": 365.0,
+     "kind": "sell",
+     "strength": 0.68,
+     "n": 3,
+     "dm": 1.7,
+     "odds": 69,
+     "base": 60,
+     "obs": 147,
+     "tier": "both"
+    },
+    {
+     "k": 360,
+     "kind": "pin",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 0.3,
+     "odds": null
+    },
+    {
+     "k": 355.0,
+     "kind": "weak",
+     "strength": 0.17,
+     "n": 2,
+     "dm": 1.2,
+     "odds": 45,
+     "base": 32,
+     "obs": 45
+    },
+    {
+     "k": 352.9,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 347.6,
+     "hi": 356.2,
+     "jump": false
+    },
+    {
+     "k": 350.0,
+     "kind": "weak",
+     "strength": 0.3,
+     "n": 2,
+     "dm": 2.7,
+     "odds": 55,
+     "base": 56,
+     "obs": 13
+    },
+    {
+     "k": 330.0,
+     "kind": "trigger",
+     "strength": 0.94,
+     "n": 3,
+     "dm": 8.5,
+     "odds": 15,
+     "base": 13,
+     "obs": 307
+    },
+    {
+     "k": 320.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 11.4,
+     "odds": 15,
+     "base": 13,
+     "obs": 307
+    }
+   ],
+   "board": 290.6,
+   "pos": "above",
+   "dayMove": 0.96,
+   "opexViews": [
+    {
+     "code": "2026-12-18",
+     "net": 290.6,
+     "vex": 8049,
+     "hasRows": true,
+     "first": [
+      365.0,
+      61.5
+     ],
+     "cap": null,
+     "sup": [
+      350.0,
+      33.4
+     ],
+     "gap": [
+      345.0,
+      -5.9
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2027-01-15",
+     "net": 395.2,
+     "vex": 7382,
+     "hasRows": true,
+     "first": [
+      370.0,
+      30.0
+     ],
+     "cap": [
+      380.0,
+      118.7
+     ],
+     "sup": [
+      350.0,
+      45.1
+     ],
+     "gap": [
+      340.0,
+      -5.0
+     ],
+     "pocket": null
+    }
+   ],
+   "move": {
+    "unit": 1.08,
+    "d1_70": [
+     353.12,
+     365.16,
+     1.7
+    ],
+    "d1_90": [
+     348.14,
+     370.14,
+     3.1
+    ],
+    "d5_70": [
+     347.15,
+     371.13,
+     3.3
+    ],
+    "d5_90": [
+     336.27,
+     382.01,
+     6.4
+    ],
+    "inside": [
+     {
+      "k": 365.0,
+      "kind": "sell",
+      "tier": "both"
+     },
+     {
+      "k": 355.0,
+      "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
+  },
+  {
+   "t": "AMZN",
+   "spot": 254.7124,
+   "chg": null,
+   "flip": 247.53,
+   "perCol": [
+    {
+     "code": "2026-11-30",
+     "net": 38.2,
+     "opex": false,
+     "edge": [
+      232.5,
+      277.5
+     ],
+     "tails": {
+      "below": [
+       232.5,
+       -1.3,
+       11
+      ],
+      "above": [
+       277.5,
+       0.5,
+       13
+      ]
+     },
+     "strikes": [
+      [
+       277.5,
+       0.0
+      ],
+      [
+       267.5,
+       1.2
+      ],
+      [
+       265.0,
+       6.5
+      ],
+      [
+       262.5,
+       4.1
+      ],
+      [
+       260.0,
+       14.7
+      ],
+      [
+       257.5,
+       11.4
+      ],
+      [
+       255.0,
+       2.5
+      ],
+      [
+       247.5,
+       0.8
+      ],
+      [
+       245.0,
+       -1.6
+      ],
+      [
+       240.0,
+       -1.7
+      ],
+      [
+       232.5,
+       -0.2
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-04",
+     "net": 60.2,
+     "opex": false,
+     "edge": [
+      232.5,
+      277.5
+     ],
+     "tails": {
+      "below": [
+       232.5,
+       -7.7,
+       14
+      ],
+      "above": [
+       277.5,
+       12.2,
+       12
+      ]
+     },
+     "strikes": [
+      [
+       277.5,
+       0.9
+      ],
+      [
+       270.0,
+       12.6
+      ],
+      [
+       265.0,
+       5.7
+      ],
+      [
+       260.0,
+       7.4
+      ],
+      [
+       257.5,
+       6.2
+      ],
+      [
+       252.5,
+       10.7
+      ],
+      [
+       250.0,
+       9.5
+      ],
+      [
+       245.0,
+       7.2
+      ],
+      [
+       240.0,
+       -5.0
+      ],
+      [
+       235.0,
+       -5.9
+      ],
+      [
+       232.5,
+       -0.8
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": 122.4,
+     "opex": true,
+     "edge": [
+      232.5,
+      277.5
+     ],
+     "tails": {
+      "below": [
+       232.5,
+       -41.8,
+       8
+      ],
+      "above": [
+       277.5,
+       79.7,
+       8
+      ]
+     },
+     "strikes": [
+      [
+       277.5,
+       1.0
+      ],
+      [
+       275.0,
+       32.8
+      ],
+      [
+       270.0,
+       23.0
+      ],
+      [
+       265.0,
+       9.8
+      ],
+      [
+       260.0,
+       28.0
+      ],
+      [
+       255.0,
+       6.8
+      ],
+      [
+       250.0,
+       13.9
+      ],
+      [
+       245.0,
+       -3.0
+      ],
+      [
+       240.0,
+       -20.4
+      ],
+      [
+       235.0,
+       -11.4
+      ],
+      [
+       232.5,
+       -0.3
+      ]
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": 237.4,
+     "opex": false,
+     "opex2": true,
+     "edge": [
+      230.0,
+      280.0
+     ],
+     "tails": {
+      "below": [
+       230.0,
+       -27.8,
+       7
+      ],
+      "above": [
+       280.0,
+       96.1,
+       7
+      ]
+     },
+     "strikes": [
+      [
+       280.0,
+       21.6
+      ],
+      [
+       275.0,
+       77.1
+      ],
+      [
+       270.0,
+       20.9
+      ],
+      [
+       265.0,
+       10.5
+      ],
+      [
+       260.0,
+       10.4
+      ],
+      [
+       255.0,
+       18.7
+      ],
+      [
+       250.0,
+       21.1
+      ],
+      [
+       245.0,
+       -4.0
+      ],
+      [
+       240.0,
+       -1.8
+      ],
+      [
+       235.0,
+       -1.4
+      ],
+      [
+       230.0,
+       -4.0
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 280.0,
+     "kind": "sell",
+     "strength": 0.83,
+     "n": 3,
+     "dm": 5.8,
+     "odds": 92,
+     "base": 95,
+     "obs": 163,
+     "tier": null
+    },
+    {
+     "k": 260.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 1.2,
+     "odds": 69,
+     "base": 60,
+     "obs": 147,
+     "tier": "major"
+    },
+    {
+     "k": 257.5,
+     "kind": "sell",
+     "strength": 0.3,
+     "n": 3,
+     "dm": 0.6,
+     "odds": 54,
+     "base": 44,
+     "obs": 83,
+     "tier": "first"
+    },
+    {
+     "k": 255,
+     "kind": "pin",
+     "strength": 0.21,
+     "n": 3,
+     "dm": 0.1,
+     "odds": null
+    },
+    {
+     "k": 252.5,
+     "kind": "weak",
+     "strength": 0.19,
+     "n": 3,
+     "dm": 0.5,
+     "odds": 30,
+     "base": 19,
+     "obs": 68
+    },
+    {
+     "k": 250.0,
+     "kind": "weak",
+     "strength": 0.49,
+     "n": 3,
+     "dm": 1.1,
+     "odds": 31,
+     "base": 32,
+     "obs": 7
+    },
+    {
+     "k": 247.5,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 246.5,
+     "hi": 248.5,
+     "jump": false
+    },
+    {
+     "k": 240.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 3.4,
+     "odds": 40,
+     "base": 44,
+     "obs": 281
+    },
+    {
+     "k": 235.0,
+     "kind": "trigger",
+     "strength": 0.62,
+     "n": 3,
+     "dm": 4.5,
+     "odds": 15,
+     "base": 13,
+     "obs": 307
+    }
+   ],
+   "board": 122.4,
+   "pos": "above",
+   "dayMove": 1.72,
+   "opexViews": [
+    {
+     "code": "2026-12-18",
+     "net": 122.4,
+     "vex": 3907,
+     "hasRows": true,
+     "first": [
+      260.0,
+      28.0
+     ],
+     "cap": [
+      275.0,
+      32.8
+     ],
+     "sup": [
+      250.0,
+      13.9
+     ],
+     "gap": [
+      240.0,
+      -20.4
+     ],
+     "pocket": null
+    },
+    {
+     "code": "2027-01-15",
+     "net": 237.4,
+     "vex": 5648,
+     "hasRows": true,
+     "first": [
+      270.0,
+      20.9
+     ],
+     "cap": [
+      275.0,
+      77.1
+     ],
+     "sup": [
+      250.0,
+      21.1
+     ],
+     "gap": [
+      245.0,
+      -4.0
+     ],
+     "pocket": null
+    }
+   ],
+   "move": {
+    "unit": 2.67,
+    "d1_70": [
+     244.18,
+     265.24,
+     4.1
+    ],
+    "d1_90": [
+     235.48,
+     273.94,
+     7.5
+    ],
+    "d5_70": [
+     233.75,
+     275.68,
+     8.2
+    ],
+    "d5_90": [
+     214.73,
+     294.69,
+     15.7
+    ],
+    "inside": [
+     {
+      "k": 260.0,
+      "kind": "sell",
+      "tier": "major"
+     },
+     {
+      "k": 257.5,
+      "kind": "sell",
+      "tier": "first"
+     },
+     {
+      "k": 252.5,
+      "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
+  },
+  {
+   "t": "GOOGL",
+   "spot": 275.9801,
+   "chg": null,
+   "flip": 277.35,
+   "perCol": [
+    {
+     "code": "2026-11-30",
+     "net": 14.9,
+     "opex": false,
+     "edge": [
+      257.5,
+      295.0
+     ],
+     "tails": {
+      "below": [
+       257.5,
+       -2.1,
+       13
+      ],
+      "above": [
+       295.0,
+       0.6,
+       16
+      ]
+     },
+     "strikes": [
+      [
+       295.0,
+       0.4
+      ],
+      [
+       285.0,
+       1.8
+      ],
+      [
+       282.5,
+       2.3
+      ],
+      [
+       280.0,
+       3.0
+      ],
+      [
+       277.5,
+       -1.8
+      ],
+      [
+       275.0,
+       13.3
+      ],
+      [
+       272.5,
+       1.1
+      ],
+      [
+       267.5,
+       -0.8
+      ],
+      [
+       265.0,
+       -1.8
+      ],
+      [
+       260.0,
+       -1.8
+      ],
+      [
+       257.5,
+       -0.1
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-04",
+     "net": 34.5,
+     "opex": false,
+     "edge": [
+      257.5,
+      295.0
+     ],
+     "tails": {
+      "below": [
+       257.5,
+       -4.6,
+       16
+      ],
+      "above": [
+       295.0,
+       8.0,
+       15
+      ]
+     },
+     "strikes": [
+      [
+       295.0,
+       0.4
+      ],
+      [
+       290.0,
+       2.2
+      ],
+      [
+       287.5,
+       6.5
+      ],
+      [
+       285.0,
+       6.8
+      ],
+      [
+       282.5,
+       5.9
+      ],
+      [
+       280.0,
+       4.4
+      ],
+      [
+       277.5,
+       6.5
+      ],
+      [
+       275.0,
+       3.5
+      ],
+      [
+       265.0,
+       -4.6
+      ],
+      [
+       260.0,
+       -3.5
+      ],
+      [
+       257.5,
+       -0.5
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -29.6,
+     "opex": true,
+     "edge": [
+      257.5,
+      295.0
+     ],
+     "tails": {
+      "below": [
+       257.5,
+       -26.6,
+       11
+      ],
+      "above": [
+       295.0,
+       44.5,
+       10
+      ]
+     },
+     "strikes": [
+      [
+       295.0,
+       -0.3
+      ],
+      [
+       290.0,
+       -5.3
+      ],
+      [
+       285.0,
+       -1.4
+      ],
+      [
+       280.0,
+       -5.7
+      ],
+      [
+       275.0,
+       -6.7
+      ],
+      [
+       272.5,
+       0.8
+      ],
+      [
+       270.0,
+       -10.2
+      ],
+      [
+       267.5,
+       -0.6
+      ],
+      [
+       265.0,
+       -7.8
+      ],
+      [
+       260.0,
+       -9.8
+      ],
+      [
+       257.5,
+       -0.8
+      ]
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": 11.1,
+     "opex": false,
+     "opex2": true,
+     "edge": [
+      255.0,
+      295.0
+     ],
+     "tails": {
+      "below": [
+       255.0,
+       -11.5,
+       9
+      ],
+      "above": [
+       295.0,
+       54.7,
+       9
+      ]
+     },
+     "strikes": [
+      [
+       295.0,
+       1.0
+      ],
+      [
+       290.0,
+       -1.8
+      ],
+      [
+       285.0,
+       -5.9
+      ],
+      [
+       280.0,
+       -7.9
+      ],
+      [
+       275.0,
+       -1.8
+      ],
+      [
+       270.0,
+       -2.0
+      ],
+      [
+       265.0,
+       -3.4
+      ],
+      [
+       260.0,
+       -7.6
+      ],
+      [
+       255.0,
+       -2.7
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 310.0,
+     "kind": "sell",
+     "strength": 0.68,
+     "n": 3,
+     "dm": 9.1,
+     "odds": 92,
+     "base": 95,
+     "obs": 163,
+     "tier": null
+    },
+    {
+     "k": 300.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 6.4,
+     "odds": 92,
+     "base": 95,
+     "obs": 163,
+     "tier": "both"
+    },
+    {
+     "k": 287.5,
+     "kind": "sell",
+     "strength": 0.22,
+     "n": 3,
+     "dm": 3.1,
+     "odds": 88,
+     "base": 86,
+     "obs": 292,
+     "tier": null
+    },
+    {
+     "k": 277.4,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 267.6,
+     "hi": 283.4,
+     "jump": true
+    },
+    {
+     "k": 275.0,
+     "kind": "weak",
+     "strength": 0.19,
+     "n": 2,
+     "dm": 0.3,
+     "odds": 30,
+     "base": 19,
+     "obs": 68,
+     "pin": true
+    },
+    {
+     "k": 272.5,
+     "kind": "weak",
+     "strength": 0.11,
+     "n": 3,
+     "dm": 0.9,
+     "odds": 30,
+     "base": 19,
+     "obs": 68
+    },
+    {
+     "k": 265.0,
+     "kind": "trigger",
+     "strength": 0.9,
+     "n": 3,
+     "dm": 2.9,
+     "odds": 40,
+     "base": 44,
+     "obs": 281
+    },
+    {
+     "k": 260.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 4.3,
+     "odds": 15,
+     "base": 13,
+     "obs": 307
+    }
+   ],
+   "board": -29.6,
+   "pos": "in",
+   "dayMove": 1.35,
+   "opexViews": [
+    {
+     "code": "2026-12-18",
+     "net": -29.6,
+     "vex": 1915,
+     "hasRows": true,
+     "first": [
+      300.0,
+      22.5
+     ],
+     "cap": null,
+     "sup": null,
+     "gap": [
+      275.0,
+      -6.7
+     ],
+     "pocket": [
+      280.0,
+      -5.7
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": 11.1,
+     "vex": 2691,
+     "hasRows": true,
+     "first": [
+      295.0,
+      1.0
+     ],
+     "cap": [
+      300.0,
+      2.4
+     ],
+     "sup": null,
+     "gap": [
+      265.0,
+      -3.4
+     ],
+     "pocket": [
+      280.0,
+      -7.9
+     ]
+    }
+   ],
+   "move": {
+    "unit": 2.11,
+    "d1_70": [
+     266.94,
+     285.02,
+     3.3
+    ],
+    "d1_90": [
+     259.48,
+     292.48,
+     6.0
+    ],
+    "d5_70": [
+     257.99,
+     293.97,
+     6.5
+    ],
+    "d5_90": [
+     241.67,
+     310.29,
+     12.4
+    ],
+    "inside": [
+     {
+      "k": 275.0,
+      "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
+  },
+  {
+   "t": "AVGO",
+   "spot": 311.89,
+   "chg": null,
+   "flip": 315.51,
+   "perCol": [
+    {
+     "code": "2026-11-30",
+     "net": 4.8,
+     "opex": false,
+     "edge": [
+      275.0,
+      350.0
+     ],
+     "tails": {
+      "below": [
+       275.0,
+       -0.3,
+       15
+      ],
+      "above": [
+       350.0,
+       0.6,
+       14
+      ]
+     },
+     "strikes": [
+      [
+       350.0,
+       0.0
+      ],
+      [
+       345.0,
+       -0.2
+      ],
+      [
+       332.5,
+       0.3
+      ],
+      [
+       330.0,
+       1.5
+      ],
+      [
+       325.0,
+       0.2
+      ],
+      [
+       322.5,
+       0.2
+      ],
+      [
+       320.0,
+       0.5
+      ],
+      [
+       310.0,
+       1.4
+      ],
+      [
+       305.0,
+       0.2
+      ],
+      [
+       290.0,
+       -0.2
+      ],
+      [
+       275.0,
+       -0.1
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-04",
+     "net": 15.1,
+     "opex": false,
+     "edge": [
+      275.0,
+      350.0
+     ],
+     "tails": {
+      "below": [
+       275.0,
+       -1.6,
+       15
+      ],
+      "above": [
+       350.0,
+       2.4,
+       14
+      ]
+     },
+     "strikes": [
+      [
+       350.0,
+       0.5
+      ],
+      [
+       340.0,
+       1.5
+      ],
+      [
+       335.0,
+       7.4
+      ],
+      [
+       330.0,
+       1.6
+      ],
+      [
+       325.0,
+       1.0
+      ],
+      [
+       315.0,
+       -1.0
+      ],
+      [
+       310.0,
+       1.6
+      ],
+      [
+       300.0,
+       -0.8
+      ],
+      [
+       297.5,
+       2.5
+      ],
+      [
+       290.0,
+       -0.9
+      ],
+      [
+       275.0,
+       -0.6
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -40.1,
+     "opex": true,
+     "edge": [
+      275.0,
+      350.0
+     ],
+     "tails": {
+      "below": [
+       275.0,
+       -10.3,
+       7
+      ],
+      "above": [
+       350.0,
+       8.3,
+       7
+      ]
+     },
+     "strikes": [
+      [
+       350.0,
+       0.2
+      ],
+      [
+       330.0,
+       -3.6
+      ],
+      [
+       320.0,
+       -7.1
+      ],
+      [
+       315.0,
+       0.3
+      ],
+      [
+       310.0,
+       -4.7
+      ],
+      [
+       307.5,
+       -1.7
+      ],
+      [
+       300.0,
+       -7.8
+      ],
+      [
+       297.5,
+       -1.3
+      ],
+      [
+       290.0,
+       -6.8
+      ],
+      [
+       280.0,
+       -3.9
+      ],
+      [
+       275.0,
+       -1.9
+      ]
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": -24.8,
+     "opex": false,
+     "opex2": true,
+     "edge": [
+      270.0,
+      350.0
+     ],
+     "tails": {
+      "below": [
+       270.0,
+       -8.1,
+       3
+      ],
+      "above": [
+       350.0,
+       5.4,
+       3
+      ]
+     },
+     "strikes": [
+      [
+       350.0,
+       0.4
+      ],
+      [
+       340.0,
+       -0.2
+      ],
+      [
+       330.0,
+       -2.2
+      ],
+      [
+       320.0,
+       -3.2
+      ],
+      [
+       310.0,
+       -2.4
+      ],
+      [
+       300.0,
+       -5.1
+      ],
+      [
+       290.0,
+       -3.4
+      ],
+      [
+       280.0,
+       -3.2
+      ],
+      [
+       270.0,
+       -2.7
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 355.0,
+     "kind": "sell",
+     "strength": 0.27,
+     "n": 3,
+     "dm": 4.5,
+     "odds": 95,
+     "base": 95,
+     "obs": 336,
+     "tier": null
+    },
+    {
+     "k": 335.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 2.4,
+     "odds": 81,
+     "base": 86,
+     "obs": 251,
+     "tier": "both"
+    },
+    {
+     "k": 325.0,
+     "kind": "sell",
+     "strength": 0.21,
+     "n": 3,
+     "dm": 1.4,
+     "odds": 69,
+     "base": 60,
+     "obs": 141,
+     "tier": null
+    },
+    {
+     "k": 320.0,
+     "kind": "pocket",
+     "strength": 0.81,
+     "n": 1,
+     "dm": 0.8,
+     "odds": 64,
+     "base": 56,
+     "obs": 60
+    },
+    {
+     "k": 315.5,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 310.8,
+     "hi": 316.8,
+     "jump": false
+    },
+    {
+     "k": 312.5,
+     "kind": "pin",
+     "strength": 0.04,
+     "n": 3,
+     "dm": 0.1,
+     "odds": null
+    },
+    {
+     "k": 305.0,
+     "kind": "weak",
+     "strength": 0.11,
+     "n": 2,
+     "dm": 0.7,
+     "odds": 30,
+     "base": 19,
+     "obs": 68
+    },
+    {
+     "k": 300.0,
+     "kind": "trigger",
+     "strength": 1.0,
+     "n": 2,
+     "dm": 1.2,
+     "odds": 67,
+     "base": 68,
+     "obs": 156
+    },
+    {
+     "k": 297.5,
+     "kind": "weak",
+     "strength": 0.06,
+     "n": 1,
+     "dm": 1.5,
+     "odds": 32,
+     "base": 32,
+     "obs": 238
+    },
+    {
+     "k": 290.0,
+     "kind": "trigger",
+     "strength": 0.9,
+     "n": 3,
+     "dm": 2.3,
+     "odds": 40,
+     "base": 44,
+     "obs": 281
+    }
+   ],
+   "board": -40.1,
+   "pos": "in",
+   "dayMove": 3.07,
+   "opexViews": [
+    {
+     "code": "2026-12-18",
+     "net": -40.1,
+     "vex": 523,
+     "hasRows": true,
+     "first": [
+      315.0,
+      0.3
+     ],
+     "cap": [
+      355.0,
+      1.0
+     ],
+     "sup": null,
+     "gap": [
+      310.0,
+      -4.7
+     ],
+     "pocket": [
+      320.0,
+      -7.1
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": -24.8,
+     "vex": 490,
+     "hasRows": true,
+     "first": [
+      350.0,
+      0.4
+     ],
+     "cap": null,
+     "sup": null,
+     "gap": [
+      310.0,
+      -2.4
+     ],
+     "pocket": [
+      320.0,
+      -3.2
+     ]
+    }
+   ],
+   "move": {
+    "unit": 3.71,
+    "d1_70": [
+     293.96,
+     329.82,
+     5.7
+    ],
+    "d1_90": [
+     279.15,
+     344.63,
+     10.5
+    ],
+    "d5_70": [
+     276.19,
+     347.59,
+     11.4
+    ],
+    "d5_90": [
+     243.82,
+     379.96,
+     21.8
+    ],
+    "inside": [
+     {
+      "k": 335.0,
+      "kind": "sell",
+      "tier": "both"
+     },
+     {
+      "k": 305.0,
+      "kind": "weak",
+      "tier": null
+     }
+    ]
+   }
+  },
+  {
+   "t": "TSM",
+   "spot": 353.35,
+   "chg": null,
+   "flip": 347.71,
+   "perCol": [
+    {
+     "code": "2026-12-04",
+     "net": 5.7,
+     "opex": false,
+     "edge": [
+      300.0,
+      407.5
+     ],
+     "tails": {
+      "below": [
+       300.0,
+       -0.6,
+       8
+      ],
+      "above": [
+       407.5,
+       2.9,
+       8
+      ]
+     },
+     "strikes": [
+      [
+       407.5,
+       0.1
+      ],
+      [
+       400.0,
+       0.4
+      ],
+      [
+       380.0,
+       0.5
+      ],
+      [
+       360.0,
+       0.9
+      ],
+      [
+       357.5,
+       0.6
+      ],
+      [
+       350.0,
+       1.0
+      ],
+      [
+       347.5,
+       1.2
+      ],
+      [
+       340.0,
+       1.2
+      ],
+      [
+       332.5,
+       -2.2
+      ],
+      [
+       330.0,
+       1.1
+      ],
+      [
+       300.0,
+       -0.3
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-11",
+     "net": 0.4,
+     "opex": false,
+     "edge": [
+      300.0,
+      407.5
+     ],
+     "tails": {
+      "below": [
+       300.0,
+       -0.4,
+       8
+      ],
+      "above": [
+       407.5,
+       0.5,
+       6
+      ]
+     },
+     "strikes": [
+      [
+       407.5,
+       -0.0
+      ],
+      [
+       400.0,
+       0.5
+      ],
+      [
+       385.0,
+       0.3
+      ],
+      [
+       380.0,
+       0.2
+      ],
+      [
+       375.0,
+       -0.2
+      ],
+      [
+       360.0,
+       0.2
+      ],
+      [
+       355.0,
+       -0.6
+      ],
+      [
+       347.5,
+       0.4
+      ],
+      [
+       332.5,
+       -0.2
+      ],
+      [
+       325.0,
+       -0.2
+      ],
+      [
+       300.0,
+       -0.1
+      ]
+     ]
+    },
+    {
+     "code": "2026-12-18",
+     "net": -39.9,
+     "opex": true,
+     "edge": [
+      300.0,
+      410.0
+     ],
+     "tails": {
+      "below": [
+       300.0,
+       -1.6,
+       4
+      ],
+      "above": [
+       410.0,
+       0.0,
+       1
+      ]
+     },
+     "strikes": [
+      [
+       410.0,
+       0.4
+      ],
+      [
+       400.0,
+       -5.0
+      ],
+      [
+       390.0,
+       1.6
+      ],
+      [
+       370.0,
+       -2.9
+      ],
+      [
+       360.0,
+       -9.9
+      ],
+      [
+       350.0,
+       -4.8
+      ],
+      [
+       340.0,
+       -3.9
+      ],
+      [
+       330.0,
+       -3.0
+      ],
+      [
+       320.0,
+       -4.7
+      ],
+      [
+       310.0,
+       -1.8
+      ],
+      [
+       300.0,
+       -4.1
+      ]
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": 13.9,
+     "opex": false,
+     "opex2": true,
+     "edge": [
+      300.0,
+      410.0
+     ],
+     "tails": {
+      "below": [
+       300.0,
+       -1.7,
+       2
+      ],
+      "above": [
+       410.0,
+       14.7,
+       1
+      ]
+     },
+     "strikes": [
+      [
+       410.0,
+       4.6
+      ],
+      [
+       400.0,
+       -3.6
+      ],
+      [
+       390.0,
+       -0.2
+      ],
+      [
+       380.0,
+       -2.5
+      ],
+      [
+       360.0,
+       11.5
+      ],
+      [
+       350.0,
+       3.3
+      ],
+      [
+       340.0,
+       -2.8
+      ],
+      [
+       330.0,
+       -0.4
+      ],
+      [
+       320.0,
+       -4.9
+      ],
+      [
+       310.0,
+       -1.3
+      ],
+      [
+       300.0,
+       -2.6
+      ]
+     ]
+    }
+   ],
+   "ladder": [
+    {
+     "k": 395.0,
+     "kind": "sell",
+     "strength": 0.26,
+     "n": 3,
+     "dm": 3.7,
+     "odds": 88,
+     "base": 86,
+     "obs": 292,
+     "tier": null
+    },
+    {
+     "k": 390.0,
+     "kind": "sell",
+     "strength": 1.0,
+     "n": 3,
+     "dm": 3.2,
+     "odds": 81,
+     "base": 86,
+     "obs": 251,
+     "tier": "major"
+    },
+    {
+     "k": 385.0,
+     "kind": "sell",
+     "strength": 0.69,
+     "n": 3,
+     "dm": 2.8,
+     "odds": 81,
+     "base": 86,
+     "obs": 251,
+     "tier": "first"
+    },
+    {
+     "k": 370.0,
+     "kind": "pocket",
+     "strength": 0.34,
+     "n": 3,
+     "dm": 1.5,
+     "odds": 49,
+     "base": 40,
+     "obs": 24
+    },
+    {
+     "k": 360.0,
+     "kind": "pocket",
+     "strength": 1.0,
+     "n": 1,
+     "dm": 0.6,
+     "odds": 64,
+     "base": 56,
+     "obs": 60
+    },
+    {
+     "k": 355,
+     "kind": "pin",
+     "strength": 0.0,
+     "n": 3,
+     "dm": 0.1,
+     "odds": null
+    },
+    {
+     "k": 350.0,
+     "kind": "trigger",
+     "strength": 0.44,
+     "n": 1,
+     "dm": 0.3,
+     "odds": 83,
+     "base": 81,
+     "obs": 109
+    },
+    {
+     "k": 347.7,
+     "kind": "flip",
+     "strength": null,
+     "n": null,
+     "odds": null,
+     "lo": 342.3,
+     "hi": 350.6,
+     "jump": false
+    },
+    {
+     "k": 347.5,
+     "kind": "weak",
+     "strength": 0.62,
+     "n": 3,
+     "dm": 0.5,
+     "odds": 19,
+     "base": 19,
+     "obs": 32
+    },
+    {
+     "k": 345.0,
+     "kind": "weak",
+     "strength": 0.35,
+     "n": 3,
+     "dm": 0.7,
+     "odds": 30,
+     "base": 19,
+     "obs": 68
+    },
+    {
+     "k": 320.0,
+     "kind": "trigger",
+     "strength": 0.55,
+     "n": 3,
+     "dm": 2.9,
+     "odds": 40,
+     "base": 44,
+     "obs": 281
+    }
+   ],
+   "board": -39.9,
+   "pos": "above",
+   "dayMove": 3.23,
+   "opexViews": [
+    {
+     "code": "2026-12-18",
+     "net": -39.9,
+     "vex": 239,
+     "hasRows": true,
+     "first": [
+      375.0,
+      0.5
+     ],
+     "cap": [
+      390.0,
+      1.6
+     ],
+     "sup": [
+      345.0,
+      0.3
+     ],
+     "gap": [
+      350.0,
+      -4.8
+     ],
+     "pocket": [
+      360.0,
+      -9.9
+     ]
+    },
+    {
+     "code": "2027-01-15",
+     "net": 13.9,
+     "vex": 1125,
+     "hasRows": true,
+     "first": [
+      360.0,
+      11.5
+     ],
+     "cap": null,
+     "sup": [
+      350.0,
+      3.3
+     ],
+     "gap": [
+      340.0,
+      -2.8
+     ],
+     "pocket": [
+      380.0,
+      -2.5
+     ]
+    }
+   ],
+   "move": {
+    "unit": 4.77,
+    "d1_70": [
+     327.23,
+     379.47,
+     7.4
+    ],
+    "d1_90": [
+     305.66,
+     401.04,
+     13.5
+    ],
+    "d5_70": [
+     301.36,
+     405.34,
+     14.7
+    ],
+    "d5_90": [
+     254.21,
+     452.49,
+     28.1
+    ],
+    "inside": [
+     {
+      "k": 390.0,
+      "kind": "sell",
+      "tier": "major"
+     },
+     {
+      "k": 385.0,
+      "kind": "sell",
+      "tier": "first"
+     },
+     {
+      "k": 350.0,
+      "kind": "trigger",
+      "tier": null
+     }
+    ]
+   }
+  }
+ ]
+}
